@@ -8,6 +8,7 @@ from lukasz_sawala_bsc_thesis.config import FIGURES_DIR, PROCESSED_DATA_DIR
 
 app = typer.Typer()
 
+#test
 
 @app.command()
 def main(
