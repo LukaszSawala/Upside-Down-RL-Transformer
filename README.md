@@ -41,19 +41,7 @@ Bachelor Thesis on the topic of Decision Making Transformers via Upside-Down RL
 │
 └── lukasz_sawala_bsc_thesis   <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes lukasz_sawala_bsc_thesis a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
+    ├── main.py
     └── plots.py                <- Code to create visualizations
 ```
 
