@@ -16,6 +16,24 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 requires-python = "~=3.11.9"
+dependencies = [
+    "typer>=0.15.1",
+    "ipython>=8.32.0",
+    "isort>=6.0.0",
+    "jupyterlab>=4.3.5",
+    "loguru>=0.7.3",
+    "lukasz-sawala-bsc-thesis",
+    "matplotlib>=3.10.0",
+    "mkdocs>=1.6.1",
+    "notebook>=7.3.2",
+    "numpy>=2.2.2",
+    "pandas>=2.2.3",
+    "pip>=25.0",
+    "python-dotenv>=1.0.1",
+    "scikit-learn>=1.6.1",
+    "tqdm>=4.67.1",
+    "typer>=0.15.1",
+]
 
 [tool.black]
 line-length = 99
@@ -30,3 +48,7 @@ exclude = '''
 [tool.ruff.lint.isort]
 known_first_party = ["lukasz_sawala_bsc_thesis"]
 force_sort_within_sections = true
+
+[tool.uv.sources]
+lukasz-sawala-bsc-thesis = { workspace = true }
+
