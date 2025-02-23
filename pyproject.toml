@@ -33,6 +33,10 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "tqdm>=4.67.1",
     "typer>=0.15.1",
+    "gymnasium>=1.0.0",
+    "minari[all]>=0.5.2",
+    "huggingface-hub>=0.29.1",
+    "d4rl>=1.1",
 ]
 
 [tool.black]
