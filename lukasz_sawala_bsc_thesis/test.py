@@ -17,12 +17,20 @@ print(dataset['observations']) # An N x dim_observation Numpy array of observati
 # also adds next_observations.
 dataset = d4rl.qlearning_dataset(env)"""
 
-""" TRIAL 2 import minari
 
-dataset = minari.load_dataset("D4RL/antmaze/large-diverse-v1", download=True)"""
+
+# TRIAL 2 
+
+import minari
+dataset = minari.load_dataset('D4RL/door/human-v2', download=True)
+print("Observation space:", dataset.observation_space)
+print("Action space:", dataset.action_space)
+print("Total episodes:", dataset.total_episodes)
+print("Total steps:", dataset.total_steps)
 
 # TRIAL 3
 
+"""
 import d4rl
 import gymnasium as gym
 
@@ -30,4 +38,5 @@ import gymnasium as gym
 env = gym.make('CartPole-v1')
 
 # Load the dataset (e.g., cartpole data from D4RL)
-dataset = d4rl.qlearning.load('cartpole-medium-v0')
+dataset = d4rl.qlearning.load('cartpole-medium-v0')"""
+

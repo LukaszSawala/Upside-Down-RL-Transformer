@@ -23,7 +23,8 @@ def main(
         if i == 5:
             logger.info("Something happened for iteration 5.")
     logger.success("Plot generation complete.")
-    # -----------------------------------------
+    # -----------------------------------------              
+
 
 
 if __name__ == "__main__":
