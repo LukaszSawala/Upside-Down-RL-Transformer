@@ -37,6 +37,9 @@ dependencies = [
     "minari[all]>=0.5.2",
     "huggingface-hub>=0.29.1",
     "d4rl>=1.1",
+    "h5py>=3.13.0",
+    "torch>=2.6.0",
+    "seaborn>=0.13.2",
 ]
 
 [tool.black]
