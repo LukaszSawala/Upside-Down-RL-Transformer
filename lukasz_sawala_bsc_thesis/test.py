@@ -1,42 +1,37 @@
-"""import gym
-import d4rl # Import required to register environments, you may need to also import the submodule
+# Dataset testing
+import h5py
+import os
+import sys
 
-# Create the environment
-env = gym.make('maze2d-open-v0')
-
-# d4rl abides by the OpenAI gym interface
-env.reset()
-env.step(env.action_space.sample())
-
-# Each task is associated with a dataset
-# dataset contains observations, actions, rewards, terminals, and infos
-dataset = env.get_dataset()
-print(dataset['observations']) # An N x dim_observation Numpy array of observations
-
-# Alternatively, use d4rl.qlearning_dataset which
-# also adds next_observations.
-dataset = d4rl.qlearning_dataset(env)"""
+curr_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(curr_dir)
+sys.path.append(parent_dir)
 
 
+file_path = "data/external/main_data.hdf5"
 
-# TRIAL 2 
+with h5py.File(file_path, "r") as f:
+    episode_87 = f["episode_87"]
 
-import minari
-dataset = minari.load_dataset('D4RL/door/human-v2', download=True)
-print("Observation space:", dataset.observation_space)
-print("Action space:", dataset.action_space)
-print("Total episodes:", dataset.total_episodes)
-print("Total steps:", dataset.total_steps)
+    # Print all the keys inside episode_87 (actions, infos, etc.)
+    print("Keys in episode_87:", list(episode_87.keys()))
 
-# TRIAL 3
+    # Inspect data in each attribute
+    actions = episode_87["actions"][:]
+    infos = episode_87["infos"]
+    observations = episode_87["observations"][:]
+    rewards = episode_87["rewards"][:]
+    terminations = episode_87["terminations"][:]
+    truncations = episode_87["truncations"][:]
 
-"""
-import d4rl
-import gymnasium as gym
+    # Print some sample data
+    print("Actions sample:", actions[:5])
+    print("Observations sample:", observations[:5])
+    print("Rewards sample:", rewards[:5])
 
-# Make sure to use the CartPole environment
-env = gym.make('CartPole-v1')
-
-# Load the dataset (e.g., cartpole data from D4RL)
-dataset = d4rl.qlearning.load('cartpole-medium-v0')"""
-
+    # Dimensions:
+    print(f"Action dimensions: {actions.shape}")
+    print(f"Observation dimensions: {observations.shape}")
+    print(f"Reward dimensions: {rewards.shape}")
+    print(f"Termination dimensions: {terminations.shape}")
+    print(f"Truncation dimensions: {truncations.shape}")
