@@ -123,7 +123,7 @@ if __name__ == "__main__":
     model = load_model_for_eval(input_size, hidden_size, output_size, checkpoint_path)
 
     d_t = 1000.0  # ?
-    d_r = 4400.0  # ?
+    d_r = 4400.0  # avg from the dataset
 
     # create the env and run evaluation
     num_episodes = 5
