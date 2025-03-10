@@ -1,4 +1,6 @@
-# Lukasz_Sawala_Bsc_Thesis
+# Lukasz_Sawala_Bsc_Thesis 
+
+# NOT UP-TO-DATE
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
@@ -13,10 +15,7 @@ Bachelor Thesis on the topic of Decision Making Transformers via Upside-Down RL
 ├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
+│   └── sample         <- Small sample of the dataset. The whole dataset available in the paper and under the link: https://huggingface.co/datasets/farama-minari/mujoco
 │
 ├── docs               <- A default mkdocs project; see www.mkdocs.org for details
 │
@@ -41,7 +40,6 @@ Bachelor Thesis on the topic of Decision Making Transformers via Upside-Down RL
 │
 └── lukasz_sawala_bsc_thesis   <- Source code for use in this project.
     │
-    ├── main.py
     └── plots.py                <- Code to create visualizations
 ```
 
