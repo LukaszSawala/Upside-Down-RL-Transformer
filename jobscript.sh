@@ -5,5 +5,7 @@
 #SBATCH --mem=4GB
 
 source .venv/bin/activate
-cd notebooks
+cd notebooks/
 python evaluation.py
+
+deactivate
