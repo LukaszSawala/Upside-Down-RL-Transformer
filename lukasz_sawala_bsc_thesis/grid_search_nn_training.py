@@ -15,7 +15,12 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 HIDDEN_SIZE = 256
 OUTPUT_SIZE = 8
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "best_nn_grid.pth"
+BEST_MODEL_PATH = "../models/best_nn_grid.pth"
+
+# ========= BEST MODEL FOUND==================
+# {'batch_size': 16, 'learning_rate': 0.0001}
+# MSE: test: 0.02467
+# ============================================
 
 
 # curr_dir = os.path.dirname(os.path.abspath(__file__))

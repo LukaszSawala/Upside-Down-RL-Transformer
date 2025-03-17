@@ -5,7 +5,7 @@
 #SBATCH --mem=4GB
 
 source .venv/bin/activate
-cd notebooks/
-python k_means_distr.py
+cd lukasz_sawala_bsc_thesis/
+python model_evaluation.py
 
 deactivate
