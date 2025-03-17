@@ -78,7 +78,7 @@ def evaluate_get_rewards(env, model, d_t, d_r, num_episodes=1, max_episode_lengt
             raw_reward_list.append(reward)
 
             # Render environment
-            env.render()
+            #env.render()
             # time.sleep(0.05) uncomment to see whats up
             if terminated or truncated:
                 break
@@ -127,6 +127,6 @@ if __name__ == "__main__":
 
     # create the env and run evaluation
     num_episodes = 5
-    env = gym.make("Ant-v5", render_mode="human")  # 'human' for visualization
+    env = gym.make("Ant-v5")  # 'human' for visualization
     _, episode_rewards = evaluate_get_rewards(env, model, d_t, d_r, num_episodes=10)
     plot_rewards(episode_rewards, title="Episodic Rewards Over Time", save_path="rewards_plot.png")
