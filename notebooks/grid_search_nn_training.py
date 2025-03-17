@@ -198,8 +198,8 @@ if __name__ == "__main__":
     # Split the data
     X_train, X_test, X_val, y_train, y_test, y_val = train_test_val_split(X, y)
 
-    monitor = ZeusMonitor()
-    monitor.begin_window("grid-search")
+    # monitor = ZeusMonitor()
+    # monitor.begin_window("grid-search")
     grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2)
-    mes = monitor.end_window("grid-search")
-    print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
+    # mes = monitor.end_window("grid-search")
+    # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
