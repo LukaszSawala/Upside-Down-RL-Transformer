@@ -6,6 +6,6 @@
 
 source .venv/bin/activate
 cd notebooks/
-python evaluation.py
+python k_means_distr.py
 
 deactivate

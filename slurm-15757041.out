@@ -1,0 +1,64 @@
+/opt/rocm/lib/libamd_smi.so: cannot open shared object file: No such file or directory
+Unable to find amdsmi library try installing amd-smi-lib from your package manager
+Train-test split created: 799504 train samples, 99939 test samples, 99939 validation samples.
+[2025-03-17 12:24:36,266] [zeus.device.gpu.nvidia](nvidia.py:50) pynvml is available but could not initialize NVML: NVML Shared Library Not Found.
+/opt/rocm/lib/libamd_smi.so: cannot open shared object file: No such file or directory
+Unable to find amdsmi library try installing amd-smi-lib from your package manager
+Traceback (most recent call last):
+  File "/home4/s5173019/Upside-Down-RL-Transformer/notebooks/grid_search_nn_training.py", line 201, in <module>
+    monitor = ZeusMonitor()
+              ^^^^^^^^^^^^^
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/zeus/monitor/energy.py", line 180, in __init__
+    self.gpus = get_gpus()
+                ^^^^^^^^^^
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/zeus/device/gpu/__init__.py", line 113, in get_gpus
+    elif amdsmi_is_available():
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/zeus/device/gpu/amd.py", line 43, in amdsmi_is_available
+    import amdsmi  # type: ignore
+    ^^^^^^^^^^^^^
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/amdsmi/__init__.py", line 26, in <module>
+    from .amdsmi_interface import amdsmi_init
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/amdsmi/amdsmi_interface.py", line 28, in <module>
+    from . import amdsmi_wrapper
+  File "/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/amdsmi/amdsmi_wrapper.py", line 2065, in <module>
+    amdsmi_init = _libraries['libamd_smi.so'].amdsmi_init
+                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'libamd_smi.so'
+
+###############################################################################
+Hábrók Cluster
+Job 15757041 for user s5173019
+Finished at: Mon Mar 17 12:24:41 CET 2025
+
+Job details:
+============
+
+Job ID                         : 15757041
+Name                           : jobscript.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-03-17T12:24:19
+Start                          : 2025-03-17T12:24:20
+End                            : 2025-03-17T12:24:37
+Reserved walltime              : 06:00:00
+Used walltime                  : 00:00:17
+Used CPU time                  : 00:00:08 (Efficiency: 45.96%)
+% User (Computation)           : 72.10%
+% System (I/O)                 : 27.90%
+Total memory reserved          : 4G
+Maximum memory used            : 0.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
