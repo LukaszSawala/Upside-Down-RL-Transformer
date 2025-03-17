@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import time
 
 
 class NeuralNet(nn.Module):
@@ -78,17 +77,19 @@ def evaluate_get_rewards(env, model, d_t, d_r, num_episodes=1, max_episode_lengt
             raw_reward_list.append(reward)
 
             # Render environment
-            #env.render()
-            # time.sleep(0.05) uncomment to see whats up
+            # env.render()
+            # time.sleep(0.05)
+
             if terminated or truncated:
                 break
         episodic_reward_list.append(episode_reward)
-        print(f"episode finished with a reward of {episode_reward:.2f}")
+        # print(f"episode finished with a reward of {episode_reward:.2f}")
 
     env.close()
     total_reward = sum(episodic_reward_list)
-    print(f"Total reward obtained: {total_reward:.2f}")
-    return raw_reward_list, episodic_reward_list
+    average_reward = total_reward / num_episodes
+    print(f"Average reward obtained: {average_reward:.2f}")
+    return raw_reward_list, episodic_reward_list, average_reward
 
 
 def plot_rewards(reward_list, title="Rewards Over Time", save_path="rewards_plot.png"):
@@ -115,6 +116,56 @@ def plot_rewards(reward_list, title="Rewards Over Time", save_path="rewards_plot
     print(f"Rewards plot saved in {save_path}")
 
 
+def plot_episodic_rewards(reward_list, title="Rewards Over Time", save_path="rewards_plot.png"):
+    sns.set_style("whitegrid")
+    sns.set_palette("husl")
+    plt.figure(figsize=(10, 5))
+    x_values = np.arange(len(reward_list))
+
+    # Plot the rewards
+    sns.lineplot(x=x_values, y=reward_list, linewidth=2.5, color="royalblue", label="Reward")
+
+    # Plot smoothed rewards
+    window_size = 5
+    smoothed_rewards = pd.Series(reward_list).rolling(window=window_size, min_periods=1, center=True).mean()
+    sns.lineplot(x=x_values, y=smoothed_rewards, linestyle="dashed", color="crimson", label="Smoothed Reward (n=5)")
+
+    plt.xlabel("Time Step / Episode", fontsize=12)
+    plt.ylabel("Reward", fontsize=12)
+    plt.title(title, fontsize=14, fontweight="bold")
+
+    # Remove top & right borders for a cleaner look
+    sns.despine()
+    plt.savefig(save_path)
+    print(f"Rewards plot saved in {save_path}")
+
+
+def plot_average_rewards(average_reward_per_dr, title="Average Reward vs. d_r", save_path="average_rewards_plot.png"):
+    sns.set_style("whitegrid")
+    sns.set_palette("husl")
+    plt.figure(figsize=(10, 5))
+
+    d_r_values = list(average_reward_per_dr.keys())
+    avg_rewards = list(average_reward_per_dr.values())
+
+    # Plot the average rewards
+    sns.lineplot(x=d_r_values, y=avg_rewards, linewidth=2.5, color="royalblue", marker="o", label="Average Reward")
+
+    # Plot smoothed rewards
+    window_size = 3
+    smoothed_rewards = pd.Series(avg_rewards).rolling(window=window_size, min_periods=1, center=True).mean()
+    sns.lineplot(x=d_r_values, y=smoothed_rewards, linestyle="dashed", color="crimson", label=f"Smoothed Reward (n={window_size})")
+
+    plt.xlabel("d_r", fontsize=12)
+    plt.ylabel("Average Reward", fontsize=12)
+    plt.title(title, fontsize=14, fontweight="bold")
+
+    # Remove top & right borders for a cleaner look
+    sns.despine()
+    plt.savefig(save_path)
+    print(f"Average rewards plot saved in {save_path}")
+
+
 if __name__ == "__main__":
     input_size = 105 + 2  # s_t + d_r and d_t
     hidden_size = 256
@@ -123,10 +174,22 @@ if __name__ == "__main__":
     model = load_model_for_eval(input_size, hidden_size, output_size, checkpoint_path)
 
     d_t = 1000.0  # ?
-    d_r = 4400.0  # avg from the dataset
+    d_r_options = [3000 + i * 200 for i in range(11)]
 
     # create the env and run evaluation
-    num_episodes = 5
-    env = gym.make("Ant-v5")  # 'human' for visualization
-    _, episode_rewards = evaluate_get_rewards(env, model, d_t, d_r, num_episodes=10)
-    plot_rewards(episode_rewards, title="Episodic Rewards Over Time", save_path="rewards_plot.png")
+    num_episodes = 10
+    env = gym.make("Ant-v5")  # render_mode = 'human' for visualization
+    average_reward_per_dr = {}
+    for _ in range(3):  # for smoothing
+        for d_r in d_r_options:
+            print("trying with dr:", d_r)
+            _, episode_rewards, average_reward = evaluate_get_rewards(env, model, d_t, d_r, num_episodes=num_episodes)
+            if not average_reward_per_dr[d_r]:
+                average_reward_per_dr[d_r] = average_reward / 3
+            else:
+                average_reward_per_dr[d_r] += average_reward / 3
+
+            # plot_episodic_rewards(episode_rewards, title=f"Episodic Rewards Over Time with dr: {d_r:.2f}", save_path="rewards_plot.png")
+
+    plot_average_rewards(average_reward_per_dr)
+    env.close()
