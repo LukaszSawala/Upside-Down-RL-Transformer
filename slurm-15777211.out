@@ -1,31 +1,43 @@
+Trying with d_r: 3000
+Trying with d_r: 3200
+Trying with d_r: 3400
+Trying with d_r: 3600
+Trying with d_r: 3800
+Trying with d_r: 4000
+Trying with d_r: 4200
+Trying with d_r: 4400
+Trying with d_r: 4600
+Trying with d_r: 4800
+Trying with d_r: 5000
+Average rewards plot saved in average_rewards_plot.png
 
 ###############################################################################
 Hábrók Cluster
-Job 15757328 for user s5173019
-Finished at: Mon Mar 17 12:43:17 CET 2025
+Job 15777211 for user s5173019
+Finished at: Mon Mar 17 19:41:16 CET 2025
 
 Job details:
 ============
 
-Job ID                         : 15757328
+Job ID                         : 15777211
 Name                           : jobscript.sh
 User                           : s5173019
 Partition                      : regularshort
-Nodes                          : node112
+Nodes                          : node113
 Number of Nodes                : 1
 Cores                          : 1
 Number of Tasks                : 1
 State                          : COMPLETED  
-Submit                         : 2025-03-17T12:39:12
-Start                          : 2025-03-17T12:39:13
-End                            : 2025-03-17T12:43:13
+Submit                         : 2025-03-17T19:36:35
+Start                          : 2025-03-17T19:36:36
+End                            : 2025-03-17T19:41:12
 Reserved walltime              : 06:00:00
-Used walltime                  : 00:04:00
-Used CPU time                  : 00:03:48 (Efficiency: 95.18%)
-% User (Computation)           : 98.68%
-% System (I/O)                 :  1.32%
-Total memory reserved          : 16G
-Maximum memory used            : 1.82G
+Used walltime                  : 00:04:36
+Used CPU time                  : 00:04:18 (Efficiency: 93.64%)
+% User (Computation)           : 96.73%
+% System (I/O)                 :  3.27%
+Total memory reserved          : 4G
+Maximum memory used            : 326.02M
 Hints and tips      :
  1) You requested much more CPU memory than your program used.
     Please reduce the requested amount of memory.
