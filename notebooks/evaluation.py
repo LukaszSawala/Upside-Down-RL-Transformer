@@ -179,15 +179,14 @@ if __name__ == "__main__":
     # create the env and run evaluation
     num_episodes = 10
     env = gym.make("Ant-v5")  # render_mode = 'human' for visualization
-    average_reward_per_dr = {}
+    average_reward_per_dr = {
+        d_r: 0 for d_r in d_r_options
+    }
     for _ in range(3):  # for smoothing
         for d_r in d_r_options:
             print("trying with dr:", d_r)
             _, episode_rewards, average_reward = evaluate_get_rewards(env, model, d_t, d_r, num_episodes=num_episodes)
-            if not average_reward_per_dr[d_r]:
-                average_reward_per_dr[d_r] = average_reward / 3
-            else:
-                average_reward_per_dr[d_r] += average_reward / 3
+            average_reward_per_dr[d_r] += average_reward / 3
 
             # plot_episodic_rewards(episode_rewards, title=f"Episodic Rewards Over Time with dr: {d_r:.2f}", save_path="rewards_plot.png")
 
