@@ -7,8 +7,13 @@ import seaborn as sns
 import pandas as pd
 from models import NeuralNet
 from scipy.stats import sem
+from utils import parse_arguments, set_seed
 
-def load_model_for_eval(input_size: int, hidden_size: int, 
+INPUT_SIZE = 105 + 2 # s_t + d_r and d_t
+OUTPUT_SIZE = 8
+NN_MODEL_PATH = "../models/best_nn_grid.pth"
+
+def load_nn_model_for_eval(input_size: int, hidden_size: int, 
                         output_size: int, checkpoint_path: str) -> NeuralNet:
     """
     Loads a Neural Network model from a given checkpoint path for evaluation.
@@ -19,19 +24,18 @@ def load_model_for_eval(input_size: int, hidden_size: int,
     return model
 
 
-def evaluate_get_rewards(env: gym.Env, model, d_t: float, d_r: float, 
-                         num_episodes=1, max_episode_length=1000) -> tuple:
+def evaluate_get_rewards(env: gym.Env, model, d_h: float, d_r: float, 
+                         num_episodes:int =1, max_episode_length:int =1000) -> tuple:
     """
     Evaluate the performance of the model on the given environment.
 
     Args:
-        env (gym.Env): The environment to evaluate on.
+        env: The environment to evaluate on.
         model (NeuralNet): The model to evaluate.
-        d_t (float): The initial distance to the target.
-        d_r (float): The initial distance to the reward.
-        num_episodes (int, optional): The number of episodes to evaluate. Defaults to 1.
-        max_episode_length (int, optional): The maximum length of each episode. Defaults to 1000.
-
+        d_h: Desired horizon.
+        d_r: Desired reward.
+        num_episodes: The number of episodes to evaluate. Defaults to 1.
+        max_episode_length: The maximum length of each episode. Defaults to 1000.
     Returns:
         float: The average reward over the specified number of episodes.
         list: A list of rewards for each episode.
@@ -41,15 +45,15 @@ def evaluate_get_rewards(env: gym.Env, model, d_t: float, d_r: float,
         obs, _ = env.reset()
         episode_reward = 0
         d_r_copy = d_r
-        d_t_copy = d_t
+        d_h_copy = d_h
         for _ in range(max_episode_length):
-            obs_extended = np.concatenate((obs, [d_r_copy, d_t_copy]))
+            obs_extended = np.concatenate((obs, [d_r_copy, d_h_copy]))
             obs_tensor = torch.tensor(obs_extended, dtype=torch.float32).unsqueeze(0)
             with torch.no_grad():
                 actions = model(obs_tensor).squeeze(0).numpy()
             obs, reward, terminated, truncated, _ = env.step(actions)
             d_r_copy -= reward
-            d_t_copy -= 1
+            d_h_copy -= 1
             episode_reward += reward
 
             # Render environment
@@ -82,27 +86,25 @@ def plot_average_rewards(average_rewards: list, sem_values: list,
 
 
 if __name__ == "__main__":
-    input_size = 105 + 2  # s_t + d_r and d_t
-    hidden_size = 256
-    output_size = 8
-    checkpoint_path = "../models/best_nn_grid.pth"
-    model = load_model_for_eval(input_size, hidden_size, output_size, checkpoint_path)
+    args = parse_arguments()
 
-    d_t = 1000.0
-    d_r_options = [3000 + i * 200 for i in range(11)]
-    num_episodes = 10
-    num_trials = 5
+    if args["model_type"] == "NeuralNet":
+        hidden_size = 256
+        model = load_nn_model_for_eval(INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH)
+    
+    d_h = 1000.0
+    d_r_options = [3000 + i * 200 for i in range(15)]
+    num_episodes = args["evaluation_trials"]
 
     env = gym.make("Ant-v5") # render mode 'human' for visualization
     average_rewards = []
     sem_values = []
+
     for d_r in d_r_options:
         print("Trying with d_r:", d_r)
-        trial_rewards = []
-        for _ in range(num_trials):
-            avg_reward, _ = evaluate_get_rewards(env, model, d_t, d_r, num_episodes=num_episodes)
-            trial_rewards.append(avg_reward)
-        average_rewards.append(np.mean(trial_rewards))
-        sem_values.append(sem(trial_rewards))
+        _, episodic_rewards = evaluate_get_rewards(env, model, d_h, d_r, num_episodes=num_episodes)
+        average_rewards.append(np.mean(episodic_rewards))
+        sem_values.append(sem(episodic_rewards))
+
     plot_average_rewards(average_rewards, sem_values, d_r_options)
     env.close()
