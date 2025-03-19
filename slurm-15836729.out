@@ -9,35 +9,39 @@ Trying with d_r: 4400
 Trying with d_r: 4600
 Trying with d_r: 4800
 Trying with d_r: 5000
+Trying with d_r: 5200
+Trying with d_r: 5400
+Trying with d_r: 5600
+Trying with d_r: 5800
 Average rewards plot saved in average_rewards_plot.png
 
 ###############################################################################
 Hábrók Cluster
-Job 15777211 for user s5173019
-Finished at: Mon Mar 17 19:41:16 CET 2025
+Job 15836729 for user s5173019
+Finished at: Wed Mar 19 17:04:57 CET 2025
 
 Job details:
 ============
 
-Job ID                         : 15777211
+Job ID                         : 15836729
 Name                           : jobscript.sh
 User                           : s5173019
 Partition                      : regularshort
-Nodes                          : node113
+Nodes                          : node115
 Number of Nodes                : 1
 Cores                          : 1
 Number of Tasks                : 1
 State                          : COMPLETED  
-Submit                         : 2025-03-17T19:36:35
-Start                          : 2025-03-17T19:36:36
-End                            : 2025-03-17T19:41:12
+Submit                         : 2025-03-19T16:59:45
+Start                          : 2025-03-19T16:59:46
+End                            : 2025-03-19T17:04:53
 Reserved walltime              : 06:00:00
-Used walltime                  : 00:04:36
-Used CPU time                  : 00:04:18 (Efficiency: 93.64%)
-% User (Computation)           : 96.73%
-% System (I/O)                 :  3.27%
+Used walltime                  : 00:05:07
+Used CPU time                  : 00:05:00 (Efficiency: 97.77%)
+% User (Computation)           : 99.78%
+% System (I/O)                 :  0.22%
 Total memory reserved          : 4G
-Maximum memory used            : 326.02M
+Maximum memory used            : 348.45M
 Hints and tips      :
  1) You requested much more CPU memory than your program used.
     Please reduce the requested amount of memory.

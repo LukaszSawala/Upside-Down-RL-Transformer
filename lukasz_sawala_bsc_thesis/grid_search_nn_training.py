@@ -108,7 +108,9 @@ def create_tensor_dataloaders(X_train, X_test, X_val, y_train, y_test, y_val, ba
 
 
 def grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2):
-    # Initialize training parameters and models
+    """"
+    Initialize training parameters and models"
+    """
     loss_fn = nn.MSELoss()
     val_losses = []
     train_losses = []
@@ -203,7 +205,7 @@ if __name__ == "__main__":
     # Split the data
     X_train, X_test, X_val, y_train, y_test, y_val = train_test_val_split(X, y)
 
-    # monitor = ZeusMonitor()
+    #monitor = ZeusMonitor(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
     # monitor.begin_window("grid-search")
     grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2)
     # mes = monitor.end_window("grid-search")
