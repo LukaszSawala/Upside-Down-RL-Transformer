@@ -7,7 +7,7 @@ from models import NeuralNet
 from scipy.stats import sem
 from utils import parse_arguments
 
-INPUT_SIZE = 105 + 2 # s_t + d_r and d_t
+INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 

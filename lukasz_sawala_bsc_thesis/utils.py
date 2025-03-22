@@ -5,14 +5,27 @@ import numpy as np
 import random
 
 
-def parse_arguments(training: bool=False):
+def set_seed(seed: int = 0):
     """
-    Function defining and returning all arguments possible in the experiment.
+    Sets seeds for numpy, random, torch and torch.cuda modules.
+
+    Parameters:
+    seed (int): The seed value. Defaults to 0.
+    """
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+
+
+def parse_arguments(training: bool = False):
+    """
+    Function defining and returning command line arguments depending on the desired mode (training/evaluation).
     """
     parser = argparse.ArgumentParser(
         description="Parse arguments for Upside-Down-RL-Transformer"
     )
-    
+
     experiment_id = str(uuid.uuid4().hex)
 
     parser.add_argument("--seed", type=int, default=0)
@@ -57,10 +70,3 @@ def parse_arguments(training: bool=False):
         }
 
     return hyperparameters_dict
-
-
-def set_seed(seed):
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
