@@ -74,9 +74,10 @@ def plot_average_rewards(average_rewards: list, sem_values: list,
     """
     sns.set_style("whitegrid")
     sns.set_palette("husl")
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(12, 7))
     sns.lineplot(x=d_r_values, y=average_rewards, linewidth=2.5, color="royalblue", marker="o", label="Average Reward")
     plt.fill_between(d_r_values, np.array(average_rewards) - np.array(sem_values), np.array(average_rewards) + np.array(sem_values), color='royalblue', alpha=0.2)
+    plt.plot(d_r_values, d_r_values, linestyle="dotted", color="gray")
     plt.xlabel("d_r", fontsize=12)
     plt.ylabel("Average Reward", fontsize=12)
     plt.title(title, fontsize=14, fontweight="bold")
@@ -93,7 +94,7 @@ if __name__ == "__main__":
         model = load_nn_model_for_eval(INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH)
 
     d_h = 1000.0
-    d_r_options = [3000 + i * 200 for i in range(args["d_r_array_length"])]
+    d_r_options = [2000 + i * 100 for i in range(args["d_r_array_length"])]
     num_episodes = args["episodes"]
 
     env = gym.make("Ant-v5")  # render mode 'human' for visualization

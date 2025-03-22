@@ -44,7 +44,7 @@ def parse_arguments(training: bool = False):
         parser.add_argument("--learning_rate", type=float, default=3e-4)
         parser.add_argument("--patience", type=int, default=2)
     else:
-        parser.add_argument("--d_r_array_length", type=int, default=15)
+        parser.add_argument("--d_r_array_length", type=int, default=36)
 
     args = parser.parse_args()
 

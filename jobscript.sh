@@ -6,6 +6,6 @@
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python model_evaluation.py --episodes 1
+python model_evaluation.py --episodes 50
 
 deactivate
