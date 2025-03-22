@@ -4,6 +4,7 @@ import torch
 import numpy as np
 import random
 
+
 def parse_arguments(training: bool=False):
     """
     Function defining and returning all arguments possible in the experiment.
@@ -21,21 +22,21 @@ def parse_arguments(training: bool=False):
         choices=["NeuralNet", "DecisionTransformer", "UpsideDownTransformer"],
         default="NeuralNet",
     )
+    parser.add_argument("--episodes", type=int, default=15)
 
     if training:
-        parser.add_argument("--episodes", type=int, default=15)
         parser.add_argument("--epochs", type=int, default=15)
         parser.add_argument("--hidden_size", type=int, default=256)
         parser.add_argument("--batch_size", type=int, default=32)
         parser.add_argument("--learning_rate", type=float, default=3e-4)
         parser.add_argument("--patience", type=int, default=2)
     else:
-        parser.add_argument("--evaluation_trials", type=int, default=50)
+        parser.add_argument("--d_r_array_length", type=int, default=15)
 
     args = parser.parse_args()
 
     set_seed(args.seed)
-    
+
     if training:
         hyperparameters_dict = {
             "experiment_id": experiment_id,
@@ -51,7 +52,8 @@ def parse_arguments(training: bool=False):
         hyperparameters_dict = {
             "experiment_id": experiment_id,
             "model_type": args.model_type,
-            "evaluation_trials": args.evaluation_trials,
+            "episodes": args.episodes,
+            "d_r_array_length": args.d_r_array_length
         }
 
     return hyperparameters_dict

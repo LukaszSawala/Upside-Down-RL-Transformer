@@ -1,20 +1,19 @@
-import torch.nn as nn
 import torch
 import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import pandas as pd
 from models import NeuralNet
 from scipy.stats import sem
-from utils import parse_arguments, set_seed
+from utils import parse_arguments
 
 INPUT_SIZE = 105 + 2 # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 
-def load_nn_model_for_eval(input_size: int, hidden_size: int, 
-                        output_size: int, checkpoint_path: str) -> NeuralNet:
+
+def load_nn_model_for_eval(input_size: int, hidden_size: int,
+                           output_size: int, checkpoint_path: str) -> NeuralNet:
     """
     Loads a Neural Network model from a given checkpoint path for evaluation.
     """
@@ -24,8 +23,8 @@ def load_nn_model_for_eval(input_size: int, hidden_size: int,
     return model
 
 
-def evaluate_get_rewards(env: gym.Env, model, d_h: float, d_r: float, 
-                         num_episodes:int =1, max_episode_length:int =1000) -> tuple:
+def evaluate_get_rewards(env: gym.Env, model, d_h: float, d_r: float,
+                         num_episodes: int = 1, max_episode_length: int = 1000) -> tuple:
     """
     Evaluate the performance of the model on the given environment.
 
@@ -66,7 +65,8 @@ def evaluate_get_rewards(env: gym.Env, model, d_h: float, d_r: float,
     env.close()
     return np.mean(episodic_reward_list), episodic_reward_list
 
-def plot_average_rewards(average_rewards: list, sem_values: list, 
+
+def plot_average_rewards(average_rewards: list, sem_values: list,
                          d_r_values: list, title="Average Reward vs. d_r",
                          save_path="average_rewards_plot.png"):
     """
@@ -86,17 +86,17 @@ def plot_average_rewards(average_rewards: list, sem_values: list,
 
 
 if __name__ == "__main__":
-    args = parse_arguments()
+    args = parse_arguments(training=False)
 
     if args["model_type"] == "NeuralNet":
         hidden_size = 256
         model = load_nn_model_for_eval(INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH)
-    
-    d_h = 1000.0
-    d_r_options = [3000 + i * 200 for i in range(15)]
-    num_episodes = args["evaluation_trials"]
 
-    env = gym.make("Ant-v5") # render mode 'human' for visualization
+    d_h = 1000.0
+    d_r_options = [3000 + i * 200 for i in range(args["d_r_array_length"])]
+    num_episodes = args["episodes"]
+
+    env = gym.make("Ant-v5")  # render mode 'human' for visualization
     average_rewards = []
     sem_values = []
 
