@@ -2,6 +2,7 @@ import gym
 import numpy as np
 import torch
 import wandb
+import h5py
 
 import argparse
 import pickle
@@ -13,6 +14,8 @@ from decision_transformer.models.decision_transformer import DecisionTransformer
 from decision_transformer.models.mlp_bc import MLPBCModel
 from decision_transformer.training.act_trainer import ActTrainer
 from decision_transformer.training.seq_trainer import SequenceTrainer
+
+# adapted code for the purpose of uniformity
 
 
 def discount_cumsum(x, gamma):
@@ -30,38 +33,26 @@ def experiment(
     device = variant.get('device', 'cuda')
     log_to_wandb = variant.get('log_to_wandb', False)
 
-    env_name, dataset = variant['env'], variant['dataset']
-    model_type = variant['model_type']
-    group_name = f'{exp_prefix}-{env_name}-{dataset}'
-    exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
-
-    if env_name == 'halfcheetah':
-        env = gym.make('HalfCheetah-v3')
-        max_ep_len = 1000
-        env_targets = [12000, 6000]
-        scale = 1000.
-
-    if model_type == 'bc':
-        env_targets = env_targets[:1]  # since BC ignores target, no need for different evaluations
+    env = gym.make('Ant-v5')
+    max_ep_len = 1000
+    env_target = 4500
+    scale = 1000.
 
     state_dim = env.observation_space.shape[0]
     act_dim = env.action_space.shape[0]
 
     # load dataset
-    dataset_path = f'data/{env_name}-{dataset}-v2.pkl'
-    with open(dataset_path, 'rb') as f:
-        trajectories = pickle.load(f)
+    dataset_path = "../data/external/main_data.hdf5"
+    with h5py.File(dataset_path, "r+") as f:
+        trajectories = f
 
-    # save all path information into separate lists
+    # save all trajectories information into separate lists
     mode = variant.get('mode', 'normal')
     states, traj_lens, returns = [], [], []
-    for path in trajectories:
-        if mode == 'delayed':  # delayed: all rewards moved to end of trajectory
-            path['rewards'][-1] = path['rewards'].sum()
-            path['rewards'][:-1] = 0.
-        states.append(path['observations'])
-        traj_lens.append(len(path['observations']))
-        returns.append(path['rewards'].sum())
+    for traj_id in trajectories.keys():
+        states.append(trajectories[traj_id]['observations'])
+        traj_lens.append(len(trajectories[traj_id]['observations']))
+        returns.append(trajectories[traj_id]['rewards'].sum())
     traj_lens, returns = np.array(traj_lens), np.array(returns)
 
     # used for input normalization
