@@ -41,6 +41,7 @@ def load_data(data_path=DATA_PATH) -> tuple:
         observations = data["observations"][:]
         rewards_to_go = data["rewards_to_go"][:]
         time_to_go = data["time_to_go"][:]
+        # rewards = data["rewards"][:]  # not used here, UDRL training doesn't use rewards
 
     # Reshape rewards_to_go and time_to_go to be 2D with shape (1000, 1)
     rewards_to_go = rewards_to_go.reshape(-1, 1)
@@ -205,7 +206,7 @@ if __name__ == "__main__":
     # Split the data
     X_train, X_test, X_val, y_train, y_test, y_val = train_test_val_split(X, y)
 
-    #monitor = ZeusMonitor(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
+    # monitor = ZeusMonitor(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
     # monitor.begin_window("grid-search")
     grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2)
     # mes = monitor.end_window("grid-search")
