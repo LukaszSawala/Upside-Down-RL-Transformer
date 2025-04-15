@@ -1,15 +1,16 @@
 # Dataset testing
+import itertools
+
 import h5py
-import torch.nn as nn
-import torch
-from models import NeuralNet
 import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader, TensorDataset
-import itertools
-import torch.optim as optim
 from zeus.monitor import ZeusMonitor
 
+from models import NeuralNet
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 HIDDEN_SIZE = 256
@@ -26,6 +27,7 @@ BEST_MODEL_PATH = "../models/best_nn_grid.pth"
 # curr_dir = os.path.dirname(os.path.abspath(__file__))
 # parent_dir = os.path.dirname(curr_dir)
 # sys.path.append(parent_dir)
+
 
 def load_data(data_path: str = CONCATENATED_DATA_PATH) -> tuple:
     """
@@ -53,7 +55,9 @@ def load_data(data_path: str = CONCATENATED_DATA_PATH) -> tuple:
     return X, y
 
 
-def train_test_val_split(X, y, test_size=0.1, val_size=0.1, shuffle=True, random_state=42) -> tuple:
+def train_test_val_split(
+    X, y, test_size=0.1, val_size=0.1, shuffle=True, random_state=42
+) -> tuple:
     """
     Split the data into train, test, and validation sets.
     Parameters:
@@ -66,16 +70,25 @@ def train_test_val_split(X, y, test_size=0.1, val_size=0.1, shuffle=True, random
     Returns:
         tuple: A tuple containing the train, test, and validation sets.
     """
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size,
-                                                        shuffle=shuffle, random_state=random_state)
-    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train,
-                                                      test_size=val_size / (1 - test_size),
-                                                      shuffle=shuffle, random_state=random_state)
-    print(f"Train-test split created: {len(X_train)} train samples, {len(X_test)} test samples, {len(X_val)} validation samples.")
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, shuffle=shuffle, random_state=random_state
+    )
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train,
+        y_train,
+        test_size=val_size / (1 - test_size),
+        shuffle=shuffle,
+        random_state=random_state,
+    )
+    print(
+        f"Train-test split created: {len(X_train)} train samples, {len(X_test)} test samples, {len(X_val)} validation samples."
+    )
     return X_train, X_test, X_val, y_train, y_test, y_val
 
 
-def create_tensor_dataloaders(X_train, X_test, X_val, y_train, y_test, y_val, batch_size=32, shuffle=True) -> tuple:
+def create_tensor_dataloaders(
+    X_train, X_test, X_val, y_train, y_test, y_val, batch_size=32, shuffle=True
+) -> tuple:
     """
     Create PyTorch DataLoader objects for the train, test, and validation sets.
     Parameters:
@@ -107,14 +120,16 @@ def create_tensor_dataloaders(X_train, X_test, X_val, y_train, y_test, y_val, ba
     return train_loader, val_loader, test_loader
 
 
-def grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2):
-    """"
+def grid_search_train(
+    X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2
+):
+    """ "
     Initialize training parameters and models"
     """
     loss_fn = nn.MSELoss()
     val_losses = []
     train_losses = []
-    smallest_test_loss = float('inf')
+    smallest_test_loss = float("inf")
     batch_sizes = [16, 32, 64]  # Different batch sizes to try
     learning_rates = [0.0001, 0.001]  # Different learning rates to try
 
@@ -127,17 +142,25 @@ def grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20,
 
         # Create data loaders with current batch size
         train_loader, val_loader, test_loader = create_tensor_dataloaders(
-            X_train, X_test, X_val, y_train, y_test, y_val,
-            batch_size=batch_size, shuffle=True
+            X_train,
+            X_test,
+            X_val,
+            y_train,
+            y_test,
+            y_val,
+            batch_size=batch_size,
+            shuffle=True,
         )
 
         # Initialize model and optimizer
-        model = NeuralNet(input_size=INPUT_SIZE, hidden_size=HIDDEN_SIZE, output_size=OUTPUT_SIZE)
+        model = NeuralNet(
+            input_size=INPUT_SIZE, hidden_size=HIDDEN_SIZE, output_size=OUTPUT_SIZE
+        )
         optimizer = optim.Adam(model.parameters(), lr=lr)
 
         val_losses = []
         train_losses = []
-        smallest_val_loss = float('inf')
+        smallest_val_loss = float("inf")
 
         # TRAINING LOOP ===============================================
         for epoch in range(epochs):
@@ -175,7 +198,9 @@ def grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20,
                 if patience == 0:
                     break
 
-            print(f"Epoch {epoch+1}/{epochs}, Train Loss: {train_loss:.4f}, Validation Loss: {val_loss:.4f}")
+            print(
+                f"Epoch {epoch + 1}/{epochs}, Train Loss: {train_loss:.4f}, Validation Loss: {val_loss:.4f}"
+            )
         # ===============================================================
 
         # TESTING
@@ -193,7 +218,7 @@ def grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20,
         if test_loss < smallest_test_loss:
             smallest_test_loss = test_loss
             best_model = best_model_state
-            best_hyperparams = {'batch_size': batch_size, 'learning_rate': lr}
+            best_hyperparams = {"batch_size": batch_size, "learning_rate": lr}
             print(f"Best Model Found: {best_hyperparams} with Test Loss: {test_loss}")
             torch.save(best_model, BEST_MODEL_PATH)
 
@@ -207,6 +232,8 @@ if __name__ == "__main__":
 
     # monitor = ZeusMonitor(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
     # monitor.begin_window("grid-search")
-    grid_search_train(X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2)
+    grid_search_train(
+        X_train, X_test, X_val, y_train, y_test, y_val, epochs=20, patience=2
+    )
     # mes = monitor.end_window("grid-search")
     # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
