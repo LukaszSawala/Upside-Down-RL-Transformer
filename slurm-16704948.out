@@ -1,0 +1,189 @@
+/opt/rocm/lib/libamd_smi.so: cannot open shared object file: No such file or directory
+Unable to find amdsmi library try installing amd-smi-lib from your package manager
+
+Testing config: batch_size=16, lr=0.0001, max_length=20
+Epoch 1/20, Train Loss: 0.1745, Val Loss: 0.1199
+Epoch 2/20, Train Loss: 0.1141, Val Loss: 0.0946
+Epoch 3/20, Train Loss: 0.1012, Val Loss: 0.0956
+Epoch 4/20, Train Loss: 0.0929, Val Loss: 0.0814
+Epoch 5/20, Train Loss: 0.0903, Val Loss: 0.0802
+Epoch 6/20, Train Loss: 0.0840, Val Loss: 0.0755
+Epoch 7/20, Train Loss: 0.0773, Val Loss: 0.0734
+Epoch 8/20, Train Loss: 0.0787, Val Loss: 0.0718
+Epoch 9/20, Train Loss: 0.0755, Val Loss: 0.0625
+Epoch 10/20, Train Loss: 0.0740, Val Loss: 0.0687
+Epoch 11/20, Train Loss: 0.0709, Val Loss: 0.0689
+Early stopping triggered at epoch 11
+Best Val Loss for this config: 0.0625
+Test Loss for this config: 0.0669
+
+Testing config: batch_size=16, lr=0.0001, max_length=30
+Epoch 1/20, Train Loss: 0.1861, Val Loss: 0.1214
+Epoch 2/20, Train Loss: 0.1140, Val Loss: 0.1000
+Epoch 3/20, Train Loss: 0.0987, Val Loss: 0.0929
+Epoch 4/20, Train Loss: 0.0922, Val Loss: 0.0805
+Epoch 5/20, Train Loss: 0.0855, Val Loss: 0.0796
+Epoch 6/20, Train Loss: 0.0800, Val Loss: 0.0753
+Epoch 7/20, Train Loss: 0.0805, Val Loss: 0.0651
+Epoch 8/20, Train Loss: 0.0758, Val Loss: 0.0677
+Epoch 9/20, Train Loss: 0.0741, Val Loss: 0.0650
+Epoch 10/20, Train Loss: 0.0714, Val Loss: 0.0620
+Epoch 11/20, Train Loss: 0.0676, Val Loss: 0.0670
+Epoch 12/20, Train Loss: 0.0672, Val Loss: 0.0623
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0620
+Test Loss for this config: 0.0651
+
+Testing config: batch_size=16, lr=5e-05, max_length=20
+Epoch 1/20, Train Loss: 0.2313, Val Loss: 0.1679
+Epoch 2/20, Train Loss: 0.1403, Val Loss: 0.1209
+Epoch 3/20, Train Loss: 0.1204, Val Loss: 0.1130
+Epoch 4/20, Train Loss: 0.1070, Val Loss: 0.1033
+Epoch 5/20, Train Loss: 0.1036, Val Loss: 0.0921
+Epoch 6/20, Train Loss: 0.0957, Val Loss: 0.0936
+Epoch 7/20, Train Loss: 0.0942, Val Loss: 0.0906
+Epoch 8/20, Train Loss: 0.0929, Val Loss: 0.0864
+Epoch 9/20, Train Loss: 0.0894, Val Loss: 0.0854
+Epoch 10/20, Train Loss: 0.0870, Val Loss: 0.0803
+Epoch 11/20, Train Loss: 0.0852, Val Loss: 0.0882
+Epoch 12/20, Train Loss: 0.0834, Val Loss: 0.0742
+Epoch 13/20, Train Loss: 0.0830, Val Loss: 0.0790
+Epoch 14/20, Train Loss: 0.0798, Val Loss: 0.0759
+Early stopping triggered at epoch 14
+Best Val Loss for this config: 0.0742
+Test Loss for this config: 0.0694
+
+Testing config: batch_size=16, lr=5e-05, max_length=30
+Epoch 1/20, Train Loss: 0.2056, Val Loss: 0.1537
+Epoch 2/20, Train Loss: 0.1353, Val Loss: 0.1159
+Epoch 3/20, Train Loss: 0.1143, Val Loss: 0.0971
+Epoch 4/20, Train Loss: 0.1025, Val Loss: 0.1013
+Epoch 5/20, Train Loss: 0.0999, Val Loss: 0.0851
+Epoch 6/20, Train Loss: 0.0936, Val Loss: 0.0777
+Epoch 7/20, Train Loss: 0.0889, Val Loss: 0.0839
+Epoch 8/20, Train Loss: 0.0877, Val Loss: 0.0884
+Early stopping triggered at epoch 8
+Best Val Loss for this config: 0.0777
+Test Loss for this config: 0.0917
+
+Testing config: batch_size=32, lr=0.0001, max_length=20
+Epoch 1/20, Train Loss: 0.2427, Val Loss: 0.1658
+Epoch 2/20, Train Loss: 0.1468, Val Loss: 0.1152
+Epoch 3/20, Train Loss: 0.1205, Val Loss: 0.1073
+Epoch 4/20, Train Loss: 0.1066, Val Loss: 0.1012
+Epoch 5/20, Train Loss: 0.0993, Val Loss: 0.0892
+Epoch 6/20, Train Loss: 0.0967, Val Loss: 0.0835
+Epoch 7/20, Train Loss: 0.0896, Val Loss: 0.0877
+Epoch 8/20, Train Loss: 0.0883, Val Loss: 0.0864
+Early stopping triggered at epoch 8
+Best Val Loss for this config: 0.0835
+Test Loss for this config: 0.0823
+
+Testing config: batch_size=32, lr=0.0001, max_length=30
+Epoch 1/20, Train Loss: 0.2314, Val Loss: 0.1516
+Epoch 2/20, Train Loss: 0.1388, Val Loss: 0.1161
+Epoch 3/20, Train Loss: 0.1185, Val Loss: 0.0978
+Epoch 4/20, Train Loss: 0.1070, Val Loss: 0.0909
+Epoch 5/20, Train Loss: 0.0996, Val Loss: 0.0999
+Epoch 6/20, Train Loss: 0.0923, Val Loss: 0.0889
+Epoch 7/20, Train Loss: 0.0889, Val Loss: 0.0807
+Epoch 8/20, Train Loss: 0.0850, Val Loss: 0.0806
+Epoch 9/20, Train Loss: 0.0821, Val Loss: 0.0780
+Epoch 10/20, Train Loss: 0.0820, Val Loss: 0.0747
+Epoch 11/20, Train Loss: 0.0780, Val Loss: 0.0706
+Epoch 12/20, Train Loss: 0.0736, Val Loss: 0.0710
+Epoch 13/20, Train Loss: 0.0715, Val Loss: 0.0694
+Epoch 14/20, Train Loss: 0.0718, Val Loss: 0.0651
+Epoch 15/20, Train Loss: 0.0729, Val Loss: 0.0585
+Epoch 16/20, Train Loss: 0.0687, Val Loss: 0.0677
+Epoch 17/20, Train Loss: 0.0691, Val Loss: 0.0612
+Early stopping triggered at epoch 17
+Best Val Loss for this config: 0.0585
+Test Loss for this config: 0.0702
+
+Testing config: batch_size=32, lr=5e-05, max_length=20
+Epoch 1/20, Train Loss: 0.2547, Val Loss: 0.1802
+Epoch 2/20, Train Loss: 0.1679, Val Loss: 0.1443
+Epoch 3/20, Train Loss: 0.1447, Val Loss: 0.1283
+Epoch 4/20, Train Loss: 0.1248, Val Loss: 0.1175
+Epoch 5/20, Train Loss: 0.1181, Val Loss: 0.1101
+Epoch 6/20, Train Loss: 0.1112, Val Loss: 0.1093
+Epoch 7/20, Train Loss: 0.1060, Val Loss: 0.0984
+Epoch 8/20, Train Loss: 0.1008, Val Loss: 0.0950
+Epoch 9/20, Train Loss: 0.0988, Val Loss: 0.0942
+Epoch 10/20, Train Loss: 0.0950, Val Loss: 0.0929
+Epoch 11/20, Train Loss: 0.0941, Val Loss: 0.0857
+Epoch 12/20, Train Loss: 0.0928, Val Loss: 0.0836
+Epoch 13/20, Train Loss: 0.0866, Val Loss: 0.0850
+Epoch 14/20, Train Loss: 0.0852, Val Loss: 0.0824
+Epoch 15/20, Train Loss: 0.0855, Val Loss: 0.0819
+Epoch 16/20, Train Loss: 0.0839, Val Loss: 0.0852
+Epoch 17/20, Train Loss: 0.0810, Val Loss: 0.0737
+Epoch 18/20, Train Loss: 0.0818, Val Loss: 0.0774
+Epoch 19/20, Train Loss: 0.0803, Val Loss: 0.0755
+Early stopping triggered at epoch 19
+Best Val Loss for this config: 0.0737
+Test Loss for this config: 0.0751
+
+Testing config: batch_size=32, lr=5e-05, max_length=30
+Epoch 1/20, Train Loss: 0.2679, Val Loss: 0.1854
+Epoch 2/20, Train Loss: 0.1670, Val Loss: 0.1485
+Epoch 3/20, Train Loss: 0.1399, Val Loss: 0.1236
+Epoch 4/20, Train Loss: 0.1230, Val Loss: 0.1062
+Epoch 5/20, Train Loss: 0.1148, Val Loss: 0.1013
+Epoch 6/20, Train Loss: 0.1112, Val Loss: 0.0979
+Epoch 7/20, Train Loss: 0.1016, Val Loss: 0.0934
+Epoch 8/20, Train Loss: 0.1022, Val Loss: 0.1080
+Epoch 9/20, Train Loss: 0.0973, Val Loss: 0.0919
+Epoch 10/20, Train Loss: 0.0936, Val Loss: 0.0846
+Epoch 11/20, Train Loss: 0.0934, Val Loss: 0.0933
+Epoch 12/20, Train Loss: 0.0897, Val Loss: 0.0781
+Epoch 13/20, Train Loss: 0.0871, Val Loss: 0.0819
+Epoch 14/20, Train Loss: 0.0864, Val Loss: 0.0793
+Early stopping triggered at epoch 14
+Best Val Loss for this config: 0.0781
+Test Loss for this config: 0.0807
+
+Best Config: {'batch_size': 16, 'lr': 0.0001, 'max_length': 30}, Best Test Loss: 0.0651
+
+###############################################################################
+Hábrók Cluster
+Job 16704948 for user s5173019
+Finished at: Sat Apr 19 13:24:36 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 16704948
+Name                           : jobscript.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node112
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-04-19T13:15:56
+Start                          : 2025-04-19T13:15:57
+End                            : 2025-04-19T13:24:32
+Reserved walltime              : 06:00:00
+Used walltime                  : 00:08:35
+Used CPU time                  : 00:08:13 (Efficiency: 95.78%)
+% User (Computation)           : 98.45%
+% System (I/O)                 :  1.55%
+Total memory reserved          : 4G
+Maximum memory used            : 739.50M
+Hints and tips      :
+ 1) You requested much more CPU memory than your program used.
+    Please reduce the requested amount of memory.
+ *) For more information on these issues see:
+    https://wiki.hpc.rug.nl/habrok/additional_information/job_hints
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

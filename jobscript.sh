@@ -6,6 +6,6 @@
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python dt_training.py
+python grid_dt_training.py
 
 deactivate
