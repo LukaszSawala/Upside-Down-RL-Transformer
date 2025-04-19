@@ -1,35 +1,49 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, random_split
 import h5py
 import numpy as np
 from transformers import DecisionTransformerModel, DecisionTransformerConfig
+from itertools import product
+from typing import Dict
 
 # --- CONFIGURATION ---
 STATE_DIM = 105       # antv5 observation dim
 ACT_DIM = 8           # antv5 action dim
-MAX_LENGTH = 20       # DT context window
-BATCH_SIZE = 16
-LR = 1e-4
-TOTAL_STEPS = 1000
+TOTAL_EPOCHS = 20
 GRAD_CLIP = 0.25
 DATA_PATH = "../data/processed/episodic_data.hdf5"
 DT_MODEL_PATH = "../models/best_DT.pth"
-TRAIN_EPISODES = 900
 
 # --- DATASET CLASS ---
 class EpisodicHDF5Dataset(Dataset):
-    def __init__(self, file_path, max_len=MAX_LENGTH, train=True, train_episodes=TRAIN_EPISODES):
+    """
+    Dataset class for loading episodic data in a form of a 
+    context window from an HDF5 file.
+    """
+    def __init__(self, file_path: str, max_len: int = 20) -> None:        
         self.data = h5py.File(file_path, 'r')['episodic_data']
-        all_episodes = list(self.data.keys())
-        self.episodes = all_episodes[:train_episodes] if train else all_episodes[train_episodes:]
+        self.episodes = list(self.data.keys())
         self.max_len = max_len
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.episodes)
 
-    def sample_window(self):
+    def sample_window(self) -> Dict[str, torch.Tensor]: 
+        """
+        Sample a random context window of max_len from an episode 
+        in the dataset and pad it to max_len if necessary.
+        Note that this is a simplified version of the original sampling method
+        taken from the Decision Transformer paper cited in the paper.
+        Returns:
+            - states: torch.tensor of shape (max_len, STATE_DIM)
+            - actions: torch.tensor of shape (max_len, ACT_DIM)
+            - rtgs: torch.tensor of shape (max_len, 1)
+            - timesteps: torch.tensor of shape (max_len, 1)
+            - action_target: torch.tensor of shape (max_len, ACT_DIM)
+            - attention_mask: torch.tensor of shape (max_len,) indicating which timesteps are padded
+        """
         idx = np.random.randint(0, len(self.episodes))
         episode = self.data[self.episodes[idx]]
 
@@ -61,8 +75,8 @@ class EpisodicHDF5Dataset(Dataset):
 
         return {
             'states': torch.tensor(states, dtype=torch.float32),
-            'actions': torch.tensor(actions, dtype=torch.float32),
-            'rtgs': torch.tensor(rtg[:-1], dtype=torch.float32),  # Use rtg[t-1]
+            'actions': torch.tensor(actions, dtype=torch.float32), 
+            'rtgs': torch.tensor(rtg[:-1], dtype=torch.float32), 
             'timesteps': torch.tensor(ts.squeeze(), dtype=torch.long),
             'action_target': torch.tensor(actions, dtype=torch.float32),
             'attention_mask': torch.tensor(mask, dtype=torch.float32),
@@ -71,28 +85,41 @@ class EpisodicHDF5Dataset(Dataset):
     def __getitem__(self, idx):
         return self.sample_window()
 
-# --- MODEL SETUP ---
-config = DecisionTransformerConfig(
-    state_dim=STATE_DIM,
-    act_dim=ACT_DIM,
-    max_length=MAX_LENGTH,
-)
-model = DecisionTransformerModel(config)
-optimizer = optim.Adam(model.parameters(), lr=LR)
-loss_fn = nn.MSELoss()
 
-# --- TRAINING LOOP ---
-def train(model, train_dataloader):
+def train(model, train_dataloader, val_dataloader, device, patience=2, lr=1e-4) -> tuple[Dict, float]:
+    """
+    Train the model on the given train dataloader and validate on the given val dataloader.
+    
+    Args:
+    - model: the model to train
+    - train_dataloader: the dataloader for the training data
+    - val_dataloader: the dataloader for the validation data
+    - device: the device to train on
+    - patience: the patience for early stopping
+    - lr: the learning rate
+    
+    Returns:
+    - best_model_dict: the best model state dict
+    - best_val_loss: the best validation loss
+    """
+    loss_fn = nn.MSELoss()
+    optimizer = optim.Adam(model.parameters(), lr=lr)
     model.train()
-    for step in range(TOTAL_STEPS):
-        total_loss = 0
+
+    best_val_loss = float('inf')
+    best_model_dict = None
+
+    for epoch in range(TOTAL_EPOCHS):
+        # TRAINING ============================================
+        total_train_loss = 0
+        model.train()
         for batch in train_dataloader:
-            states = batch['states']
-            actions = batch['actions']
-            rtgs = batch['rtgs']
-            timesteps = batch['timesteps']
-            attention_mask = batch['attention_mask']
-            targets = batch['action_target']
+            states = batch['states'].to(device)
+            actions = batch['actions'].to(device)
+            rtgs = batch['rtgs'].to(device)
+            timesteps = batch['timesteps'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            targets = batch['action_target'].to(device)
 
             outputs = model(
                 states=states,
@@ -103,7 +130,7 @@ def train(model, train_dataloader):
                 attention_mask=attention_mask,
             )
 
-            action_preds = outputs['action_preds'] # The model outputs action, state and reward preds 
+            action_preds = outputs['action_preds']
             mask = attention_mask.unsqueeze(-1).expand_as(action_preds) > 0
 
             loss = loss_fn(action_preds[mask], targets[mask])
@@ -113,15 +140,145 @@ def train(model, train_dataloader):
             torch.nn.utils.clip_grad_norm_(model.parameters(), GRAD_CLIP)
             optimizer.step()
 
+            total_train_loss += loss.item()
+
+        # VALIDATION ===========================================
+        model.eval()
+        total_val_loss = 0
+        with torch.no_grad():
+            for batch in val_dataloader:
+                states = batch['states'].to(device)
+                actions = batch['actions'].to(device)
+                rtgs = batch['rtgs'].to(device)
+                timesteps = batch['timesteps'].to(device)
+                attention_mask = batch['attention_mask'].to(device)
+                targets = batch['action_target'].to(device)
+
+                outputs = model(
+                    states=states,
+                    actions=actions,
+                    rewards=None,
+                    returns_to_go=rtgs,
+                    timesteps=timesteps,
+                    attention_mask=attention_mask,
+                )
+
+                action_preds = outputs['action_preds']
+                mask = attention_mask.unsqueeze(-1).expand_as(action_preds) > 0
+                val_loss = loss_fn(action_preds[mask], targets[mask])
+                total_val_loss += val_loss.item()
+
+        avg_train_loss = total_train_loss / len(train_dataloader)
+        avg_val_loss = total_val_loss / len(val_dataloader)
+        print(f"Epoch {epoch+1}/{TOTAL_EPOCHS}, Train Loss: {avg_train_loss:.4f}, Val Loss: {avg_val_loss:.4f}")
+
+        # Early Stopping
+        if avg_val_loss < best_val_loss:
+            best_val_loss = avg_val_loss
+            patience = 2
+            best_model_dict = model.state_dict()
+        else:
+            patience -= 1
+            if patience == 0:
+                print(f"Early stopping triggered at epoch {epoch+1}")
+                break
+
+    # Save the best model
+    print(f"Best Val Loss for this config: {best_val_loss:.4f}")
+    return best_model_dict, best_val_loss
+
+
+def evaluate(model, test_loader, device) -> float:
+    """
+    Evaluate a model on a given test dataloader.
+
+    Args:
+        model: the model to evaluate
+        test_loader: the test dataloader
+        device: the device to run the evaluation on
+
+    Returns:
+        the average loss on the test set
+    """
+    model.eval()
+    loss_fn = nn.MSELoss()
+    total_loss = 0
+
+    with torch.no_grad():
+        for batch in test_loader:
+            states = batch['states'].to(device)
+            actions = batch['actions'].to(device)
+            rtgs = batch['rtgs'].to(device)
+            timesteps = batch['timesteps'].to(device)
+            attention_mask = batch['attention_mask'].to(device)
+            targets = batch['action_target'].to(device)
+
+            outputs = model(
+                states=states,
+                actions=actions,
+                rewards=None,
+                returns_to_go=rtgs,
+                timesteps=timesteps,
+                attention_mask=attention_mask,
+            )
+
+            action_preds = outputs['action_preds']
+            mask = attention_mask.unsqueeze(-1).expand_as(action_preds) > 0
+            loss = loss_fn(action_preds[mask], targets[mask])
             total_loss += loss.item()
-        if step + 1 % 100 == 0:
-            print(f"Timestep {step+1}/{TOTAL_STEPS}, Loss: {total_loss / len(train_dataloader):.4f}")
+    return total_loss / len(test_loader)
 
-# --- DATA LOADING & TRAINING ---
-train_dataset = EpisodicHDF5Dataset(DATA_PATH, train=True)
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
-test_dataset = EpisodicHDF5Dataset(DATA_PATH, train=False)
-test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=True)
+if __name__ == '__main__':
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    search_space = {
+        "batch_size": [16, 32],
+        "lr": [1e-4, 5e-5],  # learning rate of the optimizer
+        "max_length": [20, 30], # size of the context window for the DT
+    }
 
-train(model, train_loader)
+    best_config = None
+    best_test_loss = float('inf')
+
+    # grid search definition
+    for batch_size, lr, max_length in product(*search_space.values()):
+        print(f"\nTesting config: batch_size={batch_size}, lr={lr}, max_length={max_length}")
+
+        dataset = EpisodicHDF5Dataset(DATA_PATH, max_len=max_length)
+
+        test_size = int(0.1 * len(dataset))
+        val_size = int(0.1 * len(dataset))
+        train_size = len(dataset) - test_size - val_size
+
+        train_dataset, val_dataset, test_dataset = random_split(
+            dataset, [train_size, val_size, test_size],
+            generator=torch.Generator().manual_seed(42)
+        )
+
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+
+        config = DecisionTransformerConfig(
+            state_dim=STATE_DIM,
+            act_dim=ACT_DIM,
+            max_length=max_length,  # size of the context window
+        )
+        model = DecisionTransformerModel(config).to(device)
+
+        best_model_dict, val_loss = train(model, train_loader, val_loader, device, patience=2, lr=lr)
+        model.load_state_dict(best_model_dict)
+        test_loss = evaluate(model, test_loader, device)
+
+        print(f"Test Loss for this config: {test_loss:.4f}")
+
+        if test_loss < best_test_loss:
+            best_test_loss = test_loss
+            best_config = {
+                "batch_size": batch_size,
+                "lr": lr,
+                "max_length": max_length
+            }
+            torch.save(best_model_dict, DT_MODEL_PATH)
+
+    print(f"\nBest Config: {best_config}, Best Test Loss: {best_test_loss:.4f}")
