@@ -9,6 +9,10 @@ from itertools import product
 from typing import Dict
 from zeus.monitor import ZeusMonitor
 
+
+# Best Config: {'batch_size': 16, 'lr': 0.0001, 'max_length': 30}, Best Test Loss: 0.0651
+
+
 # --- CONFIGURATION ---
 STATE_DIM = 105       # antv5 observation dim
 ACT_DIM = 8           # antv5 action dim
@@ -241,8 +245,8 @@ if __name__ == '__main__':
     best_config = None
     best_test_loss = float('inf')
 
-    monitor = ZeusMonitor(device)
-    monitor.begin_window("grid-search-dt")
+    #monitor = ZeusMonitor(device)
+    #monitor.begin_window("grid-search-dt")
 
     # grid search definition
     for batch_size, lr, max_length in product(*search_space.values()):
@@ -285,6 +289,6 @@ if __name__ == '__main__':
             }
             torch.save(best_model_dict, DT_MODEL_PATH)
 
-    mes = monitor.end_window("grid-search")
-    print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
+    #mes = monitor.end_window("grid-search")
+    #print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
     print(f"\nBest Config: {best_config}, Best Test Loss: {best_test_loss:.4f}")
