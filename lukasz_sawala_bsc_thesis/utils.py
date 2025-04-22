@@ -5,7 +5,7 @@ import numpy as np
 import random
 
 
-def set_seed(seed: int = 0):
+def set_seed(seed: int = 0) -> None:
     """
     Sets seeds for numpy, random, torch and torch.cuda modules.
 
@@ -18,7 +18,7 @@ def set_seed(seed: int = 0):
     torch.cuda.manual_seed(seed)
 
 
-def parse_arguments(training: bool = False):
+def parse_arguments(training: bool = False) -> dict:
     """
     Function defining and returning command line arguments depending on the desired mode (training/evaluation).
     """

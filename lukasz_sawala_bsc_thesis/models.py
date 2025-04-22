@@ -22,7 +22,7 @@ class NeuralNet(nn.Module):
         """
         Defines the forward call of the network.
         Returns:
-            torch.Tensor: The output of the network squeezed with 
+            torch.Tensor: The output of the network squeezed with
             tanh - enforcing the action range between (-1, 1)
         """
         x = self.fc1(x)

@@ -6,6 +6,8 @@ import random
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import beta
+from torch.utils.data import Dataset
+
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
@@ -13,7 +15,7 @@ CONCATENATED_DATA_PATH = "../data/processed/concatenated_data.hdf5"
 
 # ======================================= FILE EXPLANATION ======================================
 
-# This script is a test file for the skewed sampling method. 
+# This script is a test file for the skewed sampling method.
 # It was used to evaluate the performance of the skewed sampling method on the concatenated data.
 # Due to limited improved functionality, a uniform sampler was used instead, yet this method
 # of alternative sampling can be explored further to see whether it would improve training
@@ -41,7 +43,7 @@ def load_data(data_path: str) -> list:
 
         for episode_key in data_group.keys():
             episode = data_group[episode_key]
-            
+
             observations = episode["observations"][:]
             actions = episode["actions"][:]
             rewards_to_go = episode["rewards_to_go"][:].reshape(-1, 1)
@@ -64,10 +66,10 @@ class TrajectoryDataset(Dataset):
         self.context_window_size = context_window_size
         self.min_sample_size = min_sample_size or (context_window_size // 2)
         self.skew_factor = skew_factor
-    
+
     def __len__(self):
         return len(self.episodic_data)  # Number of episodes
-    
+
     def sample_window_size(self):
         """
         Sample a sequence length using a right-skewed Beta distribution.
@@ -112,10 +114,11 @@ class TrajectoryDataset(Dataset):
             "time_to_go": time_tensor
         }
 
+
 def plot_beta_distribution(a=5, b=1, num_samples=10000, title="Beta Distribution", save_path="beta_distribution_plot.png"):
     """
     Plots the Beta distribution for given parameters a and b with a style similar to the `plot_average_rewards`.
-    
+
     Args:
         a (float): Alpha parameter of the Beta distribution.
         b (float): Beta parameter of the Beta distribution.
@@ -139,7 +142,8 @@ def plot_beta_distribution(a=5, b=1, num_samples=10000, title="Beta Distribution
     plt.savefig(save_path)
     print(f"Beta distribution plot saved in {save_path}")
 
+
 if __name__ == "__main__":
-    plot_beta_distribution(5, 1, 
-                           title="Right-Skewed Beta Distribution", 
+    plot_beta_distribution(5, 1,
+                           title="Right-Skewed Beta Distribution",
                            save_path="beta_right_skewed.png")
