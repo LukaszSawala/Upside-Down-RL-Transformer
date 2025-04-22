@@ -19,7 +19,7 @@ ACT_DIM = 8           # antv5 action dim
 TOTAL_EPOCHS = 20
 GRAD_CLIP = 0.25
 DATA_PATH = "../data/processed/episodic_data.hdf5"
-DT_MODEL_PATH = "../models/best_DT.pth"
+DT_MODEL_PATH = "../models/best_DT_grid1.pth"
 
 # --- DATASET CLASS ---
 class EpisodicHDF5Dataset(Dataset):
@@ -53,12 +53,20 @@ class EpisodicHDF5Dataset(Dataset):
         episode = self.data[self.episodes[idx]]
 
         T = episode['observations'].shape[0]
+        deviation_prob = 0.85  # Probability of getting a small end value
         if T >= self.max_len:
             start = np.random.randint(0, T - self.max_len + 1)
             end = start + self.max_len
+            if np.random.rand() < deviation_prob:
+                # Sample a smaller `end`, randomly between start + 1 and start + max_len 
+                end = start + np.random.randint(1, int(self.max_len) + 1)
+            else:
+                # Otherwise, sample a normal end point close to start + max_len
+                end = start + self.max_len
         else:
             start = 0
             end = T
+        end = min(end, T)
 
         # Efficient slicing
         states = episode['observations'][start:end]
@@ -236,10 +244,12 @@ def evaluate(model, test_loader, device) -> float:
 
 if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    np.random.seed(42)
+    print("using device:", device)
     search_space = {
-        "batch_size": [16, 32],
-        "lr": [1e-4, 5e-5],  # learning rate of the optimizer
-        "max_length": [20, 30], # size of the context window for the DT
+        "batch_size": [8, 16],
+        "lr": [5e-4, 1e-4],  # learning rate of the optimizer
+        "max_length": [30, 40], # size of the context window for the DT
     }
 
     best_config = None
@@ -274,7 +284,7 @@ if __name__ == '__main__':
         )
         model = DecisionTransformerModel(config).to(device)
 
-        best_model_dict, val_loss = train(model, train_loader, val_loader, device, patience=2, lr=lr)
+        best_model_dict, val_loss = train(model, train_loader, val_loader, device, patience=3, lr=lr)
         model.load_state_dict(best_model_dict)
         test_loss = evaluate(model, test_loader, device)
 
