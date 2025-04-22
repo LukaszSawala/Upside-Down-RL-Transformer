@@ -22,13 +22,14 @@ GRAD_CLIP = 0.25
 DATA_PATH = "../data/processed/episodic_data.hdf5"
 DT_MODEL_PATH = "../models/best_DT_grid1.pth"
 
+
 # --- DATASET CLASS ---
 class EpisodicHDF5Dataset(Dataset):
     """
-    Dataset class for loading episodic data in a form of a 
+    Dataset class for loading episodic data in a form of a
     context window from an HDF5 file.
     """
-    def __init__(self, file_path: str, max_len: int = 20) -> None:        
+    def __init__(self, file_path: str, max_len: int = 20) -> None:
         self.data = h5py.File(file_path, 'r')['episodic_data']
         self.episodes = list(self.data.keys())
         self.max_len = max_len
@@ -36,9 +37,9 @@ class EpisodicHDF5Dataset(Dataset):
     def __len__(self) -> int:
         return len(self.episodes)
 
-    def sample_window(self) -> Dict[str, torch.Tensor]: 
+    def sample_window(self) -> Dict[str, torch.Tensor]:
         """
-        Sample a random context window of max_len from an episode 
+        Sample a random context window of max_len from an episode
         in the dataset and pad it to max_len if necessary.
         Note that this is a simplified version of the original sampling method
         taken from the Decision Transformer paper cited in the paper.
@@ -59,7 +60,7 @@ class EpisodicHDF5Dataset(Dataset):
             start = np.random.randint(0, T - self.max_len + 1)
             end = start + self.max_len
             if np.random.rand() < deviation_prob:
-                # Sample a smaller `end`, randomly between start + 1 and start + max_len 
+                # Sample a smaller `end`, randomly between start + 1 and start + max_len
                 end = start + np.random.randint(1, int(self.max_len) + 1)
             else:
                 # Otherwise, sample a normal end point close to start + max_len
@@ -72,7 +73,7 @@ class EpisodicHDF5Dataset(Dataset):
         # Efficient slicing
         states = episode['observations'][start:end]
         actions = episode['actions'][start:end]
-        rtg = episode['rewards_to_go'][start:end+1] if end + 1 <= T else np.vstack([episode['rewards_to_go'][start:], np.zeros((1, 1))])
+        rtg = episode['rewards_to_go'][start:end + 1] if end + 1 <= T else np.vstack([episode['rewards_to_go'][start:], np.zeros((1, 1))])
         ts = np.arange(start, end).reshape(-1, 1)
 
         # Padding
@@ -89,8 +90,8 @@ class EpisodicHDF5Dataset(Dataset):
 
         return {
             'states': torch.tensor(states, dtype=torch.float32),
-            'actions': torch.tensor(actions, dtype=torch.float32), 
-            'rtgs': torch.tensor(rtg[:-1], dtype=torch.float32), 
+            'actions': torch.tensor(actions, dtype=torch.float32),
+            'rtgs': torch.tensor(rtg[:-1], dtype=torch.float32),
             'timesteps': torch.tensor(ts.squeeze(), dtype=torch.long),
             'action_target': torch.tensor(actions, dtype=torch.float32),
             'attention_mask': torch.tensor(mask, dtype=torch.float32),
@@ -100,10 +101,11 @@ class EpisodicHDF5Dataset(Dataset):
         return self.sample_window()
 
 
-def train(model, train_dataloader, val_dataloader, device, patience=2, lr=1e-4) -> tuple[Dict, float]:
+def train(model, train_dataloader, val_dataloader, device,
+          patience: int = 2, lr: float = 1e-4) -> tuple[Dict, float]:
     """
     Train the model on the given train dataloader and validate on the given val dataloader.
-    
+
     Args:
     - model: the model to train
     - train_dataloader: the dataloader for the training data
@@ -111,7 +113,7 @@ def train(model, train_dataloader, val_dataloader, device, patience=2, lr=1e-4) 
     - device: the device to train on
     - patience: the patience for early stopping
     - lr: the learning rate
-    
+
     Returns:
     - best_model_dict: the best model state dict
     - best_val_loss: the best validation loss
@@ -250,14 +252,14 @@ if __name__ == '__main__':
     search_space = {
         "batch_size": [8, 16],
         "lr": [5e-4, 1e-4, 1e-3],  # learning rate of the optimizer
-        "max_length": [40, 50, 60], # size of the context window for the DT
+        "max_length": [40, 50, 60],  # size of the context window for the DT
     }
 
     best_config = None
     best_test_loss = float('inf')
 
-    #monitor = ZeusMonitor(device)
-    #monitor.begin_window("grid-search-dt")
+    # monitor = ZeusMonitor(device)
+    # monitor.begin_window("grid-search-dt")
 
     # grid search definition
     for batch_size, lr, max_length in product(*search_space.values()):
@@ -301,6 +303,6 @@ if __name__ == '__main__':
             }
             torch.save(best_model_dict, DT_MODEL_PATH)
 
-    #mes = monitor.end_window("grid-search")
-    #print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
+    # mes = monitor.end_window("grid-search")
+    # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
     print(f"\nBest Config: {best_config}, Best Test Loss: {best_test_loss:.4f}")

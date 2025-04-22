@@ -30,6 +30,7 @@ def load_nn_model_for_eval(input_size: int, hidden_size: int,
     model.eval()
     return model
 
+
 def load_dt_model_for_eval(state_dim, act_dim, max_length, checkpoint_path, device) -> DecisionTransformerModel:
     """
     Loads a Decision Transformer model from a given checkpoint path for evaluation.
@@ -66,7 +67,12 @@ def evaluate_get_rewards(env: gym.Env, model, d_h: float, d_r: float,
     elif model_type == "DecisionTransformer":
         return _evaluate_decision_transformer(env, model, d_r, num_episodes, max_episode_length, device)
 
-def _evaluate_neural_net(env, model, d_h, d_r, num_episodes, max_episode_length):
+
+def _evaluate_neural_net(env: gym.Env, model, d_h: float, d_r: float,
+                         num_episodes: int, max_episode_length: int) -> tuple:
+    """
+    Evaluate the performance of the Neural Network model on the given environment.
+    """
     episodic_rewards = []
     for _ in range(num_episodes):
         obs, _ = env.reset()
@@ -86,20 +92,25 @@ def _evaluate_neural_net(env, model, d_h, d_r, num_episodes, max_episode_length)
     print("max-min reward for this dr:", max(episodic_rewards), "-", min(episodic_rewards))
     return np.mean(episodic_rewards), episodic_rewards
 
-def _evaluate_decision_transformer(env, model, d_r, num_episodes, max_episode_length, device):
+
+def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
+                                   num_episodes: int, max_episode_length: int, device) -> tuple:
+    """
+    Evaluate the performance of the Decision Transformer model on the given environment.
+    """
     episodic_rewards = []
-    act_dim = model.config.act_dim # Get action dimension from model config
-    state_dim = model.config.state_dim # Get state dimension from model config
+    act_dim = model.config.act_dim  # Get action dimension from model config
+    state_dim = model.config.state_dim  # Get state dimension from model config
 
     for episode in range(num_episodes):
         obs, _ = env.reset()
         total_reward = 0.0
-        target_return = float(d_r) # Initial target return
+        target_return = float(d_r)  # Initial target return
 
         # Use deques to efficiently manage history
         state_history = deque([np.zeros(state_dim, dtype=np.float32)] * MAX_LENGTH, maxlen=MAX_LENGTH)
         action_history = deque([np.ones(act_dim, dtype=np.float32) * -10.0] * MAX_LENGTH, maxlen=MAX_LENGTH)
-        rtg_history = deque([0.0] * MAX_LENGTH, maxlen=MAX_LENGTH) # Store scalar RTGs
+        rtg_history = deque([0.0] * MAX_LENGTH, maxlen=MAX_LENGTH)  # Store scalar RTGs
         timestep_history = deque([0] * MAX_LENGTH, maxlen=MAX_LENGTH)
 
         # Add initial state
@@ -112,14 +123,11 @@ def _evaluate_decision_transformer(env, model, d_r, num_episodes, max_episode_le
             states = np.array(state_history, dtype=np.float32)
             actions = np.array(action_history, dtype=np.float32)
             rtgs = np.array(rtg_history, dtype=np.float32).reshape(-1, 1)
-
-            # --- Correction for timesteps ---
-            timesteps = np.array(timestep_history, dtype=np.int64) 
+            timesteps = np.array(timestep_history, dtype=np.int64)
             # --------------------------------
 
             current_len = min(t + 1, MAX_LENGTH)
-            mask = np.concatenate([np.zeros(MAX_LENGTH - current_len), np.ones(current_len)], dtype=np.float32) # Shape (MAX_LENGTH,)
-
+            mask = np.concatenate([np.zeros(MAX_LENGTH - current_len), np.ones(current_len)], dtype=np.float32)
 
             # Convert to tensors and add batch dimension
             states_tensor = torch.tensor(states, dtype=torch.float32).unsqueeze(0).to(device)
@@ -134,9 +142,9 @@ def _evaluate_decision_transformer(env, model, d_r, num_episodes, max_episode_le
                     returns_to_go=rtgs_tensor,
                     timesteps=timesteps_tensor,
                     attention_mask=mask_tensor,
-                    return_dict=True # Use dictionary output for clarity
+                    return_dict=True  # Use dictionary output for clarity
                 )
-                action_preds = model_outputs['action_preds'] # model_outputs[0] if return_dict=False
+                action_preds = model_outputs['action_preds']  # model_outputs[0] if return_dict=False
 
                 # Extract the action prediction for the last timestep in the input sequence
                 action = action_preds[0, -1].cpu().numpy()
@@ -160,7 +168,7 @@ def _evaluate_decision_transformer(env, model, d_r, num_episodes, max_episode_le
 
 def plot_average_rewards(average_rewards: list, sem_values: list,
                          d_r_values: list, title="Average Reward vs. d_r",
-                         save_path: str="average_rewards_plot.png"):
+                         save_path: str = "average_rewards_plot.png"):
     """
     Plots the average rewards for different values of d_r with standard error bars.
     """
@@ -182,7 +190,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print("starting evaluation for args:", args, "device:", device) 
+    print("starting evaluation for args:", args, "device:", device)
     if args["model_type"] == "NeuralNet":
         hidden_size = 256
         model = load_nn_model_for_eval(INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH, device)
@@ -208,7 +216,6 @@ if __name__ == "__main__":
                                                    device=device)
         average_rewards.append(np.mean(episodic_rewards))
         sem_values.append(sem(episodic_rewards))
-
 
     save_path = f"average_rewards_plot_{args['model_type']}.png"
     plot_average_rewards(average_rewards, sem_values, d_r_options, save_path=save_path)
