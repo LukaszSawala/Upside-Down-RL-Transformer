@@ -1,0 +1,355 @@
+/opt/rocm/lib/libamd_smi.so: cannot open shared object file: No such file or directory
+Unable to find amdsmi library try installing amd-smi-lib from your package manager
+using device: cpu
+
+Testing config: batch_size=8, lr=0.0005, max_length=40
+Epoch 1/20, Train Loss: 0.1153, Val Loss: 0.0854
+Epoch 2/20, Train Loss: 0.0826, Val Loss: 0.0686
+Epoch 3/20, Train Loss: 0.0692, Val Loss: 0.0647
+Epoch 4/20, Train Loss: 0.0643, Val Loss: 0.0539
+Epoch 5/20, Train Loss: 0.0572, Val Loss: 0.0526
+Epoch 6/20, Train Loss: 0.0577, Val Loss: 0.0493
+Epoch 7/20, Train Loss: 0.0530, Val Loss: 0.0498
+Epoch 8/20, Train Loss: 0.0494, Val Loss: 0.0452
+Epoch 9/20, Train Loss: 0.0479, Val Loss: 0.0428
+Epoch 10/20, Train Loss: 0.0469, Val Loss: 0.0402
+Epoch 11/20, Train Loss: 0.0447, Val Loss: 0.0398
+Epoch 12/20, Train Loss: 0.0419, Val Loss: 0.0371
+Epoch 13/20, Train Loss: 0.0424, Val Loss: 0.0387
+Epoch 14/20, Train Loss: 0.0409, Val Loss: 0.0357
+Epoch 15/20, Train Loss: 0.0417, Val Loss: 0.0338
+Epoch 16/20, Train Loss: 0.0403, Val Loss: 0.0341
+Epoch 17/20, Train Loss: 0.0377, Val Loss: 0.0369
+Early stopping triggered at epoch 17
+Best Val Loss for this config: 0.0338
+Test Loss for this config: 0.0380
+
+Testing config: batch_size=8, lr=0.0005, max_length=50
+Epoch 1/20, Train Loss: 0.1106, Val Loss: 0.0830
+Epoch 2/20, Train Loss: 0.0782, Val Loss: 0.0788
+Epoch 3/20, Train Loss: 0.0669, Val Loss: 0.0613
+Epoch 4/20, Train Loss: 0.0647, Val Loss: 0.0576
+Epoch 5/20, Train Loss: 0.0554, Val Loss: 0.0484
+Epoch 6/20, Train Loss: 0.0514, Val Loss: 0.0469
+Epoch 7/20, Train Loss: 0.0494, Val Loss: 0.0441
+Epoch 8/20, Train Loss: 0.0490, Val Loss: 0.0433
+Epoch 9/20, Train Loss: 0.0466, Val Loss: 0.0418
+Epoch 10/20, Train Loss: 0.0437, Val Loss: 0.0370
+Epoch 11/20, Train Loss: 0.0431, Val Loss: 0.0379
+Epoch 12/20, Train Loss: 0.0417, Val Loss: 0.0506
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0370
+Test Loss for this config: 0.0376
+
+Testing config: batch_size=8, lr=0.0005, max_length=60
+Epoch 1/20, Train Loss: 0.1097, Val Loss: 0.0795
+Epoch 2/20, Train Loss: 0.0787, Val Loss: 0.0698
+Epoch 3/20, Train Loss: 0.0656, Val Loss: 0.0621
+Epoch 4/20, Train Loss: 0.0607, Val Loss: 0.0514
+Epoch 5/20, Train Loss: 0.0541, Val Loss: 0.0507
+Epoch 6/20, Train Loss: 0.0539, Val Loss: 0.0457
+Epoch 7/20, Train Loss: 0.0504, Val Loss: 0.0471
+Epoch 8/20, Train Loss: 0.0493, Val Loss: 0.0419
+Epoch 9/20, Train Loss: 0.0441, Val Loss: 0.0406
+Epoch 10/20, Train Loss: 0.0461, Val Loss: 0.0361
+Epoch 11/20, Train Loss: 0.0405, Val Loss: 0.0358
+Epoch 12/20, Train Loss: 0.0412, Val Loss: 0.0432
+Epoch 13/20, Train Loss: 0.0399, Val Loss: 0.0370
+Early stopping triggered at epoch 13
+Best Val Loss for this config: 0.0358
+Test Loss for this config: 0.0352
+
+Testing config: batch_size=8, lr=0.0001, max_length=40
+Epoch 1/20, Train Loss: 0.1496, Val Loss: 0.0989
+Epoch 2/20, Train Loss: 0.0996, Val Loss: 0.0870
+Epoch 3/20, Train Loss: 0.0945, Val Loss: 0.0829
+Epoch 4/20, Train Loss: 0.0840, Val Loss: 0.0740
+Epoch 5/20, Train Loss: 0.0785, Val Loss: 0.0673
+Epoch 6/20, Train Loss: 0.0753, Val Loss: 0.0678
+Epoch 7/20, Train Loss: 0.0738, Val Loss: 0.0694
+Early stopping triggered at epoch 7
+Best Val Loss for this config: 0.0673
+Test Loss for this config: 0.0677
+
+Testing config: batch_size=8, lr=0.0001, max_length=50
+Epoch 1/20, Train Loss: 0.1490, Val Loss: 0.1058
+Epoch 2/20, Train Loss: 0.1013, Val Loss: 0.0896
+Epoch 3/20, Train Loss: 0.0895, Val Loss: 0.0786
+Epoch 4/20, Train Loss: 0.0844, Val Loss: 0.0762
+Epoch 5/20, Train Loss: 0.0793, Val Loss: 0.0739
+Epoch 6/20, Train Loss: 0.0757, Val Loss: 0.0630
+Epoch 7/20, Train Loss: 0.0701, Val Loss: 0.0668
+Epoch 8/20, Train Loss: 0.0712, Val Loss: 0.0626
+Epoch 9/20, Train Loss: 0.0673, Val Loss: 0.0609
+Epoch 10/20, Train Loss: 0.0638, Val Loss: 0.0613
+Epoch 11/20, Train Loss: 0.0617, Val Loss: 0.0587
+Epoch 12/20, Train Loss: 0.0599, Val Loss: 0.0601
+Epoch 13/20, Train Loss: 0.0587, Val Loss: 0.0543
+Epoch 14/20, Train Loss: 0.0574, Val Loss: 0.0485
+Epoch 15/20, Train Loss: 0.0586, Val Loss: 0.0481
+Epoch 16/20, Train Loss: 0.0540, Val Loss: 0.0556
+Epoch 17/20, Train Loss: 0.0534, Val Loss: 0.0529
+Early stopping triggered at epoch 17
+Best Val Loss for this config: 0.0481
+Test Loss for this config: 0.0572
+
+Testing config: batch_size=8, lr=0.0001, max_length=60
+Epoch 1/20, Train Loss: 0.1600, Val Loss: 0.1082
+Epoch 2/20, Train Loss: 0.1039, Val Loss: 0.0866
+Epoch 3/20, Train Loss: 0.0910, Val Loss: 0.0814
+Epoch 4/20, Train Loss: 0.0821, Val Loss: 0.0757
+Epoch 5/20, Train Loss: 0.0759, Val Loss: 0.0697
+Epoch 6/20, Train Loss: 0.0745, Val Loss: 0.0658
+Epoch 7/20, Train Loss: 0.0690, Val Loss: 0.0622
+Epoch 8/20, Train Loss: 0.0696, Val Loss: 0.0602
+Epoch 9/20, Train Loss: 0.0633, Val Loss: 0.0626
+Epoch 10/20, Train Loss: 0.0628, Val Loss: 0.0588
+Epoch 11/20, Train Loss: 0.0638, Val Loss: 0.0580
+Epoch 12/20, Train Loss: 0.0592, Val Loss: 0.0542
+Epoch 13/20, Train Loss: 0.0583, Val Loss: 0.0597
+Epoch 14/20, Train Loss: 0.0566, Val Loss: 0.0569
+Early stopping triggered at epoch 14
+Best Val Loss for this config: 0.0542
+Test Loss for this config: 0.0508
+
+Testing config: batch_size=8, lr=0.001, max_length=40
+Epoch 1/20, Train Loss: 0.1060, Val Loss: 0.0821
+Epoch 2/20, Train Loss: 0.0743, Val Loss: 0.0595
+Epoch 3/20, Train Loss: 0.0642, Val Loss: 0.0575
+Epoch 4/20, Train Loss: 0.0566, Val Loss: 0.0521
+Epoch 5/20, Train Loss: 0.0545, Val Loss: 0.0499
+Epoch 6/20, Train Loss: 0.0521, Val Loss: 0.0492
+Epoch 7/20, Train Loss: 0.0486, Val Loss: 0.0418
+Epoch 8/20, Train Loss: 0.0472, Val Loss: 0.0464
+Epoch 9/20, Train Loss: 0.0458, Val Loss: 0.0491
+Early stopping triggered at epoch 9
+Best Val Loss for this config: 0.0418
+Test Loss for this config: 0.0422
+
+Testing config: batch_size=8, lr=0.001, max_length=50
+Epoch 1/20, Train Loss: 0.1030, Val Loss: 0.0769
+Epoch 2/20, Train Loss: 0.0725, Val Loss: 0.0626
+Epoch 3/20, Train Loss: 0.0623, Val Loss: 0.0513
+Epoch 4/20, Train Loss: 0.0562, Val Loss: 0.0559
+Epoch 5/20, Train Loss: 0.0515, Val Loss: 0.0502
+Epoch 6/20, Train Loss: 0.0526, Val Loss: 0.0441
+Epoch 7/20, Train Loss: 0.0480, Val Loss: 0.0417
+Epoch 8/20, Train Loss: 0.0479, Val Loss: 0.0451
+Epoch 9/20, Train Loss: 0.0429, Val Loss: 0.0425
+Early stopping triggered at epoch 9
+Best Val Loss for this config: 0.0417
+Test Loss for this config: 0.0470
+
+Testing config: batch_size=8, lr=0.001, max_length=60
+Epoch 1/20, Train Loss: 0.1005, Val Loss: 0.0809
+Epoch 2/20, Train Loss: 0.0714, Val Loss: 0.0654
+Epoch 3/20, Train Loss: 0.0625, Val Loss: 0.0555
+Epoch 4/20, Train Loss: 0.0553, Val Loss: 0.0567
+Epoch 5/20, Train Loss: 0.0505, Val Loss: 0.0512
+Epoch 6/20, Train Loss: 0.0503, Val Loss: 0.0427
+Epoch 7/20, Train Loss: 0.0460, Val Loss: 0.0416
+Epoch 8/20, Train Loss: 0.0441, Val Loss: 0.0442
+Epoch 9/20, Train Loss: 0.0435, Val Loss: 0.0386
+Epoch 10/20, Train Loss: 0.0424, Val Loss: 0.0422
+Epoch 11/20, Train Loss: 0.0390, Val Loss: 0.0343
+Epoch 12/20, Train Loss: 0.0379, Val Loss: 0.0383
+Epoch 13/20, Train Loss: 0.0379, Val Loss: 0.0380
+Early stopping triggered at epoch 13
+Best Val Loss for this config: 0.0343
+Test Loss for this config: 0.0330
+
+Testing config: batch_size=16, lr=0.0005, max_length=40
+Epoch 1/20, Train Loss: 0.1291, Val Loss: 0.0925
+Epoch 2/20, Train Loss: 0.0886, Val Loss: 0.0763
+Epoch 3/20, Train Loss: 0.0779, Val Loss: 0.0691
+Epoch 4/20, Train Loss: 0.0684, Val Loss: 0.0644
+Epoch 5/20, Train Loss: 0.0670, Val Loss: 0.0608
+Epoch 6/20, Train Loss: 0.0602, Val Loss: 0.0520
+Epoch 7/20, Train Loss: 0.0570, Val Loss: 0.0494
+Epoch 8/20, Train Loss: 0.0551, Val Loss: 0.0466
+Epoch 9/20, Train Loss: 0.0543, Val Loss: 0.0620
+Epoch 10/20, Train Loss: 0.0509, Val Loss: 0.0418
+Epoch 11/20, Train Loss: 0.0491, Val Loss: 0.0467
+Epoch 12/20, Train Loss: 0.0483, Val Loss: 0.0422
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0418
+Test Loss for this config: 0.0498
+
+Testing config: batch_size=16, lr=0.0005, max_length=50
+Epoch 1/20, Train Loss: 0.1232, Val Loss: 0.0860
+Epoch 2/20, Train Loss: 0.0868, Val Loss: 0.0693
+Epoch 3/20, Train Loss: 0.0749, Val Loss: 0.0665
+Epoch 4/20, Train Loss: 0.0653, Val Loss: 0.0585
+Epoch 5/20, Train Loss: 0.0635, Val Loss: 0.0595
+Epoch 6/20, Train Loss: 0.0585, Val Loss: 0.0590
+Early stopping triggered at epoch 6
+Best Val Loss for this config: 0.0585
+Test Loss for this config: 0.0460
+
+Testing config: batch_size=16, lr=0.0005, max_length=60
+Epoch 1/20, Train Loss: 0.1257, Val Loss: 0.0937
+Epoch 2/20, Train Loss: 0.0855, Val Loss: 0.0779
+Epoch 3/20, Train Loss: 0.0721, Val Loss: 0.0625
+Epoch 4/20, Train Loss: 0.0661, Val Loss: 0.0561
+Epoch 5/20, Train Loss: 0.0606, Val Loss: 0.0585
+Epoch 6/20, Train Loss: 0.0579, Val Loss: 0.0555
+Epoch 7/20, Train Loss: 0.0566, Val Loss: 0.0521
+Epoch 8/20, Train Loss: 0.0538, Val Loss: 0.0476
+Epoch 9/20, Train Loss: 0.0491, Val Loss: 0.0445
+Epoch 10/20, Train Loss: 0.0483, Val Loss: 0.0464
+Epoch 11/20, Train Loss: 0.0451, Val Loss: 0.0436
+Epoch 12/20, Train Loss: 0.0443, Val Loss: 0.0424
+Epoch 13/20, Train Loss: 0.0441, Val Loss: 0.0387
+Epoch 14/20, Train Loss: 0.0409, Val Loss: 0.0398
+Epoch 15/20, Train Loss: 0.0411, Val Loss: 0.0338
+Epoch 16/20, Train Loss: 0.0386, Val Loss: 0.0395
+Epoch 17/20, Train Loss: 0.0389, Val Loss: 0.0356
+Early stopping triggered at epoch 17
+Best Val Loss for this config: 0.0338
+Test Loss for this config: 0.0397
+
+Testing config: batch_size=16, lr=0.0001, max_length=40
+Epoch 1/20, Train Loss: 0.1925, Val Loss: 0.1283
+Epoch 2/20, Train Loss: 0.1206, Val Loss: 0.1005
+Epoch 3/20, Train Loss: 0.1004, Val Loss: 0.0937
+Epoch 4/20, Train Loss: 0.0928, Val Loss: 0.0838
+Epoch 5/20, Train Loss: 0.0845, Val Loss: 0.0832
+Epoch 6/20, Train Loss: 0.0819, Val Loss: 0.0769
+Epoch 7/20, Train Loss: 0.0832, Val Loss: 0.0751
+Epoch 8/20, Train Loss: 0.0771, Val Loss: 0.0778
+Epoch 9/20, Train Loss: 0.0722, Val Loss: 0.0687
+Epoch 10/20, Train Loss: 0.0706, Val Loss: 0.0615
+Epoch 11/20, Train Loss: 0.0698, Val Loss: 0.0618
+Epoch 12/20, Train Loss: 0.0686, Val Loss: 0.0638
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0615
+Test Loss for this config: 0.0642
+
+Testing config: batch_size=16, lr=0.0001, max_length=50
+Epoch 1/20, Train Loss: 0.1788, Val Loss: 0.1217
+Epoch 2/20, Train Loss: 0.1131, Val Loss: 0.0996
+Epoch 3/20, Train Loss: 0.1010, Val Loss: 0.0887
+Epoch 4/20, Train Loss: 0.0934, Val Loss: 0.0853
+Epoch 5/20, Train Loss: 0.0883, Val Loss: 0.0878
+Epoch 6/20, Train Loss: 0.0817, Val Loss: 0.0793
+Epoch 7/20, Train Loss: 0.0786, Val Loss: 0.0709
+Epoch 8/20, Train Loss: 0.0743, Val Loss: 0.0698
+Epoch 9/20, Train Loss: 0.0730, Val Loss: 0.0677
+Epoch 10/20, Train Loss: 0.0712, Val Loss: 0.0703
+Epoch 11/20, Train Loss: 0.0683, Val Loss: 0.0589
+Epoch 12/20, Train Loss: 0.0669, Val Loss: 0.0600
+Epoch 13/20, Train Loss: 0.0655, Val Loss: 0.0581
+Epoch 14/20, Train Loss: 0.0636, Val Loss: 0.0543
+Epoch 15/20, Train Loss: 0.0639, Val Loss: 0.0590
+Epoch 16/20, Train Loss: 0.0636, Val Loss: 0.0632
+Early stopping triggered at epoch 16
+Best Val Loss for this config: 0.0543
+Test Loss for this config: 0.0563
+
+Testing config: batch_size=16, lr=0.0001, max_length=60
+Epoch 1/20, Train Loss: 0.1884, Val Loss: 0.1285
+Epoch 2/20, Train Loss: 0.1162, Val Loss: 0.1000
+Epoch 3/20, Train Loss: 0.1023, Val Loss: 0.0942
+Epoch 4/20, Train Loss: 0.0936, Val Loss: 0.0870
+Epoch 5/20, Train Loss: 0.0866, Val Loss: 0.0866
+Epoch 6/20, Train Loss: 0.0818, Val Loss: 0.0752
+Epoch 7/20, Train Loss: 0.0827, Val Loss: 0.0736
+Epoch 8/20, Train Loss: 0.0787, Val Loss: 0.0713
+Epoch 9/20, Train Loss: 0.0753, Val Loss: 0.0714
+Epoch 10/20, Train Loss: 0.0709, Val Loss: 0.0624
+Epoch 11/20, Train Loss: 0.0711, Val Loss: 0.0690
+Epoch 12/20, Train Loss: 0.0646, Val Loss: 0.0637
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0624
+Test Loss for this config: 0.0613
+
+Testing config: batch_size=16, lr=0.001, max_length=40
+Epoch 1/20, Train Loss: 0.1157, Val Loss: 0.0782
+Epoch 2/20, Train Loss: 0.0819, Val Loss: 0.0737
+Epoch 3/20, Train Loss: 0.0693, Val Loss: 0.0620
+Epoch 4/20, Train Loss: 0.0643, Val Loss: 0.0540
+Epoch 5/20, Train Loss: 0.0580, Val Loss: 0.0522
+Epoch 6/20, Train Loss: 0.0569, Val Loss: 0.0482
+Epoch 7/20, Train Loss: 0.0510, Val Loss: 0.0425
+Epoch 8/20, Train Loss: 0.0493, Val Loss: 0.0503
+Epoch 9/20, Train Loss: 0.0482, Val Loss: 0.0428
+Early stopping triggered at epoch 9
+Best Val Loss for this config: 0.0425
+Test Loss for this config: 0.0445
+
+Testing config: batch_size=16, lr=0.001, max_length=50
+Epoch 1/20, Train Loss: 0.1139, Val Loss: 0.0905
+Epoch 2/20, Train Loss: 0.0807, Val Loss: 0.0674
+Epoch 3/20, Train Loss: 0.0665, Val Loss: 0.0649
+Epoch 4/20, Train Loss: 0.0618, Val Loss: 0.0537
+Epoch 5/20, Train Loss: 0.0555, Val Loss: 0.0535
+Epoch 6/20, Train Loss: 0.0511, Val Loss: 0.0468
+Epoch 7/20, Train Loss: 0.0509, Val Loss: 0.0451
+Epoch 8/20, Train Loss: 0.0486, Val Loss: 0.0476
+Epoch 9/20, Train Loss: 0.0456, Val Loss: 0.0446
+Epoch 10/20, Train Loss: 0.0427, Val Loss: 0.0380
+Epoch 11/20, Train Loss: 0.0412, Val Loss: 0.0437
+Epoch 12/20, Train Loss: 0.0426, Val Loss: 0.0415
+Early stopping triggered at epoch 12
+Best Val Loss for this config: 0.0380
+Test Loss for this config: 0.0391
+
+Testing config: batch_size=16, lr=0.001, max_length=60
+Epoch 1/20, Train Loss: 0.1177, Val Loss: 0.0858
+Epoch 2/20, Train Loss: 0.0800, Val Loss: 0.0680
+Epoch 3/20, Train Loss: 0.0665, Val Loss: 0.0637
+Epoch 4/20, Train Loss: 0.0607, Val Loss: 0.0530
+Epoch 5/20, Train Loss: 0.0556, Val Loss: 0.0479
+Epoch 6/20, Train Loss: 0.0500, Val Loss: 0.0451
+Epoch 7/20, Train Loss: 0.0485, Val Loss: 0.0450
+Epoch 8/20, Train Loss: 0.0479, Val Loss: 0.0433
+Epoch 9/20, Train Loss: 0.0453, Val Loss: 0.0388
+Epoch 10/20, Train Loss: 0.0442, Val Loss: 0.0459
+Epoch 11/20, Train Loss: 0.0422, Val Loss: 0.0394
+Early stopping triggered at epoch 11
+Best Val Loss for this config: 0.0388
+Test Loss for this config: 0.0378
+
+Best Config: {'batch_size': 8, 'lr': 0.001, 'max_length': 60}, Best Test Loss: 0.0330
+
+###############################################################################
+Hábrók Cluster
+Job 16761304 for user s5173019
+Finished at: Tue Apr 22 18:24:26 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 16761304
+Name                           : jobscript.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node109
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-04-22T17:48:02
+Start                          : 2025-04-22T17:48:02
+End                            : 2025-04-22T18:24:22
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:36:20
+Used CPU time                  : 00:35:28 (Efficiency: 97.61%)
+% User (Computation)           : 99.00%
+% System (I/O)                 :  1.00%
+Total memory reserved          : 4G
+Maximum memory used            : 770.69M
+Hints and tips      :
+ 1) You requested much more CPU memory than your program used.
+    Please reduce the requested amount of memory.
+ *) For more information on these issues see:
+    https://wiki.hpc.rug.nl/habrok/additional_information/job_hints
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

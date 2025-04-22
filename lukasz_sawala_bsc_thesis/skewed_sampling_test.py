@@ -1,35 +1,26 @@
 # Dataset testing
 import h5py
-import torch.nn as nn
 import torch
-from models import NeuralNet
 import numpy as np
-from sklearn.model_selection import train_test_split
-from torch.utils.data import DataLoader, TensorDataset
 import random
-import itertools
-import torch.optim as optim
-from zeus.monitor import ZeusMonitor
-
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import beta
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
-HIDDEN_SIZE = 256
 OUTPUT_SIZE = 8
 CONCATENATED_DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "../models/best_nn_grid.pth"
 
-# ========= BEST MODEL FOUND==================
-# {'batch_size': 16, 'learning_rate': 0.0001}
-# MSE: test: 0.02467
-# ============================================
+# ======================================= FILE EXPLANATION ======================================
 
+# This script is a test file for the skewed sampling method. 
+# It was used to evaluate the performance of the skewed sampling method on the concatenated data.
+# Due to limited improved functionality, a uniform sampler was used instead, yet this method
+# of alternative sampling can be explored further to see whether it would improve training
+# the DT model, used as a baseline.
 
-# curr_dir = os.path.dirname(os.path.abspath(__file__))
-# parent_dir = os.path.dirname(curr_dir)
-# sys.path.append(parent_dir)
+# ================================================================================================
 
-import h5py
-import numpy as np
 
 def load_data(data_path: str) -> list:
     """
@@ -120,3 +111,35 @@ class TrajectoryDataset(Dataset):
             "rewards_to_go": rewards_tensor,
             "time_to_go": time_tensor
         }
+
+def plot_beta_distribution(a=5, b=1, num_samples=10000, title="Beta Distribution", save_path="beta_distribution_plot.png"):
+    """
+    Plots the Beta distribution for given parameters a and b with a style similar to the `plot_average_rewards`.
+    
+    Args:
+        a (float): Alpha parameter of the Beta distribution.
+        b (float): Beta parameter of the Beta distribution.
+        num_samples (int): Number of samples to plot.
+        title (str): Title of the plot.
+        save_path (str): Path to save the plot.
+    """
+    x = np.linspace(0, 1, num_samples)
+    y = beta.pdf(x, a, b)
+    sns.set_style("whitegrid")
+    sns.set_palette("husl")
+    plt.figure(figsize=(12, 7))
+    sns.lineplot(x=x, y=y, linewidth=2.5, color="royalblue", marker="o", label=f"Beta({a}, {b})")
+    plt.fill_between(x, y, color='royalblue', alpha=0.2)
+    plt.plot(x, x, linestyle="dotted", color="gray", label="y = x")
+    plt.xlabel("Sampled Value (Normalized)", fontsize=12)
+    plt.ylabel("Probability Density", fontsize=12)
+    plt.title(title, fontsize=14, fontweight="bold")
+    sns.despine()
+    plt.legend()
+    plt.savefig(save_path)
+    print(f"Beta distribution plot saved in {save_path}")
+
+if __name__ == "__main__":
+    plot_beta_distribution(5, 1, 
+                           title="Right-Skewed Beta Distribution", 
+                           save_path="beta_right_skewed.png")

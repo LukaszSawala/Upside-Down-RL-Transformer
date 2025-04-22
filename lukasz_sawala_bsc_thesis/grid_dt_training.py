@@ -8,9 +8,10 @@ from transformers import DecisionTransformerModel, DecisionTransformerConfig
 from itertools import product
 from typing import Dict
 from zeus.monitor import ZeusMonitor
+from utils import set_seed
 
 
-# Best Config: {'batch_size': 16, 'lr': 0.0001, 'max_length': 30}, Best Test Loss: 0.0651
+# Best Config: {'batch_size': 8, 'lr': 0.001, 'max_length': 60}, Best Test Loss: 0.0330
 
 
 # --- CONFIGURATION ---
@@ -53,7 +54,7 @@ class EpisodicHDF5Dataset(Dataset):
         episode = self.data[self.episodes[idx]]
 
         T = episode['observations'].shape[0]
-        deviation_prob = 0.85  # Probability of getting a small end value
+        deviation_prob = 0.8  # Probability of getting a non-full context window, plt1 used 0.85
         if T >= self.max_len:
             start = np.random.randint(0, T - self.max_len + 1)
             end = start + self.max_len
@@ -244,12 +245,12 @@ def evaluate(model, test_loader, device) -> float:
 
 if __name__ == '__main__':
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    np.random.seed(42)
+    set_seed(42)
     print("using device:", device)
     search_space = {
         "batch_size": [8, 16],
-        "lr": [5e-4, 1e-4],  # learning rate of the optimizer
-        "max_length": [30, 40], # size of the context window for the DT
+        "lr": [5e-4, 1e-4, 1e-3],  # learning rate of the optimizer
+        "max_length": [40, 50, 60], # size of the context window for the DT
     }
 
     best_config = None
@@ -260,6 +261,7 @@ if __name__ == '__main__':
 
     # grid search definition
     for batch_size, lr, max_length in product(*search_space.values()):
+        print('=' * 50)
         print(f"\nTesting config: batch_size={batch_size}, lr={lr}, max_length={max_length}")
 
         dataset = EpisodicHDF5Dataset(DATA_PATH, max_len=max_length)

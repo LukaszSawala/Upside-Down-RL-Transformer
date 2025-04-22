@@ -2,9 +2,9 @@
 #SBATCH --time=04:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=4GB
+#SBATCH --mem=2GB
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python model_evaluation_c2.py --episodes 3 --model_type DecisionTransformer --d_r_array_length 20
+python model_evaluation_c2.py --episodes 3 --model_type DecisionTransformer --d_r_array_length 32
 deactivate

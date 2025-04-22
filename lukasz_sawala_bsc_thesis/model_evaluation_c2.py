@@ -13,8 +13,8 @@ from collections import deque
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
-DT_MODEL_PATH = "../models/best_DT_grid1.pth"
-MAX_LENGTH = 40
+DT_MODEL_PATH = "../models/best_DT_grid_now_plt1.pth"
+MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
 
@@ -200,6 +200,7 @@ if __name__ == "__main__":
     sem_values = []
 
     for d_r in d_r_options:
+        print('=' * 50)
         print("Trying with d_r:", d_r)
         _, episodic_rewards = evaluate_get_rewards(env, model, d_h, d_r,
                                                    num_episodes=num_episodes,
