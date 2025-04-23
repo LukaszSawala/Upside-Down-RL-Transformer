@@ -20,7 +20,7 @@ ACT_DIM = 8           # antv5 action dim
 TOTAL_EPOCHS = 20
 GRAD_CLIP = 0.25
 DATA_PATH = "../data/processed/episodic_data.hdf5"
-DT_MODEL_PATH = "../models/best_DT_grid1.pth"
+DT_MODEL_PATH = "../models/best_DT_grid2.pth"
 
 
 # --- DATASET CLASS ---
@@ -191,7 +191,7 @@ def train(model, train_dataloader, val_dataloader, device,
         # Early Stopping
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
-            patience = 2
+            patience = 3
             best_model_dict = model.state_dict()
         else:
             patience -= 1
@@ -246,13 +246,14 @@ def evaluate(model, test_loader, device) -> float:
 
 
 if __name__ == '__main__':
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     set_seed(42)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("using device:", device)
+
     search_space = {
-        "batch_size": [8, 16],
-        "lr": [5e-4, 1e-4, 1e-3],  # learning rate of the optimizer
-        "max_length": [40, 50, 60],  # size of the context window for the DT
+        "batch_size": [8],      # tested: 8, 16, 32
+        "lr": [1e-3, 5e-3],  # learning rate of the optimizer (tested: 1e-5, 5e-5, 5e-4, 1e-4, 1e-3, 5e-3)
+        "max_length": [60, 70],  # size of the context window for the DT (tested: 20, 30, 40, 50, 60, 70)
     }
 
     best_config = None
