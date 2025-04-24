@@ -20,7 +20,7 @@ ACT_DIM = 8           # antv5 action dim
 TOTAL_EPOCHS = 20
 GRAD_CLIP = 0.25
 DATA_PATH = "../data/processed/episodic_data.hdf5"
-DT_MODEL_PATH = "../models/best_DT_grid2.pth"
+DT_MODEL_PATH = "../models/best_DT_grid_new.pth"
 
 
 # --- DATASET CLASS ---
@@ -251,15 +251,15 @@ if __name__ == '__main__':
     print("using device:", device)
 
     search_space = {
-        "batch_size": [8],      # tested: 8, 16, 32
+        "batch_size": [8, 4],      # tested: 8, 16, 32
         "lr": [1e-3, 5e-3],  # learning rate of the optimizer (tested: 1e-5, 5e-5, 5e-4, 1e-4, 1e-3, 5e-3)
-        "max_length": [60, 70],  # size of the context window for the DT (tested: 20, 30, 40, 50, 60, 70)
+        "max_length": [70, 80],  # size of the context window for the DT (tested: 20, 30, 40, 50, 60, 70, 80)
     }
 
     best_config = None
     best_test_loss = float('inf')
 
-    # monitor = ZeusMonitor(device)
+    # monitor = ZeusMonitor(gpu_indices=[0] if device.type == 'cuda' else [], cpu_indices=[0, 1])
     # monitor.begin_window("grid-search-dt")
 
     # grid search definition
@@ -304,6 +304,6 @@ if __name__ == '__main__':
             }
             torch.save(best_model_dict, DT_MODEL_PATH)
 
-    # mes = monitor.end_window("grid-search")
+    # mes = monitor.end_window("grid-search-dt")
     # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
     print(f"\nBest Config: {best_config}, Best Test Loss: {best_test_loss:.4f}")
