@@ -8,13 +8,14 @@ from scipy.stats import sem
 from utils import parse_arguments
 from transformers import DecisionTransformerModel, DecisionTransformerConfig
 from collections import deque
+from zeus.monitor import ZeusMonitor
 
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
-DT_MODEL_PATH = "../models/best_DT_grid_now_plt1.pth"
-MAX_LENGTH = 60
+DT_MODEL_PATH = "../models/best_DT_grid.pth"
+MAX_LENGTH = 70 
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
 
@@ -207,6 +208,9 @@ if __name__ == "__main__":
     average_rewards = []
     sem_values = []
 
+    #monitor = ZeusMonitor(gpu_indices=[0] if device.type == 'cuda' else [], cpu_indices=[0, 1])
+    #monitor.begin_window(f"evaluation_{args['model_type']}")
+
     for d_r in d_r_options:
         print('=' * 50)
         print("Trying with d_r:", d_r)
@@ -216,6 +220,9 @@ if __name__ == "__main__":
                                                    device=device)
         average_rewards.append(np.mean(episodic_rewards))
         sem_values.append(sem(episodic_rewards))
+
+    #mes = monitor.end_window(f"evaluation_{args['model_type']}")
+    #print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
 
     save_path = f"average_rewards_plot_{args['model_type']}.png"
     plot_average_rewards(average_rewards, sem_values, d_r_options, save_path=save_path)
