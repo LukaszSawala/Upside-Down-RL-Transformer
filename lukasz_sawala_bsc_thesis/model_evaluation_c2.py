@@ -15,7 +15,7 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-MAX_LENGTH = 70 
+MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
 
@@ -32,7 +32,9 @@ def load_nn_model_for_eval(input_size: int, hidden_size: int,
     return model
 
 
-def load_dt_model_for_eval(state_dim, act_dim, max_length, checkpoint_path, device) -> DecisionTransformerModel:
+def load_dt_model_for_eval(state_dim: int, act_dim: int, max_length: int,
+                           checkpoint_path: str,
+                           device: str) -> DecisionTransformerModel:
     """
     Loads a Decision Transformer model from a given checkpoint path for evaluation.
     """
