@@ -36,3 +36,18 @@ class NeuralNet(nn.Module):
         x = self.fc5(x)
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
+
+
+class ActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 2, act_dim),
+        )
+
+    def forward(self, x):
+        return self.net(x)
