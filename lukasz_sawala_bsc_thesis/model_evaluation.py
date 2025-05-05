@@ -13,19 +13,19 @@ from transformers import (
     AutoConfig,
 )
 from collections import deque
-
-# from zeus.monitor import ZeusMonitor # Assuming ZeusMonitor is not strictly necessary for this request
-import h5py
+# from zeus.monitor import ZeusMonitor 
 import torch.nn as nn
 
-INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
+
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/best_bert_udrl.pth"  # Path to your BERT UDRL model checkpoint
-MAX_LENGTH = 60
-STATE_DIM = INPUT_SIZE - 2  # used for the DT
+BERT_UDRL_MODEL_PATH = "../models/best_bert_udrl.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+MAX_LENGTH = 60
+INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
+STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
 
 def load_nn_model_for_eval(
@@ -257,11 +257,12 @@ def _evaluate_bert_udrl(
     episodic_rewards = []
     for _ in range(num_episodes):
         obs, _ = env.reset()
+        d_r_copy, d_h_copy = d_r, d_h
         total_reward = 0
         for _ in range(max_episode_length):
             obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
-            dr_tensor = torch.tensor([d_r], dtype=torch.float32).unsqueeze(0).to(device)
-            dh_tensor = torch.tensor([d_h], dtype=torch.float32).unsqueeze(0).to(device)
+            dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
+            dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
 
             with torch.no_grad():
                 encoded_r = d_r_encoder(dr_tensor).unsqueeze(1)  # reward to go
@@ -273,8 +274,8 @@ def _evaluate_bert_udrl(
 
             obs, reward, terminated, truncated, _ = env.step(action)
             total_reward += reward
-            d_r -= reward
-            d_h -= 1
+            d_r_copy -= reward
+            d_h_copy -= 1
             if terminated or truncated:
                 break
         episodic_rewards.append(total_reward)
