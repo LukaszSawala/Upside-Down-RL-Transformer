@@ -22,7 +22,7 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/.best_bert_udrl.pth"  # Path to your BERT UDRL model checkpoint
+BERT_UDRL_MODEL_PATH = "../models/best_bert_udrl.pth"  # Path to your BERT UDRL model checkpoint
 MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -66,7 +66,6 @@ def load_bert_udrl_model_for_eval(
     config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
-    config.hidden_size = hidden_size
     model_bert = AutoModel.from_config(config).to(device)
     d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
     d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
