@@ -1,9 +1,10 @@
-from models import NeuralNet
-import torch
-import gymnasium as gym
-import numpy as np
 import time
 
+import gymnasium as gym
+import numpy as np
+import torch
+
+from models import NeuralNet
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
@@ -54,7 +55,7 @@ if __name__ == "__main__":
         print(f"Current Reward: {total_reward:.2f} | Desired Reward Left: {d_r:.2f} | Desired Horizon Left: {d_h:.2f}")
 
         env.render()
-        time.sleep(0.1)
+        time.sleep(0.05)
 
         if terminated or truncated:
             done = True
