@@ -113,9 +113,9 @@ def create_tensor_dataloaders(
     val_dataset = TensorDataset(X_val_tensor, y_val_tensor)
     test_dataset = TensorDataset(X_test_tensor, y_test_tensor)
 
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=shuffle)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=shuffle)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle, generator=torch.Generator().manual_seed(42))
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=shuffle, generator=torch.Generator().manual_seed(42))
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=shuffle, generator=torch.Generator().manual_seed(42))
 
     return train_loader, val_loader, test_loader
 
