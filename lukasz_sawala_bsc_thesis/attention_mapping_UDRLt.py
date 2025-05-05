@@ -1,21 +1,22 @@
-import torch
+import h5py
 import matplotlib.pyplot as plt
+import seaborn as sns
+import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
 from transformers import AutoConfig, AutoModel
-import h5py
-import seaborn as sns
 from utils import set_seed
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
 MODEL_PATH = "../models/best_bert_udrl.pth"
 
+
 def _load_data() -> tuple:
     """
-    This function reads the concatenated dataset from the specified HDF5 file 
-    and extracts the observations, actions, rewards, and time-to-go values. 
-    The rewards and time-to-go values are reshaped to be 2D arrays. 
+    This function reads the concatenated dataset from the specified HDF5 file
+    and extracts the observations, actions, rewards, and time-to-go values.
+    The rewards and time-to-go values are reshaped to be 2D arrays.
     All data is converted to PyTorch tensors with float dtype.
 
     Returns:
@@ -31,9 +32,15 @@ def _load_data() -> tuple:
         actions = data["actions"][:]
         rewards = data["rewards_to_go"][:].reshape(-1, 1)
         horizons = data["time_to_go"][:].reshape(-1, 1)
-    return torch.tensor(states).float(), torch.tensor(rewards).float(), torch.tensor(horizons).float(), torch.tensor(actions).float()
+    return (
+        torch.tensor(states).float(),
+        torch.tensor(rewards).float(),
+        torch.tensor(horizons).float(),
+        torch.tensor(actions).float(),
+    )
 
-def load_test_loader(batch_size: int=16) -> DataLoader:
+
+def load_test_loader(batch_size: int = 16) -> DataLoader:
     """
     Creates the data loader for the test set, following the
     exact same logic as done in the training loop to ensure reproducibility.
@@ -42,8 +49,11 @@ def load_test_loader(batch_size: int=16) -> DataLoader:
     dataset = torch.utils.data.TensorDataset(X_s, X_r, X_h, y)
     lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
     lengths.append(len(dataset) - sum(lengths))
-    _, _, test_ds = random_split(dataset, lengths, generator=torch.Generator().manual_seed(42))
+    _, _, test_ds = random_split(
+        dataset, lengths, generator=torch.Generator().manual_seed(42)
+    )
     return DataLoader(test_ds, batch_size=batch_size, shuffle=False)
+
 
 def load_model() -> tuple:
     """
@@ -61,10 +71,14 @@ def load_model() -> tuple:
     model_bert = AutoModel.from_config(config).to(DEVICE)
     return model_bert, config.hidden_size
 
-def visualize_attention(model_bert: AutoModel, d_r_encoder: nn.Linear,
-                        d_h_encoder: nn.Linear, state_encoder: nn.Linear,
-                        test_loader: torch.utils.data.DataLoader,
-                        num_batches: int = 100) -> None:
+
+def visualize_attention(
+    model_bert: AutoModel,
+    d_r_encoder: nn.Linear,
+    d_h_encoder: nn.Linear,
+    state_encoder: nn.Linear,
+    test_loader: torch.utils.data.DataLoader,
+) -> None:
     """
     Computes and plots the average attention received by each input token
     (reward, horizon, state) across all layers, heads, and batches.
@@ -81,30 +95,22 @@ def visualize_attention(model_bert: AutoModel, d_r_encoder: nn.Linear,
 
     with torch.no_grad():
         for i, (s, r, h, _) in enumerate(test_loader):
-            if i >= num_batches:
-                break
-
             s, r, h = s.to(DEVICE), r.to(DEVICE), h.to(DEVICE)
-            emb_r = d_r_encoder(r).unsqueeze(1)   # (B, 1, H)
-            emb_h = d_h_encoder(h).unsqueeze(1)   # (B, 1, H)
-            emb_s = state_encoder(s).unsqueeze(1) # (B, 1, H)
-            x = torch.cat([emb_r, emb_h, emb_s], dim=1)  # (B, 3, H)
+            emb_r = d_r_encoder(r).unsqueeze(1)
+            emb_h = d_h_encoder(h).unsqueeze(1)
+            emb_s = state_encoder(s).unsqueeze(1)
+            x = torch.cat([emb_r, emb_h, emb_s], dim=1)
 
             output = model_bert(inputs_embeds=x)
-            attn = torch.stack(output.attentions)  # (L, B, H, T, T)
-
-            # Average over heads and layers → (B, T, T)
-            attn = attn.mean(dim=0).mean(dim=1)  # (B, T, T)
+            attn = torch.stack(output.attentions)
+            attn = attn.mean(dim=0).mean(dim=1)
 
             # For each sample in batch, accumulate attention RECEIVED by each token
-            # That's the column-wise average over rows: mean over source tokens
-            attention_received = attn.mean(dim=1).sum(dim=0)  # (T,) for each token
+            attention_received = attn.mean(dim=1).sum(dim=0)
             total_attention += attention_received
             count += attn.shape[0]
 
     avg_attention = (total_attention / count).detach().cpu().numpy()
-
-    # Plot bar chart
     tokens = ["reward", "horizon", "state"]
     plt.figure(figsize=(6, 4))
     sns.barplot(x=tokens, y=avg_attention, palette="viridis")
@@ -130,4 +136,6 @@ if __name__ == "__main__":
     d_h_encoder.load_state_dict(model_state["d_t"])
     state_encoder.load_state_dict(model_state["state"])
 
-    visualize_attention(model_bert, d_r_encoder, d_h_encoder, state_encoder, test_loader)
+    visualize_attention(
+        model_bert, d_r_encoder, d_h_encoder, state_encoder, test_loader
+    )
