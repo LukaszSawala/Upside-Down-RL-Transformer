@@ -17,7 +17,20 @@ STATE_DIM = 105
 ACT_DIM = 8
 
 
-def _load_data():
+def _load_data() -> tuple:
+    """
+    This function reads the concatenated dataset from the specified HDF5 file 
+    and extracts the observations, actions, rewards, and time-to-go values. 
+    The rewards and time-to-go values are reshaped to be 2D arrays. 
+    All data is converted to PyTorch tensors with float dtype.
+
+    Returns:
+        tuple: A tuple containing:
+            - states (torch.Tensor): Observations of shape (N, STATE_DIM).
+            - rewards (torch.Tensor): Rewards-to-go of shape (N, 1).
+            - horizons (torch.Tensor): Time-to-go of shape (N, 1).
+            - actions (torch.Tensor): Actions of shape (N, ACT_DIM).
+    """
     with h5py.File(DATA_PATH, "r") as f:
         data = f["concatenated_data"]
         states = data["observations"][:]
@@ -27,7 +40,16 @@ def _load_data():
     return states, rewards, times, actions  # times referred to as "horizon" later on and in the paper to ensure consistency
 
 
-def create_datasets():
+def create_datasets() -> tuple:
+    """
+    Creates train, validation, and test datasets from the concatenated dataset.
+    Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train, 10% validation, and 10% test sets.
+    Returns:
+        tuple: A tuple containing:
+            - train_ds (TensorDataset): The training dataset.
+            - val_ds (TensorDataset): The validation dataset.
+            - test_ds (TensorDataset): The test dataset.
+    """
     X_s, X_r, X_h, y = _load_data()
     X_s, X_r, X_h, y = map(torch.tensor, (X_s, X_r, X_h, y))
     dataset = TensorDataset(X_s.float(), X_r.float(), X_h.float(), y.float())
@@ -39,15 +61,46 @@ def create_datasets():
     return train_ds, val_ds, test_ds
 
 
-def create_dataloaders(train_ds, val_ds, test_ds, batch_size=16):
-    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, generator=torch.Generator().manual_seed(42))
+def create_dataloaders(train_ds: TensorDataset, val_ds: TensorDataset,
+                       test_ds: TensorDataset, batch_size: int=16) -> tuple:
+    """
+    Create DataLoader objects for the train, validation, and test datasets.
+    Args:
+        train_ds (Dataset): The training dataset.
+        val_ds (Dataset): The validation dataset.
+        test_ds (Dataset): The test dataset.
+        batch_size (int, optional): Number of samples per batch. Defaults to 16.
+
+    Returns:
+        tuple: A tuple containing:
+            - train_loader (DataLoader): DataLoader for the training dataset.
+            - val_loader (DataLoader): DataLoader for the validation dataset.
+            - test_loader (DataLoader): DataLoader for the test dataset.
+    """
+
+    train_loader = DataLoader(train_ds, batch_size=batch_size, 
+                              shuffle=True, generator=torch.Generator().manual_seed(42)
+                              )
     val_loader = DataLoader(val_ds, batch_size=batch_size)
     test_loader = DataLoader(test_ds, batch_size=batch_size)
     return train_loader, val_loader, test_loader
 
 
-def initiate_UDRLt_model():
-    # Load untrained BERT-small
+def initiate_UDRLt_model() -> tuple:
+    """
+    Initializes the Upside-Down Reinforcement Learning Transformer (UDRLt) model components.
+
+    This function configures and initializes a BERT model and several linear layers
+    for encoding the reward, horizon, and state, as well as a linear head for action prediction.
+
+    Returns:
+        tuple: A tuple containing:
+            - model_bert (AutoModel): The initialized BERT model.
+            - d_r_encoder (nn.Linear): Linear layer for encoding reward.
+            - d_h_encoder (nn.Linear): Linear layer for encoding horizon.
+            - state_encoder (nn.Linear): Linear layer for encoding state.
+            - head (nn.Linear): Linear layer for predicting actions.
+    """
     config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
@@ -61,7 +114,20 @@ def initiate_UDRLt_model():
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
 
 
-def train(learning_rate, epochs, train_loader, val_loader):
+def train(learning_rate: float, epochs: int,
+          train_loader: DataLoader, val_loader: DataLoader) -> dict:
+    """
+    Trains the Upside-Down Reinforcement Learning Transformer (UDRLt) model on the
+    given data, using the specified learning rate and number of epochs.
+
+    Returns:
+        dict: A dictionary containing:
+            - model_bert (AutoModel): The trained BERT model.
+            - d_r_encoder (nn.Linear): The trained linear layer for encoding reward.
+            - d_h_encoder (nn.Linear): The trained linear layer for encoding horizon.
+            - state_encoder (nn.Linear): The trained linear layer for encoding state.
+            - head (nn.Linear): The trained linear layer for predicting actions.
+    """
     model_bert, d_r_encoder, d_h_encoder, state_encoder, head = initiate_UDRLt_model()
     optimizer = optim.Adam(
         list(model_bert.parameters())
@@ -77,7 +143,12 @@ def train(learning_rate, epochs, train_loader, val_loader):
     patience = PATIENCE
 
     for epoch in range(epochs):
+        # Training
         model_bert.train()
+        d_r_encoder.train()
+        d_h_encoder.train()
+        state_encoder.train()
+        head.train()
         total_train_loss = 0.0
         for s, r, h, a in tqdm(train_loader, desc=f"Epoch {epoch + 1}"):
             s, r, h, a = s.to(DEVICE), r.to(DEVICE), h.to(DEVICE), a.to(DEVICE)
@@ -96,9 +167,9 @@ def train(learning_rate, epochs, train_loader, val_loader):
 
         # Validation
         model_bert.eval()
-        encoded_s.eval()
-        encoded_r.eval()
-        encoded_h.eval()
+        d_r_encoder.eval()
+        d_h_encoder.eval()
+        state_encoder.eval()
         head.eval()
         total_val_loss = 0.0
         with torch.no_grad():
@@ -136,8 +207,12 @@ def train(learning_rate, epochs, train_loader, val_loader):
     return current_best_model
 
 
-def evaluate(model_state, test_loader):
-    """Evaluates the UDRLt model on the test set."""
+def evaluate(model_state: dict, test_loader: torch.utils.data.DataLoader) -> float:
+    """
+    Evaluates the UDRLt model on the test set.
+    Returns:
+        float: The average loss over the test set.
+    """
     model_bert, d_r_encoder, d_h_encoder, state_encoder, head = initiate_UDRLt_model()
     loss_fn = nn.MSELoss()
 
@@ -176,7 +251,11 @@ def evaluate(model_state, test_loader):
     return avg_loss
 
 
-def grid_search():
+def grid_search() -> None:
+    """
+    Performs a grid search over the given hyperparameters and saves the best model found.
+    Saves the best model found to BEST_MODEL_PATH and prints out the best config and best test loss.
+    """
     batch_sizes = [16, 8]
     learning_rates = [1e-4, 5e-5]
     epochs_list = [10, 20]
@@ -214,5 +293,6 @@ def grid_search():
 
 
 if __name__ == "__main__":
+    print("using device ", DEVICE)
     set_seed(42)
     grid_search()
