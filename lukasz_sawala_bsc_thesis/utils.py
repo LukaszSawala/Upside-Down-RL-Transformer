@@ -32,7 +32,7 @@ def parse_arguments(training: bool = False) -> dict:
     parser.add_argument(
         "--model_type",
         type=str,
-        choices=["NeuralNet", "DecisionTransformer", "UpsideDownTransformer"],
+        choices=["NeuralNet", "DecisionTransformer", "BERT_UDRL"],
         default="NeuralNet",
     )
     parser.add_argument("--episodes", type=int, default=15)
