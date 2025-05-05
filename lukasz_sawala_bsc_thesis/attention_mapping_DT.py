@@ -2,7 +2,6 @@ import torch
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from transformers import DecisionTransformerModel, DecisionTransformerConfig
 
 # --------- CONFIG ---------
@@ -13,18 +12,7 @@ STATE_DIM = 105
 ACT_DIM = 8
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# --------- Load Model ---------
-config = DecisionTransformerConfig(
-    state_dim=STATE_DIM,
-    act_dim=ACT_DIM,
-    max_length=MAX_LEN,
-)
-model = DecisionTransformerModel(config)
-model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE))
-model = model.to(DEVICE)
-model.eval()
 
-# --------- Sample One Window ---------
 def sample_episode_window(file_path: str, max_len: int = 60) -> dict:
     data = h5py.File(file_path, 'r')['episodic_data']
     episodes = list(data.keys())
@@ -59,14 +47,14 @@ def sample_episode_window(file_path: str, max_len: int = 60) -> dict:
         'attention_mask': torch.tensor(mask, dtype=torch.float32).unsqueeze(0),
     }
 
-# --------- Token Labeling ---------
+
 def make_token_labels(max_len: int) -> list:
     labels = []
     for t in range(max_len):
         labels.extend([f"s_{t}", f"a_{t}", f"r_{t+1}"])
     return labels[:3 * max_len]
 
-# --------- Averaged Attention Visualization ---------
+
 def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int = 15):
     token_importances = None
 
@@ -85,8 +73,8 @@ def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int
                 output_attentions=True,
             )
 
-        attn = outputs.attentions[0]  # (1, heads, seq, seq)
-        avg_attn = attn.mean(dim=1).squeeze(0).cpu().numpy()  # (seq, seq)
+        attn = outputs.attentions[0]
+        avg_attn = attn.mean(dim=1).squeeze(0).cpu().numpy()  
         mean_attention = avg_attn.mean(axis=0)  # Attention received by each token
 
         if token_importances is None:
@@ -102,11 +90,8 @@ def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int
     top_indices = sorted_idx[:top_k]
     top_labels = [token_labels[i] for i in top_indices]
     top_scores = token_importances[top_indices]
-
-    # Highlight reward tokens in red
     colors = ['red' if label.startswith('r_') else 'royalblue' for label in top_labels]
 
-    # Plot
     plt.figure(figsize=(10, 5))
     plt.barh(top_labels[::-1], top_scores[::-1], color=colors[::-1])
     plt.xlabel("Avg Attention Received")
@@ -117,5 +102,17 @@ def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int
     plt.savefig("attention_importance_DT_top20.png")
     plt.show()
 
-# --------- Run ---------
-visualize_attention_importance_avg(model, num_batches=10000, top_k=20)
+
+if __name__ == "__main__":
+    print("using device ", DEVICE)
+    config = DecisionTransformerConfig(
+        state_dim=STATE_DIM,
+        act_dim=ACT_DIM,
+        max_length=MAX_LEN,
+    )
+    model = DecisionTransformerModel(config)
+    model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE))
+    model = model.to(DEVICE)
+    model.eval()
+
+    visualize_attention_importance_avg(model, num_batches=10000, top_k=20)

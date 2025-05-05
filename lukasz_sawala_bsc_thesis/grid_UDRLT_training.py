@@ -62,7 +62,7 @@ def create_datasets() -> tuple:
 
 
 def create_dataloaders(train_ds: TensorDataset, val_ds: TensorDataset,
-                       test_ds: TensorDataset, batch_size: int=16) -> tuple:
+                       test_ds: TensorDataset, batch_size: int = 16) -> tuple:
     """
     Create DataLoader objects for the train, validation, and test datasets.
     Args:
@@ -78,7 +78,7 @@ def create_dataloaders(train_ds: TensorDataset, val_ds: TensorDataset,
             - test_loader (DataLoader): DataLoader for the test dataset.
     """
 
-    train_loader = DataLoader(train_ds, batch_size=batch_size, 
+    train_loader = DataLoader(train_ds, batch_size=batch_size,
                               shuffle=True, generator=torch.Generator().manual_seed(42)
                               )
     val_loader = DataLoader(val_ds, batch_size=batch_size)
@@ -231,6 +231,8 @@ def evaluate(model_state: dict, test_loader: torch.utils.data.DataLoader) -> flo
     head.eval()
 
     total_loss = 0.0
+
+    use the action head!
 
     with torch.no_grad():
         for s, r, h, a in test_loader:
