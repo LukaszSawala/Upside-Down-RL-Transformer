@@ -13,7 +13,7 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_h
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-UDRLT_MODEL_PATH = "../models/best_udrlt_grid_rn.pth"
+UDRLT_MODEL_PATH = "../models/best_bert_udrl_rn.pth"
 MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2
 
@@ -141,7 +141,10 @@ def _run_udrlt_low_reward_test(env, model_bert, d_r_enc, d_h_enc, state_enc, hea
         d_r_embed = d_r_enc(torch.tensor([[d_r]], dtype=torch.float32).to(device))
         d_h_embed = d_h_enc(torch.tensor([[d_h]], dtype=torch.float32).to(device))
 
-        input_embeds = torch.cat([d_r_embed, d_h_embed, state_embed], dim=1)
+        input_embeds = torch.stack(
+            [d_r_embed.squeeze(1), d_h_embed.squeeze(1), state_embed.squeeze(1)], dim=1
+        )
+
         with torch.no_grad():
             output = model_bert(inputs_embeds=input_embeds)
             action = head(output.last_hidden_state[:, -1]).squeeze(0).cpu().numpy()
@@ -176,9 +179,9 @@ if __name__ == "__main__":
     model_choice = "UDRLt"  # Change to "NeuralNet", "DecisionTransformer", or "UDRLt"
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     env = gym.make("Ant-v5", render_mode="human")
-    d_r = 0.0
+    d_r = 1000.0
     d_h = 1000.0
-    time_interval = 0.02
+    time_interval = 0.05
 
     if model_choice == "NeuralNet":
         model = load_nn_model_for_eval(INPUT_SIZE, 256, OUTPUT_SIZE, NN_MODEL_PATH, device)
