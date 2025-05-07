@@ -133,7 +133,11 @@ if __name__ == "__main__":
     model_state = torch.load(MODEL_PATH)
     model_bert.load_state_dict(model_state["bert"])
     d_r_encoder.load_state_dict(model_state["d_r"])
+<<<<<<< HEAD
     d_h_encoder.load_state_dict(model_state["d_h"])
+=======
+    d_h_encoder.load_state_dict(model_state["d_t"])
+>>>>>>> 52a6acd3dfdbb7b9045bfdc2b4266d5660ad1aca
     state_encoder.load_state_dict(model_state["state"])
 
     visualize_attention(
