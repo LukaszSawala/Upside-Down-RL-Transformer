@@ -20,7 +20,7 @@ import torch.nn as nn
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/best_bert_udrl.pth"
+BERT_UDRL_MODEL_PATH = "../models/bert-2epochs.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 MAX_LENGTH = 60
@@ -28,13 +28,9 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
 
-def load_nn_model_for_eval(
-    input_size: int,
-    hidden_size: int,
-    output_size: int,
-    checkpoint_path: str,
-    device: str,
-) -> NeuralNet:
+def load_nn_model_for_eval(input_size: int, hidden_size: int,
+                           output_size: int, checkpoint_path: str,
+                           device: str) -> NeuralNet:
     """Loads a Neural Network model for evaluation."""
     model = NeuralNet(
         input_size=input_size, hidden_size=hidden_size, output_size=output_size
@@ -45,9 +41,9 @@ def load_nn_model_for_eval(
     return model
 
 
-def load_dt_model_for_eval(
-    state_dim: int, act_dim: int, max_length: int, checkpoint_path: str, device: str
-) -> DecisionTransformerModel:
+def load_dt_model_for_eval(state_dim: int, act_dim: int,
+                           max_length: int, checkpoint_path: str,
+                           device: str) -> DecisionTransformerModel:
     """Loads a Decision Transformer model for evaluation."""
     config = DecisionTransformerConfig(
         state_dim=state_dim, act_dim=act_dim, max_length=max_length
@@ -59,9 +55,8 @@ def load_dt_model_for_eval(
     return model
 
 
-def load_bert_udrl_model_for_eval(
-    state_dim: int, act_dim: int, checkpoint_path: str, device: str
-) -> tuple:
+def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
+                                  checkpoint_path: str, device: str) -> tuple:
     """Loads the BERT UDRL model components for evaluation."""
     config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
@@ -88,16 +83,11 @@ def load_bert_udrl_model_for_eval(
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
 
 
-def evaluate_get_rewards(
-    env: gym.Env,
-    model,
-    d_h: float,
-    d_r: float,
-    num_episodes: int = 1,
-    max_episode_length: int = 1000,
-    model_type: str = "NeuralNet",
-    device: str = "cpu",
-) -> tuple:
+def evaluate_get_rewards(env: gym.Env, model, d_h: float,
+                         d_r: float, num_episodes: int = 1,
+                         max_episode_length: int = 1000,
+                         model_type: str = "NeuralNet",
+                         device: str = "cpu") -> tuple:
     """
     Evaluate the performance of the model on the given environment.
     """
@@ -117,14 +107,9 @@ def evaluate_get_rewards(
         raise ValueError(f"Unsupported model_type: {model_type}")
 
 
-def _evaluate_neural_net(
-    env: gym.Env,
-    model,
-    d_h: float,
-    d_r: float,
-    num_episodes: int,
-    max_episode_length: int,
-) -> tuple:
+def _evaluate_neural_net(env: gym.Env, model, d_h: float,
+                         d_r: float, num_episodes: int,
+                         max_episode_length: int) -> tuple:
     """
     Evaluate the performance of the Neural Network model.
     """
@@ -156,9 +141,9 @@ def _evaluate_neural_net(
     return np.mean(episodic_rewards), episodic_rewards
 
 
-def _evaluate_decision_transformer(
-    env: gym.Env, model, d_r: float, num_episodes: int, max_episode_length: int, device
-) -> tuple:
+def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
+                                   num_episodes: int, max_episode_length: int,
+                                   device: str = "cpu") -> tuple:
     """
     Evaluate the performance of the Decision Transformer model.
     """
@@ -238,19 +223,10 @@ def _evaluate_decision_transformer(
     return np.mean(episodic_rewards), episodic_rewards
 
 
-def _evaluate_bert_udrl(
-    env: gym.Env,
-    model_bert,
-    d_r_encoder,
-    d_h_encoder,
-    state_encoder,
-    head,
-    d_r: float,
-    d_h: float,
-    num_episodes: int,
-    max_episode_length: int,
-    device: str,
-) -> tuple:
+def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
+                        d_h_encoder, state_encoder, head, d_r: float,
+                        d_h: float, num_episodes: int, max_episode_length: int,
+                        device: str) -> tuple:
     """
     Evaluate the performance of the BERT UDRL model.
     """

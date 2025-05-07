@@ -133,7 +133,7 @@ if __name__ == "__main__":
     model_state = torch.load(MODEL_PATH)
     model_bert.load_state_dict(model_state["bert"])
     d_r_encoder.load_state_dict(model_state["d_r"])
-    d_h_encoder.load_state_dict(model_state["d_t"])
+    d_h_encoder.load_state_dict(model_state["d_h"])
     state_encoder.load_state_dict(model_state["state"])
 
     visualize_attention(
