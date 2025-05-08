@@ -9,7 +9,7 @@ from utils import set_seed
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-MODEL_PATH = "../models/best_bert_udrl.pth"
+MODEL_PATH = "../models/bert_s_grid.pth"
 
 
 def _load_data() -> tuple:
