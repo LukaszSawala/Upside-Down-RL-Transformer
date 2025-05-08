@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=01:00:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
@@ -8,7 +8,7 @@
 source .venv/bin/activate
 
 cd lukasz_sawala_bsc_thesis/
-python grid_UDRLT_training.py
+python attention_mapping_UDRLt.py
 
 
 deactivate

@@ -1,11 +1,10 @@
 import torch
 import gymnasium as gym
 import numpy as np
+import torch.nn as nn
 import matplotlib.pyplot as plt
 import seaborn as sns
-from models import NeuralNet
 from scipy.stats import sem
-from utils import parse_arguments
 from transformers import (
     DecisionTransformerModel,
     DecisionTransformerConfig,
@@ -14,14 +13,20 @@ from transformers import (
 )
 from collections import deque
 # from zeus.monitor import ZeusMonitor 
-import torch.nn as nn
+from utils import parse_arguments
+from models import NeuralNet, ActionHead
+
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/bert-2epochs.pth"
+BERT_UDRL_MODEL_PATH = "../models/bert_s_actionhead.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+"""
+Best loss recorded: CLS, batch 8, lr 5e-5, epoch 1: 0.012
+"""
 
 MAX_LENGTH = 60
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
@@ -65,12 +70,13 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
     d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
-    head = nn.Linear(config.hidden_size, act_dim).to(device)
+    #head = nn.Linear(config.hidden_size, act_dim).to(device)
+    head = ActionHead(config.hidden_size, act_dim).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])
     d_r_encoder.load_state_dict(checkpoint["d_r"])
-    d_h_encoder.load_state_dict(checkpoint["d_t"])
+    d_h_encoder.load_state_dict(checkpoint["d_h"])
     state_encoder.load_state_dict(checkpoint["state"])
     head.load_state_dict(checkpoint["head"])
 

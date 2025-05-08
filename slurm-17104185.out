@@ -1,0 +1,149 @@
+starting evaluation for args: {'experiment_id': '8e64c50fb74f444681572bc5daf887f3', 'model_type': 'BERT_UDRL', 'episodes': 3, 'd_r_array_length': 35} device: cpu
+==================================================
+Trying with d_r: 2000
+max-min reward for this dr (BERT UDRL): 4890.278604261584 - 2490.391746656572
+==================================================
+Trying with d_r: 2100
+max-min reward for this dr (BERT UDRL): 4688.072900645753 - 4352.072720093381
+==================================================
+Trying with d_r: 2200
+max-min reward for this dr (BERT UDRL): 4777.570480682825 - 4613.704595765332
+==================================================
+Trying with d_r: 2300
+max-min reward for this dr (BERT UDRL): 4620.987056119948 - 1539.0013827789357
+==================================================
+Trying with d_r: 2400
+max-min reward for this dr (BERT UDRL): 4513.37690887307 - 2658.5723736478135
+==================================================
+Trying with d_r: 2500
+max-min reward for this dr (BERT UDRL): 4644.447622649328 - 1618.6632807062651
+==================================================
+Trying with d_r: 2600
+max-min reward for this dr (BERT UDRL): 4589.0900617034085 - 4438.080292747759
+==================================================
+Trying with d_r: 2700
+max-min reward for this dr (BERT UDRL): 4788.022728818892 - 957.33141650002
+==================================================
+Trying with d_r: 2800
+max-min reward for this dr (BERT UDRL): 4697.893120001486 - 4624.610742302138
+==================================================
+Trying with d_r: 2900
+max-min reward for this dr (BERT UDRL): 4846.581368495511 - 8.036945489365309
+==================================================
+Trying with d_r: 3000
+max-min reward for this dr (BERT UDRL): 4697.623610000131 - 4669.777343781167
+==================================================
+Trying with d_r: 3100
+max-min reward for this dr (BERT UDRL): 4400.577020700711 - 2090.616307521582
+==================================================
+Trying with d_r: 3200
+max-min reward for this dr (BERT UDRL): 4625.8236402213215 - 4502.968018598448
+==================================================
+Trying with d_r: 3300
+max-min reward for this dr (BERT UDRL): 4781.6258535654415 - 4441.968294570643
+==================================================
+Trying with d_r: 3400
+max-min reward for this dr (BERT UDRL): 4696.720802563141 - 3473.2478407014396
+==================================================
+Trying with d_r: 3500
+max-min reward for this dr (BERT UDRL): 4854.40377309752 - 335.36484465502394
+==================================================
+Trying with d_r: 3600
+max-min reward for this dr (BERT UDRL): 4912.446098281748 - 4214.141542193561
+==================================================
+Trying with d_r: 3700
+max-min reward for this dr (BERT UDRL): 4711.413168321512 - 2188.222792763567
+==================================================
+Trying with d_r: 3800
+max-min reward for this dr (BERT UDRL): 4788.8728650810735 - 259.7922983070536
+==================================================
+Trying with d_r: 3900
+max-min reward for this dr (BERT UDRL): 4857.581332617493 - 9.764712887977584
+==================================================
+Trying with d_r: 4000
+max-min reward for this dr (BERT UDRL): 4866.011173987216 - 524.5600542007109
+==================================================
+Trying with d_r: 4100
+max-min reward for this dr (BERT UDRL): 4744.151025784788 - 1078.5672754367852
+==================================================
+Trying with d_r: 4200
+max-min reward for this dr (BERT UDRL): 4904.1289675262715 - 3394.5962828661213
+==================================================
+Trying with d_r: 4300
+max-min reward for this dr (BERT UDRL): 4768.866152605768 - 3008.7982316769953
+==================================================
+Trying with d_r: 4400
+max-min reward for this dr (BERT UDRL): 4906.507354352515 - 4450.07783115928
+==================================================
+Trying with d_r: 4500
+max-min reward for this dr (BERT UDRL): 4653.73724123578 - 4437.778614087178
+==================================================
+Trying with d_r: 4600
+max-min reward for this dr (BERT UDRL): 4824.432106715084 - 4282.746795199425
+==================================================
+Trying with d_r: 4700
+max-min reward for this dr (BERT UDRL): 4750.7073292470595 - 1596.617598581553
+==================================================
+Trying with d_r: 4800
+max-min reward for this dr (BERT UDRL): 4669.692798594914 - 4209.135921676972
+==================================================
+Trying with d_r: 4900
+max-min reward for this dr (BERT UDRL): 4416.334223030801 - 696.2848703451257
+==================================================
+Trying with d_r: 5000
+max-min reward for this dr (BERT UDRL): 4739.6579103884305 - 4588.400440877958
+==================================================
+Trying with d_r: 5100
+max-min reward for this dr (BERT UDRL): 4621.946548096398 - 1800.9731610975564
+==================================================
+Trying with d_r: 5200
+max-min reward for this dr (BERT UDRL): 4788.534458218248 - 4405.114606849516
+==================================================
+Trying with d_r: 5300
+max-min reward for this dr (BERT UDRL): 4560.793591750571 - 4534.38880100567
+==================================================
+Trying with d_r: 5400
+max-min reward for this dr (BERT UDRL): 4636.020951233607 - 4596.066375996439
+Average rewards plot saved in average_rewards_plot_BERT_UDRL.png
+
+###############################################################################
+Hábrók Cluster
+Job 17104185 for user s5173019
+Finished at: Thu May  8 18:35:11 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17104185
+Name                           : jobscript.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-05-08T18:08:20
+Start                          : 2025-05-08T18:08:21
+End                            : 2025-05-08T18:35:07
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:26:46
+Used CPU time                  : 00:24:07 (Efficiency: 90.08%)
+% User (Computation)           : 99.89%
+% System (I/O)                 :  0.11%
+Total memory reserved          : 4G
+Maximum memory used            : 548.89M
+Hints and tips      :
+ 1) You requested much more CPU memory than your program used.
+    Please reduce the requested amount of memory.
+ *) For more information on these issues see:
+    https://wiki.hpc.rug.nl/habrok/additional_information/job_hints
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

@@ -9,7 +9,7 @@ from utils import set_seed
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-MODEL_PATH = "../models/best_bert_udrl.pth"
+MODEL_PATH = "../models/bert_s_grid.pth"
 
 
 def _load_data() -> tuple:
@@ -133,11 +133,7 @@ if __name__ == "__main__":
     model_state = torch.load(MODEL_PATH)
     model_bert.load_state_dict(model_state["bert"])
     d_r_encoder.load_state_dict(model_state["d_r"])
-<<<<<<< HEAD
-    d_h_encoder.load_state_dict(model_state["d_h"])
-=======
     d_h_encoder.load_state_dict(model_state["d_t"])
->>>>>>> 52a6acd3dfdbb7b9045bfdc2b4266d5660ad1aca
     state_encoder.load_state_dict(model_state["state"])
 
     visualize_attention(

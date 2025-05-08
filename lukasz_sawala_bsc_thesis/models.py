@@ -47,6 +47,7 @@ class ActionHead(nn.Module):
             nn.Linear(hidden_size, hidden_size // 2),
             nn.ReLU(),
             nn.Linear(hidden_size // 2, act_dim),
+            nn.Tanh(),
         )
 
     def forward(self, x):
