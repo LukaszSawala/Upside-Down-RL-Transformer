@@ -14,18 +14,19 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor 
 from utils import parse_arguments
-from models import NeuralNet, ActionHead
+from models import NeuralNet, ActionHead, ScalarEncoder
 
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/bert_s_actionhead.pth"
+BERT_UDRL_MODEL_PATH = "supaugmented_frozen_berttiny_encoder_actionhead.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
 Best loss recorded: CLS, batch 8, lr 5e-5, epoch 1: 0.012
+supaugmented; loss 0.02
 """
 
 MAX_LENGTH = 60
@@ -63,12 +64,14 @@ def load_dt_model_for_eval(state_dim: int, act_dim: int,
 def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
                                   checkpoint_path: str, device: str) -> tuple:
     """Loads the BERT UDRL model components for evaluation."""
-    config = AutoConfig.from_pretrained("prajjwal1/bert-small")
+    config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
     model_bert = AutoModel.from_config(config).to(device)
-    d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
-    d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
+    #d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
+    #d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
+    d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
+    d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
     #head = nn.Linear(config.hidden_size, act_dim).to(device)
     head = ActionHead(config.hidden_size, act_dim).to(device)
@@ -130,7 +133,7 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
                     np.concatenate((obs, [d_r_copy, d_h_copy])), dtype=torch.float32
                 )
                 .unsqueeze(0)
-                .to(model.head.weight.device)
+                .to(DEVICE)
             )
             with torch.no_grad():
                 action = model(obs_input).squeeze(0).cpu().numpy()
@@ -302,6 +305,8 @@ def plot_average_rewards(
     plt.xlabel("d_r", fontsize=12)
     plt.ylabel("Average Reward", fontsize=12)
     plt.title(title, fontsize=14, fontweight="bold")
+    plt.ylim(0, 5000)
+    plt.yticks(np.arange(0, 5001, 500))
     sns.despine()
     plt.savefig(save_path)
     print(f"Average rewards plot saved in {save_path}")
@@ -330,16 +335,16 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [2000 + i * 100 for i in range(args["d_r_array_length"])]
+    d_r_options = [i * 100 for i in range(args["d_r_array_length"])]
     num_episodes = args["episodes"]
 
     env = gym.make("Ant-v5")  # render mode 'human' for visualization
     average_rewards = []
     sem_values = []
-
+    error_percentages = []
     # monitor = ZeusMonitor(gpu_indices=[0] if device.type == 'cuda' else [], cpu_indices=[0, 1])
     # monitor.begin_window(f"evaluation_{args['model_type']}")
-
+    
     for d_r in d_r_options:
         print("=" * 50)
         print("Trying with d_r:", d_r)
@@ -355,9 +360,12 @@ if __name__ == "__main__":
         average_rewards.append(np.mean(episodic_rewards))
         sem_values.append(sem(episodic_rewards))
 
+        percentage_error_dr = abs(d_r - np.mean(episodic_rewards)) / d_r
+        error_percentages.append(percentage_error_dr) 
     # mes = monitor.end_window(f"evaluation_{args['model_type']}")
     # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
 
     save_path = f"average_rewards_plot_{args['model_type']}.png"
     plot_average_rewards(average_rewards, sem_values, d_r_options, save_path=save_path)
+    print("Average error:", np.mean(error_percentages))
     env.close()

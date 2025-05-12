@@ -44,6 +44,8 @@ class ActionHead(nn.Module):
         self.net = nn.Sequential(
             nn.Linear(hidden_size, hidden_size),
             nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
             nn.Linear(hidden_size, hidden_size // 2),
             nn.ReLU(),
             nn.Linear(hidden_size // 2, act_dim),
@@ -52,3 +54,16 @@ class ActionHead(nn.Module):
 
     def forward(self, x):
         return self.net(x)
+
+      
+class ScalarEncoder(nn.Module):
+    def __init__(self, hidden_size: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(1, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size//2, hidden_size),
+        )
+
+    def forward(self, x):
+        return self.net(x)   

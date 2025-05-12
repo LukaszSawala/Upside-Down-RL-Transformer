@@ -13,12 +13,12 @@ from models import ActionHead
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PATIENCE = 2
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "newgrid_best_bert_udrl.pth" 
+BEST_MODEL_PATH = "frozen_actionhead_best_bert_udrl.pth" 
 STATE_DIM = 105
 ACT_DIM = 8
 
 """
-Test Loss for config (BATCH_SIZE=8, LEARNING_RATE=1e-05, EPOCHS=15): 0.0167 (no action head)
+Test Loss for config (BATCH_SIZE=8, LEARNING_RATE=1e-05, EPOCHS=15): 0.0167 (no action head, small)
 """
 
 def _load_data() -> tuple:
@@ -122,10 +122,18 @@ def initiate_UDRLt_model() -> tuple:
     model_bert = AutoModel.from_config(config).to(DEVICE)
 
     d_r_encoder = nn.Linear(1, config.hidden_size).to(DEVICE)
+    for param in d_r_encoder.parameters():
+        param.requires_grad = False
+
     d_h_encoder = nn.Linear(1, config.hidden_size).to(DEVICE)
+    for param in d_h_encoder.parameters():
+        param.requires_grad = False
+
     state_encoder = nn.Linear(STATE_DIM, config.hidden_size).to(DEVICE)
-    head = nn.Linear(config.hidden_size, ACT_DIM).to(DEVICE)
-    # head = ActionHead(config.hidden_size, ACT_DIM).to(DEVICE)
+    for param in state_encoder.parameters():
+        param.requires_grad = False
+    #head = nn.Linear(config.hidden_size, ACT_DIM).to(DEVICE)
+    head = ActionHead(config.hidden_size, ACT_DIM).to(DEVICE)
 
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
 
@@ -144,9 +152,6 @@ def train(learning_rate: float, epochs: int,
 
     optimizer = optim.Adam(
         list(model_bert.parameters())
-        + list(d_r_encoder.parameters())
-        + list(d_h_encoder.parameters())
-        + list(state_encoder.parameters())
         + list(head.parameters()),
         lr=learning_rate,
     )
@@ -165,9 +170,6 @@ def train(learning_rate: float, epochs: int,
     for epoch in range(epochs):
         # Training
         model_bert.train()
-        d_r_encoder.train()
-        d_h_encoder.train()
-        state_encoder.train()
         head.train()
         total_train_loss = 0.0
         
@@ -213,9 +215,6 @@ def train(learning_rate: float, epochs: int,
 
         # Validation
         model_bert.eval()
-        d_r_encoder.eval()
-        d_h_encoder.eval()
-        state_encoder.eval()
         head.eval()
         total_val_loss = 0.0
         
@@ -353,8 +352,8 @@ def grid_search() -> None:
     Performs a grid search over the given hyperparameters and saves the best model found.
     Saves the best model found to BEST_MODEL_PATH and prints out the best config and best test loss.
     """
-    batch_sizes = [8, 16, 4] # Original: [16, 8]
-    learning_rates = [5e-5, 1e-5] # Original: [1e-4, 5e-5]
+    batch_sizes = [8] # Original: [16, 8]
+    learning_rates = [5e-5] # Original: [1e-4, 5e-5]
     epochs_list = [15] # Original: [10, 20]
     
     # If your CPU usage is low during training, increase num_workers.
