@@ -14,14 +14,15 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor 
 from utils import parse_arguments
-from models import NeuralNet, ActionHead, ScalarEncoder
+from models import NeuralNet, ActionHead, ScalarEncoder, BigNeuralNet
 
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "supaugmented_frozen_berttiny_encoder_actionhead.pth"
+BERT_UDRL_MODEL_PATH = "../models/bert_medium.pth"
+BERT_MLP_BERT_PATH = "new-berttiny-largemlp.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -64,17 +65,17 @@ def load_dt_model_for_eval(state_dim: int, act_dim: int,
 def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
                                   checkpoint_path: str, device: str) -> tuple:
     """Loads the BERT UDRL model components for evaluation."""
-    config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
+    config = AutoConfig.from_pretrained("prajjwal1/bert-medium")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
     model_bert = AutoModel.from_config(config).to(device)
-    #d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
-    #d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
-    d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
-    d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
+    d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
+    d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
+    #d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
+    #d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
-    #head = nn.Linear(config.hidden_size, act_dim).to(device)
-    head = ActionHead(config.hidden_size, act_dim).to(device)
+    head = nn.Linear(config.hidden_size, act_dim).to(device)
+    #head = ActionHead(config.hidden_size, act_dim).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])
@@ -90,6 +91,31 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     head.eval()
 
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
+
+
+def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str):
+    # Load BERT config
+    config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
+    config.vocab_size = 1
+    config.max_position_embeddings = 1
+
+    # Initialize components
+    model_bert = AutoModel.from_config(config).to(device)
+    state_encoder = nn.Linear(105, config.hidden_size).to(device)
+    #mlp = NeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
+    mlp = BigNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
+
+    # Load weights
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    model_bert.load_state_dict(checkpoint["bert"])
+    state_encoder.load_state_dict(checkpoint["state"])
+    mlp.load_state_dict(checkpoint["mlp"])
+
+    model_bert.eval()
+    state_encoder.eval()
+    mlp.eval()
+
+    return model_bert, state_encoder, mlp
 
 
 def evaluate_get_rewards(env: gym.Env, model, d_h: float,
@@ -110,6 +136,10 @@ def evaluate_get_rewards(env: gym.Env, model, d_h: float,
         )
     elif model_type == "BERT_UDRL":
         return _evaluate_bert_udrl(
+            env, *model, d_r, d_h, num_episodes, max_episode_length, device
+        )
+    elif model_type == "BERT_MLP":
+        return _evaluate_bert_mlp(
             env, *model, d_r, d_h, num_episodes, max_episode_length, device
         )
     else:
@@ -228,7 +258,12 @@ def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
                 break
 
         episodic_rewards.append(total_reward)
-
+    print(
+        "max-min reward for this dr (DT):",
+        max(episodic_rewards),
+        "-",
+        min(episodic_rewards),
+    )
     return np.mean(episodic_rewards), episodic_rewards
 
 
@@ -271,6 +306,50 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
         min(episodic_rewards),
     )
     return np.mean(episodic_rewards), episodic_rewards
+
+
+def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
+                            d_r: float, d_h: float, num_episodes: int,
+                            max_episode_length: int, device: str) -> tuple:
+    """
+    Evaluate scalar-concat model: uses encoded state + scalar d_r and d_h.
+    """
+    episodic_rewards = []
+
+    for _ in range(num_episodes):
+        obs, _ = env.reset()
+        d_r_copy, d_h_copy = d_r, d_h
+        total_reward = 0
+
+        for _ in range(max_episode_length):
+            obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
+            dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
+            dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
+
+            with torch.no_grad():
+                s_encoded = state_encoder(obs_tensor).unsqueeze(1)
+                bert_out = model_bert(inputs_embeds=s_encoded).last_hidden_state[:, 0]
+                mlp_input = torch.cat([bert_out, dr_tensor, dh_tensor], dim=1)
+                action = head(mlp_input).squeeze(0).cpu().numpy()
+
+            obs, reward, terminated, truncated, _ = env.step(action)
+            total_reward += reward
+            d_r_copy -= reward
+            d_h_copy -= 1
+            if terminated or truncated:
+                break
+
+        episodic_rewards.append(total_reward)
+
+    print(
+        "max-min reward for this dr (BERT-MLP):",
+        max(episodic_rewards),
+        "-",
+        min(episodic_rewards),
+    )
+    return np.mean(episodic_rewards), episodic_rewards
+
+
 
 
 def plot_average_rewards(
@@ -331,6 +410,11 @@ if __name__ == "__main__":
         model = load_bert_udrl_model_for_eval(
             105, OUTPUT_SIZE, BERT_UDRL_MODEL_PATH, device
         )
+    elif args["model_type"] == "BERT_MLP":
+        model_bert, state_encoder, mlp = load_bert_mlp_model_for_eval(
+            BERT_MLP_BERT_PATH, device
+        )
+        model = (model_bert, state_encoder, mlp)
     else:
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
@@ -346,6 +430,7 @@ if __name__ == "__main__":
     # monitor.begin_window(f"evaluation_{args['model_type']}")
     
     for d_r in d_r_options:
+        drcopy = d_r
         print("=" * 50)
         print("Trying with d_r:", d_r)
         _, episodic_rewards = evaluate_get_rewards(
@@ -360,8 +445,9 @@ if __name__ == "__main__":
         average_rewards.append(np.mean(episodic_rewards))
         sem_values.append(sem(episodic_rewards))
 
-        percentage_error_dr = abs(d_r - np.mean(episodic_rewards)) / d_r
-        error_percentages.append(percentage_error_dr) 
+        if drcopy > 0:
+            percentage_error_dr = abs(drcopy - np.mean(episodic_rewards)) / drcopy
+            error_percentages.append(percentage_error_dr) 
     # mes = monitor.end_window(f"evaluation_{args['model_type']}")
     # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
 
