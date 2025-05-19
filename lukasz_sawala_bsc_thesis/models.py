@@ -37,7 +37,9 @@ class NeuralNet(nn.Module):
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
 
-class BigNeuralNet(nn.Module):
+
+
+class EnormousNeuralNet(nn.Module):
     """
     Class defining the Neural Network used on top of the BERT.
     """
@@ -45,13 +47,15 @@ class BigNeuralNet(nn.Module):
         """
         Initializes the Neural Network.
         """
-        super(BigNeuralNet, self).__init__()
+        super(EnormousNeuralNet, self).__init__()
         self.fc1 = nn.Linear(input_size, hidden_size)
         self.fc2 = nn.Linear(hidden_size, hidden_size)
         self.fc3 = nn.Linear(hidden_size, hidden_size)
-        self.fc4 = nn.Linear(hidden_size, hidden_size // 2)
-        self.fc5 = nn.Linear(hidden_size // 2, hidden_size // 4)
-        self.fc6 = nn.Linear(hidden_size // 4, output_size)
+        self.fc4 = nn.Linear(hidden_size, hidden_size)
+        self.fc5 = nn.Linear(hidden_size, hidden_size)
+        self.fc6 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc7 = nn.Linear(hidden_size // 2, hidden_size // 4)
+        self.fc8 = nn.Linear(hidden_size // 4, output_size)
         self.relu = nn.ReLU()  # ReLU activation function
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -72,8 +76,55 @@ class BigNeuralNet(nn.Module):
         x = self.fc5(x)
         x = self.relu(x)
         x = self.fc6(x)
+        x = self.relu(x)
+        x = self.fc7(x)
+        x = self.relu(x)
+        x = self.fc8(x)
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
+    
+
+class HugeNeuralNet(nn.Module):
+    """
+    Class defining the Neural Network (larger) used on top of the BERT.
+    """
+    def __init__(self, input_size: int, hidden_size: int, output_size: int) -> None:
+        """
+        Initializes the Neural Network.
+        """
+        super(HugeNeuralNet, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc3 = nn.Linear(hidden_size, hidden_size)
+        self.fc4 = nn.Linear(hidden_size, hidden_size)
+        self.fc5 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc6 = nn.Linear(hidden_size // 2, hidden_size // 4)
+        self.fc7 = nn.Linear(hidden_size // 4, output_size)
+        self.relu = nn.ReLU()  # ReLU activation function
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Defines the forward call of the network.
+        Returns:
+            torch.Tensor: The output of the network squeezed with
+            tanh - enforcing the action range between (-1, 1)
+        """
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu(x)
+        x = self.fc3(x)
+        x = self.relu(x)
+        x = self.fc4(x)
+        x = self.relu(x)
+        x = self.fc5(x)
+        x = self.relu(x)
+        x = self.fc6(x)
+        x = self.relu(x)
+        x = self.fc7(x)
+        x = torch.tanh(x)  # Enforces the action range between -1 and 1
+        return x
+
 
 class ActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
@@ -104,3 +155,25 @@ class ScalarEncoder(nn.Module):
 
     def forward(self, x):
         return self.net(x)   
+
+
+class LargeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size//2, hidden_size // 4),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 4, act_dim),
+            nn.Tanh(),
+        )
+
+    def forward(self, x):
+        return self.net(x)

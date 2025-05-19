@@ -14,15 +14,15 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor 
 from utils import parse_arguments
-from models import NeuralNet, ActionHead, ScalarEncoder, BigNeuralNet
+from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, EnormousNeuralNet, HugeNeuralNet
 
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
-BERT_UDRL_MODEL_PATH = "../models/bert_medium.pth"
-BERT_MLP_BERT_PATH = "new-berttiny-largemlp.pth"
+BERT_UDRL_MODEL_PATH = "bertsmall-lasttry.pth"
+BERT_MLP_BERT_PATH = "new-berttiny-enormousmlp.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -65,7 +65,7 @@ def load_dt_model_for_eval(state_dim: int, act_dim: int,
 def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
                                   checkpoint_path: str, device: str) -> tuple:
     """Loads the BERT UDRL model components for evaluation."""
-    config = AutoConfig.from_pretrained("prajjwal1/bert-medium")
+    config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
     model_bert = AutoModel.from_config(config).to(device)
@@ -74,8 +74,9 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     #d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
     #d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
-    head = nn.Linear(config.hidden_size, act_dim).to(device)
+    #head = nn.Linear(config.hidden_size, act_dim).to(device)
     #head = ActionHead(config.hidden_size, act_dim).to(device)
+    head = LargeActionHead(config.hidden_size, act_dim).to(device)
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])
@@ -103,7 +104,8 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str):
     model_bert = AutoModel.from_config(config).to(device)
     state_encoder = nn.Linear(105, config.hidden_size).to(device)
     #mlp = NeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
-    mlp = BigNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
+    mlp = EnormousNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
+    #mlp = HugeNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)

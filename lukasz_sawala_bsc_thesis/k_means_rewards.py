@@ -1,3 +1,10 @@
+# ================================================================================================
+# This Python script was used to generate a distribution of desired reward to go (DR) across
+# clusters of similar states. It is not necessary for the implementation of the models
+# used in this project.
+# ================================================================================================
+
+
 from sklearn.cluster import KMeans
 import numpy as np
 import matplotlib.pyplot as plt

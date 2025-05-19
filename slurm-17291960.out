@@ -1,0 +1,205 @@
+starting evaluation for args: {'experiment_id': 'd56606d4ec484b33a7ddc746c23c0be6', 'model_type': 'BERT_MLP', 'episodes': 10, 'd_r_array_length': 55} device: cpu
+==================================================
+Trying with d_r: 0
+max-min reward for this dr (BERT-MLP): 350.02151537389227 - 43.78082600102666
+==================================================
+Trying with d_r: 100
+max-min reward for this dr (BERT-MLP): 339.9943717258922 - 177.71953581560325
+==================================================
+Trying with d_r: 200
+max-min reward for this dr (BERT-MLP): 802.2427879935616 - 236.6260336285228
+==================================================
+Trying with d_r: 300
+max-min reward for this dr (BERT-MLP): 771.7001683492683 - 373.7609818614317
+==================================================
+Trying with d_r: 400
+max-min reward for this dr (BERT-MLP): 552.6128777551021 - 447.47847134665517
+==================================================
+Trying with d_r: 500
+max-min reward for this dr (BERT-MLP): 651.4631939507784 - 574.3208425705819
+==================================================
+Trying with d_r: 600
+max-min reward for this dr (BERT-MLP): 740.2025077831495 - 632.828644322481
+==================================================
+Trying with d_r: 700
+max-min reward for this dr (BERT-MLP): 1252.3062363240279 - 768.8597722856094
+==================================================
+Trying with d_r: 800
+max-min reward for this dr (BERT-MLP): 1367.8548316106499 - 880.5651494217315
+==================================================
+Trying with d_r: 900
+max-min reward for this dr (BERT-MLP): 1500.5929517907657 - 953.8550127487847
+==================================================
+Trying with d_r: 1000
+max-min reward for this dr (BERT-MLP): 1558.3483717078395 - 714.710138951846
+==================================================
+Trying with d_r: 1100
+max-min reward for this dr (BERT-MLP): 1239.1769058701666 - 1148.239587988394
+==================================================
+Trying with d_r: 1200
+max-min reward for this dr (BERT-MLP): 1631.0537847887294 - 1313.8347718354894
+==================================================
+Trying with d_r: 1300
+max-min reward for this dr (BERT-MLP): 1805.6329646656561 - 1376.8681555365283
+==================================================
+Trying with d_r: 1400
+max-min reward for this dr (BERT-MLP): 1862.0101633344764 - 1470.9457179274082
+==================================================
+Trying with d_r: 1500
+max-min reward for this dr (BERT-MLP): 1642.0538605597958 - 1564.0474974600784
+==================================================
+Trying with d_r: 1600
+max-min reward for this dr (BERT-MLP): 1901.8950193831506 - 1125.9017137312235
+==================================================
+Trying with d_r: 1700
+max-min reward for this dr (BERT-MLP): 2228.3543377585174 - 1700.649107654381
+==================================================
+Trying with d_r: 1800
+max-min reward for this dr (BERT-MLP): 2154.981367447506 - 1250.1613403160425
+==================================================
+Trying with d_r: 1900
+max-min reward for this dr (BERT-MLP): 2055.2344795719214 - 211.7550973412085
+==================================================
+Trying with d_r: 2000
+max-min reward for this dr (BERT-MLP): 2449.921621471608 - 2077.840799423419
+==================================================
+Trying with d_r: 2100
+max-min reward for this dr (BERT-MLP): 2456.9583634916776 - 348.4859315223037
+==================================================
+Trying with d_r: 2200
+max-min reward for this dr (BERT-MLP): 2562.6355195510864 - 1021.8722087964843
+==================================================
+Trying with d_r: 2300
+max-min reward for this dr (BERT-MLP): 2440.3555830320433 - 2400.4080415426106
+==================================================
+Trying with d_r: 2400
+max-min reward for this dr (BERT-MLP): 2778.0898739605004 - 243.35848435366034
+==================================================
+Trying with d_r: 2500
+max-min reward for this dr (BERT-MLP): 2647.1357187897456 - 1268.0050232361104
+==================================================
+Trying with d_r: 2600
+max-min reward for this dr (BERT-MLP): 2741.5665519757695 - 1089.1929755083574
+==================================================
+Trying with d_r: 2700
+max-min reward for this dr (BERT-MLP): 3099.9717441310986 - 2776.968111116435
+==================================================
+Trying with d_r: 2800
+max-min reward for this dr (BERT-MLP): 2938.264751284709 - 171.46125722445947
+==================================================
+Trying with d_r: 2900
+max-min reward for this dr (BERT-MLP): 3215.6140701823015 - 3003.9577678074897
+==================================================
+Trying with d_r: 3000
+max-min reward for this dr (BERT-MLP): 3327.227720812226 - 1220.508521260934
+==================================================
+Trying with d_r: 3100
+max-min reward for this dr (BERT-MLP): 3409.910917675654 - 2167.4011828508783
+==================================================
+Trying with d_r: 3200
+max-min reward for this dr (BERT-MLP): 3553.7334030695156 - 581.8346756404153
+==================================================
+Trying with d_r: 3300
+max-min reward for this dr (BERT-MLP): 3461.7157288911453 - 2450.65175622109
+==================================================
+Trying with d_r: 3400
+max-min reward for this dr (BERT-MLP): 3546.6533054709566 - 322.1701678496116
+==================================================
+Trying with d_r: 3500
+max-min reward for this dr (BERT-MLP): 3648.8951103969866 - 1173.072211472007
+==================================================
+Trying with d_r: 3600
+max-min reward for this dr (BERT-MLP): 3864.842773681703 - 2840.004352167276
+==================================================
+Trying with d_r: 3700
+max-min reward for this dr (BERT-MLP): 3843.8121585435165 - 1421.841009102881
+==================================================
+Trying with d_r: 3800
+max-min reward for this dr (BERT-MLP): 3942.3821992068993 - 3191.798980206026
+==================================================
+Trying with d_r: 3900
+max-min reward for this dr (BERT-MLP): 4067.7916065353875 - 168.2533187464895
+==================================================
+Trying with d_r: 4000
+max-min reward for this dr (BERT-MLP): 4155.841786550988 - 1395.505930792755
+==================================================
+Trying with d_r: 4100
+max-min reward for this dr (BERT-MLP): 4254.837602938556 - 662.0011722751591
+==================================================
+Trying with d_r: 4200
+max-min reward for this dr (BERT-MLP): 4354.210173363557 - 1755.9646509798945
+==================================================
+Trying with d_r: 4300
+max-min reward for this dr (BERT-MLP): 4446.447389189184 - 1381.3823764900621
+==================================================
+Trying with d_r: 4400
+max-min reward for this dr (BERT-MLP): 4578.921408321249 - 1877.6339054276937
+==================================================
+Trying with d_r: 4500
+max-min reward for this dr (BERT-MLP): 4669.212921664391 - 4085.2967487853825
+==================================================
+Trying with d_r: 4600
+max-min reward for this dr (BERT-MLP): 4717.203504708928 - 2781.4104605449834
+==================================================
+Trying with d_r: 4700
+max-min reward for this dr (BERT-MLP): 4834.609070401731 - 4250.699065971168
+==================================================
+Trying with d_r: 4800
+max-min reward for this dr (BERT-MLP): 4918.7697675084 - 4154.978073642933
+==================================================
+Trying with d_r: 4900
+max-min reward for this dr (BERT-MLP): 4805.959857020662 - 3197.4788098202052
+==================================================
+Trying with d_r: 5000
+max-min reward for this dr (BERT-MLP): 4930.021924472165 - 831.6410215801138
+==================================================
+Trying with d_r: 5100
+max-min reward for this dr (BERT-MLP): 4818.191152178262 - 3040.67263071315
+==================================================
+Trying with d_r: 5200
+max-min reward for this dr (BERT-MLP): 4778.499873082576 - 4340.581200446124
+==================================================
+Trying with d_r: 5300
+max-min reward for this dr (BERT-MLP): 4796.474042207837 - 4345.082186206723
+==================================================
+Trying with d_r: 5400
+max-min reward for this dr (BERT-MLP): 4878.828738924323 - 1911.3202889481533
+Average rewards plot saved in average_rewards_plot_BERT_MLP.png
+Average error: 0.1346772170765783
+
+###############################################################################
+Hábrók Cluster
+Job 17291960 for user s5173019
+Finished at: Thu May 15 11:35:56 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17291960
+Name                           : jobscript.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node105
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-05-15T11:23:38
+Start                          : 2025-05-15T11:23:39
+End                            : 2025-05-15T11:35:52
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:12:13
+Used CPU time                  : 00:11:57 (Efficiency: 97.85%)
+% User (Computation)           : 99.80%
+% System (I/O)                 :  0.20%
+Total memory reserved          : 2G
+Maximum memory used            : 450.13M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################
