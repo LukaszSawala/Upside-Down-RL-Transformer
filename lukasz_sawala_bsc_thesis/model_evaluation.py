@@ -12,10 +12,9 @@ from transformers import (
     AutoConfig,
 )
 from collections import deque
-# from zeus.monitor import ZeusMonitor 
+# from zeus.monitor import ZeusMonitor
 from utils import parse_arguments
 from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, EnormousNeuralNet, HugeNeuralNet
-
 
 
 OUTPUT_SIZE = 8
@@ -311,8 +310,8 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
 
 
 def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
-                            d_r: float, d_h: float, num_episodes: int,
-                            max_episode_length: int, device: str) -> tuple:
+                       d_r: float, d_h: float, num_episodes: int,
+                       max_episode_length: int, device: str) -> tuple:
     """
     Evaluate scalar-concat model: uses encoded state + scalar d_r and d_h.
     """
@@ -350,8 +349,6 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
         min(episodic_rewards),
     )
     return np.mean(episodic_rewards), episodic_rewards
-
-
 
 
 def plot_average_rewards(
@@ -430,7 +427,7 @@ if __name__ == "__main__":
     error_percentages = []
     # monitor = ZeusMonitor(gpu_indices=[0] if device.type == 'cuda' else [], cpu_indices=[0, 1])
     # monitor.begin_window(f"evaluation_{args['model_type']}")
-    
+
     for d_r in d_r_options:
         drcopy = d_r
         print("=" * 50)
@@ -449,7 +446,7 @@ if __name__ == "__main__":
 
         if drcopy > 0:
             percentage_error_dr = abs(drcopy - np.mean(episodic_rewards)) / drcopy
-            error_percentages.append(percentage_error_dr) 
+            error_percentages.append(percentage_error_dr)
     # mes = monitor.end_window(f"evaluation_{args['model_type']}")
     # print(f"Training grid search took {mes.time} s and consumed {mes.total_energy} J.")
 

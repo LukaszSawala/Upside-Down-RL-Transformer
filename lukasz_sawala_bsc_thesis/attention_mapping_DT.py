@@ -74,7 +74,7 @@ def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int
             )
 
         attn = outputs.attentions[0]
-        avg_attn = attn.mean(dim=1).squeeze(0).cpu().numpy()  
+        avg_attn = attn.mean(dim=1).squeeze(0).cpu().numpy()
         mean_attention = avg_attn.mean(axis=0)  # Attention received by each token
 
         if token_importances is None:
