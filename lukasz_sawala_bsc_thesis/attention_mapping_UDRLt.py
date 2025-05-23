@@ -77,11 +77,11 @@ def visualize_attention(model_bert, d_r_encoder, d_h_encoder, state_encoder, tes
 
             output = model_bert(inputs_embeds=x)
 
-            #attn = torch.stack(output.attentions)  # (num_layers, batch, heads, tokens, tokens)
-            #attn = attn.mean(dim=0).mean(dim=1)     # (batch, tokens, tokens) mean over layers & heads
+            # attn = torch.stack(output.attentions)  # (num_layers, batch, heads, tokens, tokens)
+            # attn = attn.mean(dim=0).mean(dim=1)     # (batch, tokens, tokens) mean over layers & heads
 
             attn = output.attentions[0]        # attention from first layer only
-            attn = attn.mean(dim=1)   
+            attn = attn.mean(dim=1)
 
             # Sum attention *received* by each token
             attention_received = attn.mean(dim=1).sum(dim=0)  # (tokens,)

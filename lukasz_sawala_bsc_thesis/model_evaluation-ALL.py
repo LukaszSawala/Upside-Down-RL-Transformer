@@ -4,14 +4,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import sem
-# from zeus.monitor import ZeusMonitor 
+# from zeus.monitor import ZeusMonitor
 from utils import parse_arguments
 from model_evaluation import (
     evaluate_get_rewards, load_bert_mlp_model_for_eval,
     load_bert_udrl_model_for_eval, load_nn_model_for_eval, load_dt_model_for_eval,
+<<<<<<< HEAD
     NN_MODEL_PATH, DT_MODEL_PATH, BERT_UDRL_MODEL_PATH, BERT_MLP_MODEL_PATH
 ) 
 
+=======
+    NN_MODEL_PATH, DT_MODEL_PATH, BERT_UDRL_MODEL_PATH, BERT_MLP_BERT_PATH
+)
+>>>>>>> ce71ffcd66e9bae87be9fb670f98155f4d3766cb
 
 
 OUTPUT_SIZE = 8
@@ -35,7 +40,7 @@ def plot_all_models_rewards(
 ):
     """
     Plots average rewards for all models with standard error bands.
-    
+
     Args:
         results: dict of model_name -> {'avg_rewards': list, 'sem': list}
         d_r_values: list of d_r values
@@ -73,7 +78,6 @@ def plot_all_models_rewards(
     plt.savefig(save_path)
     print(f"Saved combined plot to {save_path}")
     plt.close()
-
 
 
 if __name__ == "__main__":
@@ -145,4 +149,3 @@ if __name__ == "__main__":
         mean_error = np.mean(data["percent_errors"]) * 100
         print(f"{model_name}: {mean_error:.2f}%")
     plot_all_models_rewards(results, d_r_options)
-

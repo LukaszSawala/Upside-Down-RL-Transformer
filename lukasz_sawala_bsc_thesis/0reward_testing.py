@@ -5,7 +5,12 @@ import gymnasium as gym
 import numpy as np
 import torch
 import torch.nn as nn
-from transformers import AutoConfig, AutoModel, DecisionTransformerConfig, DecisionTransformerModel
+from transformers import (
+    AutoConfig,
+    AutoModel,
+    DecisionTransformerConfig,
+    DecisionTransformerModel,
+)
 
 from models import NeuralNet
 
@@ -18,16 +23,24 @@ MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2
 
 
-def load_nn_model_for_eval(input_size, hidden_size, output_size, checkpoint_path, device="cpu"):
-    model = NeuralNet(input_size=input_size, hidden_size=hidden_size, output_size=output_size)
+def load_nn_model_for_eval(
+    input_size, hidden_size, output_size, checkpoint_path, device="cpu"
+):
+    model = NeuralNet(
+        input_size=input_size, hidden_size=hidden_size, output_size=output_size
+    )
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()
     return model
 
 
-def load_dt_model_for_eval(state_dim, act_dim, max_length, checkpoint_path, device="cpu"):
-    config = DecisionTransformerConfig(state_dim=state_dim, act_dim=act_dim, max_length=max_length)
+def load_dt_model_for_eval(
+    state_dim, act_dim, max_length, checkpoint_path, device="cpu"
+):
+    config = DecisionTransformerConfig(
+        state_dim=state_dim, act_dim=act_dim, max_length=max_length
+    )
     model = DecisionTransformerModel(config)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
@@ -65,8 +78,15 @@ def _run_nn_low_reward_test(env, model, d_r, d_h, device, time_interval):
     obs, _ = env.reset()
     done = False
     total_reward = 0.0
+    low_reward_array = []
+    first = None
+
     while not done or d_h > 0:
-        obs_input = torch.tensor(np.concatenate((obs, [d_r, d_h])), dtype=torch.float32).unsqueeze(0).to(device)
+        obs_input = (
+            torch.tensor(np.concatenate((obs, [d_r, d_h])), dtype=torch.float32)
+            .unsqueeze(0)
+            .to(device)
+        )
         with torch.no_grad():
             action = model(obs_input).squeeze(0).cpu().numpy()
 
@@ -74,20 +94,35 @@ def _run_nn_low_reward_test(env, model, d_r, d_h, device, time_interval):
         total_reward += reward
         d_r -= reward
         d_h -= 1
+        if d_r < 10:
+            if first is None:
+                print("NOW!" * 50)
+                first = 1000 - d_h
+            low_reward_array.append(reward)
 
-        print(f"Current Reward: {total_reward:.2f} | Desired Reward Left: {d_r:.2f} | Desired Horizon Left: {d_h:.2f}")
+        print(
+            f"Current Reward: {total_reward:.2f} | Desired Reward Left: {d_r:.2f} | Desired Horizon Left: {d_h:.2f}"
+        )
         env.render()
         time.sleep(time_interval)
 
         if terminated or truncated:
             done = True
 
+    print(
+        f"average reward obtained in the low reward conditions: {np.mean(low_reward_array)} started at {first}"
+    )
+
 
 def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
     act_dim = model.config.act_dim
     state_dim = model.config.state_dim
-    state_history = deque([np.zeros(state_dim, dtype=np.float32)] * MAX_LENGTH, maxlen=MAX_LENGTH)
-    action_history = deque([np.ones(act_dim, dtype=np.float32) * -10.0] * MAX_LENGTH, maxlen=MAX_LENGTH)
+    state_history = deque(
+        [np.zeros(state_dim, dtype=np.float32)] * MAX_LENGTH, maxlen=MAX_LENGTH
+    )
+    action_history = deque(
+        [np.ones(act_dim, dtype=np.float32) * -10.0] * MAX_LENGTH, maxlen=MAX_LENGTH
+    )
     rtg_history = deque([d_r] * MAX_LENGTH, maxlen=MAX_LENGTH)
     timestep_history = deque([0] * MAX_LENGTH, maxlen=MAX_LENGTH)
 
@@ -102,7 +137,9 @@ def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
         timesteps = np.array(timestep_history, dtype=np.int64)
 
         current_len = min(t + 1, MAX_LENGTH)
-        mask = np.concatenate([np.zeros(MAX_LENGTH - current_len), np.ones(current_len)], dtype=np.float32)
+        mask = np.concatenate(
+            [np.zeros(MAX_LENGTH - current_len), np.ones(current_len)], dtype=np.float32
+        )
 
         with torch.no_grad():
             model_outputs = model(
@@ -123,7 +160,9 @@ def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
         rtg_history.append(rtg_history[-1] - reward)
         timestep_history.append(t + 1)
 
-        print(f"Current Reward: {total_reward:.2f} | Desired Reward Left: {rtg_history[-1]:.2f} | Desired Horizon Left: {d_h - (t + 1):.2f}")
+        print(
+            f"Current Reward: {total_reward:.2f} | Desired Reward Left: {rtg_history[-1]:.2f} | Desired Horizon Left: {d_h - (t + 1):.2f}"
+        )
         env.render()
         time.sleep(time_interval)
 
@@ -131,13 +170,17 @@ def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
             break
 
 
-def _run_udrlt_low_reward_test(env, model_bert, d_r_enc, d_h_enc, state_enc, head, d_r, d_h, device, time_interval):
+def _run_udrlt_low_reward_test(
+    env, model_bert, d_r_enc, d_h_enc, state_enc, head, d_r, d_h, device, time_interval
+):
     obs, _ = env.reset()
     total_reward = 0.0
     done = False
 
     while not done:
-        state_embed = state_enc(torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device))
+        state_embed = state_enc(
+            torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
+        )
         d_r_embed = d_r_enc(torch.tensor([[d_r]], dtype=torch.float32).to(device))
         d_h_embed = d_h_enc(torch.tensor([[d_h]], dtype=torch.float32).to(device))
 
@@ -154,7 +197,9 @@ def _run_udrlt_low_reward_test(env, model_bert, d_r_enc, d_h_enc, state_enc, hea
         d_r -= reward
         d_h -= 1
 
-        print(f"Current Reward: {total_reward:.2f} | Desired Reward Left: {d_r:.2f} | Desired Horizon Left: {d_h:.2f}")
+        print(
+            f"Current Reward: {total_reward:.2f} | Desired Reward Left: {d_r:.2f} | Desired Horizon Left: {d_h:.2f}"
+        )
         env.render()
         time.sleep(time_interval)
 
@@ -169,14 +214,27 @@ def run_low_reward_test(env, model, d_r, d_h, model_type, device, time_interval=
         _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval)
     elif model_type == "UDRLt":
         model_bert, d_r_enc, d_h_enc, state_enc, head = model
-        _run_udrlt_low_reward_test(env, model_bert, d_r_enc, d_h_enc, state_enc, head, d_r, d_h, device, time_interval)
+        _run_udrlt_low_reward_test(
+            env,
+            model_bert,
+            d_r_enc,
+            d_h_enc,
+            state_enc,
+            head,
+            d_r,
+            d_h,
+            device,
+            time_interval,
+        )
     else:
         raise ValueError(f"Unsupported model_type: {model_type}")
     env.close()
 
 
 if __name__ == "__main__":
-    model_choice = "UDRLt"  # Change to "NeuralNet", "DecisionTransformer", or "UDRLt"
+    model_choice = (
+        "NeuralNet"  # Change to "NeuralNet", "DecisionTransformer", or "UDRLt"
+    )
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     env = gym.make("Ant-v5", render_mode="human")
     d_r = 1000.0
@@ -184,11 +242,17 @@ if __name__ == "__main__":
     time_interval = 0.05
 
     if model_choice == "NeuralNet":
-        model = load_nn_model_for_eval(INPUT_SIZE, 256, OUTPUT_SIZE, NN_MODEL_PATH, device)
+        model = load_nn_model_for_eval(
+            INPUT_SIZE, 256, OUTPUT_SIZE, NN_MODEL_PATH, device
+        )
     elif model_choice == "DecisionTransformer":
-        model = load_dt_model_for_eval(STATE_DIM, OUTPUT_SIZE, MAX_LENGTH, DT_MODEL_PATH, device)
+        model = load_dt_model_for_eval(
+            STATE_DIM, OUTPUT_SIZE, MAX_LENGTH, DT_MODEL_PATH, device
+        )
     elif model_choice == "UDRLt":
-        model = load_bert_udrl_model_for_eval(STATE_DIM, OUTPUT_SIZE, UDRLT_MODEL_PATH, device)
+        model = load_bert_udrl_model_for_eval(
+            STATE_DIM, OUTPUT_SIZE, UDRLT_MODEL_PATH, device
+        )
     else:
         raise ValueError(f"Invalid model_choice: {model_choice}")
 
