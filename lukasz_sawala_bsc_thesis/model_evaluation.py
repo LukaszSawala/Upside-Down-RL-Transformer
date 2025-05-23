@@ -13,7 +13,7 @@ from transformers import (
 )
 from collections import deque
 # from zeus.monitor import ZeusMonitor
-from utils import parse_arguments
+from utils import parse_arguments, print_available_antmaze_envs
 from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet
 
 
@@ -356,6 +356,7 @@ def plot_average_rewards(
     d_r_values: list,
     title="Average Reward vs. d_r",
     save_path: str = "average_rewards_plot.png",
+    max_y: float = 5000,
 ):
     """
     Plots the average rewards for different values of d_r with standard error bars.
@@ -382,8 +383,9 @@ def plot_average_rewards(
     plt.xlabel("d_r", fontsize=12)
     plt.ylabel("Average Reward", fontsize=12)
     plt.title(title, fontsize=14, fontweight="bold")
-    plt.ylim(0, 5000)
-    plt.yticks(np.arange(0, 5001, 500))
+    plt.ylim(0, max_y)
+    to_add = 1 if max_y > 2 else 0.01 # ticks added for plot readability
+    plt.yticks(np.arange(0, max_y+to_add, max_y/10))
     sns.despine()
     plt.savefig(save_path)
     print(f"Average rewards plot saved in {save_path}")

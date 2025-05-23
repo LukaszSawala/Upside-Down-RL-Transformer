@@ -3,6 +3,7 @@ import uuid
 import torch
 import numpy as np
 import random
+import gymnasium as gym
 
 
 def set_seed(seed: int = 0) -> None:
@@ -70,3 +71,16 @@ def parse_arguments(training: bool = False) -> dict:
         }
 
     return hyperparameters_dict
+
+
+def print_available_antmaze_envs():
+    print("Available AntMaze environments:")
+    antmaze_envs = []
+    for env_spec in gym.envs.registry.values():
+        if "AntMaze" in env_spec.id:
+            antmaze_envs.append(env_spec.id)
+
+    # Sort them for better readability
+    for env_id in sorted(antmaze_envs):
+        print(f"- {env_id}")
+    

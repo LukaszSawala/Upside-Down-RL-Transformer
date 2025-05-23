@@ -150,3 +150,21 @@ class AntMazeActionHead(nn.Module):
 
     def forward(self, x):
         return self.net(x)
+    
+
+class AntMazePolicy(torch.nn.Module):
+    """ 
+    Class definign the policy wrapper for the AntMaze transferrablity experiment
+    """
+    def __init__(self, base_model, action_dim):
+        super().__init__()
+        self.base_model = base_model
+        self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
+
+    def forward(self, input_vector, goal_vector):
+        with torch.no_grad():
+            base_output = self.base_model(input_vector)
+        x = torch.cat((base_output, goal_vector), dim=1)
+        action = self.adjusted_head(x)
+        return action
+    
