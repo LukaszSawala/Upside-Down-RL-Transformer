@@ -14,7 +14,7 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor 
 from utils import parse_arguments
-from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, EnormousNeuralNet, HugeNeuralNet
+from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet
 
 
 
@@ -22,7 +22,7 @@ OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "bertsmall-lasttry.pth"
-BERT_MLP_BERT_PATH = "new-berttiny-enormousmlp.pth"
+BERT_MLP_MODEL_PATH = "new-berttiny-enormousmlp.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -414,7 +414,7 @@ if __name__ == "__main__":
         )
     elif args["model_type"] == "BERT_MLP":
         model_bert, state_encoder, mlp = load_bert_mlp_model_for_eval(
-            BERT_MLP_BERT_PATH, device
+            BERT_MLP_MODEL_PATH, device
         )
         model = (model_bert, state_encoder, mlp)
     else:

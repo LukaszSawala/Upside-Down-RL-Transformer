@@ -9,7 +9,7 @@ from utils import parse_arguments
 from model_evaluation import (
     evaluate_get_rewards, load_bert_mlp_model_for_eval,
     load_bert_udrl_model_for_eval, load_nn_model_for_eval, load_dt_model_for_eval,
-    NN_MODEL_PATH, DT_MODEL_PATH, BERT_UDRL_MODEL_PATH, BERT_MLP_BERT_PATH
+    NN_MODEL_PATH, DT_MODEL_PATH, BERT_UDRL_MODEL_PATH, BERT_MLP_MODEL_PATH
 ) 
 
 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     nn_model = load_nn_model_for_eval(INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH, device)
     dt_model = load_dt_model_for_eval(STATE_DIM, OUTPUT_SIZE, MAX_LENGTH, DT_MODEL_PATH, device)
     bert_model = load_bert_udrl_model_for_eval(105, OUTPUT_SIZE, BERT_UDRL_MODEL_PATH, device)
-    model_bert, state_encoder, mlp = load_bert_mlp_model_for_eval(BERT_MLP_BERT_PATH, device)
+    model_bert, state_encoder, mlp = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, device)
     bert_mlp_model = (model_bert, state_encoder, mlp)
 
     d_h = 1000.0
@@ -105,8 +105,8 @@ if __name__ == "__main__":
     models_dict = {
         "NeuralNet": nn_model,
         "DecisionTransformer": dt_model,
-        "BERT_UDRL": bert_model,
-        "BERT_MLP": bert_mlp_model,
+        "UDRLt": bert_model,
+        "UDRLt-MLP": bert_mlp_model,
     }
 
     for d_r in d_r_options:
