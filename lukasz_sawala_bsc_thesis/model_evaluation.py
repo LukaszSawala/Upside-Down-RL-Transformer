@@ -103,8 +103,7 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str):
     model_bert = AutoModel.from_config(config).to(device)
     state_encoder = nn.Linear(105, config.hidden_size).to(device)
     #mlp = NeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
-    mlp = EnormousNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
-    #mlp = HugeNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
+    mlp = HugeNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
