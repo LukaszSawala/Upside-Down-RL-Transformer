@@ -4,72 +4,87 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset, random_split
 from transformers import AutoModel, AutoConfig
-from tqdm import tqdm
-import h5py
 import numpy as np
-from models import NeuralNet
-from grid_UDRLT_training_OPTIMIZED import create_datasets, create_dataloaders
+import h5py
+from model_evaluation import (
+    load_bert_mlp_model_for_eval, BERT_MLP_MODEL_PATH
+)
+from grid_UDRLT_training_OPTIMIZED import set_seed, create_dataloaders
+from models import AntMazeActionHead
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PATIENCE = 3
-DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "new-architecture-berttiny-batch32.pth" # From original script
-STATE_DIM = 105 # Derived from original state_encoder input
 ACT_DIM = 8
+set_seed(42)
 
 
-def set_seed(seed_value: int) -> None:
-    """Sets the seed for reproducibility."""
-    np.random.seed(seed_value)
-    torch.manual_seed(seed_value)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed_value)
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
+# ==== Paths ====
+# DATA_PATH = "extremely_augmented_data.hdf5"
+DATA_PATH = "../data/processed/antmaze_concatenated_data.hdf5"
+BEST_MODEL_PATH = "finetunedbroski.pth"
 
 
-def initiate_model_components() -> tuple[AutoModel, nn.Linear, NeuralNet]:
+# ==== Data Loading ====
+def _load_data(path=DATA_PATH):
+    with h5py.File(path, "r") as f:
+        data = f["concatenated_data"]
+        states = data["observations"][:]
+        states_padded = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant') # avoiding the mismatch between datasets
+        actions = data["actions"][:]
+        rewards = data["rewards_to_go"][:].reshape(-1, 1)
+        times = data["time_to_go"][:].reshape(-1, 1)
+        goal_vector = data["goal_vector"][:]
+    return states_padded, rewards, times, goal_vector, actions
+
+def create_datasets() -> tuple:
     """
-    Initializes the model components based on the original script's architecture.
-    This includes a BERT model for state embedding, a state encoder, and an MLP.
-
+    Creates train, validation, and test datasets from the concatenated dataset.
+    Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train, 10% validation, and 10% test sets.
     Returns:
-        tuple: model_bert, state_encoder, mlp_head.
+        tuple: A tuple containing:
+            - train_ds (TensorDataset): The training dataset.
+            - val_ds (TensorDataset): The validation dataset.
+            - test_ds (TensorDataset): The test dataset.
     """
-    config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
-    config.vocab_size = 1
-    config.max_position_embeddings = 1
-    model_bert = AutoModel.from_config(config).to(DEVICE)
+    X_s_np, X_r_np, X_h_np, X_g_np, y_np = _load_data()
+    X_s = torch.tensor(X_s_np, dtype=torch.float32)
+    X_r = torch.tensor(X_r_np, dtype=torch.float32)
+    X_h = torch.tensor(X_h_np, dtype=torch.float32)
+    X_g = torch.tensor(X_g_np, dtype=torch.float32)
+    y = torch.tensor(y_np, dtype=torch.float32)
+    
+    dataset = TensorDataset(X_s, X_r, X_h, X_g, y)
+    
+    lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
+    lengths.append(len(dataset) - sum(lengths))
+    train_ds, val_ds, test_ds = random_split(
+        dataset, lengths, generator=torch.Generator().manual_seed(42)
+    )
+    return train_ds, val_ds, test_ds
 
-    state_encoder = nn.Linear(STATE_DIM, config.hidden_size).to(DEVICE)
-
-    final_input_size = config.hidden_size + 2
-    mlp_head = NeuralNet(input_size=final_input_size, hidden_size=256, output_size=ACT_DIM).to(DEVICE)
-
-    return model_bert, state_encoder, mlp_head
-
-
-# ==== Training and Evaluation ====
-def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: NeuralNet,
-    train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module,
-    epoch_num: int, total_epochs: int) -> float:
+def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
+    train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
     """Trains the model for one epoch."""
     model_bert.train()
     state_encoder.train()
     mlp_head.train()
+    final_actionhead.train()
     total_train_loss = 0.0
 
     
     print(f"Epoch {epoch_num}/{total_epochs} [Train]: Starting...")
-    for (s, r, t, a) in train_loader:
-        s, r, t, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), a.to(DEVICE)
+    for (s, r, t, g, a) in train_loader:  # state, reward, time, goal, action
+        s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
         optimizer.zero_grad(set_to_none=True)
-
-        s_proj = state_encoder(s).unsqueeze(1)  # [B, 1, hidden]
-        bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0] # [B, hidden]
-        input_to_mlp = torch.cat([bert_out, r, t], dim=1) # [B, hidden+2]
-        pred = mlp_head(input_to_mlp)
+        # old model
+        s_proj = state_encoder(s).unsqueeze(1)
+        bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0]
+        input_to_mlp = torch.cat([bert_out, r, t], dim=1)
+        base_output = mlp_head(input_to_mlp)
+        # new action head
+        final_input = torch.cat([base_output, g], dim=1)  # add the goal information
+        pred = final_actionhead(final_input)
         loss = loss_fn(pred, a)
 
         loss.backward()
@@ -80,27 +95,32 @@ def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: N
     return total_train_loss / len(train_loader)
 
 
-def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: NeuralNet,
+def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
     val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
     """Validates the model for one epoch."""
     model_bert.eval()
     state_encoder.eval()
     mlp_head.eval()
+    final_actionhead.eval()
     total_val_loss = 0.0
 
     print(f"Epoch {epoch_num}/{total_epochs} [Val  ]: Starting...")
     with torch.no_grad():
-        for (s, r, t, a) in val_loader:
-            s, r, t, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), a.to(DEVICE)
+        for (s, r, t, g, a) in val_loader:  # state, reward, time, goal, action
+            s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
+            # old model
             s_proj = state_encoder(s).unsqueeze(1)
             bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0]
             input_to_mlp = torch.cat([bert_out, r, t], dim=1)
-            pred = mlp_head(input_to_mlp)
+            base_output = mlp_head(input_to_mlp)
+            # new action head
+            final_input = torch.cat([base_output, g], dim=1)  # add the goal information
+            pred = final_actionhead(final_input)
             loss = loss_fn(pred, a)
+
 
             total_val_loss += loss.item()
     return total_val_loss / len(val_loader)
-
 
 def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_loader: DataLoader) -> dict | None:
     """
@@ -117,14 +137,10 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         A dictionary containing the state_dicts of the best model components,
         or None if training did not produce a best model (e.g., 0 epochs).
     """
-    model_bert, state_encoder, mlp_head = initiate_model_components()
+    model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
+    action_head = AntMazeActionHead(hidden_size=64, act_dim=ACT_DIM).to(DEVICE)
 
-    optimizer = optim.Adam(
-        list(model_bert.parameters())
-        + list(state_encoder.parameters())
-        + list(mlp_head.parameters()),
-        lr=learning_rate,
-    )
+    optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
 
     best_val_loss = float("inf")
@@ -133,10 +149,10 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
 
     for epoch in range(epochs):
         avg_train_loss = train_one_epoch(
-            model_bert, state_encoder, mlp_head, train_loader, optimizer, loss_fn, epoch + 1, epochs
+            model_bert, state_encoder, mlp_head, action_head, train_loader, optimizer, loss_fn, epoch + 1, epochs
         )
         avg_val_loss = validate_one_epoch(
-             model_bert, state_encoder, mlp_head, val_loader, loss_fn, epoch + 1, epochs
+             model_bert, state_encoder, mlp_head, action_head, val_loader, loss_fn, epoch + 1, epochs
         )
 
         print(
@@ -150,6 +166,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
                 "bert": model_bert.state_dict(),
                 "state_encoder": state_encoder.state_dict(),
                 "mlp_head": mlp_head.state_dict(),
+                "action_head": action_head.state_dict(),
             }
             print(f"Best model found! Validation Loss: {best_val_loss:.4f}")
         else:
@@ -179,36 +196,38 @@ def evaluate_model(
         print("Error: No model state provided for evaluation.")
         return float('inf')
 
-    model_bert, state_encoder, mlp_head = initiate_model_components()
+    model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
+    action_head = AntMazeActionHead(hidden_size=64, act_dim=ACT_DIM).to(DEVICE)
     loss_fn = nn.MSELoss()
 
   
     model_bert.load_state_dict(model_state_dicts["bert"])
     state_encoder.load_state_dict(model_state_dicts["state_encoder"])
     mlp_head.load_state_dict(model_state_dicts["mlp_head"])
+    action_head.load_state_dict(model_state_dicts["action_head"])
 
     model_bert.eval()
     state_encoder.eval()
     mlp_head.eval()
+    action_head.eval()
 
     total_test_loss = 0.0
-    test_loop = tqdm(test_loader, desc="Evaluating")
-    with torch.no_grad():
-        for s, r, t, a in test_loop:
-            s = s.to(DEVICE, non_blocking=True if test_loader.pin_memory else False)
-            r = r.to(DEVICE, non_blocking=True if test_loader.pin_memory else False)
-            t = t.to(DEVICE, non_blocking=True if test_loader.pin_memory else False)
-            a = a.to(DEVICE, non_blocking=True if test_loader.pin_memory else False)
 
+    print(f"Evaluation: Starting...")
+    with torch.no_grad():
+        for (s, r, t, g, a) in test_loader:  # state, reward, time, goal, action
+            s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
+            # old model
             s_proj = state_encoder(s).unsqueeze(1)
             bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0]
             input_to_mlp = torch.cat([bert_out, r, t], dim=1)
-            pred = mlp_head(input_to_mlp)
+            base_output = mlp_head(input_to_mlp)
+            # new action head
+            final_input = torch.cat([base_output, g], dim=1)  # add the goal information
+            pred = action_head(final_input)
             loss = loss_fn(pred, a)
 
             total_test_loss += loss.item()
-            test_loop.set_postfix(loss=loss.item())
-
     avg_test_loss = total_test_loss / len(test_loader)
     return avg_test_loss
 
@@ -222,8 +241,8 @@ def grid_search_experiment() -> None:
     An evaluation on the test set is performed and printed for each model trained.
     """
     batch_sizes_param = [16]
-    learning_rates_param = [5e-5]
-    epochs_list_param = [30]
+    learning_rates_param = [1e-5]
+    epochs_list_param = [10]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
@@ -256,8 +275,6 @@ def grid_search_experiment() -> None:
             if current_test_loss < overall_best_test_loss:
                 overall_best_test_loss = current_test_loss
                 overall_best_config_str = current_config_str
-        else:
-            print(f"Training failed or was skipped for config: {current_config_str}. Skipping evaluation and save.")
         
         print("=" * 60)
 
@@ -265,8 +282,6 @@ def grid_search_experiment() -> None:
     if overall_best_test_loss != float('inf'):
         print(f"The configuration that yielded the best reported test loss was: {overall_best_config_str}")
         print(f"Best reported Test Loss during search: {overall_best_test_loss:.4f}")
-    else:
-        print("No configurations were successfully trained and evaluated.")
     print(f"The model saved at '{BEST_MODEL_PATH}' corresponds to the results of the *last* successfully trained hyperparameter set.")
 
 

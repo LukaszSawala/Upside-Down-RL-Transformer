@@ -180,12 +180,15 @@ class AntBERTPretrainedMazePolicy(nn.Module):
     THIS GUY IS FOR THE ANT-TRAINED BERTMLP
     """
 
-    def __init__(self, model_bert, state_encoder, mlp, action_dim=8):
+    def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head = None):
         super().__init__()
         self.state_encoder = state_encoder
         self.mlp = mlp  # the main mlp
         self.model_bert = model_bert
-        self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
+        if init_head:
+            self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
+        else:
+            self.adjusted_head = adjusted_head
 
     def forward(self, obs, dr, dh, goal_vector, DEVICE, use_goal=True):
         # convert to tensors

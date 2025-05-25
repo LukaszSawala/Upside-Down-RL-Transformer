@@ -69,17 +69,17 @@ def extract_goal_direction(obs: dict) -> np.ndarray:
 
 
 def antmaze_evaluate(
-    env, model, episodes=10, time_interval=0.05, d_r=5.0, d_h=1000.0, state_dim=105
+    env, model, episodes=10, time_interval=0.05, d_r=5.0, d_h=1000.0, state_dim=105, use_goal=False
 ):
-    mean_returns = []
     best_distances = []
+    obtained_returns = []
     for episode in range(episodes):
         print(f"Episode: {episode}")
         obs = env.reset()[0]  # extract the values from the wrapped array
         done = False
-        rewards = []
         d_h_copy, d_r_copy = d_h, d_r
         best_distance = 1000
+        total_reward = 0
         while not done and d_h_copy > 0:
             goal_vec = extract_goal_direction(obs)
             distance = np.linalg.norm(goal_vec)
@@ -89,28 +89,28 @@ def antmaze_evaluate(
             obs = obs["observation"][:state_dim]  # exytract the values from the wrapped array
 
             with torch.no_grad():
-                action_tensor = model(obs, d_r_copy, d_h_copy, goal_vec, DEVICE, use_goal=False)  # not using the goal
+                action_tensor = model(obs, d_r_copy, d_h_copy, goal_vec, DEVICE, use_goal=use_goal)  # not using the goal
             action = action_tensor.squeeze(0).cpu().numpy()
 
             obs, reward, terminated, truncated, _ = env.step(action)
-            rewards.append(reward)
+            total_reward += reward
             d_r_copy -= reward
             d_h_copy -= 1
             done = terminated or truncated
 
             #env.render()
             #time.sleep(time_interval)
-        mean_returns.append(np.mean(rewards))
+        obtained_returns.append(total_reward)
         best_distances.append(best_distance)
 
-    return mean_returns, best_distances
+    return obtained_returns, best_distances
 
 
 if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5", render_mode="human")  # render mode human to see whats up
+    env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -118,19 +118,26 @@ if __name__ == "__main__":
         nn_base = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
         model = AntNNPretrainedMazePolicy(nn_base, action_dim=8).to(DEVICE)
         state_dim = 105
+        use_goal = False
     elif args["model_type"] == "BERT_MLP":
         bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE)
-        model = AntBERTPretrainedMazePolicy(*bert_base, action_dim=8).to(DEVICE)
+        if "finetuned" in BERT_MLP_MODEL_PATH:
+            model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False, adjusted_head=bert_base[3]).to(DEVICE)
+            use_goal = True
+        else:
+            model = AntBERTPretrainedMazePolicy(*bert_base).to(DEVICE)
+            use_goal = False
         state_dim = 105
     elif args["model_type"] == "ANTMAZE_BERT_MLP":
         model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
         model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
         state_dim = 27  # reduced state space due to dataset mismatch
+        use_goal = True
     else:
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 10 + 800 for i in range(11)] # test those out
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])] # test those out
     if max(d_r_options) < 100:
         print("LOW REWARD TESTING")
     num_episodes = args["episodes"]
@@ -141,7 +148,9 @@ if __name__ == "__main__":
     for d_r in d_r_options:
         print("=" * 50)
         print("Trying with d_r:", d_r)
-        returns, distances = antmaze_evaluate(env, model, episodes=num_episodes, d_r=d_r, d_h=d_h, time_interval=0.05, state_dim=state_dim)
+        returns, distances = antmaze_evaluate(
+            env, model, episodes=num_episodes, d_r=d_r, d_h=d_h,
+            time_interval=0.05, state_dim=state_dim, use_goal=use_goal)
         average_rewards.append(np.mean(returns))
         sem_values.append(sem(returns))
         success_rates.append(np.mean([r > 0 for r in returns]))
@@ -149,5 +158,5 @@ if __name__ == "__main__":
 
     plot_average_rewards(average_rewards, sem_values, d_r_options,
                          title="Average Reward vs. d_r", save_path="antmaze_average_rewards_plot.png",
-                         max_y=1.0)
+                         max_y=max(d_r_options) * 1.1)
     print("success rates: ", success_rates)

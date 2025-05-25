@@ -14,14 +14,14 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor
 from utils import parse_arguments, print_available_antmaze_envs
-from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet
+from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet, AntMazeActionHead
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "bertsmall-lasttry.pth"
-BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp-batch32.pth"
+BERT_MLP_MODEL_PATH = "../models/finetunedbroski.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -93,7 +93,7 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
 
 
-def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str):
+def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str, freeze: bool = False, antmaze_pretrained: bool = False):
     # Load BERT config
     config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
     config.vocab_size = 1
@@ -114,7 +114,18 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str):
     model_bert.eval()
     state_encoder.eval()
     mlp.eval()
+    if freeze:
+        for param in model_bert.parameters():
+            param.requires_grad = False
+        for param in state_encoder.parameters():
+            param.requires_grad = False
+        for param in mlp.parameters():
+            param.requires_grad = False
 
+    if antmaze_pretrained:
+        action_head = AntMazeActionHead(hidden_size=64, act_dim=8).to(DEVICE)
+        action_head.load_state_dict(checkpoint["action_head"])
+        return model_bert, state_encoder, mlp, action_head
     return model_bert, state_encoder, mlp
 
 
@@ -356,7 +367,7 @@ def plot_average_rewards(
     d_r_values: list,
     title="Average Reward vs. d_r",
     save_path: str = "average_rewards_plot.png",
-    max_y: float = 5000,
+    max_y: float = 5500,
 ):
     """
     Plots the average rewards for different values of d_r with standard error bars.
@@ -384,8 +395,8 @@ def plot_average_rewards(
     plt.ylabel("Average Reward", fontsize=12)
     plt.title(title, fontsize=14, fontweight="bold")
     plt.ylim(0, max_y)
-    to_add = 1 if max_y > 2 else 0.01 # ticks added for plot readability
-    plt.yticks(np.arange(0, max_y+to_add, max_y/10))
+    print("max_y:", max_y, "ticks every:", max_y/11)
+    plt.yticks(np.arange(0, max_y, max_y/11))
     sns.despine()
     plt.savefig(save_path)
     print(f"Average rewards plot saved in {save_path}")

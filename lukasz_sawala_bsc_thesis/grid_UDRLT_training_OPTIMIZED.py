@@ -1,3 +1,10 @@
+#==============================================================================
+# This file contains the training code for the Upside-Down-RL-Transformer model.
+# It is quite complex due to optimization methods applied to speed up the training
+# process. For a better reference on the training algorithm, see
+# grid_UDRLT_MLP_training.py, following a similar logic with some modifications.
+#==============================================================================
+
 import itertools
 import torch
 import torch.nn as nn
