@@ -89,7 +89,7 @@ def antmaze_evaluate(
             obs = obs["observation"][:state_dim]  # exytract the values from the wrapped array
 
             with torch.no_grad():
-                action_tensor = model(obs, d_r_copy, d_h_copy, goal_vec, DEVICE, use_goal=use_goal)  # not using the goal
+                action_tensor = model(obs, d_r_copy, d_h_copy, goal_vec, DEVICE, use_goal=use_goal)
             action = action_tensor.squeeze(0).cpu().numpy()
 
             obs, reward, terminated, truncated, _ = env.step(action)
@@ -125,7 +125,7 @@ if __name__ == "__main__":
             model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False, adjusted_head=bert_base[3]).to(DEVICE)
             use_goal = True
         else:
-            model = AntBERTPretrainedMazePolicy(*bert_base).to(DEVICE)
+            model = AntBERTPretrainedMazePolicy(*bert_base, init_head=True).to(DEVICE)
             use_goal = False
         state_dim = 105
     elif args["model_type"] == "ANTMAZE_BERT_MLP":
