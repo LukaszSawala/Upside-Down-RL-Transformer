@@ -153,7 +153,7 @@ class AntMazeActionHead(nn.Module):
         return self.net(x)
 
 
-class AntNNPretrainedMazePolicy(torch.nn.Module):
+class AntNNPretrainedMazePolicy(nn.Module):
     """
     Class definign the policy wrapper for the AntMaze transferrablity experiment
     """
@@ -175,7 +175,7 @@ class AntNNPretrainedMazePolicy(torch.nn.Module):
         return action
 
 
-class AntBERTPretrainedMazePolicy(torch.nn.Module):
+class AntBERTPretrainedMazePolicy(nn.Module):
     """
     THIS GUY IS FOR THE ANT-TRAINED BERTMLP
     """
@@ -207,7 +207,7 @@ class AntBERTPretrainedMazePolicy(torch.nn.Module):
             return action
 
 
-class AntMazeBERTPretrainedMazeWrapper(torch.nn.Module):
+class AntMazeBERTPretrainedMazeWrapper(nn.Module):
     """
     THIS GUY IS FOR THE ANTMAZETRAINED BERTMLP WITH GOAL TRAINING
     """
