@@ -122,6 +122,7 @@ if __name__ == "__main__":
     elif args["model_type"] == "BERT_MLP":
         bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE)
         if "finetuned" in BERT_MLP_MODEL_PATH:
+            print("a")
             model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False, adjusted_head=bert_base[3]).to(DEVICE)
             use_goal = True
         else:

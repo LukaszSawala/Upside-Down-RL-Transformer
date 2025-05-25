@@ -164,8 +164,8 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
             patience_counter = PATIENCE
             current_best_model_state_dicts = {
                 "bert": model_bert.state_dict(),
-                "state_encoder": state_encoder.state_dict(),
-                "mlp_head": mlp_head.state_dict(),
+                "state": state_encoder.state_dict(),
+                "mlp": mlp_head.state_dict(),
                 "action_head": action_head.state_dict(),
             }
             print(f"Best model found! Validation Loss: {best_val_loss:.4f}")

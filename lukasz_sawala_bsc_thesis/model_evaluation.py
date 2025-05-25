@@ -21,7 +21,7 @@ OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "bertsmall-lasttry.pth"
-BERT_MLP_MODEL_PATH = "../models/finetunedbroski.pth"
+BERT_MLP_MODEL_PATH = "finetunedbroski.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
