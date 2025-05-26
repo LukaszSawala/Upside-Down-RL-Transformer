@@ -138,7 +138,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         or None if training did not produce a best model (e.g., 0 epochs).
     """
     model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
-    action_head = AntMazeActionHead(hidden_size=64, act_dim=ACT_DIM).to(DEVICE)
+    action_head = AntMazeActionHead(hidden_size=128, act_dim=ACT_DIM).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
@@ -197,13 +197,13 @@ def evaluate_model(
         return float('inf')
 
     model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
-    action_head = AntMazeActionHead(hidden_size=64, act_dim=ACT_DIM).to(DEVICE)
+    action_head = AntMazeActionHead(hidden_size=128, act_dim=ACT_DIM).to(DEVICE)
     loss_fn = nn.MSELoss()
 
   
     model_bert.load_state_dict(model_state_dicts["bert"])
-    state_encoder.load_state_dict(model_state_dicts["state_encoder"])
-    mlp_head.load_state_dict(model_state_dicts["mlp_head"])
+    state_encoder.load_state_dict(model_state_dicts["state"])
+    mlp_head.load_state_dict(model_state_dicts["mlp"])
     action_head.load_state_dict(model_state_dicts["action_head"])
 
     model_bert.eval()

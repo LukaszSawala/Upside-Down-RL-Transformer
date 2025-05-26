@@ -234,7 +234,7 @@ class AntBERTPretrainedMazePolicy(nn.Module):
         self.mlp = mlp  # the main mlp
         self.model_bert = model_bert
         if init_head:
-            self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
+            self.adjusted_head = AntMazeActionHead(hidden_size=128, act_dim=action_dim)
         else:
             self.adjusted_head = adjusted_head
 

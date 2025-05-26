@@ -110,7 +110,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5", render_mode="human")  # render mode human to see whats up
+    env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":

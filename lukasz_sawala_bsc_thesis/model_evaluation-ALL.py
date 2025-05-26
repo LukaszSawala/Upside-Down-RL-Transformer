@@ -54,7 +54,10 @@ def plot_all_models_rewards(
     for i, (model_name, data) in enumerate(results.items()):
         avg_rewards = np.array(data["avg_rewards"])
         sem_vals = np.array(data["sem"])
-
+        if model_name == "BERT_UDRL":
+            model_name = "UDRLt"
+        if model_name == "BERT_MLP":
+            model_name = "UDRLt_MLP"
         plt.plot(d_r_values, avg_rewards, label=model_name, color=palette[i], marker="o")
         plt.fill_between(
             d_r_values,
@@ -104,8 +107,8 @@ if __name__ == "__main__":
     models_dict = {
         "NeuralNet": nn_model,
         "DecisionTransformer": dt_model,
-        "UDRLt": bert_model,
-        "UDRLt-MLP": bert_mlp_model,
+        "BERT_UDRL": bert_model,
+        "BERT_MLP": bert_mlp_model,
     }
 
     for d_r in d_r_options:
