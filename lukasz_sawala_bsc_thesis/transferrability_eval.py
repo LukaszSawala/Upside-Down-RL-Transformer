@@ -10,7 +10,7 @@ from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
     AntMazeBERTPretrainedMazeWrapper,
-    HugeNeuralNet,
+    HugeNeuralNet, NeuralNet10
 )
 from model_evaluation import (
     load_nn_model_for_eval, load_bert_mlp_model_for_eval,
@@ -20,7 +20,7 @@ from utils import parse_arguments
 from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ANTMAZE_BERT_PATH = "antmaze_model-tiny-hugemlp.pth"
+ANTMAZE_BERT_PATH = "antmaze_tiny_10layers.pth"
 
 
 def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str):
@@ -32,7 +32,7 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str):
     model_bert = AutoModel.from_config(config).to(device)
     state_encoder = nn.Linear(27, config.hidden_size).to(device)
     # mlp = NeuralNet(input_size=config.hidden_size + 4, hidden_size=256, output_size=8).to(device)
-    mlp = HugeNeuralNet(
+    mlp = NeuralNet10(
         input_size=config.hidden_size + 4, hidden_size=256, output_size=8
     ).to(device)  # hidden size + 4 for d_r, d_h and x y values of the goal vector
 
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
+    env = gym.make("AntMaze_MediumDense-v5", render_mode="human")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":

@@ -21,7 +21,7 @@ OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth"
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "bertsmall-lasttry.pth"
-BERT_MLP_MODEL_PATH = "finetunedbroski.pth"
+BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp-batch32.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -115,6 +115,7 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str, freeze: bool
     state_encoder.eval()
     mlp.eval()
     if freeze:
+        print("Freezing base model parameters")
         for param in model_bert.parameters():
             param.requires_grad = False
         for param in state_encoder.parameters():
