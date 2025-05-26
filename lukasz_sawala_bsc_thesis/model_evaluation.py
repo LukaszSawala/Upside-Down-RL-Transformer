@@ -63,7 +63,14 @@ def load_dt_model_for_eval(state_dim: int, act_dim: int,
 
 def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
                                   checkpoint_path: str, device: str) -> tuple:
-    """Loads the BERT UDRL model components for evaluation."""
+    """
+    Loads the bert-based UDRLt model components for evaluation.
+    Args:
+        state_dim (int): The dimension of the state.
+        act_dim (int): The dimension of the action.
+        checkpoint_path (str): The path to the checkpoint file.
+        device (str): The device to load the model on.
+    """
     config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
@@ -94,6 +101,14 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
 
 
 def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str, freeze: bool = False, antmaze_pretrained: bool = False):
+    """
+    Loads the bert-based MLP model components for evaluation.
+    Args:
+        checkpoint_path (str): The path to the checkpoint file.
+        device (str): The device to load the model on.
+        freeze (bool): Whether to freeze the BERT model.
+        antmaze_pretrained (bool): Whether to return the fine-tuned AntMaze action head.
+    """
     # Load BERT config
     config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
     config.vocab_size = 1
@@ -137,6 +152,17 @@ def evaluate_get_rewards(env: gym.Env, model, d_h: float,
                          device: str = "cpu") -> tuple:
     """
     Evaluate the performance of the model on the given environment.
+    Args:
+        env (gym.Env): The environment to evaluate on.
+        model: The model to evaluate.
+        d_h (float): The horizon to go.
+        d_r (float): The reward to go.
+        num_episodes (int): The number of episodes to evaluate.
+        max_episode_length (int): The maximum length of an episode.
+        model_type (str): The type of model to evaluate.
+        device (str): The device to evaluate on.
+    Returns:
+        tuple: A tuple containing the average reward and a list of episodic rewards.
     """
     if model_type == "NeuralNet":
         return _evaluate_neural_net(
@@ -396,8 +422,8 @@ def plot_average_rewards(
     plt.ylabel("Average Reward", fontsize=12)
     plt.title(title, fontsize=14, fontweight="bold")
     plt.ylim(0, max_y)
-    print("max_y:", max_y, "ticks every:", max_y/11)
-    plt.yticks(np.arange(0, max_y, max_y/11))
+    print("max_y:", max_y, "ticks every:", max_y / 11)
+    plt.yticks(np.arange(0, max_y, max_y / 11))
     sns.despine()
     plt.savefig(save_path)
     print(f"Average rewards plot saved in {save_path}")
