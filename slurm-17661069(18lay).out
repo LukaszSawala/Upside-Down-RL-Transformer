@@ -1,0 +1,314 @@
+Evaluating AntMaze with model: ANTMAZE_BERT_MLP
+==================================================
+Trying with d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 8.495613393819499e-05 maximum return: 62.806828025114335
+==================================================
+Trying with d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.2614835681739356e-06 maximum return: 433.03027856808086
+==================================================
+Trying with d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0013427411277462083 maximum return: 39.64361760368783
+==================================================
+Trying with d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.7080523503092603e-05 maximum return: 157.76014564998462
+==================================================
+Trying with d_r: 200
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 8.82134465570967e-05 maximum return: 191.17726013135598
+==================================================
+Trying with d_r: 250
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.149346829595864e-05 maximum return: 358.41609386104034
+==================================================
+Trying with d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.6558116688573925e-07 maximum return: 324.99272011275315
+==================================================
+Trying with d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.1347477450329045e-05 maximum return: 281.49443288105937
+==================================================
+Trying with d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.7102091342610495e-05 maximum return: 396.9457118833945
+==================================================
+Trying with d_r: 450
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.7342297807677856e-06 maximum return: 184.6313163822906
+==================================================
+Trying with d_r: 500
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.000586876037595854 maximum return: 496.1586129276124
+==================================================
+Trying with d_r: 550
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00010008955348366791 maximum return: 358.5690431134083
+==================================================
+Trying with d_r: 600
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.06801783009517387 maximum return: 550.816241885008
+==================================================
+Trying with d_r: 650
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0001154580051885069 maximum return: 611.5394715127139
+==================================================
+Trying with d_r: 700
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.778418425982726e-06 maximum return: 499.8249716490784
+==================================================
+Trying with d_r: 750
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.0583240831922093e-06 maximum return: 386.08311785652666
+==================================================
+Trying with d_r: 800
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 5.5386117648347744e-05 maximum return: 661.6695560000558
+==================================================
+Trying with d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0004403957509382018 maximum return: 700.954115905187
+==================================================
+Trying with d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.627109068038507e-08 maximum return: 205.28883359572433
+==================================================
+Trying with d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.216056069814975e-08 maximum return: 20.09491240346348
+==================================================
+Trying with d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.337172150588166e-07 maximum return: 263.65249421637407
+max_y: 1100.0 ticks every: 100.0
+Average rewards plot saved in antmaze_average_rewards_plot.png
+success rates:  [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+
+###############################################################################
+Hábrók Cluster
+Job 17661069 for user s5173019
+Finished at: Wed May 28 19:16:21 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17661069
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-05-28T19:03:47
+Start                          : 2025-05-28T19:03:48
+End                            : 2025-05-28T19:16:17
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:12:29
+Used CPU time                  : 00:12:19 (Efficiency: 98.63%)
+% User (Computation)           : 99.80%
+% System (I/O)                 :  0.20%
+Total memory reserved          : 2G
+Maximum memory used            : 483.41M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

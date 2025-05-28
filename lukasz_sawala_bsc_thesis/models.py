@@ -252,6 +252,80 @@ class NeuralNet16(nn.Module):
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
 
+class NeuralNet18(nn.Module):
+    """
+    Class defining the Neural Network used in the research as a baseline.
+    """
+    def __init__(self, input_size: int, hidden_size: int, output_size: int) -> None:
+        """
+        Initializes the Neural Network.
+        """
+        super(NeuralNet18, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size*2)
+        self.fc3 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc4 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc5 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc6 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc7 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc8 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc9 = nn.Linear(hidden_size*2, hidden_size)
+        self.fc10 = nn.Linear(hidden_size, hidden_size)
+        self.fc11 = nn.Linear(hidden_size, hidden_size)
+        self.fc12 = nn.Linear(hidden_size, hidden_size)
+        self.fc13 = nn.Linear(hidden_size, hidden_size)
+        self.fc14 = nn.Linear(hidden_size, hidden_size)
+        self.fc15 = nn.Linear(hidden_size, hidden_size)
+        self.fc16 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc17 = nn.Linear(hidden_size // 2, hidden_size // 4)
+        self.fc18 = nn.Linear(hidden_size // 4, output_size)
+        self.relu = nn.ReLU()  
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Defines the forward call of the network.
+        Returns:
+            torch.Tensor: The output of the network squeezed with
+            tanh - enforcing the action range between (-1, 1)
+        """
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu(x)
+        x = self.fc3(x)
+        x = self.relu(x)
+        x = self.fc4(x)
+        x = self.relu(x)
+        x = self.fc5(x)
+        x = self.relu(x)
+        x = self.fc6(x)
+        x = self.relu(x)
+        x = self.fc7(x)
+        x = self.relu(x)
+        x = self.fc8(x)
+        x = self.relu(x)
+        x = self.fc9(x)
+        x = self.relu(x)
+        x = self.fc10(x)
+        x = self.relu(x)
+        x = self.fc11(x)
+        x = self.relu(x)
+        x = self.fc12(x)
+        x = self.relu(x)
+        x = self.fc13(x)
+        x = self.relu(x)
+        x = self.fc14(x)
+        x = self.relu(x)
+        x = self.fc15(x)
+        x = self.relu(x)
+        x = self.fc16(x)
+        x = self.relu(x)
+        x = self.fc17(x)
+        x = self.relu(x)
+        x = self.fc18(x)
+        x = torch.tanh(x)  # Enforces the action range between -1 and 1
+        return x
+    
 
 class ActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):

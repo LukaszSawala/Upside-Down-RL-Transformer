@@ -124,7 +124,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         A dictionary containing the state_dicts of the best model components,
         or None if training did not produce a best model (e.g., 0 epochs).
     """
-    model_nn = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
+    model_nn, _ = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
     action_head = AntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
@@ -223,8 +223,8 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [16]
-    learning_rates_param = [2e-4]
+    batch_sizes_param = [32]
+    learning_rates_param = [5e-5]
     epochs_list_param = [30]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
