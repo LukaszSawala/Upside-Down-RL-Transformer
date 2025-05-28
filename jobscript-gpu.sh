@@ -8,7 +8,7 @@
 source .venv/bin/activate
 
 cd lukasz_sawala_bsc_thesis/
-python UDRLt_MLP_finetuning_maze.py
+python finetuningUDRLt_MLP_maze.py
 
 
 deactivate

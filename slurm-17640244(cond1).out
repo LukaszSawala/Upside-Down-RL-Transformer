@@ -1,0 +1,719 @@
+==================================================
+Evaluating d_r: 0
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.1654543562458364e-07 maximum return: 1.7211784616819092
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.473926825861153e-08 maximum return: 8.788056336821393
+==================================================
+Evaluating d_r: 10
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00027005308450817896 maximum return: 288.84344607835413
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.0431177512140115e-07 maximum return: 0.05932772465197651
+==================================================
+Evaluating d_r: 20
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.213973919611044e-06 maximum return: 1.1327158839920355
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 8.891520960554567e-07 maximum return: 0.5137410261851286
+==================================================
+Evaluating d_r: 30
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.0024889023721305e-06 maximum return: 22.946586978009083
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.5735054133834503e-07 maximum return: 0.004600453018510382
+==================================================
+Evaluating d_r: 40
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.0469411640600027e-07 maximum return: 20.350223393150774
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.231093418149789e-07 maximum return: 0.42232207265449406
+==================================================
+Evaluating d_r: 50
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 5.464286318560748e-10 maximum return: 24.832075377513927
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.9498247702755743e-05 maximum return: 23.16542897553309
+==================================================
+Evaluating d_r: 60
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.6886745977064782e-08 maximum return: 462.66463266938916
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00014095347655856987 maximum return: 28.405468749299317
+==================================================
+Evaluating d_r: 70
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.665653248552082e-08 maximum return: 31.934294126694326
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.839812709243562e-05 maximum return: 15.572719183965948
+==================================================
+Evaluating d_r: 80
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.286017326762599e-09 maximum return: 97.10877823247138
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.1749439786602333e-05 maximum return: 94.3331229638442
+==================================================
+Evaluating d_r: 90
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 8.35704770385585e-07 maximum return: 6.24058723848108
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.576040465667296e-07 maximum return: 12.322248370084967
+==================================================
+Evaluating d_r: 100
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.2120528841776568e-09 maximum return: 80.0435489352167
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.1747525579641914e-05 maximum return: 247.55392095249113
+==================================================
+Evaluating d_r: 110
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.835543757616462e-08 maximum return: 3.4213408283842877
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.886590256557913e-10 maximum return: 24.616873625340563
+==================================================
+Evaluating d_r: 120
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.660689129950713e-09 maximum return: 4.3869612623845775
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.5782942123935142e-08 maximum return: 30.41332888704319
+==================================================
+Evaluating d_r: 130
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.9636944634996617e-08 maximum return: 283.2453422297319
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 9.343687051268002e-05 maximum return: 30.978705173562297
+==================================================
+Evaluating d_r: 140
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.279373239655008e-07 maximum return: 18.80272223920012
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.1719739646433317e-05 maximum return: 0.2914288827033215
+==================================================
+Evaluating d_r: 150
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.3195817717339124e-06 maximum return: 25.978714256101266
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.5951160433214458e-09 maximum return: 9.032711269259236
+==================================================
+Evaluating d_r: 160
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.8965516208542085e-09 maximum return: 0.06280097004183946
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.434555121727857e-05 maximum return: 324.46469681004913
+==================================================
+Evaluating d_r: 170
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 9.512645128972348e-06 maximum return: 164.0256045860336
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.734010807414022e-09 maximum return: 3.9589917421334384
+==================================================
+Evaluating d_r: 180
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.8053763380668985e-09 maximum return: 3.079212496132015
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.0885645673269148e-06 maximum return: 2.3535615487053443
+==================================================
+Evaluating d_r: 190
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.1691550589421412e-07 maximum return: 15.617621106317236
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.6040266880265253e-06 maximum return: 224.02838346918512
+==================================================
+Evaluating d_r: 200
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.174697182537013e-06 maximum return: 61.41411928656583
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.6909675726099167e-07 maximum return: 180.7556951263859
+==================================================
+Evaluating d_r: 210
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 5.536835621752083e-08 maximum return: 11.387459215125164
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.3130747860070697e-08 maximum return: 8.106209354843894
+==================================================
+Evaluating d_r: 220
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.89579234940274e-09 maximum return: 3.6003313770710066
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.0032004824828287e-06 maximum return: 0.5986967774998451
+==================================================
+Evaluating d_r: 230
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 9.629852001395426e-08 maximum return: 390.6533866995489
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.4973254759179653e-07 maximum return: 0.9885752722349573
+==================================================
+Evaluating d_r: 240
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.256977892640708e-05 maximum return: 0.44717742481225364
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.650553484555382e-06 maximum return: 78.99088557323265
+==================================================
+Evaluating d_r: 250
+Evaluating model: NeuralNet
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.034381063122228e-07 maximum return: 8.66744403132681
+Evaluating model: BERT_MLP
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.400673349219531e-05 maximum return: 412.44667908629157
+
+============================================================
+Final Average Percentage Errors per Model:
+NeuralNet: 95.29%
+BERT_MLP: 89.23%
+Saved combined plot to !!average_rewards_all_models.png
+
+###############################################################################
+Hábrók Cluster
+Job 17640244 for user s5173019
+Finished at: Tue May 27 18:56:31 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17640244
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-05-27T18:47:09
+Start                          : 2025-05-27T18:47:10
+End                            : 2025-05-27T18:56:27
+Reserved walltime              : 04:00:00
+Used walltime                  : 00:09:17
+Used CPU time                  : 00:09:07 (Efficiency: 98.12%)
+% User (Computation)           : 99.76%
+% System (I/O)                 :  0.24%
+Total memory reserved          : 2G
+Maximum memory used            : 455.06M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

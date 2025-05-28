@@ -90,10 +90,10 @@ class NeuralNet10(nn.Module):
         """
         super(NeuralNet10, self).__init__()
         self.fc1 = nn.Linear(input_size, hidden_size)
-        self.fc2 = nn.Linear(hidden_size, hidden_size)
-        self.fc3 = nn.Linear(hidden_size, hidden_size)
-        self.fc4 = nn.Linear(hidden_size, hidden_size)
-        self.fc5 = nn.Linear(hidden_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size*2)
+        self.fc3 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc4 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc5 = nn.Linear(hidden_size*2, hidden_size)
         self.fc6 = nn.Linear(hidden_size, hidden_size)
         self.fc7 = nn.Linear(hidden_size, hidden_size)
         self.fc8 = nn.Linear(hidden_size, hidden_size // 2)
@@ -127,6 +127,130 @@ class NeuralNet10(nn.Module):
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
 
+class NeuralNet12(nn.Module):
+    """
+    Class defining the Neural Network used in the research as a baseline.
+    """
+    def __init__(self, input_size: int, hidden_size: int, output_size: int) -> None:
+        """
+        Initializes the Neural Network.
+        """
+        super(NeuralNet12, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size*2)
+        self.fc3 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc4 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc5 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc6 = nn.Linear(hidden_size*2, hidden_size)
+        self.fc7 = nn.Linear(hidden_size, hidden_size)
+        self.fc8 = nn.Linear(hidden_size, hidden_size)
+        self.fc9 = nn.Linear(hidden_size, hidden_size)
+        self.fc10 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc11 = nn.Linear(hidden_size // 2, hidden_size // 4)
+        self.fc12 = nn.Linear(hidden_size // 4, output_size)
+        self.relu = nn.ReLU()  
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Defines the forward call of the network.
+        Returns:
+            torch.Tensor: The output of the network squeezed with
+            tanh - enforcing the action range between (-1, 1)
+        """
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu(x)
+        x = self.fc3(x)
+        x = self.relu(x)
+        x = self.fc4(x)
+        x = self.relu(x)
+        x = self.fc5(x)
+        x = self.relu(x)
+        x = self.fc6(x)
+        x = self.relu(x)
+        x = self.fc7(x)
+        x = self.relu(x)
+        x = self.fc8(x)
+        x = self.relu(x)
+        x = self.fc9(x)
+        x = self.relu(x)
+        x = self.fc10(x)
+        x = self.relu(x)
+        x = self.fc11(x)
+        x = self.relu(x)
+        x = self.fc12(x)
+        x = torch.tanh(x)  # Enforces the action range between -1 and 1
+        return x
+    
+
+class NeuralNet16(nn.Module):
+    """
+    Class defining the Neural Network used in the research as a baseline.
+    """
+    def __init__(self, input_size: int, hidden_size: int, output_size: int) -> None:
+        """
+        Initializes the Neural Network.
+        """
+        super(NeuralNet16, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size*2)
+        self.fc3 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc4 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc5 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc6 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc7 = nn.Linear(hidden_size*2, hidden_size*2)
+        self.fc8 = nn.Linear(hidden_size*2, hidden_size)
+        self.fc9 = nn.Linear(hidden_size, hidden_size)
+        self.fc10 = nn.Linear(hidden_size, hidden_size)
+        self.fc11 = nn.Linear(hidden_size, hidden_size)
+        self.fc12 = nn.Linear(hidden_size, hidden_size)
+        self.fc13 = nn.Linear(hidden_size, hidden_size)
+        self.fc14 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc15 = nn.Linear(hidden_size // 2, hidden_size // 4)
+        self.fc16 = nn.Linear(hidden_size // 4, output_size)
+        self.relu = nn.ReLU()  
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Defines the forward call of the network.
+        Returns:
+            torch.Tensor: The output of the network squeezed with
+            tanh - enforcing the action range between (-1, 1)
+        """
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu(x)
+        x = self.fc3(x)
+        x = self.relu(x)
+        x = self.fc4(x)
+        x = self.relu(x)
+        x = self.fc5(x)
+        x = self.relu(x)
+        x = self.fc6(x)
+        x = self.relu(x)
+        x = self.fc7(x)
+        x = self.relu(x)
+        x = self.fc8(x)
+        x = self.relu(x)
+        x = self.fc9(x)
+        x = self.relu(x)
+        x = self.fc10(x)
+        x = self.relu(x)
+        x = self.fc11(x)
+        x = self.relu(x)
+        x = self.fc12(x)
+        x = self.relu(x)
+        x = self.fc13(x)
+        x = self.relu(x)
+        x = self.fc14(x)
+        x = self.relu(x)
+        x = self.fc15(x)
+        x = self.relu(x)
+        x = self.fc16(x)
+        x = torch.tanh(x)  # Enforces the action range between -1 and 1
+        return x
 
 
 class ActionHead(nn.Module):
@@ -183,7 +307,7 @@ class LargeActionHead(nn.Module):
     
 
 
-class AntMazeActionHead(nn.Module):
+class OldAntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -201,14 +325,102 @@ class AntMazeActionHead(nn.Module):
         return self.net(x)
 
 
+class LessOldAntMazeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(act_dim + 2, hidden_size), # 2 for x, y of the goal
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 2, act_dim),
+            nn.Tanh(),
+        )
+
+    def forward(self, x):
+        return self.net(x)
+    
+
+class EvenLessOldAntMazeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(act_dim + 2, hidden_size), # 2 for x, y of the goal
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 2, act_dim),
+            nn.Tanh(),
+        )
+
+    def forward(self, x):
+        return self.net(x)
+    
+
+class AntMazeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(act_dim + 2, hidden_size), # 2 for x, y of the goal
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size*2),
+            nn.ReLU(),
+            nn.Linear(hidden_size*2, hidden_size*2),
+            nn.ReLU(),
+            nn.Linear(hidden_size*2, hidden_size*2),
+            nn.ReLU(),
+            nn.Linear(hidden_size*2, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 2, act_dim),
+            nn.Tanh(),
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
 class AntNNPretrainedMazePolicy(nn.Module):
     """
     Class definign the policy wrapper for the AntMaze transferrablity experiment
     """
-    def __init__(self, base_model, action_dim):
+    def __init__(self, base_model, action_dim, adjusted_head=None):
         super().__init__()
         self.base_model = base_model
-        self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
+        if adjusted_head is not None:
+            self.adjusted_head = adjusted_head
+        else:
+            self.adjusted_head = AntMazeActionHead(hidden_size=64, act_dim=action_dim)
 
     def forward(self, obs, dr, dh, goal_vector, DEVICE, use_goal=True):
         obs_input = torch.tensor(np.concatenate((obs, [dr, dh])), dtype=torch.float32).unsqueeze(0).to(DEVICE)
@@ -220,7 +432,6 @@ class AntNNPretrainedMazePolicy(nn.Module):
             x = torch.cat((base_output, goal_tensor), dim=1)
             action = self.adjusted_head(x)
             return action
-        return action
 
 
 class AntBERTPretrainedMazePolicy(nn.Module):
@@ -228,13 +439,13 @@ class AntBERTPretrainedMazePolicy(nn.Module):
     THIS GUY IS FOR THE ANT-TRAINED BERTMLP
     """
 
-    def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head = None):
+    def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head = None, hidden_size=64):
         super().__init__()
         self.state_encoder = state_encoder
         self.mlp = mlp  # the main mlp
         self.model_bert = model_bert
         if init_head:
-            self.adjusted_head = AntMazeActionHead(hidden_size=128, act_dim=action_dim)
+            self.adjusted_head = AntMazeActionHead(hidden_size=hidden_size, act_dim=action_dim)
         else:
             self.adjusted_head = adjusted_head
 
