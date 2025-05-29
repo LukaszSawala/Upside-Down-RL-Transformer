@@ -80,6 +80,7 @@ def antmaze_evaluate(
     for episode in range(episodes):
         print(f"Episode: {episode}")
         obs = env.reset()[0]  # extract the values from the wrapped array
+        print("Initial observation:", obs)
         done = False
         d_h_copy, d_r_copy = d_h, d_r
         best_distance = 1000
@@ -150,6 +151,7 @@ if __name__ == "__main__":
     success_rates = []
     best_distances = []
     print("Evaluating AntMaze with model:", args["model_type"])
+    
     for d_r in d_r_options:
         print("=" * 50)
         print("Trying with d_r:", d_r)

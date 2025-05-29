@@ -328,6 +328,11 @@ class NeuralNet18(nn.Module):
     
 
 class ActionHead(nn.Module):
+    """
+    This class defines the action head used in the Ant environment, specifically from BERT.
+    It takes the hidden state from the model combined with d_r and d_h to produce the final action.
+    """
+
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -346,6 +351,11 @@ class ActionHead(nn.Module):
 
 
 class ScalarEncoder(nn.Module):
+    """
+    This class defines a simple scalar encoder that takes a single scalar input
+    and encodes it into a higher-dimensional space.
+    It is used to encode the reward and horizon vectors (d_r, d_h) in the AntMaze environment.
+    """
     def __init__(self, hidden_size: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -421,7 +431,12 @@ class LessOldAntMazeActionHead(nn.Module):
         return self.net(x)
     
 
-class EvenLessOldAntMazeActionHead(nn.Module):
+class AntMazeActionHead(nn.Module):
+    """
+    This class defines the action head used in the AntMaze environment, put on top of the pretrained models.
+    It takes the goal location as an input, which is concatenated with the output of the pretrained model to
+    produce the final action.
+    """
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -451,7 +466,7 @@ class EvenLessOldAntMazeActionHead(nn.Module):
         return self.net(x)
     
 
-class AntMazeActionHead(nn.Module):
+class NewestAntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -486,7 +501,9 @@ class AntMazeActionHead(nn.Module):
 
 class AntNNPretrainedMazePolicy(nn.Module):
     """
-    Class definign the policy wrapper for the AntMaze transferrablity experiment
+    This class is a wrapper used to navigate the AntMaze environment using the NeuralNet in two ways:
+    -  with the goal location (pretrained on Ant, finetuned on AntMaze)
+    -  without the goal location (only pretrained on Ant).
     """
     def __init__(self, base_model, action_dim, adjusted_head=None):
         super().__init__()
@@ -510,7 +527,9 @@ class AntNNPretrainedMazePolicy(nn.Module):
 
 class AntBERTPretrainedMazePolicy(nn.Module):
     """
-    THIS GUY IS FOR THE ANT-TRAINED BERTMLP
+    This class is a wrapper used to navigate the AntMaze environment using the UDRLt-MLP in two ways:
+    -  with the goal location (pretrained on Ant, finetuned on AntMaze)
+    -  without the goal location (only pretrained on Ant).
     """
 
     def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head = None, hidden_size=64):
@@ -545,7 +564,7 @@ class AntBERTPretrainedMazePolicy(nn.Module):
 
 class AntMazeBERTPretrainedMazeWrapper(nn.Module):
     """
-    THIS GUY IS FOR THE ANTMAZETRAINED BERTMLP WITH GOAL TRAINING
+    This class is a wrapper for the UDRLt-MLP model fully trained on AntMaze.
     """
     def __init__(self, model_bert, state_encoder, mlp):
         super().__init__()
@@ -563,4 +582,22 @@ class AntMazeBERTPretrainedMazeWrapper(nn.Module):
         s_encoded = self.state_encoder(obs_tensor).unsqueeze(1)
         bert_out = self.model_bert(inputs_embeds=s_encoded).last_hidden_state[:, 0]
         mlp_input = torch.cat([bert_out, dr_tensor, dh_tensor, goal_tensor], dim=1)
+        return self.mlp(mlp_input)
+
+
+class AntMazeNNPretrainedMazeWrapper(nn.Module):
+    """
+    This class is a wrapper for the NeuralNet model fully trained on AntMaze.
+    """
+    def __init__(self, mlp):
+        super().__init__()
+        self.mlp = mlp
+
+    def forward(self, obs, dr, dh, goal_vector, DEVICE, **kwargs):
+        # convert to tensors
+        obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        dr_tensor = torch.tensor([dr], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        dh_tensor = torch.tensor([dh], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        goal_tensor = torch.tensor(goal_vector, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        mlp_input = torch.cat([obs_tensor, dr_tensor, dh_tensor, goal_tensor], dim=1)
         return self.mlp(mlp_input)

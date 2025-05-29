@@ -238,9 +238,9 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [32]
-    learning_rates_param = [1e-5]
-    epochs_list_param = [35]
+    batch_sizes_param = [32, 64, 128]
+    learning_rates_param = [1e-5, 5e-5, 1e-6]
+    epochs_list_param = [60]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
@@ -264,9 +264,9 @@ def grid_search_experiment() -> None:
 
         if current_best_models:
             print(f"Training complete for {current_config_str}. Evaluating on test set...")
-            #current_test_loss = evaluate_model(best_model_state_dicts_for_run, test_loader)    UNCOMMENT IF GRID SEARCH
-            current_test_loss = 0
-            #print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
+            current_test_loss = evaluate_model(current_best_models, test_loader)  
+            #current_test_loss = 0
+            print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
 
             if current_test_loss < overall_best_test_loss:
                 overall_best_test_loss = current_test_loss

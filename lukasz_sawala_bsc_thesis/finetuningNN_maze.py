@@ -21,7 +21,7 @@ set_seed(42)
 # ==== Paths ====
 # DATA_PATH = "extremely_augmented_data.hdf5"
 DATA_PATH = "../data/processed/antmaze_concatenated_data.hdf5"
-BEST_MODEL_PATH = "finetunedNN-512.pth"
+BEST_MODEL_PATH = "finetunedNN-1024.pth"
 
 
 # ==== Data Loading ====
@@ -125,7 +125,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         or None if training did not produce a best model (e.g., 0 epochs).
     """
     model_nn, _ = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    action_head = AntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
+    action_head = AntMazeActionHead(hidden_size=1024, act_dim=ACT_DIM).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
@@ -224,8 +224,8 @@ def grid_search_experiment() -> None:
     An evaluation on the test set is performed and printed for each model trained.
     """
     batch_sizes_param = [32]
-    learning_rates_param = [5e-5]
-    epochs_list_param = [30]
+    learning_rates_param = [5e-6]
+    epochs_list_param = [35]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
