@@ -9,7 +9,7 @@ import torch.nn as nn
 from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
-    AntMazeBERTPretrainedMazeWrapper,
+    AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper
     HugeNeuralNet, NeuralNet10, NeuralNet12, NeuralNet16, NeuralNet18
 )
 from model_evaluation import (
@@ -21,6 +21,20 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
+ANTMAZE_NN_PATH = "antmaze_nn-18_512.pth"
+
+
+def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str):
+    nn_base = NeuralNet16(input_size=31, hidden_size=512, output_size=8).to(device)
+
+    # Load weights
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    nn_base.load_state_dict(checkpoint["nn"])
+
+    # Set models to evaluation mode
+    nn_base.eval()
+
+    return nn_base
 
 
 def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str):
@@ -136,6 +150,11 @@ if __name__ == "__main__":
     elif args["model_type"] == "ANTMAZE_BERT_MLP":
         model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
         model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+        state_dim = 27  # reduced state space due to dataset mismatch
+        use_goal = True
+    elif args["model_type"] == "ANTMAZE_NN":
+        model = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
+        model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
         state_dim = 27  # reduced state space due to dataset mismatch
         use_goal = True
     else:

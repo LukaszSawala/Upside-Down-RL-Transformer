@@ -9,6 +9,8 @@ import torch.nn as nn
 from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
+    AntMazeBERTPretrainedMazeWrapper,
+    AntMazeNNPretrainedMazeWrapper
 )
 from model_evaluation import (
     load_nn_model_for_eval, load_bert_mlp_model_for_eval,
@@ -113,10 +115,14 @@ if __name__ == "__main__":
     # model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
     # bert_model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
     #
+    # nn_model_base = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
+    # nn_model = AntMazeNNPretrainedMazeWrapper(nn_model_base).to(DEVICE)
+    #
     # use_goal = True
     # state_dim = 27  # Reduced state space due to dataset mismatch
     # models = {
     #     "ANTMAZE_BERT_MLP": (bert_model, state_dim, use_goal),
+    #     "ANTMAZE_NN": (nn_model, state_dim, use_goal),
     # }
     # =============================================================================================================
 
