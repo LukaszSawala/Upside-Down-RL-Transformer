@@ -18,7 +18,7 @@ from model_evaluation import (
 )
 from utils import parse_arguments
 from model_evaluation_ALL import plot_all_models_rewards
-from transferrability_eval import extract_goal_direction
+from transfer_eval_main import extract_goal_direction
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
