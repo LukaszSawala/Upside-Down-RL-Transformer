@@ -9,7 +9,7 @@ import torch.nn as nn
 from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
-    AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper
+    AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper,
     HugeNeuralNet, NeuralNet10, NeuralNet12, NeuralNet16, NeuralNet18
 )
 from model_evaluation import (
@@ -24,7 +24,15 @@ ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
 ANTMAZE_NN_PATH = "antmaze_nn-18_512.pth"
 
 
-def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str):
+def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
+    """
+    Loads the AntMaze NN model components for evaluation.
+    Args:
+        checkpoint_path (str): The path to the checkpoint file.
+        device (str): The device to load the model on.
+    Returns:
+        nn_base (NeuralNet): The loaded model.
+    """
     nn_base = NeuralNet16(input_size=31, hidden_size=512, output_size=8).to(device)
 
     # Load weights
@@ -37,7 +45,14 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str):
     return nn_base
 
 
-def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str):
+def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> tuple:
+    """
+    Loads the AntMaze BERT MLP model components for evaluation.
+    Returns:
+        model_bert (AutoModel): The loaded BERT model.
+        state_encoder (nn.Linear): The loaded state encoder.
+        mlp (NeuralNet): The loaded MLP model.
+    """
     config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
     config.vocab_size = 1
     config.max_position_embeddings = 1
@@ -50,8 +65,8 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str):
     # mlp = NeuralNet(input_size=config.hidden_size + 4, hidden_size=256, output_size=8).to(device)
     #mlp = NeuralNet10(input_size=config.hidden_size + 4, hidden_size=256, output_size=8).to(device)  
     #mlp = NeuralNet12(input_size=config.hidden_size + 4, hidden_size=128, output_size=8).to(device)  
-    #mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
-    mlp = NeuralNet18(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device)  
+    mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
+    #mlp = NeuralNet18(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device)  
  
 
     # Load weights
@@ -89,6 +104,23 @@ def extract_goal_direction(obs: dict) -> np.ndarray:
 def antmaze_evaluate(
     env, model, episodes=10, time_interval=0.05, d_r=5.0, d_h=1000.0, state_dim=105, use_goal=False
 ):
+    """
+    Evaluate a single given model in the AntMaze environment.
+
+    Parameters:
+        env (gym.Env): The AntMaze environment.
+        model: The model to evaluate (wrapped to accept multiple input variables).
+        episodes (int): The number of episodes to run for each condition.
+        time_interval (float): Time to sleep between steps when rendering the environment.
+        d_r (float): The desired reward.
+        d_h (float): The desired horizon.
+        state_dim (int): The number of dimensions in the state vector.
+        use_goal (bool): Whether to use the goal direction in the model.
+
+    Returns:
+        obtained_returns (list): A list of the total rewards obtained in each episode.
+        best_distances (list): A list of the minimum distances to the goal achieved in each episode.
+    """
     best_distances = []
     obtained_returns = []
     for episode in range(episodes):

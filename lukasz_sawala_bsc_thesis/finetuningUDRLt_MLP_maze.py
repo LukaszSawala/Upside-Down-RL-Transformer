@@ -4,13 +4,12 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset, random_split
 from transformers import AutoModel, AutoConfig
-import numpy as np
-import h5py
 from model_evaluation import (
     load_bert_mlp_model_for_eval, BERT_MLP_MODEL_PATH
 )
 from grid_UDRLT_training_OPTIMIZED import set_seed, create_dataloaders
 from models import AntMazeActionHead
+from finetuningNN_maze import _load_data, create_datasets
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -20,58 +19,33 @@ set_seed(42)
 
 
 # ==== Paths ====
-# DATA_PATH = "extremely_augmented_data.hdf5"
 DATA_PATH = "../data/processed/antmaze_concatenated_data.hdf5"
 BEST_MODEL_PATH = "finetunedbroski-1024.pth"
 
 
-# ==== Data Loading ====
-def _load_data(path=DATA_PATH):
-    with h5py.File(path, "r") as f:
-        data = f["concatenated_data"]
-        states = data["observations"][:]
-        states_padded = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant') # avoiding the mismatch between datasets
-        actions = data["actions"][:]
-        rewards = data["rewards_to_go"][:].reshape(-1, 1)
-        times = data["time_to_go"][:].reshape(-1, 1)
-        goal_vector = data["goal_vector"][:]
-    return states_padded, rewards, times, goal_vector, actions
-
-def create_datasets() -> tuple:
-    """
-    Creates train, validation, and test datasets from the concatenated dataset.
-    Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train, 10% validation, and 10% test sets.
-    Returns:
-        tuple: A tuple containing:
-            - train_ds (TensorDataset): The training dataset.
-            - val_ds (TensorDataset): The validation dataset.
-            - test_ds (TensorDataset): The test dataset.
-    """
-    X_s_np, X_r_np, X_h_np, X_g_np, y_np = _load_data()
-    X_s = torch.tensor(X_s_np, dtype=torch.float32)
-    X_r = torch.tensor(X_r_np, dtype=torch.float32)
-    X_h = torch.tensor(X_h_np, dtype=torch.float32)
-    X_g = torch.tensor(X_g_np, dtype=torch.float32)
-    y = torch.tensor(y_np, dtype=torch.float32)
-    
-    dataset = TensorDataset(X_s, X_r, X_h, X_g, y)
-    
-    lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
-    lengths.append(len(dataset) - sum(lengths))
-    train_ds, val_ds, test_ds = random_split(
-        dataset, lengths, generator=torch.Generator().manual_seed(42)
-    )
-    return train_ds, val_ds, test_ds
-
 def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
     train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
-    """Trains the model for one epoch."""
+    """
+    Trains the model for one epoch.
+    Args:
+        model_bert: The BERT model.
+        state_encoder: The linear layer to project state to BERT input size.
+        mlp_head: The MLP head to predict the base output.
+        final_actionhead: The final action head to predict the action.
+        train_loader: The data loader for the training set.
+        optimizer: The optimizer to use.
+        loss_fn: The loss function to use.
+        epoch_num: The current epoch number.
+        total_epochs: The total number of epochs.
+
+    Returns:
+        The average training loss over the training set.
+    """
     model_bert.train()
     state_encoder.train()
     mlp_head.train()
     final_actionhead.train()
     total_train_loss = 0.0
-
     
     print(f"Epoch {epoch_num}/{total_epochs} [Train]: Starting...")
     for (s, r, t, g, a) in train_loader:  # state, reward, time, goal, action
@@ -97,7 +71,22 @@ def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, f
 
 def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
     val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
-    """Validates the model for one epoch."""
+    """
+    Validates the model for one epoch.
+
+    Args:
+        model_bert: The BERT model.
+        state_encoder: The linear layer to project state to BERT input size.
+        mlp_head: The MLP head to predict the base output.
+        final_actionhead: The final action head to predict the action.
+        val_loader: The data loader for the validation set.
+        loss_fn: The loss function to use.
+        epoch_num: The current epoch number.
+        total_epochs: The total number of epochs.
+
+    Returns:
+        The average validation loss over the validation set.
+    """
     model_bert.eval()
     state_encoder.eval()
     mlp_head.eval()
@@ -238,7 +227,7 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [32, 64, 128]
+    batch_sizes_param = [16, 32, 64, 128]
     learning_rates_param = [1e-5, 5e-5, 1e-6]
     epochs_list_param = [60]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)

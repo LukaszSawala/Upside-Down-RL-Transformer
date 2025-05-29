@@ -62,13 +62,26 @@ def create_datasets() -> tuple:
     )
     return train_ds, val_ds, test_ds
 
-def train_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead,
-    train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
-    """Trains the model for one epoch."""
+def train_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead, train_loader: DataLoader,
+                    optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
+    """
+    Trains the model for one epoch.
+
+    Args:
+        model_nn: The neural network model.
+        final_actionhead: The final action head to predict the action.
+        train_loader: The data loader for the training set.
+        optimizer: The optimizer to use.
+        loss_fn: The loss function to use.
+        epoch_num: The current epoch number.
+        total_epochs: The total number of epochs.
+
+    Returns:
+        The average training loss over the training set.
+    """
     model_nn.train()
     final_actionhead.train()
     total_train_loss = 0.0
-
     
     print(f"Epoch {epoch_num}/{total_epochs} [Train]: Starting...")
     for (s, r, t, g, a) in train_loader:  # state, reward-to-go, time, goal, action
@@ -88,9 +101,22 @@ def train_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead,
     return total_train_loss / len(train_loader)
 
 
-def validate_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead,
-    val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
-    """Validates the model for one epoch."""
+def validate_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead, val_loader: DataLoader,
+                       loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
+    """
+    Validates the model for one epoch.
+
+    Args:
+        model_nn: The neural network model.
+        final_actionhead: The final action head to predict the action.
+        val_loader: The data loader for the validation set.
+        loss_fn: The loss function to use.
+        epoch_num: The current epoch number.
+        total_epochs: The total number of epochs.
+
+    Returns:
+        The average validation loss over the validation set.
+    """
     model_nn.eval()
     final_actionhead.eval()
     total_val_loss = 0.0

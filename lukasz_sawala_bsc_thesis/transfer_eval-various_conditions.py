@@ -18,45 +18,10 @@ from model_evaluation import (
 )
 from utils import parse_arguments
 from model_evaluation_ALL import plot_all_models_rewards
-from transfer_eval_main import extract_goal_direction
+from transfer_eval_main import extract_goal_direction, antmaze_evaluate
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-def antmaze_evaluate(
-    env, model, episodes=10, time_interval=0.05, d_r=5.0, d_h=1000.0, state_dim=105, use_goal=False
-):
-    best_distances = []
-    obtained_returns = []
-    for episode in range(episodes):
-        print(f"Episode: {episode}")
-        obs = env.reset()[0]  # extract the values from the wrapped array
-        done = False
-        d_h_copy, d_r_copy = d_h, d_r
-        best_distance = 1000
-        total_reward = 0
-        while not done and d_h_copy > 0:
-            goal_vec = extract_goal_direction(obs)
-            distance = np.linalg.norm(goal_vec)
-            if distance < best_distance:
-                best_distance = distance
-            obs = obs["observation"][:state_dim]  # exytract the values from the wrapped array
-
-            with torch.no_grad():
-                action_tensor = model(obs, d_r_copy, d_h_copy, goal_vec, DEVICE, use_goal=use_goal)
-            action = action_tensor.squeeze(0).cpu().numpy()
-
-            obs, reward, terminated, truncated, _ = env.step(action)
-            total_reward += reward
-            d_r_copy -= reward
-            d_h_copy -= 1
-            done = terminated or truncated
-
-            #env.render()
-            #time.sleep(time_interval)
-        obtained_returns.append(total_reward)
-        best_distances.append(best_distance)
-    print("minimum return:", min(obtained_returns), "maximum return:", max(obtained_returns))
-    return obtained_returns, best_distances
 
 
 if __name__ == "__main__":
