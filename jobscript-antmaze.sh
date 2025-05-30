@@ -6,5 +6,5 @@
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python transfer_eval-main.py --episodes 10 --model_type ANTMAZE_BERT_MLP --d_r_array_length 21
+python transfer_eval_main.py --episodes 10 --model_type BERT_MLP --d_r_array_length 21
 deactivate
