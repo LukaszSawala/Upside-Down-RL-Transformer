@@ -229,8 +229,8 @@ def grid_search_experiment() -> None:
     """
     #batch_sizes_param = [16, 32, 64, 128]
     #learning_rates_param = [1e-5, 5e-5, 1e-6]
-    batch_sizes_param = [16]
-    learning_rates_param = [1e-5]
+    batch_sizes_param = [64, 128, 256]
+    learning_rates_param = [1e-5, 5e-5]
     epochs_list_param = [60]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 

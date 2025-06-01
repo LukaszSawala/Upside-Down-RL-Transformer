@@ -21,7 +21,7 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
-ANTMAZE_NN_PATH = "antmaze_nn-18_512.pth"
+ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
@@ -33,7 +33,7 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
     Returns:
         nn_base (NeuralNet): The loaded model.
     """
-    nn_base = NeuralNet16(input_size=31, hidden_size=512, output_size=8).to(device)
+    nn_base = NeuralNet16(input_size=31, hidden_size=1024, output_size=8).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -159,8 +159,8 @@ def antmaze_evaluate(
 if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
-    #print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_Medium_Diverse_GR-v5")  # render mode human to see whats up
+    print_available_antmaze_envs() # check whether its compatible
+    env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":

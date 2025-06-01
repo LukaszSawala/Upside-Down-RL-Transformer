@@ -250,7 +250,7 @@ def grid_search_experiment() -> None:
     An evaluation on the test set is performed and printed for each model trained.
     """
     batch_sizes_param = [16]
-    learning_rates_param = [1e-5]
+    learning_rates_param = [1e-5, 5e-5]
     epochs_list_param = [50]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
