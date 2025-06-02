@@ -125,7 +125,7 @@ def antmaze_evaluate(
     obtained_returns = []
     for episode in range(episodes):
         print(f"Episode: {episode}")
-        obs = env.reset(seed=42)[0]  # extract the values from the wrapped array
+        obs = env.reset()[0]  # extract the values from the wrapped array
         print(obs)
         done = False
         d_h_copy, d_r_copy = d_h, d_r
@@ -161,7 +161,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
+    env = gym.make("AntMaze_Medium_Diverse_GR-v5")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -202,7 +202,7 @@ if __name__ == "__main__":
     success_rates = []
     best_distances = []
     print("Evaluating AntMaze with model:", args["model_type"])
-    
+
     for d_r in d_r_options:
         print("=" * 50)
         print("Trying with d_r:", d_r)
