@@ -12,7 +12,7 @@ from grid_UDRLT_training_OPTIMIZED import create_datasets, create_dataloaders
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-PATIENCE = 3
+PATIENCE = 10
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
 BEST_MODEL_PATH = "new-architecture-berttiny-batch32.pth" # From original script
 STATE_DIM = 105 # Derived from original state_encoder input
@@ -223,7 +223,7 @@ def grid_search_experiment() -> None:
     """
     batch_sizes_param = [16]
     learning_rates_param = [5e-5]
-    epochs_list_param = [30]
+    epochs_list_param = [50]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()

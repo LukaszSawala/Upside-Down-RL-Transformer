@@ -22,7 +22,7 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
 #ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
-ANTMAZE_NN_PATH = "antmaze_NN-16_512_DIVERSE.pth" 
+ANTMAZE_NN_PATH = "antmaze_NN-17_512.pth" 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
     """
@@ -126,7 +126,7 @@ def antmaze_evaluate(
     for episode in range(episodes):
         print(f"Episode: {episode}")
         obs = env.reset()[0]  # extract the values from the wrapped array
-        print(obs)
+        # print(obs)
         done = False
         d_h_copy, d_r_copy = d_h, d_r
         best_distance = 1000
@@ -161,7 +161,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_Medium_Diverse_GR-v5")  # render mode human to see whats up
+    env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -194,8 +194,6 @@ if __name__ == "__main__":
 
     d_h = 1000.0
     d_r_options = [i * 50 for i in range(args["d_r_array_length"])] # test those out
-    if max(d_r_options) < 100:
-        print("LOW REWARD TESTING")
     num_episodes = args["episodes"]
     average_rewards = []
     sem_values = []

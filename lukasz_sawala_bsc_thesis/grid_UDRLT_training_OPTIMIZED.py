@@ -18,7 +18,7 @@ from models import ActionHead
 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-PATIENCE = 2
+PATIENCE = 10
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
 BEST_MODEL_PATH = "frozen_actionhead_best_bert_udrl.pth" 
 STATE_DIM = 105

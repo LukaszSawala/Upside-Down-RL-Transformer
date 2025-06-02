@@ -13,7 +13,7 @@ from models import AntMazeActionHead, NeuralNet
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-PATIENCE = 3
+PATIENCE = 10
 ACT_DIM = 8
 set_seed(42)
 
@@ -207,17 +207,13 @@ def evaluate_model(
         print("Error: No model state provided for evaluation.")
         return float('inf')
 
-    model_nn, state_encoder, mlp_head, action_head = models_to_evaluate["bert"], models_to_evaluate["state"], models_to_evaluate["mlp"], models_to_evaluate["action_head"]
+    model_nn, action_head = models_to_evaluate["nn"], models_to_evaluate["action_head"]
     model_nn.to(DEVICE)
-    state_encoder.to(DEVICE)
-    mlp_head.to(DEVICE)
     action_head.to(DEVICE)
 
     loss_fn = nn.MSELoss()
 
     model_nn.eval()
-    state_encoder.eval()
-    mlp_head.eval()
     action_head.eval()
 
     total_test_loss = 0.0
@@ -226,11 +222,8 @@ def evaluate_model(
     with torch.no_grad():
         for (s, r, t, g, a) in test_loader:  # state, reward, time, goal, action
             s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
-            # old model
-            s_proj = state_encoder(s).unsqueeze(1)
-            bert_out = model_nn(inputs_embeds=s_proj).last_hidden_state[:, 0]
-            input_to_mlp = torch.cat([bert_out, r, t], dim=1)
-            base_output = mlp_head(input_to_mlp)
+            input_to_mlp = torch.cat([s, r, t], dim=1)
+            base_output = model_nn(input_to_mlp)
             # new action head
             final_input = torch.cat([base_output, g], dim=1)  # add the goal information
             pred = action_head(final_input)
@@ -249,9 +242,9 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [128]
-    learning_rates_param = [1e-5, 5e-5]
-    epochs_list_param = [50]
+    batch_sizes_param = [128, 64, 32]  #128 might be too high 
+    learning_rates_param = [2e-4] # 5e-5 wayu too low
+    epochs_list_param = [60]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
@@ -275,9 +268,9 @@ def grid_search_experiment() -> None:
 
         if current_best_models:
             print(f"Training complete for {current_config_str}. Evaluating on test set...")
-            #current_test_loss = evaluate_model(best_model_state_dicts_for_run, test_loader)    UNCOMMENT IF GRID SEARCH
+            #current_test_loss = evaluate_model(current_best_models, test_loader)
             current_test_loss = 0
-            #print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
+            print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
 
             if current_test_loss < overall_best_test_loss:
                 overall_best_test_loss = current_test_loss

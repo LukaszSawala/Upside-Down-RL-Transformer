@@ -524,7 +524,7 @@ class OldAntMazeActionHead(nn.Module):
         return self.net(x)
 
 
-class LessOldAntMazeActionHead(nn.Module):
+class AntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -546,8 +546,9 @@ class LessOldAntMazeActionHead(nn.Module):
         return self.net(x)
     
 
-class NewestAntMazeActionHead(nn.Module):
+class EvenNewerAntMazeActionHead(nn.Module):
     """
+    EVENLESSOLD
     This class defines the action head used in the AntMaze environment, put on top of the pretrained models.
     It takes the goal location as an input, which is concatenated with the output of the pretrained model to
     produce the final action.
@@ -581,7 +582,7 @@ class NewestAntMazeActionHead(nn.Module):
         return self.net(x)
     
 
-class AntMazeActionHead(nn.Module):
+class MoreNewestAntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(

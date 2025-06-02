@@ -18,12 +18,12 @@ from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNe
 
 
 OUTPUT_SIZE = 8
-#NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
-NN_MODEL_PATH = "second-finetunedNN-512.pth"  # for evaluation
+NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
+#NN_MODEL_PATH = "second-finetunedNN-512.pth"  # for evaluation
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "../models/bert_tiny.pth"
-#BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
-BERT_MLP_MODEL_PATH = "second-finetunedbroski-512.pth"    # for evaluation
+BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
+#BERT_MLP_MODEL_PATH = "second-finetunedbroski-512.pth"    # for evaluation
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """

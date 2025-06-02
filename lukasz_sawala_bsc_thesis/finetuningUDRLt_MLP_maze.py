@@ -13,7 +13,7 @@ from finetuningNN_maze import _load_data, create_datasets
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-PATIENCE = 3
+PATIENCE = 10
 ACT_DIM = 8
 set_seed(42)
 
@@ -227,8 +227,8 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [128]
-    learning_rates_param = [1e-5, 5e-5]
+    batch_sizes_param = [128, 64, 32]
+    learning_rates_param = [2e-4] #untested, but 5e-5 is way too low
     epochs_list_param = [60]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
