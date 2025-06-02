@@ -408,7 +408,7 @@ class NeuralNet20(nn.Module):
 
 class NeuralNetResNorm(nn.Module):
     def __init__(self, input_size: int, hidden_size: int, output_size: int, num_layers: int = 16) -> None:
-        super(NeuralNet, self).__init__()
+        super(NeuralNetResNorm, self).__init__()
         self.hidden_size = hidden_size
         self.act = nn.ReLU()
 
