@@ -22,7 +22,7 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
 #ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
-ANTMAZE_NN_PATH = "antmaze_NN-17_512.pth" 
+ANTMAZE_NN_PATH = "antmaze_NN-16_512.pth" 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
     """
@@ -132,6 +132,7 @@ def antmaze_evaluate(
         best_distance = 1000
         total_reward = 0
         while not done and d_h_copy > 0:
+            
             goal_vec = extract_goal_direction(obs)
             distance = np.linalg.norm(goal_vec)
             if distance < best_distance:
@@ -149,9 +150,14 @@ def antmaze_evaluate(
             d_h_copy -= 1
             done = terminated or truncated
 
-            #env.render()
-            #time.sleep(time_interval)
+            env.render()
+            time.sleep(time_interval)
+        print(
+            f"Episode {episode} finished with total reward: {total_reward}, best distance: {best_distance}"
+        )
         obtained_returns.append(total_reward)
+        if best_distance < 1:
+            print("goal reached!")
         best_distances.append(best_distance)
     print("minimum return:", min(obtained_returns), "maximum return:", max(obtained_returns))
     return obtained_returns, best_distances
@@ -161,7 +167,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
+    env = gym.make("AntMaze_MediumDense-v5", render_mode="human")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -193,7 +199,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])] # test those out
+    d_r_options = [i * 50 + 500 for i in range(args["d_r_array_length"])] # test those out
     num_episodes = args["episodes"]
     average_rewards = []
     sem_values = []
@@ -206,11 +212,10 @@ if __name__ == "__main__":
         print("Trying with d_r:", d_r)
         returns, distances = antmaze_evaluate(
             env, model, episodes=num_episodes, d_r=d_r, d_h=d_h,
-            time_interval=0.05, state_dim=state_dim, use_goal=use_goal)
+            time_interval=0.005, state_dim=state_dim, use_goal=use_goal)
         average_rewards.append(np.mean(returns))
         sem_values.append(sem(returns))
-        success_rates.append(np.mean([r > 0 for r in returns]))
-        best_distances.append(np.mean(distances))
+        success_rates.append(np.mean([d < 1 for d in distances]))
 
     plot_average_rewards(average_rewards, sem_values, d_r_options,
                          title="Average Reward vs. d_r", save_path="antmaze_average_rewards_plot.png",
