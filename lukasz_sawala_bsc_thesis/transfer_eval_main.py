@@ -10,7 +10,7 @@ from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
     AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper,
-    HugeNeuralNet, NeuralNet10, NeuralNet12, NeuralNet16, NeuralNet18
+    HugeNeuralNet, NeuralNet10, NeuralNet12, NeuralNet16, NeuralNet18, NeuralNetResNorm
 )
 from model_evaluation import (
     load_nn_model_for_eval, load_bert_mlp_model_for_eval,
@@ -21,8 +21,8 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
-ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
-
+#ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
+ANTMAZE_NN_PATH = "antmaze_NN-16_512_DIVERSE.pth" 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
     """
@@ -33,7 +33,7 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
     Returns:
         nn_base (NeuralNet): The loaded model.
     """
-    nn_base = NeuralNet16(input_size=31, hidden_size=1024, output_size=8).to(device)
+    nn_base = NeuralNetResNorm(input_size=31, hidden_size=512, output_size=8, num_layers=16).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -125,7 +125,8 @@ def antmaze_evaluate(
     obtained_returns = []
     for episode in range(episodes):
         print(f"Episode: {episode}")
-        obs = env.reset()[0]  # extract the values from the wrapped array
+        obs = env.reset(seed=42)[0]  # extract the values from the wrapped array
+        print(obs)
         done = False
         d_h_copy, d_r_copy = d_h, d_r
         best_distance = 1000
@@ -159,7 +160,7 @@ def antmaze_evaluate(
 if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
-    print_available_antmaze_envs() # check whether its compatible
+    # print_available_antmaze_envs() # check whether its compatible
     env = gym.make("AntMaze_MediumDense-v5")  # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
