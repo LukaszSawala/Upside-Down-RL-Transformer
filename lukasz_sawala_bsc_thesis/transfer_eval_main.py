@@ -20,9 +20,8 @@ from utils import parse_arguments
 from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ANTMAZE_BERT_PATH = "antmaze_tiny-18_512.pth"
-#ANTMAZE_NN_PATH = "antmaze_NN-16_1024.pth"
-ANTMAZE_NN_PATH = "antmaze_NN-16_512.pth" 
+ANTMAZE_BERT_PATH = "antmaze_tiny-17_512.pth"
+ANTMAZE_NN_PATH = "antmaze_NN-18_512.pth" 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
     """
@@ -33,7 +32,7 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
     Returns:
         nn_base (NeuralNet): The loaded model.
     """
-    nn_base = NeuralNetResNorm(input_size=31, hidden_size=512, output_size=8, num_layers=16).to(device)
+    nn_base = NeuralNetResNorm(input_size=31, hidden_size=512, output_size=8, num_layers=18).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -62,12 +61,10 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> t
     state_encoder = nn.Linear(27, config.hidden_size).to(device)
     
     # hidden size + 4 for d_r, d_h and x y values of the goal vector
-    # mlp = NeuralNet(input_size=config.hidden_size + 4, hidden_size=256, output_size=8).to(device)
-    #mlp = NeuralNet10(input_size=config.hidden_size + 4, hidden_size=256, output_size=8).to(device)  
     #mlp = NeuralNet12(input_size=config.hidden_size + 4, hidden_size=128, output_size=8).to(device)  
-    mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
+    #mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
     #mlp = NeuralNet18(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device)  
- 
+    mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=17).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
@@ -150,15 +147,14 @@ def antmaze_evaluate(
             d_h_copy -= 1
             done = terminated or truncated
 
-            env.render()
-            time.sleep(time_interval)
-        print(
-            f"Episode {episode} finished with total reward: {total_reward}, best distance: {best_distance}"
-        )
+            #env.render()
+            #time.sleep(time_interval)
         obtained_returns.append(total_reward)
         if best_distance < 1:
             print("goal reached!")
         best_distances.append(best_distance)
+        print(f"Episode {episode} finished with total reward: {total_reward}, best distance: {best_distance}")
+
     print("minimum return:", min(obtained_returns), "maximum return:", max(obtained_returns))
     return obtained_returns, best_distances
 
@@ -167,7 +163,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5", render_mode="human")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
+    env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -199,7 +195,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 50 + 500 for i in range(args["d_r_array_length"])] # test those out
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])] # test those out
     num_episodes = args["episodes"]
     average_rewards = []
     sem_values = []
@@ -217,7 +213,8 @@ if __name__ == "__main__":
         sem_values.append(sem(returns))
         success_rates.append(np.mean([d < 1 for d in distances]))
 
+    save_path = f"antmaze_{args['model_type']}_d_r_eval_results.png"
     plot_average_rewards(average_rewards, sem_values, d_r_options,
-                         title="Average Reward vs. d_r", save_path="antmaze_average_rewards_plot.png",
+                         title="Average Reward vs. d_r", save_path=save_path,
                          max_y=max(d_r_options) * 1.1)
-    print("success rates: ", success_rates)
+    print("success rates: ", success_rates, "average:", np.mean(success_rates))

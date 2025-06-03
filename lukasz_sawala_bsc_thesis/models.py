@@ -544,6 +544,30 @@ class AntMazeActionHead(nn.Module):
 
     def forward(self, x):
         return self.net(x)
+
+
+class BertAntMazeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(act_dim + 2, hidden_size), # 2 for x, y of the goal
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_size // 2, act_dim),
+            nn.Tanh(),
+        )
+
+    def forward(self, x):
+        return self.net(x)
     
 
 class EvenNewerAntMazeActionHead(nn.Module):

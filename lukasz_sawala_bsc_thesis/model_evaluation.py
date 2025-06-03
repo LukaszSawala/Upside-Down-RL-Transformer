@@ -14,16 +14,16 @@ from transformers import (
 from collections import deque
 # from zeus.monitor import ZeusMonitor
 from utils import parse_arguments, print_available_antmaze_envs
-from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet, AntMazeActionHead
+from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNeuralNet, AntMazeActionHead, BertAntMazeActionHead
 
 
 OUTPUT_SIZE = 8
 NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
-#NN_MODEL_PATH = "second-finetunedNN-512.pth"  # for evaluation
+#NN_MODEL_PATH = "newest_finetunedNN-512.pth"  # for evaluation
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "../models/bert_tiny.pth"
 BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
-#BERT_MLP_MODEL_PATH = "second-finetunedbroski-512.pth"    # for evaluation
+#BERT_MLP_MODEL_PATH = "finetunedbroski-512.pth"    # for evaluation
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 """
@@ -147,7 +147,7 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str, freeze: bool
             param.requires_grad = False
 
     if antmaze_pretrained:
-        action_head = AntMazeActionHead(hidden_size=512, act_dim=8).to(DEVICE)
+        action_head = BertAntMazeActionHead(hidden_size=512, act_dim=8).to(DEVICE)
         action_head.load_state_dict(checkpoint["action_head"])
         action_head.eval()
         return model_bert, state_encoder, mlp, action_head

@@ -1,0 +1,778 @@
+Evaluating AntMaze with model: ANTMAZE_NN
+==================================================
+Trying with d_r: 0
+Episode: 0
+Episode 0 finished with total reward: 0.1317858698896123, best distance: 8.555312662079327
+Episode 0 finished with total reward: 0.1317858698896123, best distance: 8.555312662079327
+Episode: 1
+Episode 1 finished with total reward: 59.86394347083247, best distance: 0.9750538117379625
+goal reached!
+Episode 1 finished with total reward: 59.86394347083247, best distance: 0.9750538117379625
+Episode: 2
+Episode 2 finished with total reward: 0.00010841530149844334, best distance: 15.456238779509473
+Episode 2 finished with total reward: 0.00010841530149844334, best distance: 15.456238779509473
+Episode: 3
+Episode 3 finished with total reward: 0.050504638028464735, best distance: 9.784999785588019
+Episode 3 finished with total reward: 0.050504638028464735, best distance: 9.784999785588019
+Episode: 4
+Episode 4 finished with total reward: 0.1578211685094534, best distance: 6.681263898950539
+Episode 4 finished with total reward: 0.1578211685094534, best distance: 6.681263898950539
+Episode: 5
+Episode 5 finished with total reward: 1.2934240872421296, best distance: 3.8685156644931893
+Episode 5 finished with total reward: 1.2934240872421296, best distance: 3.8685156644931893
+Episode: 6
+Episode 6 finished with total reward: 0.09131955574532075, best distance: 8.67772911133612
+Episode 6 finished with total reward: 0.09131955574532075, best distance: 8.67772911133612
+Episode: 7
+Episode 7 finished with total reward: 6.613222842123438, best distance: 2.1090028705286934
+Episode 7 finished with total reward: 6.613222842123438, best distance: 2.1090028705286934
+Episode: 8
+Episode 8 finished with total reward: 10.07967277881351, best distance: 4.475202562228063
+Episode 8 finished with total reward: 10.07967277881351, best distance: 4.475202562228063
+Episode: 9
+Episode 9 finished with total reward: 0.00045918925075311346, best distance: 13.926207912702248
+Episode 9 finished with total reward: 0.00045918925075311346, best distance: 13.926207912702248
+minimum return: 0.00010841530149844334 maximum return: 59.86394347083247
+==================================================
+Trying with d_r: 50
+Episode: 0
+Episode 0 finished with total reward: 0.014815843146700107, best distance: 10.261293784831809
+Episode 0 finished with total reward: 0.014815843146700107, best distance: 10.261293784831809
+Episode: 1
+Episode 1 finished with total reward: 4.008844789261214e-05, best distance: 16.098930511077455
+Episode 1 finished with total reward: 4.008844789261214e-05, best distance: 16.098930511077455
+Episode: 2
+Episode 2 finished with total reward: 0.00932801522819087, best distance: 11.490137208852211
+Episode 2 finished with total reward: 0.00932801522819087, best distance: 11.490137208852211
+Episode: 3
+Episode 3 finished with total reward: 46.80674565210529, best distance: 0.03675419075168226
+goal reached!
+Episode 3 finished with total reward: 46.80674565210529, best distance: 0.03675419075168226
+Episode: 4
+Episode 4 finished with total reward: 0.0005001251206068726, best distance: 14.300455787217977
+Episode 4 finished with total reward: 0.0005001251206068726, best distance: 14.300455787217977
+Episode: 5
+Episode 5 finished with total reward: 2.0834186573697113e-06, best distance: 19.62078765180273
+Episode 5 finished with total reward: 2.0834186573697113e-06, best distance: 19.62078765180273
+Episode: 6
+Episode 6 finished with total reward: 0.33816446218744467, best distance: 5.2828518670259825
+Episode 6 finished with total reward: 0.33816446218744467, best distance: 5.2828518670259825
+Episode: 7
+Episode 7 finished with total reward: 10.516967913145233, best distance: 1.406022457385157
+Episode 7 finished with total reward: 10.516967913145233, best distance: 1.406022457385157
+Episode: 8
+Episode 8 finished with total reward: 0.012877127262277181, best distance: 10.160007448548857
+Episode 8 finished with total reward: 0.012877127262277181, best distance: 10.160007448548857
+Episode: 9
+Episode 9 finished with total reward: 0.003869032097434054, best distance: 12.111973015006528
+Episode 9 finished with total reward: 0.003869032097434054, best distance: 12.111973015006528
+minimum return: 2.0834186573697113e-06 maximum return: 46.80674565210529
+==================================================
+Trying with d_r: 100
+Episode: 0
+Episode 0 finished with total reward: 0.008884907375045825, best distance: 9.09668013134324
+Episode 0 finished with total reward: 0.008884907375045825, best distance: 9.09668013134324
+Episode: 1
+Episode 1 finished with total reward: 13.831540205633884, best distance: 4.016524073552188
+Episode 1 finished with total reward: 13.831540205633884, best distance: 4.016524073552188
+Episode: 2
+Episode 2 finished with total reward: 0.0006568806029329352, best distance: 14.128971963345395
+Episode 2 finished with total reward: 0.0006568806029329352, best distance: 14.128971963345395
+Episode: 3
+Episode 3 finished with total reward: 0.012024660271680376, best distance: 9.645270982257731
+Episode 3 finished with total reward: 0.012024660271680376, best distance: 9.645270982257731
+Episode: 4
+Episode 4 finished with total reward: 11.830029448135905, best distance: 2.050797012755816
+Episode 4 finished with total reward: 11.830029448135905, best distance: 2.050797012755816
+Episode: 5
+Episode 5 finished with total reward: 102.90437040050034, best distance: 0.032430346618124065
+goal reached!
+Episode 5 finished with total reward: 102.90437040050034, best distance: 0.032430346618124065
+Episode: 6
+Episode 6 finished with total reward: 50.09681779941454, best distance: 0.6121557459945205
+goal reached!
+Episode 6 finished with total reward: 50.09681779941454, best distance: 0.6121557459945205
+Episode: 7
+Episode 7 finished with total reward: 3.2689007885061387e-06, best distance: 17.008654093729817
+Episode 7 finished with total reward: 3.2689007885061387e-06, best distance: 17.008654093729817
+Episode: 8
+Episode 8 finished with total reward: 11.752754296079015, best distance: 4.389497434522548
+Episode 8 finished with total reward: 11.752754296079015, best distance: 4.389497434522548
+Episode: 9
+Episode 9 finished with total reward: 8.844009660747362, best distance: 2.2489108103614965
+Episode 9 finished with total reward: 8.844009660747362, best distance: 2.2489108103614965
+minimum return: 3.2689007885061387e-06 maximum return: 102.90437040050034
+==================================================
+Trying with d_r: 150
+Episode: 0
+Episode 0 finished with total reward: 5.786323309129621, best distance: 4.137480640028411
+Episode 0 finished with total reward: 5.786323309129621, best distance: 4.137480640028411
+Episode: 1
+Episode 1 finished with total reward: 56.257641249634865, best distance: 1.6271507018256746
+Episode 1 finished with total reward: 56.257641249634865, best distance: 1.6271507018256746
+Episode: 2
+Episode 2 finished with total reward: 142.85528241837318, best distance: 0.05861928833332435
+goal reached!
+Episode 2 finished with total reward: 142.85528241837318, best distance: 0.05861928833332435
+Episode: 3
+Episode 3 finished with total reward: 7.386830620654667e-09, best distance: 25.105253981400743
+Episode 3 finished with total reward: 7.386830620654667e-09, best distance: 25.105253981400743
+Episode: 4
+Episode 4 finished with total reward: 0.003902380522995167, best distance: 11.61097614329031
+Episode 4 finished with total reward: 0.003902380522995167, best distance: 11.61097614329031
+Episode: 5
+Episode 5 finished with total reward: 0.5958375296629053, best distance: 5.984780512806063
+Episode 5 finished with total reward: 0.5958375296629053, best distance: 5.984780512806063
+Episode: 6
+Episode 6 finished with total reward: 0.2912920520316722, best distance: 6.899905068765085
+Episode 6 finished with total reward: 0.2912920520316722, best distance: 6.899905068765085
+Episode: 7
+Episode 7 finished with total reward: 156.55987192495598, best distance: 0.19271595663926686
+goal reached!
+Episode 7 finished with total reward: 156.55987192495598, best distance: 0.19271595663926686
+Episode: 8
+Episode 8 finished with total reward: 156.24012635998758, best distance: 0.053408732350493475
+goal reached!
+Episode 8 finished with total reward: 156.24012635998758, best distance: 0.053408732350493475
+Episode: 9
+Episode 9 finished with total reward: 0.08919481799110086, best distance: 8.260017195966205
+Episode 9 finished with total reward: 0.08919481799110086, best distance: 8.260017195966205
+minimum return: 7.386830620654667e-09 maximum return: 156.55987192495598
+==================================================
+Trying with d_r: 200
+Episode: 0
+Episode 0 finished with total reward: 2.4169104388057025e-05, best distance: 16.231979429616413
+Episode 0 finished with total reward: 2.4169104388057025e-05, best distance: 16.231979429616413
+Episode: 1
+Episode 1 finished with total reward: 0.0014871125602613615, best distance: 9.771618789196467
+Episode 1 finished with total reward: 0.0014871125602613615, best distance: 9.771618789196467
+Episode: 2
+Episode 2 finished with total reward: 14.133564835466448, best distance: 2.2270259887121124
+Episode 2 finished with total reward: 14.133564835466448, best distance: 2.2270259887121124
+Episode: 3
+Episode 3 finished with total reward: 0.00017647498833126116, best distance: 14.741531289113498
+Episode 3 finished with total reward: 0.00017647498833126116, best distance: 14.741531289113498
+Episode: 4
+Episode 4 finished with total reward: 0.00014395593719053465, best distance: 15.197824742015873
+Episode 4 finished with total reward: 0.00014395593719053465, best distance: 15.197824742015873
+Episode: 5
+Episode 5 finished with total reward: 0.031136210553986125, best distance: 9.388391570366297
+Episode 5 finished with total reward: 0.031136210553986125, best distance: 9.388391570366297
+Episode: 6
+Episode 6 finished with total reward: 1.2866373050480482e-05, best distance: 18.060335583320672
+Episode 6 finished with total reward: 1.2866373050480482e-05, best distance: 18.060335583320672
+Episode: 7
+Episode 7 finished with total reward: 198.52034638732093, best distance: 0.030832739803472186
+goal reached!
+Episode 7 finished with total reward: 198.52034638732093, best distance: 0.030832739803472186
+Episode: 8
+Episode 8 finished with total reward: 11.080162363168377, best distance: 2.922923585168837
+Episode 8 finished with total reward: 11.080162363168377, best distance: 2.922923585168837
+Episode: 9
+Episode 9 finished with total reward: 0.035415627364619055, best distance: 9.374650522906034
+Episode 9 finished with total reward: 0.035415627364619055, best distance: 9.374650522906034
+minimum return: 1.2866373050480482e-05 maximum return: 198.52034638732093
+==================================================
+Trying with d_r: 250
+Episode: 0
+Episode 0 finished with total reward: 0.026871411369914038, best distance: 9.999128709831202
+Episode 0 finished with total reward: 0.026871411369914038, best distance: 9.999128709831202
+Episode: 1
+Episode 1 finished with total reward: 246.31505325177105, best distance: 0.042826229066831145
+goal reached!
+Episode 1 finished with total reward: 246.31505325177105, best distance: 0.042826229066831145
+Episode: 2
+Episode 2 finished with total reward: 2.5579381921683332e-05, best distance: 15.525509287104514
+Episode 2 finished with total reward: 2.5579381921683332e-05, best distance: 15.525509287104514
+Episode: 3
+Episode 3 finished with total reward: 40.951968895186624, best distance: 0.09325333445210911
+goal reached!
+Episode 3 finished with total reward: 40.951968895186624, best distance: 0.09325333445210911
+Episode: 4
+Episode 4 finished with total reward: 243.25154358924283, best distance: 0.004571672325017286
+goal reached!
+Episode 4 finished with total reward: 243.25154358924283, best distance: 0.004571672325017286
+Episode: 5
+Episode 5 finished with total reward: 0.0052988915558624585, best distance: 11.75461315497767
+Episode 5 finished with total reward: 0.0052988915558624585, best distance: 11.75461315497767
+Episode: 6
+Episode 6 finished with total reward: 0.0021728452847606643, best distance: 12.158015600983576
+Episode 6 finished with total reward: 0.0021728452847606643, best distance: 12.158015600983576
+Episode: 7
+Episode 7 finished with total reward: 0.12049517115670394, best distance: 8.022253184621873
+Episode 7 finished with total reward: 0.12049517115670394, best distance: 8.022253184621873
+Episode: 8
+Episode 8 finished with total reward: 3.232590473337294, best distance: 4.573435517506897
+Episode 8 finished with total reward: 3.232590473337294, best distance: 4.573435517506897
+Episode: 9
+Episode 9 finished with total reward: 3.43001313983253, best distance: 4.302887430194502
+Episode 9 finished with total reward: 3.43001313983253, best distance: 4.302887430194502
+minimum return: 2.5579381921683332e-05 maximum return: 246.31505325177105
+==================================================
+Trying with d_r: 300
+Episode: 0
+Episode 0 finished with total reward: 260.1955213078435, best distance: 0.17412883902146775
+goal reached!
+Episode 0 finished with total reward: 260.1955213078435, best distance: 0.17412883902146775
+Episode: 1
+Episode 1 finished with total reward: 6.785628100984487, best distance: 3.568917049097316
+Episode 1 finished with total reward: 6.785628100984487, best distance: 3.568917049097316
+Episode: 2
+Episode 2 finished with total reward: 8.002403220998453, best distance: 3.3157114925854425
+Episode 2 finished with total reward: 8.002403220998453, best distance: 3.3157114925854425
+Episode: 3
+Episode 3 finished with total reward: 23.689615566880907, best distance: 2.7642138150653026
+Episode 3 finished with total reward: 23.689615566880907, best distance: 2.7642138150653026
+Episode: 4
+Episode 4 finished with total reward: 287.56688673931944, best distance: 0.0452806875720168
+goal reached!
+Episode 4 finished with total reward: 287.56688673931944, best distance: 0.0452806875720168
+Episode: 5
+Episode 5 finished with total reward: 0.005051803081165071, best distance: 10.227637439098633
+Episode 5 finished with total reward: 0.005051803081165071, best distance: 10.227637439098633
+Episode: 6
+Episode 6 finished with total reward: 0.007811964985102553, best distance: 10.168324594276793
+Episode 6 finished with total reward: 0.007811964985102553, best distance: 10.168324594276793
+Episode: 7
+Episode 7 finished with total reward: 262.6510353840541, best distance: 0.13535945033607968
+goal reached!
+Episode 7 finished with total reward: 262.6510353840541, best distance: 0.13535945033607968
+Episode: 8
+Episode 8 finished with total reward: 284.3038299561919, best distance: 0.06527734385567678
+goal reached!
+Episode 8 finished with total reward: 284.3038299561919, best distance: 0.06527734385567678
+Episode: 9
+Episode 9 finished with total reward: 2.9543575185650046, best distance: 5.533625858181668
+Episode 9 finished with total reward: 2.9543575185650046, best distance: 5.533625858181668
+minimum return: 0.005051803081165071 maximum return: 287.56688673931944
+==================================================
+Trying with d_r: 350
+Episode: 0
+Episode 0 finished with total reward: 0.4610660533903139, best distance: 6.5856341616516865
+Episode 0 finished with total reward: 0.4610660533903139, best distance: 6.5856341616516865
+Episode: 1
+Episode 1 finished with total reward: 0.1591545175615909, best distance: 7.949979795122031
+Episode 1 finished with total reward: 0.1591545175615909, best distance: 7.949979795122031
+Episode: 2
+Episode 2 finished with total reward: 0.00035205836894186305, best distance: 14.002665448634703
+Episode 2 finished with total reward: 0.00035205836894186305, best distance: 14.002665448634703
+Episode: 3
+Episode 3 finished with total reward: 3.1850100131496472e-06, best distance: 18.507559136930052
+Episode 3 finished with total reward: 3.1850100131496472e-06, best distance: 18.507559136930052
+Episode: 4
+Episode 4 finished with total reward: 0.000571255564493948, best distance: 13.645582597599365
+Episode 4 finished with total reward: 0.000571255564493948, best distance: 13.645582597599365
+Episode: 5
+Episode 5 finished with total reward: 0.034419790582693524, best distance: 7.8931132546000145
+Episode 5 finished with total reward: 0.034419790582693524, best distance: 7.8931132546000145
+Episode: 6
+Episode 6 finished with total reward: 0.0002363697758464969, best distance: 13.804917851488488
+Episode 6 finished with total reward: 0.0002363697758464969, best distance: 13.804917851488488
+Episode: 7
+Episode 7 finished with total reward: 0.005235710996319788, best distance: 11.598702673586306
+Episode 7 finished with total reward: 0.005235710996319788, best distance: 11.598702673586306
+Episode: 8
+Episode 8 finished with total reward: 0.47047178238813475, best distance: 6.251366298766128
+Episode 8 finished with total reward: 0.47047178238813475, best distance: 6.251366298766128
+Episode: 9
+Episode 9 finished with total reward: 0.0007802606672915742, best distance: 13.300761419381155
+Episode 9 finished with total reward: 0.0007802606672915742, best distance: 13.300761419381155
+minimum return: 3.1850100131496472e-06 maximum return: 0.47047178238813475
+==================================================
+Trying with d_r: 400
+Episode: 0
+Episode 0 finished with total reward: 1.0344571024270874, best distance: 6.219104081274443
+Episode 0 finished with total reward: 1.0344571024270874, best distance: 6.219104081274443
+Episode: 1
+Episode 1 finished with total reward: 0.0064292272721950825, best distance: 10.880337162588498
+Episode 1 finished with total reward: 0.0064292272721950825, best distance: 10.880337162588498
+Episode: 2
+Episode 2 finished with total reward: 0.1416119961200606, best distance: 7.853289534654713
+Episode 2 finished with total reward: 0.1416119961200606, best distance: 7.853289534654713
+Episode: 3
+Episode 3 finished with total reward: 0.0002992897884849989, best distance: 14.006246783413244
+Episode 3 finished with total reward: 0.0002992897884849989, best distance: 14.006246783413244
+Episode: 4
+Episode 4 finished with total reward: 0.0001150053104194287, best distance: 15.36706115628366
+Episode 4 finished with total reward: 0.0001150053104194287, best distance: 15.36706115628366
+Episode: 5
+Episode 5 finished with total reward: 1.663123868799054, best distance: 4.9079796879270985
+Episode 5 finished with total reward: 1.663123868799054, best distance: 4.9079796879270985
+Episode: 6
+Episode 6 finished with total reward: 381.6471844686406, best distance: 0.03888304817529596
+goal reached!
+Episode 6 finished with total reward: 381.6471844686406, best distance: 0.03888304817529596
+Episode: 7
+Episode 7 finished with total reward: 7.483706372699958e-07, best distance: 20.35359464583704
+Episode 7 finished with total reward: 7.483706372699958e-07, best distance: 20.35359464583704
+Episode: 8
+Episode 8 finished with total reward: 0.012938448645729619, best distance: 8.249769627959814
+Episode 8 finished with total reward: 0.012938448645729619, best distance: 8.249769627959814
+Episode: 9
+Episode 9 finished with total reward: 3.26036048250724, best distance: 5.478892416673386
+Episode 9 finished with total reward: 3.26036048250724, best distance: 5.478892416673386
+minimum return: 7.483706372699958e-07 maximum return: 381.6471844686406
+==================================================
+Trying with d_r: 450
+Episode: 0
+Episode 0 finished with total reward: 32.705702463295744, best distance: 3.0124482558639833
+Episode 0 finished with total reward: 32.705702463295744, best distance: 3.0124482558639833
+Episode: 1
+Episode 1 finished with total reward: 0.017642617417416403, best distance: 10.615176529681344
+Episode 1 finished with total reward: 0.017642617417416403, best distance: 10.615176529681344
+Episode: 2
+Episode 2 finished with total reward: 0.21127486228031084, best distance: 7.197867463715767
+Episode 2 finished with total reward: 0.21127486228031084, best distance: 7.197867463715767
+Episode: 3
+Episode 3 finished with total reward: 0.00504095410292689, best distance: 11.963619323572216
+Episode 3 finished with total reward: 0.00504095410292689, best distance: 11.963619323572216
+Episode: 4
+Episode 4 finished with total reward: 6.260502496469209e-05, best distance: 15.970955013133445
+Episode 4 finished with total reward: 6.260502496469209e-05, best distance: 15.970955013133445
+Episode: 5
+Episode 5 finished with total reward: 428.16294200838274, best distance: 0.022813603702397416
+goal reached!
+Episode 5 finished with total reward: 428.16294200838274, best distance: 0.022813603702397416
+Episode: 6
+Episode 6 finished with total reward: 0.13714319309364886, best distance: 7.658388104205733
+Episode 6 finished with total reward: 0.13714319309364886, best distance: 7.658388104205733
+Episode: 7
+Episode 7 finished with total reward: 439.3171429830862, best distance: 0.017092640233211727
+goal reached!
+Episode 7 finished with total reward: 439.3171429830862, best distance: 0.017092640233211727
+Episode: 8
+Episode 8 finished with total reward: 420.4376250556378, best distance: 0.053756965433370656
+goal reached!
+Episode 8 finished with total reward: 420.4376250556378, best distance: 0.053756965433370656
+Episode: 9
+Episode 9 finished with total reward: 0.2373444033896875, best distance: 7.482743543777002
+Episode 9 finished with total reward: 0.2373444033896875, best distance: 7.482743543777002
+minimum return: 6.260502496469209e-05 maximum return: 439.3171429830862
+==================================================
+Trying with d_r: 500
+Episode: 0
+Episode 0 finished with total reward: 109.24965855694204, best distance: 1.3381555742796967
+Episode 0 finished with total reward: 109.24965855694204, best distance: 1.3381555742796967
+Episode: 1
+Episode 1 finished with total reward: 0.31438725781010546, best distance: 6.2762806747837105
+Episode 1 finished with total reward: 0.31438725781010546, best distance: 6.2762806747837105
+Episode: 2
+Episode 2 finished with total reward: 379.2910321944834, best distance: 0.17695958967172012
+goal reached!
+Episode 2 finished with total reward: 379.2910321944834, best distance: 0.17695958967172012
+Episode: 3
+Episode 3 finished with total reward: 0.02254712753530775, best distance: 10.048385882913067
+Episode 3 finished with total reward: 0.02254712753530775, best distance: 10.048385882913067
+Episode: 4
+Episode 4 finished with total reward: 0.0889756833048224, best distance: 9.262078532393442
+Episode 4 finished with total reward: 0.0889756833048224, best distance: 9.262078532393442
+Episode: 5
+Episode 5 finished with total reward: 0.0029854853940355585, best distance: 11.102437434234906
+Episode 5 finished with total reward: 0.0029854853940355585, best distance: 11.102437434234906
+Episode: 6
+Episode 6 finished with total reward: 0.0002698580664308716, best distance: 11.940963406789225
+Episode 6 finished with total reward: 0.0002698580664308716, best distance: 11.940963406789225
+Episode: 7
+Episode 7 finished with total reward: 400.7600977396049, best distance: 0.14276704415129568
+goal reached!
+Episode 7 finished with total reward: 400.7600977396049, best distance: 0.14276704415129568
+Episode: 8
+Episode 8 finished with total reward: 0.012322058944570164, best distance: 10.297852665850778
+Episode 8 finished with total reward: 0.012322058944570164, best distance: 10.297852665850778
+Episode: 9
+Episode 9 finished with total reward: 0.000508811958319429, best distance: 11.852041616708421
+Episode 9 finished with total reward: 0.000508811958319429, best distance: 11.852041616708421
+minimum return: 0.0002698580664308716 maximum return: 400.7600977396049
+==================================================
+Trying with d_r: 550
+Episode: 0
+Episode 0 finished with total reward: 8.352152408160714, best distance: 4.431643487405012
+Episode 0 finished with total reward: 8.352152408160714, best distance: 4.431643487405012
+Episode: 1
+Episode 1 finished with total reward: 0.7163656925149017, best distance: 6.682301758183565
+Episode 1 finished with total reward: 0.7163656925149017, best distance: 6.682301758183565
+Episode: 2
+Episode 2 finished with total reward: 6.602506242272685, best distance: 3.325099633017537
+Episode 2 finished with total reward: 6.602506242272685, best distance: 3.325099633017537
+Episode: 3
+Episode 3 finished with total reward: 537.8008417352315, best distance: 0.012662293879714868
+goal reached!
+Episode 3 finished with total reward: 537.8008417352315, best distance: 0.012662293879714868
+Episode: 4
+Episode 4 finished with total reward: 4.039370014564122e-07, best distance: 20.208305563663956
+Episode 4 finished with total reward: 4.039370014564122e-07, best distance: 20.208305563663956
+Episode: 5
+Episode 5 finished with total reward: 527.0075804096701, best distance: 0.01740740334064918
+goal reached!
+Episode 5 finished with total reward: 527.0075804096701, best distance: 0.01740740334064918
+Episode: 6
+Episode 6 finished with total reward: 1.4870264581477435e-06, best distance: 17.495629316272606
+Episode 6 finished with total reward: 1.4870264581477435e-06, best distance: 17.495629316272606
+Episode: 7
+Episode 7 finished with total reward: 505.8388349083234, best distance: 0.049960944147092914
+goal reached!
+Episode 7 finished with total reward: 505.8388349083234, best distance: 0.049960944147092914
+Episode: 8
+Episode 8 finished with total reward: 0.026254748912000678, best distance: 9.835602734902494
+Episode 8 finished with total reward: 0.026254748912000678, best distance: 9.835602734902494
+Episode: 9
+Episode 9 finished with total reward: 1.598114631943277, best distance: 3.4784945870650836
+Episode 9 finished with total reward: 1.598114631943277, best distance: 3.4784945870650836
+minimum return: 4.039370014564122e-07 maximum return: 537.8008417352315
+==================================================
+Trying with d_r: 600
+Episode: 0
+Episode 0 finished with total reward: 530.792308392109, best distance: 0.04949538395932402
+goal reached!
+Episode 0 finished with total reward: 530.792308392109, best distance: 0.04949538395932402
+Episode: 1
+Episode 1 finished with total reward: 0.38444785722135505, best distance: 7.233705422048575
+Episode 1 finished with total reward: 0.38444785722135505, best distance: 7.233705422048575
+Episode: 2
+Episode 2 finished with total reward: 0.687794313455804, best distance: 6.407077659879224
+Episode 2 finished with total reward: 0.687794313455804, best distance: 6.407077659879224
+Episode: 3
+Episode 3 finished with total reward: 0.004363827076421987, best distance: 11.44400782714874
+Episode 3 finished with total reward: 0.004363827076421987, best distance: 11.44400782714874
+Episode: 4
+Episode 4 finished with total reward: 0.0025074094782836136, best distance: 12.176815359917363
+Episode 4 finished with total reward: 0.0025074094782836136, best distance: 12.176815359917363
+Episode: 5
+Episode 5 finished with total reward: 570.9823881914829, best distance: 0.018435455980801107
+goal reached!
+Episode 5 finished with total reward: 570.9823881914829, best distance: 0.018435455980801107
+Episode: 6
+Episode 6 finished with total reward: 0.49897608062003757, best distance: 7.085662053971906
+Episode 6 finished with total reward: 0.49897608062003757, best distance: 7.085662053971906
+Episode: 7
+Episode 7 finished with total reward: 1.396487861316837e-06, best distance: 18.491327641635706
+Episode 7 finished with total reward: 1.396487861316837e-06, best distance: 18.491327641635706
+Episode: 8
+Episode 8 finished with total reward: 27.724400980144797, best distance: 0.38410509787633745
+goal reached!
+Episode 8 finished with total reward: 27.724400980144797, best distance: 0.38410509787633745
+Episode: 9
+Episode 9 finished with total reward: 558.2052229542662, best distance: 0.040328947723400704
+goal reached!
+Episode 9 finished with total reward: 558.2052229542662, best distance: 0.040328947723400704
+minimum return: 1.396487861316837e-06 maximum return: 570.9823881914829
+==================================================
+Trying with d_r: 650
+Episode: 0
+Episode 0 finished with total reward: 409.84950841483953, best distance: 0.29928054016417877
+goal reached!
+Episode 0 finished with total reward: 409.84950841483953, best distance: 0.29928054016417877
+Episode: 1
+Episode 1 finished with total reward: 0.40155885908073574, best distance: 7.635667627857648
+Episode 1 finished with total reward: 0.40155885908073574, best distance: 7.635667627857648
+Episode: 2
+Episode 2 finished with total reward: 7.283824576048729e-05, best distance: 15.685408833136545
+Episode 2 finished with total reward: 7.283824576048729e-05, best distance: 15.685408833136545
+Episode: 3
+Episode 3 finished with total reward: 0.015518599889146261, best distance: 7.956178440221551
+Episode 3 finished with total reward: 0.015518599889146261, best distance: 7.956178440221551
+Episode: 4
+Episode 4 finished with total reward: 4.596513397929944, best distance: 4.796965006562344
+Episode 4 finished with total reward: 4.596513397929944, best distance: 4.796965006562344
+Episode: 5
+Episode 5 finished with total reward: 0.23378690103457359, best distance: 7.866803682204328
+Episode 5 finished with total reward: 0.23378690103457359, best distance: 7.866803682204328
+Episode: 6
+Episode 6 finished with total reward: 0.002815661358364574, best distance: 12.372717069690019
+Episode 6 finished with total reward: 0.002815661358364574, best distance: 12.372717069690019
+Episode: 7
+Episode 7 finished with total reward: 6.688956778320519e-09, best distance: 25.095537712704136
+Episode 7 finished with total reward: 6.688956778320519e-09, best distance: 25.095537712704136
+Episode: 8
+Episode 8 finished with total reward: 1.6315183151592528e-06, best distance: 20.143621390467676
+Episode 8 finished with total reward: 1.6315183151592528e-06, best distance: 20.143621390467676
+Episode: 9
+Episode 9 finished with total reward: 594.9818301867571, best distance: 0.04617725178143862
+goal reached!
+Episode 9 finished with total reward: 594.9818301867571, best distance: 0.04617725178143862
+minimum return: 6.688956778320519e-09 maximum return: 594.9818301867571
+==================================================
+Trying with d_r: 700
+Episode: 0
+Episode 0 finished with total reward: 4.62040821065864e-05, best distance: 16.308937085440984
+Episode 0 finished with total reward: 4.62040821065864e-05, best distance: 16.308937085440984
+Episode: 1
+Episode 1 finished with total reward: 0.027922175500908673, best distance: 9.76574953147474
+Episode 1 finished with total reward: 0.027922175500908673, best distance: 9.76574953147474
+Episode: 2
+Episode 2 finished with total reward: 8.152866474851997, best distance: 4.303903956473182
+Episode 2 finished with total reward: 8.152866474851997, best distance: 4.303903956473182
+Episode: 3
+Episode 3 finished with total reward: 6.135678959893628e-05, best distance: 15.467920240924064
+Episode 3 finished with total reward: 6.135678959893628e-05, best distance: 15.467920240924064
+Episode: 4
+Episode 4 finished with total reward: 0.7234799383905682, best distance: 6.17432470769072
+Episode 4 finished with total reward: 0.7234799383905682, best distance: 6.17432470769072
+Episode: 5
+Episode 5 finished with total reward: 0.0005740407001278759, best distance: 14.09084094538152
+Episode 5 finished with total reward: 0.0005740407001278759, best distance: 14.09084094538152
+Episode: 6
+Episode 6 finished with total reward: 0.11300688790294697, best distance: 8.455586259837407
+Episode 6 finished with total reward: 0.11300688790294697, best distance: 8.455586259837407
+Episode: 7
+Episode 7 finished with total reward: 43.078617348346164, best distance: 2.5962697957530034
+Episode 7 finished with total reward: 43.078617348346164, best distance: 2.5962697957530034
+Episode: 8
+Episode 8 finished with total reward: 0.5279359885719648, best distance: 7.247883986737699
+Episode 8 finished with total reward: 0.5279359885719648, best distance: 7.247883986737699
+Episode: 9
+Episode 9 finished with total reward: 0.007119249342844007, best distance: 9.997854523835267
+Episode 9 finished with total reward: 0.007119249342844007, best distance: 9.997854523835267
+minimum return: 4.62040821065864e-05 maximum return: 43.078617348346164
+==================================================
+Trying with d_r: 750
+Episode: 0
+Episode 0 finished with total reward: 1.4359927843458258e-07, best distance: 21.703165094866513
+Episode 0 finished with total reward: 1.4359927843458258e-07, best distance: 21.703165094866513
+Episode: 1
+Episode 1 finished with total reward: 0.35924119206894534, best distance: 7.277259418854512
+Episode 1 finished with total reward: 0.35924119206894534, best distance: 7.277259418854512
+Episode: 2
+Episode 2 finished with total reward: 567.7498535797349, best distance: 0.20494603925456256
+goal reached!
+Episode 2 finished with total reward: 567.7498535797349, best distance: 0.20494603925456256
+Episode: 3
+Episode 3 finished with total reward: 718.0793004777925, best distance: 0.043511075330920836
+goal reached!
+Episode 3 finished with total reward: 718.0793004777925, best distance: 0.043511075330920836
+Episode: 4
+Episode 4 finished with total reward: 0.009205432290691014, best distance: 10.904796493437988
+Episode 4 finished with total reward: 0.009205432290691014, best distance: 10.904796493437988
+Episode: 5
+Episode 5 finished with total reward: 687.2256331462487, best distance: 0.05904897129291289
+goal reached!
+Episode 5 finished with total reward: 687.2256331462487, best distance: 0.05904897129291289
+Episode: 6
+Episode 6 finished with total reward: 10.766594560676971, best distance: 4.236064737072012
+Episode 6 finished with total reward: 10.766594560676971, best distance: 4.236064737072012
+Episode: 7
+Episode 7 finished with total reward: 0.47117250564387725, best distance: 6.9315216864063585
+Episode 7 finished with total reward: 0.47117250564387725, best distance: 6.9315216864063585
+Episode: 8
+Episode 8 finished with total reward: 208.17255660183469, best distance: 1.0906252594651769
+Episode 8 finished with total reward: 208.17255660183469, best distance: 1.0906252594651769
+Episode: 9
+Episode 9 finished with total reward: 0.008781445499950016, best distance: 10.263093734250692
+Episode 9 finished with total reward: 0.008781445499950016, best distance: 10.263093734250692
+minimum return: 1.4359927843458258e-07 maximum return: 718.0793004777925
+==================================================
+Trying with d_r: 800
+Episode: 0
+Episode 0 finished with total reward: 552.9858796873762, best distance: 0.004317733145839475
+goal reached!
+Episode 0 finished with total reward: 552.9858796873762, best distance: 0.004317733145839475
+Episode: 1
+Episode 1 finished with total reward: 0.0033092365815618613, best distance: 11.579057594228834
+Episode 1 finished with total reward: 0.0033092365815618613, best distance: 11.579057594228834
+Episode: 2
+Episode 2 finished with total reward: 8.536752029075382, best distance: 4.58415049536571
+Episode 2 finished with total reward: 8.536752029075382, best distance: 4.58415049536571
+Episode: 3
+Episode 3 finished with total reward: 1.2911286472616383, best distance: 4.791306449217464
+Episode 3 finished with total reward: 1.2911286472616383, best distance: 4.791306449217464
+Episode: 4
+Episode 4 finished with total reward: 0.0007964179815476611, best distance: 13.683701248331255
+Episode 4 finished with total reward: 0.0007964179815476611, best distance: 13.683701248331255
+Episode: 5
+Episode 5 finished with total reward: 640.4517480490006, best distance: 0.11140425122174841
+goal reached!
+Episode 5 finished with total reward: 640.4517480490006, best distance: 0.11140425122174841
+Episode: 6
+Episode 6 finished with total reward: 5.067398367637223e-05, best distance: 15.546220948509696
+Episode 6 finished with total reward: 5.067398367637223e-05, best distance: 15.546220948509696
+Episode: 7
+Episode 7 finished with total reward: 9.809488615635138e-07, best distance: 20.612139456137335
+Episode 7 finished with total reward: 9.809488615635138e-07, best distance: 20.612139456137335
+Episode: 8
+Episode 8 finished with total reward: 0.00030734646453358755, best distance: 14.688619359146799
+Episode 8 finished with total reward: 0.00030734646453358755, best distance: 14.688619359146799
+Episode: 9
+Episode 9 finished with total reward: 612.090445515396, best distance: 0.050092751349805405
+goal reached!
+Episode 9 finished with total reward: 612.090445515396, best distance: 0.050092751349805405
+minimum return: 9.809488615635138e-07 maximum return: 640.4517480490006
+==================================================
+Trying with d_r: 850
+Episode: 0
+Episode 0 finished with total reward: 809.0210421080178, best distance: 0.036693205389671545
+goal reached!
+Episode 0 finished with total reward: 809.0210421080178, best distance: 0.036693205389671545
+Episode: 1
+Episode 1 finished with total reward: 0.008739152303615962, best distance: 10.354144133364407
+Episode 1 finished with total reward: 0.008739152303615962, best distance: 10.354144133364407
+Episode: 2
+Episode 2 finished with total reward: 0.025419999661843964, best distance: 9.99329095795149
+Episode 2 finished with total reward: 0.025419999661843964, best distance: 9.99329095795149
+Episode: 3
+Episode 3 finished with total reward: 0.016644556100795325, best distance: 10.769236796470732
+Episode 3 finished with total reward: 0.016644556100795325, best distance: 10.769236796470732
+Episode: 4
+Episode 4 finished with total reward: 622.515892557369, best distance: 0.047088690860573164
+goal reached!
+Episode 4 finished with total reward: 622.515892557369, best distance: 0.047088690860573164
+Episode: 5
+Episode 5 finished with total reward: 778.6014964217184, best distance: 0.04115670128304808
+goal reached!
+Episode 5 finished with total reward: 778.6014964217184, best distance: 0.04115670128304808
+Episode: 6
+Episode 6 finished with total reward: 0.0020149917820247274, best distance: 12.955772166324726
+Episode 6 finished with total reward: 0.0020149917820247274, best distance: 12.955772166324726
+Episode: 7
+Episode 7 finished with total reward: 773.2447894263877, best distance: 0.11392623316556294
+goal reached!
+Episode 7 finished with total reward: 773.2447894263877, best distance: 0.11392623316556294
+Episode: 8
+Episode 8 finished with total reward: 738.1327537048046, best distance: 0.02300165250894461
+goal reached!
+Episode 8 finished with total reward: 738.1327537048046, best distance: 0.02300165250894461
+Episode: 9
+Episode 9 finished with total reward: 821.5785944785247, best distance: 0.020122653602859482
+goal reached!
+Episode 9 finished with total reward: 821.5785944785247, best distance: 0.020122653602859482
+minimum return: 0.0020149917820247274 maximum return: 821.5785944785247
+==================================================
+Trying with d_r: 900
+Episode: 0
+Episode 0 finished with total reward: 0.01855688011928835, best distance: 10.816036149876528
+Episode 0 finished with total reward: 0.01855688011928835, best distance: 10.816036149876528
+Episode: 1
+Episode 1 finished with total reward: 0.0006931655030809592, best distance: 14.080495450208684
+Episode 1 finished with total reward: 0.0006931655030809592, best distance: 14.080495450208684
+Episode: 2
+Episode 2 finished with total reward: 0.44776126599561455, best distance: 7.295644020350435
+Episode 2 finished with total reward: 0.44776126599561455, best distance: 7.295644020350435
+Episode: 3
+Episode 3 finished with total reward: 0.011730987698735464, best distance: 11.140372023816683
+Episode 3 finished with total reward: 0.011730987698735464, best distance: 11.140372023816683
+Episode: 4
+Episode 4 finished with total reward: 560.2878062881091, best distance: 0.32155152216166355
+goal reached!
+Episode 4 finished with total reward: 560.2878062881091, best distance: 0.32155152216166355
+Episode: 5
+Episode 5 finished with total reward: 0.011732995507076302, best distance: 11.125299448851246
+Episode 5 finished with total reward: 0.011732995507076302, best distance: 11.125299448851246
+Episode: 6
+Episode 6 finished with total reward: 0.46025197579410404, best distance: 6.440974809458337
+Episode 6 finished with total reward: 0.46025197579410404, best distance: 6.440974809458337
+Episode: 7
+Episode 7 finished with total reward: 0.8948960136675742, best distance: 6.000814710503231
+Episode 7 finished with total reward: 0.8948960136675742, best distance: 6.000814710503231
+Episode: 8
+Episode 8 finished with total reward: 6.854758466813622e-05, best distance: 16.462172075443902
+Episode 8 finished with total reward: 6.854758466813622e-05, best distance: 16.462172075443902
+Episode: 9
+Episode 9 finished with total reward: 0.488251485433303, best distance: 7.397395141238233
+Episode 9 finished with total reward: 0.488251485433303, best distance: 7.397395141238233
+minimum return: 6.854758466813622e-05 maximum return: 560.2878062881091
+==================================================
+Trying with d_r: 950
+Episode: 0
+Episode 0 finished with total reward: 0.0049333274371531274, best distance: 11.37305973232014
+Episode 0 finished with total reward: 0.0049333274371531274, best distance: 11.37305973232014
+Episode: 1
+Episode 1 finished with total reward: 1.7400795248173905e-06, best distance: 19.993340863213348
+Episode 1 finished with total reward: 1.7400795248173905e-06, best distance: 19.993340863213348
+Episode: 2
+Episode 2 finished with total reward: 61.92616209763695, best distance: 2.6427937533580708
+Episode 2 finished with total reward: 61.92616209763695, best distance: 2.6427937533580708
+Episode: 3
+Episode 3 finished with total reward: 0.0603220369811495, best distance: 9.57028677158545
+Episode 3 finished with total reward: 0.0603220369811495, best distance: 9.57028677158545
+Episode: 4
+Episode 4 finished with total reward: 0.7579674719886809, best distance: 7.051249533004869
+Episode 4 finished with total reward: 0.7579674719886809, best distance: 7.051249533004869
+Episode: 5
+Episode 5 finished with total reward: 0.00711136417331357, best distance: 10.841306582399994
+Episode 5 finished with total reward: 0.00711136417331357, best distance: 10.841306582399994
+Episode: 6
+Episode 6 finished with total reward: 734.463529693587, best distance: 0.2207572491375162
+goal reached!
+Episode 6 finished with total reward: 734.463529693587, best distance: 0.2207572491375162
+Episode: 7
+Episode 7 finished with total reward: 2.048240976440326e-06, best distance: 19.77062637570237
+Episode 7 finished with total reward: 2.048240976440326e-06, best distance: 19.77062637570237
+Episode: 8
+Episode 8 finished with total reward: 2.948874321895435e-05, best distance: 16.957156449065682
+Episode 8 finished with total reward: 2.948874321895435e-05, best distance: 16.957156449065682
+Episode: 9
+Episode 9 finished with total reward: 44.47192121663615, best distance: 2.8918087112424327
+Episode 9 finished with total reward: 44.47192121663615, best distance: 2.8918087112424327
+minimum return: 1.7400795248173905e-06 maximum return: 734.463529693587
+==================================================
+Trying with d_r: 1000
+Episode: 0
+Episode 0 finished with total reward: 3.839515452773168e-06, best distance: 19.277958786131794
+Episode 0 finished with total reward: 3.839515452773168e-06, best distance: 19.277958786131794
+Episode: 1
+Episode 1 finished with total reward: 0.017125638850560253, best distance: 10.757856713785207
+Episode 1 finished with total reward: 0.017125638850560253, best distance: 10.757856713785207
+Episode: 2
+Episode 2 finished with total reward: 0.18723747312386127, best distance: 6.876246105389899
+Episode 2 finished with total reward: 0.18723747312386127, best distance: 6.876246105389899
+Episode: 3
+Episode 3 finished with total reward: 9.114661720347087, best distance: 4.492306564355061
+Episode 3 finished with total reward: 9.114661720347087, best distance: 4.492306564355061
+Episode: 4
+Episode 4 finished with total reward: 0.00010812380568596442, best distance: 15.894775097889577
+Episode 4 finished with total reward: 0.00010812380568596442, best distance: 15.894775097889577
+Episode: 5
+Episode 5 finished with total reward: 15.234130419779065, best distance: 4.061621634980659
+Episode 5 finished with total reward: 15.234130419779065, best distance: 4.061621634980659
+Episode: 6
+Episode 6 finished with total reward: 0.07648956303656261, best distance: 9.439779593762507
+Episode 6 finished with total reward: 0.07648956303656261, best distance: 9.439779593762507
+Episode: 7
+Episode 7 finished with total reward: 108.73940091426543, best distance: 2.0835446387171874
+Episode 7 finished with total reward: 108.73940091426543, best distance: 2.0835446387171874
+Episode: 8
+Episode 8 finished with total reward: 9.378336535011789e-07, best distance: 20.627379754721563
+Episode 8 finished with total reward: 9.378336535011789e-07, best distance: 20.627379754721563
+Episode: 9
+Episode 9 finished with total reward: 20.977518877606084, best distance: 3.8339177496175756
+Episode 9 finished with total reward: 20.977518877606084, best distance: 3.8339177496175756
+minimum return: 9.378336535011789e-07 maximum return: 108.73940091426543
+max_y: 1100.0 ticks every: 100.0
+Average rewards plot saved in antmaze_average_rewards_plot.png
+success rates:  [np.float64(0.1), np.float64(0.1), np.float64(0.2), np.float64(0.3), np.float64(0.1), np.float64(0.3), np.float64(0.4), np.float64(0.0), np.float64(0.1), np.float64(0.3), np.float64(0.2), np.float64(0.3), np.float64(0.4), np.float64(0.2), np.float64(0.0), np.float64(0.3), np.float64(0.3), np.float64(0.6), np.float64(0.1), np.float64(0.1), np.float64(0.0)] average: 0.20952380952380945
+
+###############################################################################
+Hábrók Cluster
+Job 17728986 for user s5173019
+Finished at: Mon Jun  2 21:36:16 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17728986
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node108
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-02T21:30:11
+Start                          : 2025-06-02T21:30:12
+End                            : 2025-06-02T21:36:12
+Reserved walltime              : 01:00:00
+Used walltime                  : 00:06:00
+Used CPU time                  : 00:05:50 (Efficiency: 97.27%)
+% User (Computation)           : 99.62%
+% System (I/O)                 :  0.38%
+Total memory reserved          : 2G
+Maximum memory used            : 478.39M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

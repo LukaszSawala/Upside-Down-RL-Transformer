@@ -45,7 +45,7 @@ def initiate_model_components() -> tuple[AutoModel, nn.Linear, NeuralNet]:
     state_encoder = nn.Linear(STATE_DIM, config.hidden_size).to(DEVICE)
 
     final_input_size = config.hidden_size + 2
-    mlp_head = NeuralNet(input_size=final_input_size, hidden_size=256, output_size=ACT_DIM).to(DEVICE)
+    mlp_head = HugeNeuralNet(input_size=final_input_size, hidden_size=256, output_size=ACT_DIM).to(DEVICE)
 
     return model_bert, state_encoder, mlp_head
 

@@ -8,7 +8,7 @@ from model_evaluation import (
     load_bert_mlp_model_for_eval, BERT_MLP_MODEL_PATH
 )
 from grid_UDRLT_training_OPTIMIZED import set_seed, create_dataloaders
-from models import AntMazeActionHead
+from models import BertAntMazeActionHead
 from finetuningNN_maze import _load_data, create_datasets
 
 # ==== Configuration ====
@@ -23,7 +23,7 @@ DATA_PATH = "../data/processed/antmaze_diverse_medium_concatenated_data.hdf5"
 BEST_MODEL_PATH = "finetunedbroski-512.pth"
 
 
-def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
+def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: BertAntMazeActionHead,
     train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
     """
     Trains the model for one epoch.
@@ -69,7 +69,7 @@ def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, f
     return total_train_loss / len(train_loader)
 
 
-def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: AntMazeActionHead,
+def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head, final_actionhead: BertAntMazeActionHead,
     val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
     """
     Validates the model for one epoch.
@@ -127,7 +127,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         or None if training did not produce a best model (e.g., 0 epochs).
     """
     model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
-    action_head = AntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
+    action_head = BertAntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
@@ -227,9 +227,9 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [128, 64, 32]
-    learning_rates_param = [2e-4] #untested, but 5e-5 is way too low
-    epochs_list_param = [60]
+    batch_sizes_param = [128]
+    learning_rates_param = [1e-4] #untested, but 5e-5 is way too low
+    epochs_list_param = [100]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
