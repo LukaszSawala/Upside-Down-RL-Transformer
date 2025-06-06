@@ -503,7 +503,6 @@ class LargeActionHead(nn.Module):
 
     def forward(self, x):
         return self.net(x)
-    
 
 
 class OldAntMazeActionHead(nn.Module):
@@ -546,7 +545,7 @@ class AntMazeActionHead(nn.Module):
         return self.net(x)
 
 
-class BertAntMazeActionHead(nn.Module):
+class FirstBertAntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
@@ -568,7 +567,42 @@ class BertAntMazeActionHead(nn.Module):
 
     def forward(self, x):
         return self.net(x)
-    
+
+class BertAntMazeActionHead(nn.Module):
+    def __init__(self, hidden_size: int, act_dim: int, num_layers: int = 10, input_size: int = 10) -> None:
+        super(BertAntMazeActionHead, self).__init__()
+        self.hidden_size = hidden_size
+        self.act = nn.ReLU()
+
+        self.layers = nn.ModuleList()
+        self.norms = nn.ModuleList()
+
+        self.input_layer = nn.Linear(input_size, hidden_size)
+        self.input_norm = nn.LayerNorm(hidden_size)
+
+        for _ in range(num_layers):
+            self.layers.append(nn.Linear(hidden_size, hidden_size))
+            self.norms.append(nn.LayerNorm(hidden_size))
+
+        self.output_layer = nn.Linear(hidden_size, act_dim)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.input_layer(x)
+        x = self.input_norm(x)
+        x = self.act(x)
+
+        for i, (layer, norm) in enumerate(zip(self.layers, self.norms)):
+            residual = x
+            x = layer(x)
+            x = norm(x)
+            x = self.act(x)
+            if i % 2 == 1:  # Add residual every 2 layers
+                x = x + residual
+
+        x = self.output_layer(x)
+        x = torch.tanh(x) 
+        return x
+
 
 class EvenNewerAntMazeActionHead(nn.Module):
     """

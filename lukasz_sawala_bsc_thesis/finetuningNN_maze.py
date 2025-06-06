@@ -9,7 +9,7 @@ from model_evaluation import (
     load_nn_model_for_eval, NN_MODEL_PATH
 )
 from grid_UDRLT_training_OPTIMIZED import set_seed, create_dataloaders
-from models import AntMazeActionHead, NeuralNet
+from models import AntMazeActionHead, NeuralNet, BertAntMazeActionHead
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -151,7 +151,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         or None if training did not produce a best model (e.g., 0 epochs).
     """
     model_nn, _ = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    action_head = AntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
+    action_head = BertAntMazeActionHead(hidden_size=512, act_dim=ACT_DIM, num_layers=12).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
@@ -242,8 +242,8 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [16]  #128 might be too high 
-    learning_rates_param =[5e-4] # 5e-5 wayu too low
+    batch_sizes_param = [128]  #128 might be too high 
+    learning_rates_param =[2e-4] # 5e-5 wayu too low
     epochs_list_param = [100]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
@@ -268,8 +268,8 @@ def grid_search_experiment() -> None:
 
         if current_best_models:
             print(f"Training complete for {current_config_str}. Evaluating on test set...")
-            #current_test_loss = evaluate_model(current_best_models, test_loader)
-            current_test_loss = 0
+            current_test_loss = evaluate_model(current_best_models, test_loader)
+            #current_test_loss = 0
             print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
 
             if current_test_loss < overall_best_test_loss:

@@ -127,7 +127,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
         or None if training did not produce a best model (e.g., 0 epochs).
     """
     model_bert, state_encoder, mlp_head = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, freeze=True)
-    action_head = BertAntMazeActionHead(hidden_size=512, act_dim=ACT_DIM).to(DEVICE)
+    action_head = BertAntMazeActionHead(hidden_size=512, act_dim=ACT_DIM, num_layers=12).to(DEVICE)
 
     optimizer = optim.Adam(list(action_head.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
@@ -227,7 +227,7 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [128]
+    batch_sizes_param = [128] # lower values sucked, only worked for the nn
     learning_rates_param = [1e-4] #untested, but 5e-5 is way too low
     epochs_list_param = [100]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
