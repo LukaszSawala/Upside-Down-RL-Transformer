@@ -1,0 +1,1025 @@
+==================================================
+Evaluating d_r: 0
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.01482901148121194, best distance: 10.989051583024045
+Episode: 1
+Episode 1 finished with total reward: 8.110402514652692e-07, best distance: 20.804148912116304
+Episode: 2
+Episode 2 finished with total reward: 0.12426729672542619, best distance: 8.809667673911347
+Episode: 3
+Episode 3 finished with total reward: 5.649570331338586e-05, best distance: 16.302789357589937
+Episode: 4
+Episode 4 finished with total reward: 0.06539645271528455, best distance: 9.410815997824717
+Episode: 5
+Episode 5 finished with total reward: 3.206555591864248e-06, best distance: 19.51663563785887
+Episode: 6
+Episode 6 finished with total reward: 8.39376693420112, best distance: 4.653594695947082
+Episode: 7
+Episode 7 finished with total reward: 2.331567222164105e-05, best distance: 17.52224124510924
+Episode: 8
+Episode 8 finished with total reward: 0.39703726282174556, best distance: 7.566093010149443
+Episode: 9
+Episode 9 finished with total reward: 4.316095204868757, best distance: 5.380242635180815
+minimum return: 8.110402514652692e-07 maximum return: 8.39376693420112
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 1.8587793588309103, best distance: 6.116355389962297
+Episode: 1
+Episode 1 finished with total reward: 0.0020482891262089487, best distance: 12.86107606113228
+Episode: 2
+Episode 2 finished with total reward: 0.05475283948974564, best distance: 9.583790472977233
+Episode: 3
+Episode 3 finished with total reward: 0.3061703384078861, best distance: 8.055352533285047
+Episode: 4
+Episode 4 finished with total reward: 3.496945383121734e-06, best distance: 19.424572706493038
+Episode: 5
+Episode 5 finished with total reward: 0.0012831521966036293, best distance: 13.381576740872346
+Episode: 6
+Episode 6 finished with total reward: 0.27102546008518597, best distance: 6.881011001120888
+Episode: 7
+Episode 7 finished with total reward: 1.4441935377440516, best distance: 6.3285239352585485
+Episode: 8
+Episode 8 finished with total reward: 0.0022201194721381493, best distance: 12.963333628306353
+Episode: 9
+Episode 9 finished with total reward: 9.31379891533615, best distance: 4.3953144473840045
+minimum return: 3.496945383121734e-06 maximum return: 9.31379891533615
+==================================================
+Evaluating d_r: 50
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.0016012581264610607, best distance: 13.044537832731578
+Episode: 1
+Episode 1 finished with total reward: 0.8475316003049442, best distance: 6.790864939824126
+Episode: 2
+Episode 2 finished with total reward: 0.00020961029491915327, best distance: 15.200664321555932
+Episode: 3
+Episode 3 finished with total reward: 7.145896208486541e-05, best distance: 16.266802935505673
+Episode: 4
+Episode 4 finished with total reward: 24.14243524434284, best distance: 3.654150875151287
+Episode: 5
+Episode 5 finished with total reward: 22.355693161248418, best distance: 3.67883744229081
+Episode: 6
+Episode 6 finished with total reward: 0.0009933954964403454, best distance: 13.394846152858232
+Episode: 7
+Episode 7 finished with total reward: 1.2202966039906355e-05, best distance: 17.898351182021102
+Episode: 8
+Episode 8 finished with total reward: 0.2474679334052607, best distance: 7.989610359507142
+Episode: 9
+Episode 9 finished with total reward: 0.16948899203738346, best distance: 8.531132678111538
+minimum return: 1.2202966039906355e-05 maximum return: 24.14243524434284
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.002418141369084886, best distance: 11.975232899715897
+Episode: 1
+Episode 1 finished with total reward: 0.000877957639367003, best distance: 12.200660515365488
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 377.9404074540594, best distance: 0.7164273483137433
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 257.30655481682794, best distance: 0.862948440703964
+Episode: 4
+Episode 4 finished with total reward: 1.5370708076222403e-06, best distance: 19.20017096754902
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 156.80786616803508, best distance: 0.857917987932679
+Episode: 6
+Episode 6 finished with total reward: 9.652173094393453, best distance: 3.8752600638925196
+Episode: 7
+Episode 7 finished with total reward: 0.25729735235046586, best distance: 7.712570545386432
+Episode: 8
+Episode 8 finished with total reward: 0.010796418300436794, best distance: 11.184749055204904
+Episode: 9
+Episode 9 finished with total reward: 1.3056823341952376e-06, best distance: 20.07295639219199
+minimum return: 1.3056823341952376e-06 maximum return: 377.9404074540594
+==================================================
+Evaluating d_r: 100
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 3.320148645364876e-05, best distance: 16.73611033978154
+Episode: 1
+Episode 1 finished with total reward: 3.196946414904755e-06, best distance: 19.486238107365008
+Episode: 2
+Episode 2 finished with total reward: 0.2370283495760295, best distance: 7.9515055575722124
+Episode: 3
+Episode 3 finished with total reward: 0.07113126224886852, best distance: 9.349826627204202
+Episode: 4
+Episode 4 finished with total reward: 7.93544145930553, best distance: 4.476461097773666
+Episode: 5
+Episode 5 finished with total reward: 0.00018708405153443247, best distance: 15.329898227768643
+Episode: 6
+Episode 6 finished with total reward: 10.163229001578406, best distance: 4.198584806374384
+Episode: 7
+Episode 7 finished with total reward: 81.0529002120127, best distance: 2.2642287452170637
+Episode: 8
+Episode 8 finished with total reward: 0.006428939633678071, best distance: 11.82779543065328
+Episode: 9
+Episode 9 finished with total reward: 0.01451258038946385, best distance: 11.00121074733143
+minimum return: 3.196946414904755e-06 maximum return: 81.0529002120127
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.011270204087287525, best distance: 11.108221681853397
+Episode: 1
+Episode 1 finished with total reward: 1.159244907663065e-08, best distance: 25.121619221363034
+Episode: 2
+Episode 2 finished with total reward: 0.15269009966569702, best distance: 8.213769197674985
+Episode: 3
+Episode 3 finished with total reward: 1.021356575412909e-05, best distance: 18.334614687592943
+Episode: 4
+Episode 4 finished with total reward: 167.5232897275279, best distance: 1.6221830563782047
+Episode: 5
+Episode 5 finished with total reward: 106.09704117953827, best distance: 1.15339710770174
+Episode: 6
+Episode 6 finished with total reward: 1.386824525299973e-05, best distance: 17.957854651862238
+Episode: 7
+Episode 7 finished with total reward: 0.07029180912460659, best distance: 9.485779872394978
+Episode: 8
+Episode 8 finished with total reward: 60.52795738836232, best distance: 2.7211541943230975
+Episode: 9
+Episode 9 finished with total reward: 0.0020366390246243857, best distance: 12.798110449968949
+minimum return: 1.159244907663065e-08 maximum return: 167.5232897275279
+==================================================
+Evaluating d_r: 150
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 2.7159127270398276e-05, best distance: 17.275048441947135
+Episode: 1
+Episode 1 finished with total reward: 1.5632926844531038e-06, best distance: 20.105378947014657
+Episode: 2
+Episode 2 finished with total reward: 1.8860243005838068e-08, best distance: 24.504017771458336
+Episode: 3
+Episode 3 finished with total reward: 6.196041937945392e-05, best distance: 16.361231389431346
+Episode: 4
+Episode 4 finished with total reward: 0.14969362525297047, best distance: 8.600464939387281
+Episode: 5
+Episode 5 finished with total reward: 1.1072179153891672e-06, best distance: 20.408817488271254
+Episode: 6
+Episode 6 finished with total reward: 0.012808724749813812, best distance: 11.129987802835007
+Episode: 7
+Episode 7 finished with total reward: 0.0003234095313740651, best distance: 14.693041576639716
+Episode: 8
+Episode 8 finished with total reward: 1.293990781260172e-06, best distance: 20.235900678520277
+Episode: 9
+Episode 9 finished with total reward: 0.4221396353549426, best distance: 7.11548435560107
+minimum return: 1.8860243005838068e-08 maximum return: 0.4221396353549426
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.029250294109185043, best distance: 9.087044149918668
+Episode: 1
+Episode 1 finished with total reward: 0.004912788089814087, best distance: 12.218801506249088
+Episode: 2
+Episode 2 finished with total reward: 0.005689158980249362, best distance: 12.058499695671665
+Episode: 3
+Episode 3 finished with total reward: 0.0003328121851900129, best distance: 13.511844869966971
+Episode: 4
+Episode 4 finished with total reward: 3.3028367172537385e-06, best distance: 19.219461660653486
+Episode: 5
+Episode 5 finished with total reward: 0.05454060963448062, best distance: 9.770012932514767
+Episode: 6
+Episode 6 finished with total reward: 0.015775176233649154, best distance: 11.050893930601786
+Episode: 7
+Episode 7 finished with total reward: 0.000874612803606991, best distance: 13.097251428539897
+Episode: 8
+Episode 8 finished with total reward: 9.530685764058558e-06, best distance: 18.250788717154354
+Episode: 9
+Episode 9 finished with total reward: 0.0027429313898289717, best distance: 11.797027048764217
+minimum return: 3.3028367172537385e-06 maximum return: 0.05454060963448062
+==================================================
+Evaluating d_r: 200
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.002241566543881076, best distance: 12.693578792770014
+Episode: 1
+Episode 1 finished with total reward: 7.8706720795272e-05, best distance: 16.069659617999065
+Episode: 2
+Episode 2 finished with total reward: 5.672095805908032, best distance: 5.016628363826112
+Episode: 3
+Episode 3 finished with total reward: 0.027378961405197622, best distance: 10.247730310348869
+Episode: 4
+Episode 4 finished with total reward: 0.00020310880066781804, best distance: 15.252386266733886
+Episode: 5
+Episode 5 finished with total reward: 0.3992115563397046, best distance: 7.697038642428159
+Episode: 6
+Episode 6 finished with total reward: 0.00017515279427816514, best distance: 15.223586424609573
+Episode: 7
+Episode 7 finished with total reward: 0.0005098893310241764, best distance: 14.305361245327544
+Episode: 8
+Episode 8 finished with total reward: 0.00015075790579528433, best distance: 15.488022151625113
+Episode: 9
+Episode 9 finished with total reward: 0.19408253753810142, best distance: 8.09514095374371
+minimum return: 7.8706720795272e-05 maximum return: 5.672095805908032
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 1.6405938105473605e-05, best distance: 16.89432479896925
+Episode: 1
+Episode 1 finished with total reward: 0.024913722780037444, best distance: 10.400214183070034
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 488.5547919461018, best distance: 0.46004535511013256
+Episode: 3
+Episode 3 finished with total reward: 0.003256580801034472, best distance: 12.055530729322744
+Episode: 4
+Episode 4 finished with total reward: 1.143144158246705, best distance: 6.310832310756891
+Episode: 5
+Episode 5 finished with total reward: 2.476974623538687, best distance: 5.124369667280038
+Episode: 6
+Episode 6 finished with total reward: 0.0005035771522911434, best distance: 12.789047589548398
+Episode: 7
+Episode 7 finished with total reward: 0.022014712453837598, best distance: 10.682887476517145
+Episode: 8
+Episode 8 finished with total reward: 1.0356334571192545e-05, best distance: 18.276025383788834
+Episode: 9
+Episode 9 finished with total reward: 0.00011524533608884928, best distance: 14.959751982925876
+minimum return: 1.0356334571192545e-05 maximum return: 488.5547919461018
+==================================================
+Evaluating d_r: 250
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.0004715992930966848, best distance: 14.326454990279226
+Episode: 1
+Episode 1 finished with total reward: 0.2033760469919184, best distance: 8.26363956574578
+Episode: 2
+Episode 2 finished with total reward: 0.0001343495172574439, best distance: 15.513055658114789
+Episode: 3
+Episode 3 finished with total reward: 2.7320202832697795, best distance: 5.66792925132054
+Episode: 4
+Episode 4 finished with total reward: 0.0006272139265358211, best distance: 14.036512997969943
+Episode: 5
+Episode 5 finished with total reward: 6.067762679172427e-07, best distance: 21.02247637274527
+Episode: 6
+Episode 6 finished with total reward: 1.170424827347896e-05, best distance: 18.090941962042194
+Episode: 7
+Episode 7 finished with total reward: 0.21596036130875246, best distance: 8.292237443727673
+Episode: 8
+Episode 8 finished with total reward: 0.004500556040174729, best distance: 12.039483636077797
+Episode: 9
+Episode 9 finished with total reward: 39.46582092690018, best distance: 2.954288664209247
+minimum return: 6.067762679172427e-07 maximum return: 39.46582092690018
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 2.4492884355018787e-09, best distance: 26.556925019823833
+Episode: 1
+Episode 1 finished with total reward: 0.011659547420264947, best distance: 10.962287676283486
+Episode: 2
+Episode 2 finished with total reward: 0.0012271924212548838, best distance: 13.51112977835001
+Episode: 3
+Episode 3 finished with total reward: 2.5448042211758097, best distance: 5.770806604953734
+Episode: 4
+Episode 4 finished with total reward: 5.94874671266847e-06, best distance: 18.933778834777957
+Episode: 5
+Episode 5 finished with total reward: 0.44494168134966955, best distance: 7.201528488175089
+Episode: 6
+Episode 6 finished with total reward: 0.08615322926856574, best distance: 9.179377516113975
+Episode: 7
+Episode 7 finished with total reward: 182.60049032802652, best distance: 1.6787001801671562
+Episode: 8
+Episode 8 finished with total reward: 0.8461542686304712, best distance: 6.812428193330121
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 442.38442727301964, best distance: 0.38760604813277527
+minimum return: 2.4492884355018787e-09 maximum return: 442.38442727301964
+==================================================
+Evaluating d_r: 300
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 2.4713136700466747e-07, best distance: 21.949888937748614
+Episode: 1
+Episode 1 finished with total reward: 2.796087087830732, best distance: 5.446073787408381
+Episode: 2
+Episode 2 finished with total reward: 0.10954901752079275, best distance: 8.701704122680708
+Episode: 3
+Episode 3 finished with total reward: 1.944505856028885e-05, best distance: 17.71861242057702
+Episode: 4
+Episode 4 finished with total reward: 1.7863312637139223e-07, best distance: 22.133304845770414
+Episode: 5
+Episode 5 finished with total reward: 0.2372338072941735, best distance: 7.868072645862544
+Episode: 6
+Episode 6 finished with total reward: 6.4000508003227985e-06, best distance: 18.702595512894955
+Episode: 7
+Episode 7 finished with total reward: 0.011854109454368569, best distance: 11.12130012779629
+Episode: 8
+Episode 8 finished with total reward: 0.0007448240544794257, best distance: 14.011215706571031
+Episode: 9
+Episode 9 finished with total reward: 2.093591198487329e-06, best distance: 19.728090484525616
+minimum return: 1.7863312637139223e-07 maximum return: 2.796087087830732
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.09890584925599553, best distance: 8.35881044105247
+Episode: 1
+Episode 1 finished with total reward: 8.470695804911915e-05, best distance: 15.771435058729736
+Episode: 2
+Episode 2 finished with total reward: 5.6508929268368675, best distance: 4.86073526008592
+Episode: 3
+Episode 3 finished with total reward: 0.000530346732628978, best distance: 12.92647695393576
+Episode: 4
+Episode 4 finished with total reward: 2.304865439955081e-08, best distance: 24.36716465102734
+Episode: 5
+Episode 5 finished with total reward: 0.8119172712456528, best distance: 7.01021052431198
+Episode: 6
+Episode 6 finished with total reward: 0.00048461556866867214, best distance: 13.695058733108482
+Episode: 7
+Episode 7 finished with total reward: 0.03078224349643298, best distance: 9.733970676655025
+Episode: 8
+Episode 8 finished with total reward: 16.738909222799055, best distance: 3.4912133126692084
+Episode: 9
+Episode 9 finished with total reward: 0.0006284598754647804, best distance: 14.272993698929914
+minimum return: 2.304865439955081e-08 maximum return: 16.738909222799055
+==================================================
+Evaluating d_r: 350
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.00048140480652898086, best distance: 14.37629621249365
+Episode: 1
+Episode 1 finished with total reward: 9.39183522747394e-09, best distance: 25.28377910617883
+Episode: 2
+Episode 2 finished with total reward: 8.794954383952246e-08, best distance: 22.88208475416503
+Episode: 3
+Episode 3 finished with total reward: 0.0025033093455527925, best distance: 12.739855734561464
+Episode: 4
+Episode 4 finished with total reward: 9.419148990629998e-05, best distance: 16.054114102039986
+Episode: 5
+Episode 5 finished with total reward: 0.00012097464031660726, best distance: 15.777497764310562
+Episode: 6
+Episode 6 finished with total reward: 0.055393021663500276, best distance: 9.469641494185616
+Episode: 7
+Episode 7 finished with total reward: 0.0001603566763989913, best distance: 15.302792589901838
+Episode: 8
+Episode 8 finished with total reward: 0.00015826240556280277, best distance: 15.47484362970485
+Episode: 9
+Episode 9 finished with total reward: 0.0012465287801980067, best distance: 13.451023902970897
+minimum return: 9.39183522747394e-09 maximum return: 0.055393021663500276
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.03520171496895127, best distance: 9.392984186626656
+Episode: 1
+Episode 1 finished with total reward: 6.62715091331077e-05, best distance: 16.456713353269127
+Episode: 2
+Episode 2 finished with total reward: 0.029544398608926086, best distance: 8.754099676588707
+Episode: 3
+Episode 3 finished with total reward: 6.4286806533923465e-06, best distance: 18.808647026745795
+Episode: 4
+Episode 4 finished with total reward: 1.0505835849444565e-06, best distance: 20.14596842988195
+Episode: 5
+Episode 5 finished with total reward: 0.0007580257126111408, best distance: 13.934266793695398
+Episode: 6
+Episode 6 finished with total reward: 0.00013737602540014375, best distance: 15.797430758840312
+Episode: 7
+Episode 7 finished with total reward: 2.0648618772948894e-05, best distance: 16.004191069365376
+Episode: 8
+Episode 8 finished with total reward: 0.00038040310917954905, best distance: 14.209531990821706
+Episode: 9
+Episode 9 finished with total reward: 0.6559762400185567, best distance: 7.041708547798231
+minimum return: 1.0505835849444565e-06 maximum return: 0.6559762400185567
+==================================================
+Evaluating d_r: 400
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.1333014696713108, best distance: 8.805302117285086
+Episode: 1
+Episode 1 finished with total reward: 0.00010067283247215439, best distance: 15.975956920180426
+Episode: 2
+Episode 2 finished with total reward: 0.08560473368315864, best distance: 9.155963491669109
+Episode: 3
+Episode 3 finished with total reward: 2.1823736863004694e-06, best distance: 19.6688117489248
+Episode: 4
+Episode 4 finished with total reward: 0.46619049514381694, best distance: 7.555578743368223
+Episode: 5
+Episode 5 finished with total reward: 0.006246729810084293, best distance: 11.803482673770093
+Episode: 6
+Episode 6 finished with total reward: 2.147724782378151, best distance: 5.974902136189664
+Episode: 7
+Episode 7 finished with total reward: 4.978171782580889e-05, best distance: 16.58618935047508
+Episode: 8
+Episode 8 finished with total reward: 12.751809777274662, best distance: 4.1874663954848
+Episode: 9
+Episode 9 finished with total reward: 0.32310182931876025, best distance: 7.949322846428422
+minimum return: 2.1823736863004694e-06 maximum return: 12.751809777274662
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 1.0323129422874019e-07, best distance: 22.989791674167446
+Episode: 1
+Episode 1 finished with total reward: 0.07510246287642096, best distance: 8.630738938932497
+Episode: 2
+Episode 2 finished with total reward: 5.899911251236919, best distance: 3.5626135340922427
+Episode: 3
+Episode 3 finished with total reward: 0.09691339312549319, best distance: 8.93814448643897
+Episode: 4
+Episode 4 finished with total reward: 0.1661669882793476, best distance: 8.602557768570158
+Episode: 5
+Episode 5 finished with total reward: 3.8708634606729393, best distance: 5.236564829263669
+Episode: 6
+Episode 6 finished with total reward: 230.6527204865466, best distance: 1.100931821745113
+Episode: 7
+Episode 7 finished with total reward: 0.0002642485716558877, best distance: 15.088041633722284
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 605.0651203262271, best distance: 0.035493014798029944
+Episode: 9
+Episode 9 finished with total reward: 113.34089030899324, best distance: 1.9072429571978509
+minimum return: 1.0323129422874019e-07 maximum return: 605.0651203262271
+==================================================
+Evaluating d_r: 450
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.0004823204777454212, best distance: 14.24852124418135
+Episode: 1
+Episode 1 finished with total reward: 3.381979928988093e-05, best distance: 16.95046886803667
+Episode: 2
+Episode 2 finished with total reward: 2.2832493819208883e-05, best distance: 17.46074172191085
+Episode: 3
+Episode 3 finished with total reward: 1.067825986599914e-06, best distance: 20.486689929309318
+Episode: 4
+Episode 4 finished with total reward: 1.4638599218293907e-07, best distance: 22.490367733243115
+Episode: 5
+Episode 5 finished with total reward: 1.4159618143586517e-07, best distance: 22.565703694164007
+Episode: 6
+Episode 6 finished with total reward: 0.09172775420824125, best distance: 9.175892429221502
+Episode: 7
+Episode 7 finished with total reward: 1.0994168705426563e-05, best distance: 18.129420855382758
+Episode: 8
+Episode 8 finished with total reward: 1.7413906493751022e-07, best distance: 22.24516147421379
+Episode: 9
+Episode 9 finished with total reward: 7.649566096920946e-05, best distance: 16.17703688574151
+minimum return: 1.4159618143586517e-07 maximum return: 0.09172775420824125
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 315.0354434298202, best distance: 1.1299347207859385
+Episode: 1
+Episode 1 finished with total reward: 0.32896513170659386, best distance: 7.530789779690948
+Episode: 2
+Episode 2 finished with total reward: 0.0005597655396397264, best distance: 14.245219773674188
+Episode: 3
+Episode 3 finished with total reward: 0.7538619392603421, best distance: 6.872157234117849
+Episode: 4
+Episode 4 finished with total reward: 0.19752476146627693, best distance: 8.500074861006869
+Episode: 5
+Episode 5 finished with total reward: 2.9460793673747263e-08, best distance: 24.065178049922483
+Episode: 6
+Episode 6 finished with total reward: 0.00011089227988579643, best distance: 15.302225597275514
+Episode: 7
+Episode 7 finished with total reward: 0.000985023843420741, best distance: 13.528413068854714
+Episode: 8
+Episode 8 finished with total reward: 0.03398203424228248, best distance: 8.232988544372912
+Episode: 9
+Episode 9 finished with total reward: 0.5821436462058968, best distance: 6.870588095565978
+minimum return: 2.9460793673747263e-08 maximum return: 315.0354434298202
+==================================================
+Evaluating d_r: 500
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 1.1886351805010256e-06, best distance: 20.363842641455175
+Episode: 1
+Episode 1 finished with total reward: 0.800243684189453, best distance: 6.857033058886366
+Episode: 2
+Episode 2 finished with total reward: 0.15406955555121127, best distance: 8.246469294114425
+Episode: 3
+Episode 3 finished with total reward: 0.3500446442424437, best distance: 7.754472900940563
+Episode: 4
+Episode 4 finished with total reward: 5.307818226988973, best distance: 5.005574496520312
+Episode: 5
+Episode 5 finished with total reward: 0.0002192707895698862, best distance: 15.059957855409916
+Episode: 6
+Episode 6 finished with total reward: 6.701246456644678e-07, best distance: 20.86255769775568
+Episode: 7
+Episode 7 finished with total reward: 1.2897857409763789e-05, best distance: 18.070898913767163
+Episode: 8
+Episode 8 finished with total reward: 8.270566234236986e-05, best distance: 16.123762633494927
+Episode: 9
+Episode 9 finished with total reward: 7.391784852090375e-07, best distance: 20.95356595476735
+minimum return: 6.701246456644678e-07 maximum return: 5.307818226988973
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0002227744253103692, best distance: 14.976888882761227
+Episode: 1
+Episode 1 finished with total reward: 0.10763437752316263, best distance: 9.091849824769563
+Episode: 2
+Episode 2 finished with total reward: 0.022463129304930735, best distance: 10.699771730355948
+Episode: 3
+Episode 3 finished with total reward: 0.00033733084407482257, best distance: 14.750367425982008
+Episode: 4
+Episode 4 finished with total reward: 4.9533157643487546e-05, best distance: 16.14815108922523
+Episode: 5
+Episode 5 finished with total reward: 1.5636684821428464e-07, best distance: 22.11207849113408
+Episode: 6
+Episode 6 finished with total reward: 2.8098933637967113e-06, best distance: 19.66945434482833
+Episode: 7
+Episode 7 finished with total reward: 0.013978431715436852, best distance: 10.947334823337854
+Episode: 8
+Episode 8 finished with total reward: 5.919062255342088e-05, best distance: 14.676917430312782
+Episode: 9
+Episode 9 finished with total reward: 3.624463112029983e-06, best distance: 19.32271063697932
+minimum return: 1.5636684821428464e-07 maximum return: 0.10763437752316263
+==================================================
+Evaluating d_r: 550
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.0003784293045309887, best distance: 14.653890585114585
+Episode: 1
+Episode 1 finished with total reward: 2.8058808961778778e-05, best distance: 17.293881282699886
+Episode: 2
+Episode 2 finished with total reward: 0.0019468904178387377, best distance: 12.870578644431385
+Episode: 3
+Episode 3 finished with total reward: 0.0481922099655101, best distance: 9.723726565725697
+Episode: 4
+Episode 4 finished with total reward: 0.0002801859455685821, best distance: 14.924684531174583
+Episode: 5
+Episode 5 finished with total reward: 5.9971468871311055e-06, best distance: 18.758842375806758
+Episode: 6
+Episode 6 finished with total reward: 0.00016698123041410768, best distance: 15.451401575703398
+Episode: 7
+Episode 7 finished with total reward: 0.0021430517422931002, best distance: 12.918968628075408
+Episode: 8
+Episode 8 finished with total reward: 0.7438671157685913, best distance: 7.061092043306456
+Episode: 9
+Episode 9 finished with total reward: 0.0006917485009082058, best distance: 14.051032308195415
+minimum return: 5.9971468871311055e-06 maximum return: 0.7438671157685913
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.11927193099236595, best distance: 8.357994780969818
+Episode: 1
+Episode 1 finished with total reward: 1.8198780263140326e-06, best distance: 20.01995704890464
+Episode: 2
+Episode 2 finished with total reward: 0.027895657108571118, best distance: 9.47317503634923
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 405.23500627242066, best distance: 0.6512737142506275
+Episode: 4
+Episode 4 finished with total reward: 0.2879017963810332, best distance: 7.466653310002018
+Episode: 5
+Episode 5 finished with total reward: 0.0005332213264217958, best distance: 14.39963108845561
+Episode: 6
+Episode 6 finished with total reward: 0.019481123253984694, best distance: 10.66418069040398
+Episode: 7
+Episode 7 finished with total reward: 0.8357063473122144, best distance: 6.605618570068604
+Episode: 8
+Episode 8 finished with total reward: 1.2625097263081316e-07, best distance: 22.549814900360403
+Episode: 9
+Episode 9 finished with total reward: 4.46504655954989e-06, best distance: 19.07543094552008
+minimum return: 1.2625097263081316e-07 maximum return: 405.23500627242066
+==================================================
+Evaluating d_r: 600
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.7730842369711847, best distance: 7.0583238929318375
+Episode: 1
+Episode 1 finished with total reward: 0.010852031587120347, best distance: 11.302796674912996
+Episode: 2
+Episode 2 finished with total reward: 9.189155425502497e-06, best distance: 18.318616054870407
+Episode: 3
+Episode 3 finished with total reward: 0.058282884289179666, best distance: 9.599398993421744
+Episode: 4
+Episode 4 finished with total reward: 3.408014211914166e-07, best distance: 21.724374230536593
+Episode: 5
+Episode 5 finished with total reward: 13.35390194557657, best distance: 4.168385512390935
+Episode: 6
+Episode 6 finished with total reward: 4.503284428496398e-09, best distance: 25.902396211825735
+Episode: 7
+Episode 7 finished with total reward: 0.0022951851543354146, best distance: 12.62559033001754
+Episode: 8
+Episode 8 finished with total reward: 1.6274662903322906e-05, best distance: 17.742259060501414
+Episode: 9
+Episode 9 finished with total reward: 0.011754729130937041, best distance: 11.204074929005019
+minimum return: 4.503284428496398e-09 maximum return: 13.35390194557657
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.00031671052555551956, best distance: 14.789734143345914
+Episode: 1
+Episode 1 finished with total reward: 3.735222911056663e-05, best distance: 17.072327740646426
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 825.594745656709, best distance: 0.04253839928182002
+Episode: 3
+Episode 3 finished with total reward: 0.00010291265305222884, best distance: 15.883605380351396
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 324.1771499484346, best distance: 0.45124515929735537
+Episode: 5
+Episode 5 finished with total reward: 0.4739017639017257, best distance: 5.229737595168609
+Episode: 6
+Episode 6 finished with total reward: 1.2479388662534118e-06, best distance: 20.447541327689866
+Episode: 7
+Episode 7 finished with total reward: 6.780828861736852e-05, best distance: 16.494147826956567
+Episode: 8
+Episode 8 finished with total reward: 1.032222394678426e-06, best distance: 20.667565061896745
+Episode: 9
+Episode 9 finished with total reward: 0.005428774750699092, best distance: 11.299792459080598
+minimum return: 1.032222394678426e-06 maximum return: 825.594745656709
+==================================================
+Evaluating d_r: 650
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 2.3366459239412108e-06, best distance: 19.713200267188515
+Episode: 1
+Episode 1 finished with total reward: 1.523297185859934e-05, best distance: 17.860452348953395
+Episode: 2
+Episode 2 finished with total reward: 0.0026211998505820786, best distance: 12.713961032917451
+Episode: 3
+Episode 3 finished with total reward: 2.1724574963113055, best distance: 5.932370859624852
+Episode: 4
+Episode 4 finished with total reward: 0.006017466169934777, best distance: 11.815265766125364
+Episode: 5
+Episode 5 finished with total reward: 5.281675951599944e-05, best distance: 16.613090803624736
+Episode: 6
+Episode 6 finished with total reward: 0.11433817946494348, best distance: 8.9532311102486
+Episode: 7
+Episode 7 finished with total reward: 0.3976823047546098, best distance: 7.629452027266703
+Episode: 8
+Episode 8 finished with total reward: 25.487365948128765, best distance: 3.442783033989337
+Episode: 9
+Episode 9 finished with total reward: 0.14215633203868633, best distance: 8.654472413785836
+minimum return: 2.3366459239412108e-06 maximum return: 25.487365948128765
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.018152346998891487, best distance: 10.851611665297598
+Episode: 1
+Episode 1 finished with total reward: 0.07611172134309249, best distance: 8.64452178758078
+Episode: 2
+Episode 2 finished with total reward: 2.2165835081376817e-07, best distance: 21.723841637102847
+Episode: 3
+Episode 3 finished with total reward: 0.06446572073023908, best distance: 9.063231449752024
+Episode: 4
+Episode 4 finished with total reward: 7.90763833738612, best distance: 4.527498150824874
+Episode: 5
+Episode 5 finished with total reward: 1.027804227571486e-08, best distance: 25.139293679142092
+Episode: 6
+Episode 6 finished with total reward: 0.0004813614609220106, best distance: 14.470888030037827
+Episode: 7
+Episode 7 finished with total reward: 1.2372515627087786e-06, best distance: 19.7909831230907
+Episode: 8
+Episode 8 finished with total reward: 2.3998166652217143e-06, best distance: 19.813968812249357
+Episode: 9
+Episode 9 finished with total reward: 0.019660738241703845, best distance: 10.833636414954533
+minimum return: 1.027804227571486e-08 maximum return: 7.90763833738612
+==================================================
+Evaluating d_r: 700
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 12.246780078263052, best distance: 4.240086067391246
+Episode: 1
+Episode 1 finished with total reward: 1.6649574900524615, best distance: 5.871739999793632
+Episode: 2
+Episode 2 finished with total reward: 1.149140924581419e-05, best distance: 18.159235544393777
+Episode: 3
+Episode 3 finished with total reward: 29.43984743459221, best distance: 3.013644393024242
+Episode: 4
+Episode 4 finished with total reward: 1.737290815372564e-06, best distance: 20.10879876530729
+Episode: 5
+Episode 5 finished with total reward: 0.19870798667269593, best distance: 8.347776495366947
+Episode: 6
+Episode 6 finished with total reward: 8.223477144640404e-05, best distance: 16.197896235143865
+Episode: 7
+Episode 7 finished with total reward: 3.187470382725553e-06, best distance: 19.527524891738864
+Episode: 8
+Episode 8 finished with total reward: 1.316475467207015e-05, best distance: 17.9667730871446
+Episode: 9
+Episode 9 finished with total reward: 0.024958768055440273, best distance: 10.474684319520202
+minimum return: 1.737290815372564e-06 maximum return: 29.43984743459221
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.20204508467112609, best distance: 8.339298663600136
+Episode: 1
+Episode 1 finished with total reward: 0.21772169616810275, best distance: 8.12045998565257
+Episode: 2
+Episode 2 finished with total reward: 0.5306556268558351, best distance: 6.395861294976027
+Episode: 3
+Episode 3 finished with total reward: 60.50407246509249, best distance: 2.7239986944019834
+Episode: 4
+Episode 4 finished with total reward: 0.00014292996273420215, best distance: 15.429125911210452
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 547.4895699051019, best distance: 0.05586066631282976
+Episode: 6
+Episode 6 finished with total reward: 0.002921235722147283, best distance: 12.59544015338868
+Episode: 7
+Episode 7 finished with total reward: 0.0009886391571389248, best distance: 13.423312818996687
+Episode: 8
+Episode 8 finished with total reward: 1.99270596793066e-06, best distance: 19.970352338452297
+Episode: 9
+Episode 9 finished with total reward: 0.00027126242461204944, best distance: 14.910981731836227
+minimum return: 1.99270596793066e-06 maximum return: 547.4895699051019
+==================================================
+Evaluating d_r: 750
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 5.155471721736461, best distance: 5.180376365548789
+Episode: 1
+Episode 1 finished with total reward: 0.10864905564262776, best distance: 8.99076436485972
+Episode: 2
+Episode 2 finished with total reward: 0.022135654579951494, best distance: 10.500491947148397
+Episode: 3
+Episode 3 finished with total reward: 0.9232708327960915, best distance: 6.837168023256349
+Episode: 4
+Episode 4 finished with total reward: 0.0052535160444181625, best distance: 11.79290086172647
+Episode: 5
+Episode 5 finished with total reward: 9.736435417342729e-05, best distance: 16.041627305116567
+Episode: 6
+Episode 6 finished with total reward: 0.16990144546728073, best distance: 8.525272624273702
+Episode: 7
+Episode 7 finished with total reward: 53.62394383171783, best distance: 2.83513430269305
+Episode: 8
+Episode 8 finished with total reward: 0.0011899738658551278, best distance: 13.483541686559338
+Episode: 9
+Episode 9 finished with total reward: 0.00012029301871545305, best distance: 15.805485357498496
+minimum return: 9.736435417342729e-05 maximum return: 53.62394383171783
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 5.060070991589041e-05, best distance: 16.26564305891214
+Episode: 1
+Episode 1 finished with total reward: 65.13572918439851, best distance: 2.6591483924987425
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 331.27393585703913, best distance: 0.39202111315892285
+Episode: 3
+Episode 3 finished with total reward: 0.03413028071905873, best distance: 9.037183708498118
+Episode: 4
+Episode 4 finished with total reward: 0.0008817433407815683, best distance: 13.923459065750693
+Episode: 5
+Episode 5 finished with total reward: 0.045820378676885515, best distance: 9.940400061626253
+Episode: 6
+Episode 6 finished with total reward: 0.3167653504932803, best distance: 6.861418260741922
+Episode: 7
+Episode 7 finished with total reward: 0.014538319367383215, best distance: 10.727781539154345
+Episode: 8
+Episode 8 finished with total reward: 9.871771663935611, best distance: 4.494767215257125
+Episode: 9
+Episode 9 finished with total reward: 0.39158526184065195, best distance: 6.6946438768393755
+minimum return: 5.060070991589041e-05 maximum return: 331.27393585703913
+==================================================
+Evaluating d_r: 800
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.00031210671599815875, best distance: 14.832072166959533
+Episode: 1
+Episode 1 finished with total reward: 0.0030065765604388173, best distance: 12.576743758076615
+Episode: 2
+Episode 2 finished with total reward: 7.212349815733866e-06, best distance: 18.67799645976718
+Episode: 3
+Episode 3 finished with total reward: 0.00018086787503393412, best distance: 15.399385646528609
+Episode: 4
+Episode 4 finished with total reward: 0.018242635506957285, best distance: 10.745935054272625
+Episode: 5
+Episode 5 finished with total reward: 3.6048252971368817, best distance: 5.5456611428331914
+Episode: 6
+Episode 6 finished with total reward: 0.0009339201427052693, best distance: 13.861520145912426
+Episode: 7
+Episode 7 finished with total reward: 0.6492457584887913, best distance: 7.20156776810813
+Episode: 8
+Episode 8 finished with total reward: 0.4546152541296011, best distance: 7.550863189879812
+Episode: 9
+Episode 9 finished with total reward: 3.729288227436614e-05, best distance: 17.00706901900848
+minimum return: 7.212349815733866e-06 maximum return: 3.6048252971368817
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0029038988827024058, best distance: 12.488908364481489
+Episode: 1
+Episode 1 finished with total reward: 0.00013280478054896125, best distance: 15.829657228301677
+Episode: 2
+Episode 2 finished with total reward: 101.04779466047425, best distance: 2.222450583943263
+Episode: 3
+Episode 3 finished with total reward: 0.038169263954816415, best distance: 9.54307823366843
+Episode: 4
+Episode 4 finished with total reward: 0.12474394931322091, best distance: 7.157278119018253
+Episode: 5
+Episode 5 finished with total reward: 0.17361368764738871, best distance: 8.155000702523157
+Episode: 6
+Episode 6 finished with total reward: 5.854393802507379e-07, best distance: 21.240940823253407
+Episode: 7
+Episode 7 finished with total reward: 0.1966793170357252, best distance: 8.066251417036327
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 630.6109515369307, best distance: 0.32502253179983337
+Episode: 9
+Episode 9 finished with total reward: 2.6697053460236446e-07, best distance: 21.635234751830218
+minimum return: 2.6697053460236446e-07 maximum return: 630.6109515369307
+==================================================
+Evaluating d_r: 850
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.38510017945161057, best distance: 7.741849589745572
+Episode: 1
+Episode 1 finished with total reward: 3.4777616168358603, best distance: 5.489830259069708
+Episode: 2
+Episode 2 finished with total reward: 5.879526929517612, best distance: 4.727817200500538
+Episode: 3
+Episode 3 finished with total reward: 6.987806108974287e-05, best distance: 16.382262110874642
+Episode: 4
+Episode 4 finished with total reward: 47.97053413846653, best distance: 2.9246387944308263
+Episode: 5
+Episode 5 finished with total reward: 4.127920184975951, best distance: 5.335600257788985
+Episode: 6
+Episode 6 finished with total reward: 1.7029784254003148e-06, best distance: 20.098648197032542
+Episode: 7
+Episode 7 finished with total reward: 2.5302655743695505e-05, best distance: 17.37547545818546
+Episode: 8
+Episode 8 finished with total reward: 0.0006985577469881555, best distance: 14.117828429528352
+Episode: 9
+Episode 9 finished with total reward: 0.2265719532836486, best distance: 8.306154691095987
+minimum return: 1.7029784254003148e-06 maximum return: 47.97053413846653
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.004020843565641331, best distance: 11.853265818821667
+Episode: 1
+Episode 1 finished with total reward: 0.0034809774664990127, best distance: 12.033443207866005
+Episode: 2
+Episode 2 finished with total reward: 10.551511001683423, best distance: 4.1638615019836465
+Episode: 3
+Episode 3 finished with total reward: 9.481583762224555e-05, best distance: 16.128717209839248
+Episode: 4
+Episode 4 finished with total reward: 7.133358182210111e-05, best distance: 16.263445354111106
+Episode: 5
+Episode 5 finished with total reward: 0.0015828606612965988, best distance: 13.143698807606405
+Episode: 6
+Episode 6 finished with total reward: 0.669668591964585, best distance: 6.771280125905625
+Episode: 7
+Episode 7 finished with total reward: 0.00012989594796627282, best distance: 15.84355435046892
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 561.9272972942148, best distance: 0.2143486514240937
+Episode: 9
+Episode 9 finished with total reward: 2.70797389358044, best distance: 4.14661624957212
+minimum return: 7.133358182210111e-05 maximum return: 561.9272972942148
+==================================================
+Evaluating d_r: 900
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 0.0005945838148169922, best distance: 14.181020993281916
+Episode: 1
+Episode 1 finished with total reward: 0.0004189490073109847, best distance: 14.621318629193192
+Episode: 2
+Episode 2 finished with total reward: 0.0002617982448987328, best distance: 15.023966791650432
+Episode: 3
+Episode 3 finished with total reward: 4.5446639467894725e-05, best distance: 16.827149230135635
+Episode: 4
+Episode 4 finished with total reward: 0.022627180697125906, best distance: 10.51968992053005
+Episode: 5
+Episode 5 finished with total reward: 0.00020847095332781482, best distance: 15.217188540000523
+Episode: 6
+Episode 6 finished with total reward: 0.017736016707357697, best distance: 10.834459174043689
+Episode: 7
+Episode 7 finished with total reward: 0.0006177373520816594, best distance: 14.115083580540531
+Episode: 8
+Episode 8 finished with total reward: 5.371747044015171e-08, best distance: 23.51247487083079
+Episode: 9
+Episode 9 finished with total reward: 0.17773772457546508, best distance: 8.513265630629737
+minimum return: 5.371747044015171e-08 maximum return: 0.17773772457546508
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.30412529482016887, best distance: 7.322170969780965
+Episode: 1
+Episode 1 finished with total reward: 0.0002307310192816977, best distance: 15.262204203197795
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 427.7881554435332, best distance: 0.5112306083283712
+Episode: 3
+Episode 3 finished with total reward: 97.88418749286686, best distance: 2.0384386543157897
+Episode: 4
+Episode 4 finished with total reward: 0.056860440653692966, best distance: 9.426787950373495
+Episode: 5
+Episode 5 finished with total reward: 0.0011491952403921884, best distance: 13.246224573520056
+Episode: 6
+Episode 6 finished with total reward: 1.5590951950569474, best distance: 5.281680836579037
+Episode: 7
+Episode 7 finished with total reward: 0.0011532238666590016, best distance: 13.653199637922853
+Episode: 8
+Episode 8 finished with total reward: 0.006620523988805543, best distance: 11.320222132119284
+Episode: 9
+Episode 9 finished with total reward: 0.020044355749139754, best distance: 10.635304309161393
+minimum return: 0.0002307310192816977 maximum return: 427.7881554435332
+==================================================
+Evaluating d_r: 950
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 1.617437657931056e-07, best distance: 22.359578817933087
+Episode: 1
+Episode 1 finished with total reward: 0.0004653965672868439, best distance: 14.529812413497556
+Episode: 2
+Episode 2 finished with total reward: 2.9579157125834736e-05, best distance: 17.206874584921042
+Episode: 3
+Episode 3 finished with total reward: 3.7516371041654646e-06, best distance: 19.30355693532708
+Episode: 4
+Episode 4 finished with total reward: 5.6981229165831414e-05, best distance: 16.646583016845877
+Episode: 5
+Episode 5 finished with total reward: 0.16140353918712444, best distance: 8.607794612555804
+Episode: 6
+Episode 6 finished with total reward: 0.0034800908450072195, best distance: 12.31242940433402
+Episode: 7
+Episode 7 finished with total reward: 4.359475018069787, best distance: 5.305273341769434
+Episode: 8
+Episode 8 finished with total reward: 5.465983891121699e-05, best distance: 16.487512766475675
+Episode: 9
+Episode 9 finished with total reward: 1.1733285182218507e-07, best distance: 22.731702707090847
+minimum return: 1.1733285182218507e-07 maximum return: 4.359475018069787
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 2.6867900726898176e-07, best distance: 21.502694209530052
+Episode: 1
+Episode 1 finished with total reward: 0.00018737832899714572, best distance: 15.032289867081973
+Episode: 2
+Episode 2 finished with total reward: 4.0527805569638455e-05, best distance: 16.67754752825455
+Episode: 3
+Episode 3 finished with total reward: 2.338369275602987, best distance: 5.358114863797984
+Episode: 4
+Episode 4 finished with total reward: 1.7628398112697545, best distance: 5.987105798977586
+Episode: 5
+Episode 5 finished with total reward: 6.924846673394082e-06, best distance: 18.356674849666977
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 497.37365600582115, best distance: 0.22274732817770063
+Episode: 7
+Episode 7 finished with total reward: 0.609211681848729, best distance: 5.805366396075163
+Episode: 8
+Episode 8 finished with total reward: 0.5187170249977127, best distance: 7.284566084191348
+Episode: 9
+Episode 9 finished with total reward: 6.757463934691697e-06, best distance: 18.53293330269658
+minimum return: 2.6867900726898176e-07 maximum return: 497.37365600582115
+==================================================
+Evaluating d_r: 1000
+Evaluating model: NeuralNet
+Episode: 0
+Episode 0 finished with total reward: 1.7036778991697323e-06, best distance: 20.080247627104093
+Episode: 1
+Episode 1 finished with total reward: 1.311900935577207, best distance: 6.49895011755804
+Episode: 2
+Episode 2 finished with total reward: 1.7952032806109565e-05, best distance: 17.776069248655787
+Episode: 3
+Episode 3 finished with total reward: 1.894750982196154e-05, best distance: 17.648099782672055
+Episode: 4
+Episode 4 finished with total reward: 0.005906498202896909, best distance: 12.00352667743757
+Episode: 5
+Episode 5 finished with total reward: 3.6766203091303465e-06, best distance: 19.3790787165218
+Episode: 6
+Episode 6 finished with total reward: 3.232992025488474e-05, best distance: 17.197771912972623
+Episode: 7
+Episode 7 finished with total reward: 7.705900057233122e-07, best distance: 20.86977322968611
+Episode: 8
+Episode 8 finished with total reward: 25.293885023024313, best distance: 3.5404574797174333
+Episode: 9
+Episode 9 finished with total reward: 3.552379869859416e-07, best distance: 21.65129148060578
+minimum return: 3.552379869859416e-07 maximum return: 25.293885023024313
+Evaluating model: BERT_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.21996290050642578, best distance: 8.353643295817895
+Episode: 1
+Episode 1 finished with total reward: 0.39660874195192014, best distance: 7.738957885545125
+Episode: 2
+Episode 2 finished with total reward: 0.0025697609103968112, best distance: 12.788835180820394
+Episode: 3
+Episode 3 finished with total reward: 0.0004926254258571594, best distance: 14.110770216953842
+Episode: 4
+Episode 4 finished with total reward: 6.550312555369714e-08, best distance: 23.047193007595027
+Episode: 5
+Episode 5 finished with total reward: 0.00017364354715907233, best distance: 15.206195241875502
+Episode: 6
+Episode 6 finished with total reward: 0.056633240936744274, best distance: 8.560826423771086
+Episode: 7
+Episode 7 finished with total reward: 147.80503822580397, best distance: 1.877243317692836
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 512.0811770411015, best distance: 0.36349494523815434
+Episode: 9
+Episode 9 finished with total reward: 5.186546996775407, best distance: 4.787945907798618
+minimum return: 6.550312555369714e-08 maximum return: 512.0811770411015
+
+============================================================
+Final Average Percentage Errors per Model:
+NeuralNet: 94.03%
+BERT_MLP: 84.32%
+Saved combined plot to eval-condition2-2models.png
+
+###############################################################################
+Hábrók Cluster
+Job 17817907 for user s5173019
+Finished at: Fri Jun  6 14:10:24 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17817907
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-06T13:55:59
+Start                          : 2025-06-06T13:56:00
+End                            : 2025-06-06T14:10:20
+Reserved walltime              : 01:00:00
+Used walltime                  : 00:14:20
+Used CPU time                  : 00:14:08 (Efficiency: 98.57%)
+% User (Computation)           : 99.82%
+% System (I/O)                 :  0.18%
+Total memory reserved          : 2G
+Maximum memory used            : 493.54M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

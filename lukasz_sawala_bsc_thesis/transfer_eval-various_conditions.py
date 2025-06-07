@@ -40,42 +40,42 @@ if __name__ == "__main__":
     }
     
     # ======================= CONDITION 1: MODELS TAKEN FROM ANT WITH NO EXTRA TRAINING =========================
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
 
-    nn_base, _ = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8).to(DEVICE)
+    # nn_base, _ = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
+    # nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8).to(DEVICE)
 
-    bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE)
-    bert_mlp_model = AntBERTPretrainedMazePolicy(*bert_base, init_head=True).to(DEVICE)
-    use_goal = False  # No goal direction in this condition
-    state_dim = 105  # State dimension for AntMaze environment
+    # bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE)
+    # bert_mlp_model = AntBERTPretrainedMazePolicy(*bert_base, init_head=True).to(DEVICE)
+    # use_goal = False  # No goal direction in this condition
+    # state_dim = 105  # State dimension for AntMaze environment
 
-    models = {
-        "NeuralNet": (nn_model, state_dim, use_goal),
-        "BERT_MLP": (bert_mlp_model, state_dim, use_goal),
-    }
-    save_path = "condition1-2models.png"
+    # models = {
+    #     "NeuralNet": (nn_model, state_dim, use_goal),
+    #     "BERT_MLP": (bert_mlp_model, state_dim, use_goal),
+    # }
+    # save_path = "condition1-2models.png"
     # =============================================================================================================
 
     # =========================== CONDITION 2: MODELS TAKEN FROM ANT WITH MAZE FINETUNING =========================
-    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
 
-    # if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
-    #     raise ValueError("Model paths must point to finetuned models for this condition.")
-    # nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    # nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
+    if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
+        raise ValueError("Model paths must point to finetuned models for this condition.")
+    nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
+    nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
 
-    # bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
-    # bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
-    #                                          adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
+    bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
+    bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
+                                             adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
 
-    # use_goal = True
-    # state_dim = 105  # State dimension for AntMaze environment
-    # models = {
-    #     "NeuralNet": (nn_model, state_dim, use_goal),
-    #     "BERT_MLP": (bert_model, state_dim, use_goal),
-    # }
-    # save_path = "condition2-2models.png"
+    use_goal = True
+    state_dim = 105  # State dimension for AntMaze environment
+    models = {
+        "NeuralNet": (nn_model, state_dim, use_goal),
+        "BERT_MLP": (bert_model, state_dim, use_goal),
+    }
+    save_path = "condition2-2models.png"
     # =============================================================================================================
 
     # =========================== CONDITION 3: MODELS TRAINED ON ANTMAZE ==========================================
