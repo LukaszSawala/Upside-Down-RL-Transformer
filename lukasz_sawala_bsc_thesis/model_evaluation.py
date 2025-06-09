@@ -83,14 +83,19 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     config.vocab_size = 1  # dummy since we're using inputs_embeds
     config.max_position_embeddings = 3
     model_bert = AutoModel.from_config(config).to(device)
+
     d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
     d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
-    #d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
-    #d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
+
+    # Uncomment the following lines if you want to use ScalarEncoder instead
+    # d_r_encoder = ScalarEncoder(config.hidden_size).to(device)
+    # d_h_encoder = ScalarEncoder(config.hidden_size).to(device)
+
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
-    head = nn.Linear(config.hidden_size, act_dim).to(device)
-    #head = ActionHead(config.hidden_size, act_dim).to(device)
-    #head = LargeActionHead(config.hidden_size, act_dim).to(device)
+
+    head = nn.Linear(config.hidden_size, act_dim).to(device)  # linear projection
+    #head = ActionHead(config.hidden_size, act_dim).to(device)  # small action head
+    #head = LargeActionHead(config.hidden_size, act_dim).to(device)  # large action head
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])
@@ -125,7 +130,6 @@ def load_bert_mlp_model_for_eval(checkpoint_path: str, device: str, freeze: bool
     # Initialize components
     model_bert = AutoModel.from_config(config).to(device)
     state_encoder = nn.Linear(105, config.hidden_size).to(device)
-    #mlp = NeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
     mlp = HugeNeuralNet(input_size=config.hidden_size + 2, hidden_size=256, output_size=8).to(device)
 
     # Load weights

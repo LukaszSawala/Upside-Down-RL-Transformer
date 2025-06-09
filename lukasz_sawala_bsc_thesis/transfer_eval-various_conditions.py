@@ -42,8 +42,8 @@ if __name__ == "__main__":
     
     # ======================= CONDITION 1: MODELS TAKEN FROM ANT WITH NO EXTRA TRAINING =========================
     # results = {
-    #     "NeuralNet": {"avg_rewards": [], "sem": [], "percent_errors": []},
-    #     "BERT_MLP": {"avg_rewards": [], "sem": [], "percent_errors": []},
+    #     "NeuralNet": {"avg_rewards": [], "sem": [], "success_rates": []},
+    #     "BERT_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
     # }
     # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
 
@@ -63,51 +63,51 @@ if __name__ == "__main__":
     # =============================================================================================================
 
     # =========================== CONDITION 2: MODELS TAKEN FROM ANT WITH MAZE FINETUNING =========================
-    # results = {
-    #     "NeuralNet": {"avg_rewards": [], "sem": [], "percent_errors": []},
-    #     "BERT_MLP": {"avg_rewards": [], "sem": [], "percent_errors": []},
-    # }
-    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+    results = {
+        "NeuralNet": {"avg_rewards": [], "sem": [], "success_rates": []},
+        "BERT_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
+    }
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
 
-    # if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
-    #     raise ValueError("Model paths must point to finetuned models for this condition.")
-    # nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    # nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
+    if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
+        raise ValueError("Model paths must point to finetuned models for this condition.")
+    nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
+    nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
 
-    # bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
-    # bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
-    #                                          adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
+    bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
+    bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
+                                             adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
 
-    # use_goal = True
-    # state_dim = 27  # State dimension for AntMaze environment
-    # models = {
-    #     "NeuralNet": (nn_model, state_dim, use_goal),
-    #     "BERT_MLP": (bert_model, state_dim, use_goal),
-    # }
-    # save_path = "condition2-2models.png"
+    use_goal = True
+    state_dim = 105  # State dimension for AntMaze environment
+    models = {
+        "NeuralNet": (nn_model, state_dim, use_goal),
+        "BERT_MLP": (bert_model, state_dim, use_goal),
+    }
+    save_path = "condition2-2models.png"
     # =============================================================================================================
 
     # =========================== CONDITION 3: MODELS TRAINED ON ANTMAZE ==========================================
-    results = {
-        "ANTMAZE_NN": {"avg_rewards": [], "sem": [], "success_rates": []},
-        "ANTMAZE_BERT_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
-    }
+    # results = {
+    #     "ANTMAZE_NN": {"avg_rewards": [], "sem": [], "success_rates": []},
+    #     "ANTMAZE_UDRLt_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
+    # }
 
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
     
-    model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
-    bert_model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+    # model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
+    # bert_model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
     
-    nn_model_base = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
-    nn_model = AntMazeNNPretrainedMazeWrapper(nn_model_base).to(DEVICE)
+    # nn_model_base = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
+    # nn_model = AntMazeNNPretrainedMazeWrapper(nn_model_base).to(DEVICE)
     
-    use_goal = True
-    state_dim = 27  # Reduced state space due to dataset mismatch
-    models = {
-        "ANTMAZE_NN": (nn_model, state_dim, use_goal),
-        "ANTMAZE_BERT_MLP": (bert_model, state_dim, use_goal),
-    }
-    save_path = "condition3-2models.png"
+    # use_goal = True
+    # state_dim = 27  # Reduced state space due to dataset mismatch
+    # models = {
+    #     "ANTMAZE_NN": (nn_model, state_dim, use_goal),
+    #     "ANTMAZE_UDRLt_MLP": (bert_model, state_dim, use_goal),
+    # }
+    # save_path = "condition3-2models.png"
     # =============================================================================================================
 
     for d_r in d_r_options:
@@ -133,4 +133,4 @@ if __name__ == "__main__":
     print("\n" + "=" * 60)
     print("Final Average Percentage Errors per Model:")
     for model_name, data in results.items():
-        print(f"{model_name}: {np.mean(data['success_rates']):.2f}%")
+        print(f"{model_name}: {np.mean(data['success_rates'])*100:.2f}%")

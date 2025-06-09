@@ -2,14 +2,14 @@ import itertools
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset, random_split
-from transformers import AutoModel, AutoConfig
+from torch.utils.data import DataLoader
+from transformers import AutoModel
 from model_evaluation import (
     load_bert_mlp_model_for_eval, BERT_MLP_MODEL_PATH
 )
 from grid_UDRLT_training_OPTIMIZED import set_seed, create_dataloaders
 from models import BertAntMazeActionHead
-from finetuningNN_maze import _load_data, create_datasets
+from finetuningNN_maze import create_datasets
 
 # ==== Configuration ====
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

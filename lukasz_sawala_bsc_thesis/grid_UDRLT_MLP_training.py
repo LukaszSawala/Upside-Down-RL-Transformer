@@ -7,7 +7,7 @@ from transformers import AutoModel, AutoConfig
 from tqdm import tqdm
 import h5py
 import numpy as np
-from models import NeuralNet
+from models import NeuralNet, HugeNeuralNet
 from grid_UDRLT_training_OPTIMIZED import create_datasets, create_dataloaders
 
 # ==== Configuration ====
