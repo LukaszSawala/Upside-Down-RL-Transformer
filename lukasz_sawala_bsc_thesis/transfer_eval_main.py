@@ -10,7 +10,7 @@ from models import (
     AntNNPretrainedMazePolicy,
     AntBERTPretrainedMazePolicy,
     AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper,
-    HugeNeuralNet, NeuralNet10, NeuralNet12, NeuralNet16, NeuralNet18, NeuralNetResNorm
+    HugeNeuralNet, NeuralNetResNorm
 )
 from model_evaluation import (
     load_nn_model_for_eval, load_bert_mlp_model_for_eval,
@@ -23,7 +23,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth"
 ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" 
 
-def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
+def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:
     """
     Loads the AntMaze NN model components for evaluation.
     Args:
@@ -61,9 +61,6 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> t
     state_encoder = nn.Linear(27, config.hidden_size).to(device)
     
     # hidden size + 4 for d_r, d_h and x y values of the goal vector
-    #mlp = NeuralNet12(input_size=config.hidden_size + 4, hidden_size=128, output_size=8).to(device)  
-    #mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
-    #mlp = NeuralNet18(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device)  
     mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=18).to(device)
 
     # Load weights
