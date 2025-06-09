@@ -29,17 +29,19 @@ def _load_data(path=DATA_PATH):
     with h5py.File(path, "r") as f:
         data = f["concatenated_data"]
         states = data["observations"][:]
-        states_padded = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant') # avoiding the mismatch between datasets
+        states_padded = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant')  # avoiding the mismatch between datasets
         actions = data["actions"][:]
         rewards = data["rewards_to_go"][:].reshape(-1, 1)
         times = data["time_to_go"][:].reshape(-1, 1)
         goal_vector = data["goal_vector"][:]
     return states_padded, rewards, times, goal_vector, actions
 
+
 def create_datasets() -> tuple:
     """
     Creates train, validation, and test datasets from the concatenated dataset.
-    Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train, 10% validation, and 10% test sets.
+    Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train,
+    10% validation, and 10% test sets.
     Returns:
         tuple: A tuple containing:
             - train_ds (TensorDataset): The training dataset.
@@ -52,15 +54,16 @@ def create_datasets() -> tuple:
     X_h = torch.tensor(X_h_np, dtype=torch.float32)
     X_g = torch.tensor(X_g_np, dtype=torch.float32)
     y = torch.tensor(y_np, dtype=torch.float32)
-    
+
     dataset = TensorDataset(X_s, X_r, X_h, X_g, y)
-    
+
     lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
     lengths.append(len(dataset) - sum(lengths))
     train_ds, val_ds, test_ds = random_split(
         dataset, lengths, generator=torch.Generator().manual_seed(42)
     )
     return train_ds, val_ds, test_ds
+
 
 def train_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead, train_loader: DataLoader,
                     optimizer: optim.Optimizer, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
@@ -82,7 +85,7 @@ def train_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead, tr
     model_nn.train()
     final_actionhead.train()
     total_train_loss = 0.0
-    
+
     print(f"Epoch {epoch_num}/{total_epochs} [Train]: Starting...")
     for (s, r, t, g, a) in train_loader:  # state, reward-to-go, time, goal, action
         s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
@@ -135,7 +138,8 @@ def validate_one_epoch(model_nn: NeuralNet, final_actionhead: AntMazeActionHead,
             total_val_loss += loss.item()
     return total_val_loss / len(val_loader)
 
-def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_loader: DataLoader) -> dict | None:
+
+def train_model(learning_rate: float, epochs: int, train_loader: DataLoader, val_loader: DataLoader) -> dict | None:
     """
     Trains the model using the specified hyperparameters.
     Implements early stopping based on validation loss.
@@ -165,7 +169,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
             model_nn, action_head, train_loader, optimizer, loss_fn, epoch + 1, epochs
         )
         avg_val_loss = validate_one_epoch(
-             model_nn, action_head, val_loader, loss_fn, epoch + 1, epochs
+            model_nn, action_head, val_loader, loss_fn, epoch + 1, epochs
         )
 
         print(
@@ -218,7 +222,7 @@ def evaluate_model(
 
     total_test_loss = 0.0
 
-    print(f"Evaluation: Starting...")
+    print("Evaluation: Starting...")
     with torch.no_grad():
         for (s, r, t, g, a) in test_loader:  # state, reward, time, goal, action
             s, r, t, g, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), g.to(DEVICE), a.to(DEVICE)
@@ -242,13 +246,13 @@ def grid_search_experiment() -> None:
     own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
     An evaluation on the test set is performed and printed for each model trained.
     """
-    batch_sizes_param = [128]  #128 might be too high 
-    learning_rates_param =[2e-4] # 5e-5 wayu too low
+    batch_sizes_param = [128]
+    learning_rates_param = [2e-4]
     epochs_list_param = [100]
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
-    
+
     overall_best_test_loss = float("inf")
     overall_best_config_str = "None"
 
@@ -269,7 +273,6 @@ def grid_search_experiment() -> None:
         if current_best_models:
             print(f"Training complete for {current_config_str}. Evaluating on test set...")
             current_test_loss = evaluate_model(current_best_models, test_loader)
-            #current_test_loss = 0
             print(f"Test Loss for config ({current_config_str}): {current_test_loss:.4f}")
 
             if current_test_loss < overall_best_test_loss:
@@ -281,7 +284,7 @@ def grid_search_experiment() -> None:
                 }
                 torch.save(models_save_dict, BEST_MODEL_PATH)
                 print(f"Model for this configuration saved to {BEST_MODEL_PATH}")
-        
+
         print("=" * 60)
 
     print("\nGrid Search Complete.")

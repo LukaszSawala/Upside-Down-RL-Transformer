@@ -1,11 +1,8 @@
 import gymnasium as gym
 import torch
 import numpy as np
-import time
 import gymnasium_robotics
 from scipy.stats import sem
-from transformers import AutoConfig, AutoModel
-import torch.nn as nn
 
 from models import (
     AntNNPretrainedMazePolicy,
@@ -28,7 +25,6 @@ from transfer_eval_main import (
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-
 if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
@@ -39,7 +35,6 @@ if __name__ == "__main__":
     d_h = 1000.0
     num_episodes = args["episodes"]
 
-    
     # ======================= CONDITION 1: MODELS TAKEN FROM ANT WITH NO EXTRA TRAINING =========================
     # results = {
     #     "NeuralNet": {"avg_rewards": [], "sem": [], "success_rates": []},
@@ -63,51 +58,51 @@ if __name__ == "__main__":
     # =============================================================================================================
 
     # =========================== CONDITION 2: MODELS TAKEN FROM ANT WITH MAZE FINETUNING =========================
-    results = {
-        "NeuralNet": {"avg_rewards": [], "sem": [], "success_rates": []},
-        "BERT_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
-    }
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+    # results = {
+    #     "NeuralNet": {"avg_rewards": [], "sem": [], "success_rates": []},
+    #     "BERT_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
+    # }
+    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
 
-    if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
-        raise ValueError("Model paths must point to finetuned models for this condition.")
-    nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
-    nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
+    # if "finetune" not in NN_MODEL_PATH or "finetune" not in BERT_MLP_MODEL_PATH:
+    #     raise ValueError("Model paths must point to finetuned models for this condition.")
+    # nn_base, actionhead = load_nn_model_for_eval(107, 256, 8, NN_MODEL_PATH, DEVICE)
+    # nn_model = AntNNPretrainedMazePolicy(nn_base, action_dim=8, adjusted_head=actionhead).to(DEVICE)
 
-    bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
-    bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
-                                             adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
+    # bert_base = load_bert_mlp_model_for_eval(BERT_MLP_MODEL_PATH, DEVICE, antmaze_pretrained=True)
+    # bert_model = AntBERTPretrainedMazePolicy(*bert_base[0:3], init_head=False,
+    #                                          adjusted_head=bert_base[3], hidden_size=512).to(DEVICE)
 
-    use_goal = True
-    state_dim = 105  # State dimension for AntMaze environment
-    models = {
-        "NeuralNet": (nn_model, state_dim, use_goal),
-        "BERT_MLP": (bert_model, state_dim, use_goal),
-    }
-    save_path = "condition2-2models.png"
+    # use_goal = True
+    # state_dim = 105  # State dimension for AntMaze environment
+    # models = {
+    #     "NeuralNet": (nn_model, state_dim, use_goal),
+    #     "BERT_MLP": (bert_model, state_dim, use_goal),
+    # }
+    # save_path = "condition2-2models.png"
     # =============================================================================================================
 
     # =========================== CONDITION 3: MODELS TRAINED ON ANTMAZE ==========================================
-    # results = {
-    #     "ANTMAZE_NN": {"avg_rewards": [], "sem": [], "success_rates": []},
-    #     "ANTMAZE_UDRLt_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
-    # }
+    results = {
+        "ANTMAZE_NN": {"avg_rewards": [], "sem": [], "success_rates": []},
+        "ANTMAZE_UDRLt_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},
+    }
 
-    # d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
-    
-    # model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
-    # bert_model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
-    
-    # nn_model_base = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
-    # nn_model = AntMazeNNPretrainedMazeWrapper(nn_model_base).to(DEVICE)
-    
-    # use_goal = True
-    # state_dim = 27  # Reduced state space due to dataset mismatch
-    # models = {
-    #     "ANTMAZE_NN": (nn_model, state_dim, use_goal),
-    #     "ANTMAZE_UDRLt_MLP": (bert_model, state_dim, use_goal),
-    # }
-    # save_path = "condition3-2models.png"
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]
+
+    model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
+    bert_model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+
+    nn_model_base = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
+    nn_model = AntMazeNNPretrainedMazeWrapper(nn_model_base).to(DEVICE)
+
+    use_goal = True
+    state_dim = 27  # Reduced state space due to dataset mismatch
+    models = {
+        "ANTMAZE_NN": (nn_model, state_dim, use_goal),
+        "ANTMAZE_UDRLt_MLP": (bert_model, state_dim, use_goal),
+    }
+    save_path = "condition3-2models.png"
     # =============================================================================================================
 
     for d_r in d_r_options:
@@ -116,7 +111,7 @@ if __name__ == "__main__":
         for name, (model, state_dim, use_goal) in models.items():
             print(f"Evaluating model: {name}")
             returns, distances = antmaze_evaluate(env, model, num_episodes, d_r=d_r,
-                                          d_h=d_h, state_dim=state_dim, use_goal=use_goal)
+                                                  d_h=d_h, state_dim=state_dim, use_goal=use_goal)
             avg = np.mean(returns)
             se = sem(returns)
             error = abs(avg - d_r) / d_r if d_r > 0 else 0
@@ -128,7 +123,6 @@ if __name__ == "__main__":
 
     # Final multi-model plot
     plot_all_models_rewards(results, d_r_options, save_path=f"eval-{save_path}",)
-
 
     print("\n" + "=" * 60)
     print("Final Average Percentage Errors per Model:")

@@ -84,6 +84,7 @@ class HugeNeuralNet(nn.Module):
         x = torch.tanh(x)  # Enforces the action range between -1 and 1
         return x
 
+
 class NeuralNetResNorm(nn.Module):
     """
     Class defining the Neural Network with residual connections and layer normalization.
@@ -122,7 +123,7 @@ class NeuralNetResNorm(nn.Module):
                 x = x + residual
 
         x = self.output_layer(x)
-        x = torch.tanh(x) 
+        x = torch.tanh(x)
         return x
 
 
@@ -143,9 +144,10 @@ class ActionHead(nn.Module):
             nn.Linear(hidden_size // 2, act_dim),
             nn.Tanh(),
         )
+
     def forward(self, x):
         return self.net(x)
-    
+
 
 class LargeActionHead(nn.Module):
     """
@@ -164,13 +166,13 @@ class LargeActionHead(nn.Module):
             nn.ReLU(),
             nn.Linear(hidden_size, hidden_size // 2),
             nn.ReLU(),
-            nn.Linear(hidden_size//2, hidden_size // 4),
+            nn.Linear(hidden_size // 2, hidden_size // 4),
             nn.ReLU(),
             nn.Linear(hidden_size // 4, act_dim),
             nn.Tanh(),
         )
 
-    def forward(self, x):        
+    def forward(self, x):
         return self.net(x)
 
 
@@ -201,7 +203,7 @@ class AntMazeActionHead(nn.Module):
     def __init__(self, hidden_size: int, act_dim: int):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(act_dim + 2, hidden_size), # 2 for x, y of the goal
+            nn.Linear(act_dim + 2, hidden_size),  # 2 for x, y of the goal
             nn.ReLU(),
             nn.Linear(hidden_size, hidden_size),
             nn.ReLU(),
@@ -257,7 +259,7 @@ class BertAntMazeActionHead(nn.Module):
                 x = x + residual
 
         x = self.output_layer(x)
-        x = torch.tanh(x) 
+        x = torch.tanh(x)
         return x
 
 
@@ -294,7 +296,7 @@ class AntBERTPretrainedMazePolicy(nn.Module):
     -  without the goal location (only pretrained on Ant).
     """
 
-    def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head = None, hidden_size=64):
+    def __init__(self, model_bert, state_encoder, mlp, action_dim=8, init_head=True, adjusted_head=None, hidden_size=64):
         super().__init__()
         self.state_encoder = state_encoder
         self.mlp = mlp  # the main mlp

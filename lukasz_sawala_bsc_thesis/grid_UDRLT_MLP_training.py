@@ -14,8 +14,8 @@ from grid_UDRLT_training_OPTIMIZED import create_datasets, create_dataloaders
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PATIENCE = 10
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "new-architecture-berttiny-batch32.pth" # From original script
-STATE_DIM = 105 # Derived from original state_encoder input
+BEST_MODEL_PATH = "new-architecture-berttiny.pth"  # From original script
+STATE_DIM = 105  # Derived from original state_encoder input
 ACT_DIM = 8
 
 
@@ -52,23 +52,22 @@ def initiate_model_components() -> tuple[AutoModel, nn.Linear, NeuralNet]:
 
 # ==== Training and Evaluation ====
 def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: NeuralNet,
-    train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module,
-    epoch_num: int, total_epochs: int) -> float:
+                    train_loader: DataLoader, optimizer: optim.Optimizer, loss_fn: nn.Module,
+                    epoch_num: int, total_epochs: int) -> float:
     """Trains the model for one epoch."""
     model_bert.train()
     state_encoder.train()
     mlp_head.train()
     total_train_loss = 0.0
 
-    
     print(f"Epoch {epoch_num}/{total_epochs} [Train]: Starting...")
     for (s, r, t, a) in train_loader:
         s, r, t, a = s.to(DEVICE), r.to(DEVICE), t.to(DEVICE), a.to(DEVICE)
         optimizer.zero_grad(set_to_none=True)
 
         s_proj = state_encoder(s).unsqueeze(1)  # [B, 1, hidden]
-        bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0] # [B, hidden]
-        input_to_mlp = torch.cat([bert_out, r, t], dim=1) # [B, hidden+2]
+        bert_out = model_bert(inputs_embeds=s_proj).last_hidden_state[:, 0]  # [B, hidden]
+        input_to_mlp = torch.cat([bert_out, r, t], dim=1)  # [B, hidden+2]
         pred = mlp_head(input_to_mlp)
         loss = loss_fn(pred, a)
 
@@ -81,7 +80,8 @@ def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: N
 
 
 def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head: NeuralNet,
-    val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:
+                       val_loader: DataLoader, loss_fn: nn.Module, epoch_num: int,
+                       total_epochs: int) -> float:
     """Validates the model for one epoch."""
     model_bert.eval()
     state_encoder.eval()
@@ -102,7 +102,7 @@ def validate_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head
     return total_val_loss / len(val_loader)
 
 
-def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_loader: DataLoader) -> dict | None:
+def train_model(learning_rate: float, epochs: int, train_loader: DataLoader, val_loader: DataLoader) -> dict | None:
     """
     Trains the model using the specified hyperparameters.
     Implements early stopping based on validation loss.
@@ -136,7 +136,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,val_
             model_bert, state_encoder, mlp_head, train_loader, optimizer, loss_fn, epoch + 1, epochs
         )
         avg_val_loss = validate_one_epoch(
-             model_bert, state_encoder, mlp_head, val_loader, loss_fn, epoch + 1, epochs
+            model_bert, state_encoder, mlp_head, val_loader, loss_fn, epoch + 1, epochs
         )
 
         print(
@@ -182,7 +182,6 @@ def evaluate_model(
     model_bert, state_encoder, mlp_head = initiate_model_components()
     loss_fn = nn.MSELoss()
 
-  
     model_bert.load_state_dict(model_state_dicts["bert"])
     state_encoder.load_state_dict(model_state_dicts["state_encoder"])
     mlp_head.load_state_dict(model_state_dicts["mlp_head"])
@@ -227,7 +226,7 @@ def grid_search_experiment() -> None:
     param_grid = itertools.product(batch_sizes_param, learning_rates_param, epochs_list_param)
 
     train_ds, val_ds, test_ds = create_datasets()
-    
+
     overall_best_test_loss = float("inf")
     overall_best_config_str = "None"
 
@@ -258,7 +257,7 @@ def grid_search_experiment() -> None:
                 overall_best_config_str = current_config_str
         else:
             print(f"Training failed or was skipped for config: {current_config_str}. Skipping evaluation and save.")
-        
+
         print("=" * 60)
 
     print("\nGrid Search Complete.")

@@ -1,9 +1,9 @@
-#==============================================================================
+# ==============================================================================
 # This file contains the training code for the Upside-Down-RL-Transformer model.
 # It is quite complex due to optimization methods applied to speed up the training
 # process. For a better reference on the training algorithm, see
 # grid_UDRLT_MLP_training.py, following a similar logic with some modifications.
-#==============================================================================
+# ==============================================================================
 
 import itertools
 import torch
@@ -14,13 +14,13 @@ from transformers import AutoModel, AutoConfig
 from tqdm import tqdm
 import h5py
 from utils import set_seed
-from models import ActionHead 
+from models import ActionHead
 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PATIENCE = 10
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
-BEST_MODEL_PATH = "frozen_actionhead_best_bert_udrl.pth" 
+BEST_MODEL_PATH = "frozen_actionhead_best_bert_udrl.pth"
 STATE_DIM = 105
 ACT_DIM = 8
 
@@ -28,11 +28,12 @@ ACT_DIM = 8
 Test Loss for config (BATCH_SIZE=8, LEARNING_RATE=1e-05, EPOCHS=15): 0.0167 (no action head, small)
 """
 
+
 def _load_data() -> tuple:
     """
-    This function reads the concatenated dataset from the specified HDF5 file 
-    and extracts the observations, actions, rewards, and time-to-go values. 
-    The rewards and time-to-go values are reshaped to be 2D arrays. 
+    This function reads the concatenated dataset from the specified HDF5 file
+    and extracts the observations, actions, rewards, and time-to-go values.
+    The rewards and time-to-go values are reshaped to be 2D arrays.
     All data is converted to PyTorch tensors with float dtype.
 
     Returns:
@@ -66,9 +67,9 @@ def create_datasets() -> tuple:
     X_r = torch.tensor(X_r_np, dtype=torch.float32)
     X_h = torch.tensor(X_h_np, dtype=torch.float32)
     y = torch.tensor(y_np, dtype=torch.float32)
-    
+
     dataset = TensorDataset(X_s, X_r, X_h, y)
-    
+
     lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
     lengths.append(len(dataset) - sum(lengths))
     train_ds, val_ds, test_ds = random_split(
@@ -125,7 +126,7 @@ def initiate_UDRLt_model() -> tuple:
     """
     config = AutoConfig.from_pretrained("prajjwal1/bert-small")
     config.vocab_size = 1  # dummy since we're using inputs_embeds
-    config.max_position_embeddings = 3 # R, H, S
+    config.max_position_embeddings = 3  # R, H, S
     model_bert = AutoModel.from_config(config).to(DEVICE)
 
     d_r_encoder = nn.Linear(1, config.hidden_size).to(DEVICE)
@@ -139,7 +140,7 @@ def initiate_UDRLt_model() -> tuple:
     state_encoder = nn.Linear(STATE_DIM, config.hidden_size).to(DEVICE)
     for param in state_encoder.parameters():
         param.requires_grad = False
-    #head = nn.Linear(config.hidden_size, ACT_DIM).to(DEVICE)
+    # head = nn.Linear(config.hidden_size, ACT_DIM).to(DEVICE)
     head = ActionHead(config.hidden_size, ACT_DIM).to(DEVICE)
 
     return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
@@ -179,7 +180,7 @@ def train(learning_rate: float, epochs: int,
         model_bert.train()
         head.train()
         total_train_loss = 0.0
-        
+
         train_loop = tqdm(train_loader, desc=f"Epoch {epoch + 1}/{epochs} [Train]")
         for s, r, h, a in train_loop:
             s = s.to(DEVICE, non_blocking=True if train_loader.pin_memory else False)
@@ -190,20 +191,20 @@ def train(learning_rate: float, epochs: int,
             optimizer.zero_grad(set_to_none=True)
 
             # --- AMP: Forward pass ---
-            if scaler: # If using CUDA and AMP
+            if scaler:  # If using CUDA and AMP
                 with torch.cuda.amp.autocast():
                     encoded_r = d_r_encoder(r).unsqueeze(1)
                     encoded_h = d_h_encoder(h).unsqueeze(1)
                     encoded_s = state_encoder(s).unsqueeze(1)
                     sequence = torch.cat([encoded_r, encoded_h, encoded_s], dim=1)
                     bert_out = model_bert(inputs_embeds=sequence).last_hidden_state
-                    pred = head(bert_out[:, -1]) # Use last token's output for prediction
+                    pred = head(bert_out[:, -1])  # Use last token's output for prediction
                     loss = loss_fn(pred, a)
-                
+
                 scaler.scale(loss).backward()
                 scaler.step(optimizer)
                 scaler.update()
-            else: # If not using AMP (e.g., on CPU)
+            else:  # If not using AMP (e.g., on CPU)
                 encoded_r = d_r_encoder(r).unsqueeze(1)
                 encoded_h = d_h_encoder(h).unsqueeze(1)
                 encoded_s = state_encoder(s).unsqueeze(1)
@@ -214,7 +215,7 @@ def train(learning_rate: float, epochs: int,
                 loss.backward()
                 optimizer.step()
             # --- End of AMP specific code ---
-            
+
             total_train_loss += loss.item()
             train_loop.set_postfix(loss=loss.item())
 
@@ -224,7 +225,7 @@ def train(learning_rate: float, epochs: int,
         model_bert.eval()
         head.eval()
         total_val_loss = 0.0
-        
+
         val_loop = tqdm(val_loader, desc=f"Epoch {epoch + 1}/{epochs} [Val  ]")
         with torch.no_grad():
             for s, r, h, a in val_loop:
@@ -234,8 +235,8 @@ def train(learning_rate: float, epochs: int,
                 a = a.to(DEVICE, non_blocking=True if val_loader.pin_memory else False)
 
                 # AMP for inference (though benefits are mainly in memory and speed if ops are fp16-friendly)
-                if DEVICE.type == 'cuda': # autocast can be used in eval too
-                     with torch.cuda.amp.autocast():
+                if DEVICE.type == 'cuda':  # autocast can be used in eval too
+                    with torch.cuda.amp.autocast():
                         encoded_r = d_r_encoder(r).unsqueeze(1)
                         encoded_h = d_h_encoder(h).unsqueeze(1)
                         encoded_s = state_encoder(s).unsqueeze(1)
@@ -251,7 +252,7 @@ def train(learning_rate: float, epochs: int,
                     bert_out = model_bert(inputs_embeds=sequence).last_hidden_state
                     pred = head(bert_out[:, -1])
                     loss = loss_fn(pred, a)
-                
+
                 total_val_loss += loss.item()
                 val_loop.set_postfix(loss=loss.item())
         avg_val_loss = total_val_loss / len(val_loader)
@@ -275,8 +276,8 @@ def train(learning_rate: float, epochs: int,
             if patience_counter == 0:
                 print("Early stopping.")
                 break
-    
-    if current_best_model_state is None and epochs > 0: # Handle case where no improvement was ever made but epochs ran
+
+    if current_best_model_state is None and epochs > 0:  # Handle case where no improvement was ever made but epochs ran
         print("Warning: No improvement in validation loss. Saving the last model state.")
         current_best_model_state = {
             "bert": model_bert.state_dict(),
@@ -285,10 +286,9 @@ def train(learning_rate: float, epochs: int,
             "state": state_encoder.state_dict(),
             "head": head.state_dict(),
         }
-    elif epochs == 0: # Should not happen with typical setup but good to cover
+    elif epochs == 0:  # Should not happen with typical setup but good to cover
         print("Warning: Zero epochs requested.")
         return None
-
 
     return current_best_model_state
 
@@ -320,7 +320,7 @@ def evaluate(model_state: dict, test_loader: torch.utils.data.DataLoader) -> flo
     head.eval()
 
     total_loss = 0.0
-    
+
     test_loop = tqdm(test_loader, desc="Evaluating")
     with torch.no_grad():
         for s, r, h, a in test_loop:
@@ -330,7 +330,7 @@ def evaluate(model_state: dict, test_loader: torch.utils.data.DataLoader) -> flo
             a = a.to(DEVICE, non_blocking=True if test_loader.pin_memory else False)
 
             if DEVICE.type == 'cuda':
-                 with torch.cuda.amp.autocast():
+                with torch.cuda.amp.autocast():
                     encoded_r = d_r_encoder(r).unsqueeze(1)
                     encoded_h = d_h_encoder(h).unsqueeze(1)
                     encoded_s = state_encoder(s).unsqueeze(1)
@@ -346,7 +346,7 @@ def evaluate(model_state: dict, test_loader: torch.utils.data.DataLoader) -> flo
                 bert_out = model_bert(inputs_embeds=sequence).last_hidden_state
                 pred = head(bert_out[:, -1])
                 loss = loss_fn(pred, a)
-            
+
             total_loss += loss.item()
             test_loop.set_postfix(loss=loss.item())
 
@@ -359,10 +359,10 @@ def grid_search() -> None:
     Performs a grid search over the given hyperparameters and saves the best model found.
     Saves the best model found to BEST_MODEL_PATH and prints out the best config and best test loss.
     """
-    batch_sizes = [8] # Original: [16, 8]
-    learning_rates = [5e-5] # Original: [1e-4, 5e-5]
-    epochs_list = [15] # Original: [10, 20]
-    
+    batch_sizes = [8]  # Original: [16, 8]
+    learning_rates = [5e-5]  # Original: [1e-4, 5e-5]
+    epochs_list = [15]  # Original: [10, 20]
+
     # If your CPU usage is low during training, increase num_workers.
     # If it's maxed out and causing issues, decrease it.
     num_data_workers = 8 if DEVICE.type == 'cuda' else 0
@@ -375,13 +375,13 @@ def grid_search() -> None:
     for BATCH_SIZE, LEARNING_RATE, EPOCHS in param_grid:
         current_config_str = f"BATCH_SIZE={BATCH_SIZE}, LEARNING_RATE={LEARNING_RATE}, EPOCHS={EPOCHS}"
         print(f"\nRunning grid search with {current_config_str}")
-        
+
         train_loader, val_loader, test_loader = create_dataloaders(
             train_ds, val_ds, test_ds, batch_size=BATCH_SIZE, num_workers=num_data_workers
         )
-        
+
         model_state = train(LEARNING_RATE, EPOCHS, train_loader, val_loader)
-        
+
         if model_state is None:
             print(f"Training failed or was skipped for config: {current_config_str}. Skipping evaluation.")
             continue

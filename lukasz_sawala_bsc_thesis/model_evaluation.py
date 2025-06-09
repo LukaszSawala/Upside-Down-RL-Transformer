@@ -18,11 +18,11 @@ from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNe
 
 
 OUTPUT_SIZE = 8
-#NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
+# NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
 NN_MODEL_PATH = "../models/finetunedNN-512-12lay.pth"  # for evaluation
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "../models/bert_tiny.pth"
-#BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
+# BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
 BERT_MLP_MODEL_PATH = "../models/finetunedUDRLt-MLP-512-12lay.pth"    # for evaluation
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -52,7 +52,7 @@ def load_nn_model_for_eval(input_size: int, hidden_size: int,
         action_head.eval()
     model.to(device)
     model.eval()
-    return model, action_head 
+    return model, action_head
 
 
 def load_dt_model_for_eval(state_dim: int, act_dim: int,
@@ -94,8 +94,8 @@ def load_bert_udrl_model_for_eval(state_dim: int, act_dim: int,
     state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
 
     head = nn.Linear(config.hidden_size, act_dim).to(device)  # linear projection
-    #head = ActionHead(config.hidden_size, act_dim).to(device)  # small action head
-    #head = LargeActionHead(config.hidden_size, act_dim).to(device)  # large action head
+    # head = ActionHead(config.hidden_size, act_dim).to(device)  # small action head
+    # head = LargeActionHead(config.hidden_size, act_dim).to(device)  # large action head
 
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])

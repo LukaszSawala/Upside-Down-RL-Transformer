@@ -21,7 +21,8 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth"
-ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" 
+ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth"
+
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:
     """
@@ -44,7 +45,7 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
     return nn_base
 
 
-def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> tuple:
+def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str) -> tuple:
     """
     Loads the AntMaze BERT MLP model components for evaluation.
     Returns:
@@ -59,7 +60,7 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> t
     # Initialize components
     model_bert = AutoModel.from_config(config).to(device)
     state_encoder = nn.Linear(27, config.hidden_size).to(device)
-    
+
     # hidden size + 4 for d_r, d_h and x y values of the goal vector
     mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=18).to(device)
 
@@ -126,7 +127,7 @@ def antmaze_evaluate(
         best_distance = 1000
         total_reward = 0
         while not done and d_h_copy > 0:
-            
+
             goal_vec = extract_goal_direction(obs)
             distance = np.linalg.norm(goal_vec)
             if distance < best_distance:
@@ -144,8 +145,8 @@ def antmaze_evaluate(
             d_h_copy -= 1
             done = terminated or truncated
 
-            #env.render()
-            #time.sleep(time_interval)
+            # env.render()    # uncomment this if you want to see the environment
+            # time.sleep(time_interval)
         obtained_returns.append(total_reward)
         if best_distance < 1:
             print("goal reached!")
@@ -160,7 +161,7 @@ if __name__ == "__main__":
     args = parse_arguments(training=False)
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
-    env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up 
+    env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up
 
     # --- load models and wrap them to accept goal locations if necessary ------
     if args["model_type"] == "NeuralNet":
@@ -192,7 +193,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])] # test those out
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]  # test those out
     num_episodes = args["episodes"]
     average_rewards = []
     sem_values = []

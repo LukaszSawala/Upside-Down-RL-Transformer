@@ -10,8 +10,7 @@ from model_evaluation import (
     evaluate_get_rewards, load_bert_mlp_model_for_eval,
     load_bert_udrl_model_for_eval, load_nn_model_for_eval, load_dt_model_for_eval,
     NN_MODEL_PATH, DT_MODEL_PATH, BERT_UDRL_MODEL_PATH, BERT_MLP_MODEL_PATH
-) 
-
+)
 
 
 OUTPUT_SIZE = 8
