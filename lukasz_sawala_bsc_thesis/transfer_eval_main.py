@@ -20,8 +20,8 @@ from utils import parse_arguments
 from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ANTMAZE_BERT_PATH = "antmaze_tiny-17_512.pth"
-ANTMAZE_NN_PATH = "antmaze_NN-18_512.pth" 
+ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth"
+ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNet16:
     """
@@ -64,7 +64,7 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str)  -> t
     #mlp = NeuralNet12(input_size=config.hidden_size + 4, hidden_size=128, output_size=8).to(device)  
     #mlp = NeuralNet16(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device) 
     #mlp = NeuralNet18(input_size=config.hidden_size + 4, hidden_size=512, output_size=8).to(device)  
-    mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=17).to(device)
+    mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=18).to(device)
 
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)

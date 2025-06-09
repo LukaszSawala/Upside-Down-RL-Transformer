@@ -6,5 +6,5 @@
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python transfer_eval-various_conditions.py --episodes 10 --model_type NeuralNet --d_r_array_length 21
+python transfer_eval-various_conditions.py --episodes 10 --model_type ANTMAZE_BERT_MLP --d_r_array_length 21
 deactivate
