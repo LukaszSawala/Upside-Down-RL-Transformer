@@ -8,7 +8,7 @@
 source .venv/bin/activate
 
 cd lukasz_sawala_bsc_thesis/
-python finetuningNN_maze.py
+python ft-selfimprove-rollout-lastcondition.py
 
 
 deactivate

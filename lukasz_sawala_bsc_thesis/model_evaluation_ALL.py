@@ -46,7 +46,9 @@ def plot_all_models_rewards(
         "#F5C242",  # warm yellow
         "#F26464",  # coral red
         "#76C893",  # minty green
-        "#8E7CC3"   # rich lavender
+        "#8E7CC3",   # rich lavender
+        "#465CB2",  # midnight blue
+        "#FF811A",  # soft orange
     ]
     palette = sns.color_palette(custom_palette)
 

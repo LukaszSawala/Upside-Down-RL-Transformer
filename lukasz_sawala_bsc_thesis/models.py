@@ -337,11 +337,17 @@ class AntMazeBERTPretrainedMazeWrapper(nn.Module):
         self.model_bert = model_bert
 
     def forward(self, obs, dr, dh, goal_vector, DEVICE, **kwargs):
-        # convert to tensors
-        obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        dr_tensor = torch.tensor([dr], dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        dh_tensor = torch.tensor([dh], dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        goal_tensor = torch.tensor(goal_vector, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        # convert to tensors if needed
+        if not torch.is_tensor(obs):
+            obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            dr_tensor = torch.tensor([dr], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            dh_tensor = torch.tensor([dh], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            goal_tensor = torch.tensor(goal_vector, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        else:
+            obs_tensor = obs.to(DEVICE)
+            dr_tensor = dr.to(DEVICE)
+            dh_tensor = dh.to(DEVICE)
+            goal_tensor = goal_vector.to(DEVICE)
 
         s_encoded = self.state_encoder(obs_tensor).unsqueeze(1)
         bert_out = self.model_bert(inputs_embeds=s_encoded).last_hidden_state[:, 0]
@@ -358,10 +364,16 @@ class AntMazeNNPretrainedMazeWrapper(nn.Module):
         self.mlp = mlp
 
     def forward(self, obs, dr, dh, goal_vector, DEVICE, **kwargs):
-        # convert to tensors
-        obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        dr_tensor = torch.tensor([dr], dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        dh_tensor = torch.tensor([dh], dtype=torch.float32).unsqueeze(0).to(DEVICE)
-        goal_tensor = torch.tensor(goal_vector, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        # convert to tensors if needed
+        if not torch.is_tensor(obs):
+            obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            dr_tensor = torch.tensor([dr], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            dh_tensor = torch.tensor([dh], dtype=torch.float32).unsqueeze(0).to(DEVICE)
+            goal_tensor = torch.tensor(goal_vector, dtype=torch.float32).unsqueeze(0).to(DEVICE)
+        else:
+            obs_tensor = obs.to(DEVICE)
+            dr_tensor = dr.to(DEVICE)
+            dh_tensor = dh.to(DEVICE)
+            goal_tensor = goal_vector.to(DEVICE)
         mlp_input = torch.cat([obs_tensor, dr_tensor, dh_tensor, goal_tensor], dim=1)
         return self.mlp(mlp_input)

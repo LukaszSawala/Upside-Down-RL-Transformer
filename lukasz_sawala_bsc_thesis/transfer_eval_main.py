@@ -21,11 +21,8 @@ from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-#ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth" # condition 3
-#ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" # condition 3
-
-ANTMAZE_BERT_PATH = "antmazeMERGED_tiny-18_512.pth"  # condition 5 (finetuning)
-ANTMAZE_NN_PATH = "antmazeMERGED_NN-18_512.pth"  # condition 5 (finetuning)
+ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth" # condition 3
+ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" # condition 3
 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:
@@ -197,7 +194,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]  # test those out
+    d_r_options = [i * 50 for i in range(args["d_r_array_length"])]  
     num_episodes = args["episodes"]
     average_rewards = []
     sem_values = []

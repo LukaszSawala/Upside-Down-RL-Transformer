@@ -114,13 +114,10 @@ if __name__ == "__main__":
                                                   d_h=d_h, state_dim=state_dim, use_goal=use_goal)
             avg = np.mean(returns)
             se = sem(returns)
-            error = abs(avg - d_r) / d_r if d_r > 0 else 0
             results[name]["avg_rewards"].append(avg)
             results[name]["sem"].append(se)
             results[name]["success_rates"].append(np.mean([d < 1 for d in distances]))
 
-    obs = env.reset()
-    print("environment initial state:", obs)
     env.close()
 
     # Final multi-model plot

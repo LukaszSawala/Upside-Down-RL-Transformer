@@ -12,15 +12,22 @@ from transfer_eval_main import extract_goal_direction, load_antmaze_bertmlp_mode
 
 # --- Setup ---
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ANTMAZE_BERT_PATH = "antmazeMERGED_tiny-18_512.pth"
-OUTPUT_HDF5_PATH = "antmaze_processed_dataset.hdf5"
 
-def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int):
+INITIAL_ANTMAZE_BERT_PATH = "antmazeMERGEDinit_tiny-18_512.pth"
+NEW_MODEL_PATH = "antmazeMERGED_tiny-18-512.pth"
+INITIAL_ANTMAZE_NN_PATH = "antmazeMERGEDinitNN-18_512.pth"
+#NEW_MODEL_PATH = "antmazeMERGEDNN-18_512.pth"
+
+OUTPUT_HDF5_PATH = "antmaze_rollout_current_dataset.hdf5"
+
+def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, start_from_condition4: bool):
     # --- Load environment and model ---
     gym.register_envs(gymnasium_robotics)
     env = gym.make("AntMaze_MediumDense-v5")
-
-    model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
+    if start_from_condition4:
+        model_components = load_antmaze_bertmlp_model_for_eval(INITIAL_ANTMAZE_BERT_PATH, DEVICE)
+    else:
+        model_components = load_antmaze_bertmlp_model_for_eval(NEW_MODEL_PATH, DEVICE)
     model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
     model.eval()
 
@@ -133,7 +140,7 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int):
         data_group.create_dataset("actions", data=final_actions)
         data_group.create_dataset("rewards_to_go", data=final_rewards_to_go)
         data_group.create_dataset("time_to_go", data=final_time_to_go)
-        data_group.create_dataset("goal_vectors", data=final_goal_vectors)
+        data_group.create_dataset("goal_vector", data=final_goal_vectors)
         # check shapes
         print("Shapes of saved datasets:")
         print(f"Observations: {final_observations.shape}")
@@ -142,9 +149,10 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int):
         print(f"Time-to-Go: {final_time_to_go.shape}")
         print(f"Goal Vectors: {final_goal_vectors.shape}")
     
+    print("Rewards obtained in each episode:" + str([rewards[0] for rewards in all_rewards_to_go]))
     print("stats:", 48 * "=")
     print("AVERAGE REWARD TO GO:", np.mean(final_rewards_to_go))
-    print("AVERAGE OBTAINED REWARD PER EPISODE:", np.mean(rewards[0] for rewards in all_rewards_to_go))
+    print("AVERAGE OBTAINED REWARD PER EPISODE:", np.mean([rewards[0] for rewards in all_rewards_to_go]))
     print(50 * "=")
 
     print(f"Data processing complete. Final dataset saved to {OUTPUT_HDF5_PATH}")
@@ -153,4 +161,6 @@ if __name__ == "__main__":
     d_h = 1000.0
     d_r_options = [i * 50 for i in range(21)]
     num_episodes_per_dr = 20
-    generate_dataset(d_h=d_h, d_r_options=d_r_options, num_episodes_per_dr=num_episodes_per_dr)
+    start_from_condition4 = True  # Set to True at the beggining of the loop
+    generate_dataset(d_h=d_h, d_r_options=d_r_options,
+                     num_episodes_per_dr=num_episodes_per_dr, start_from_condition4=start_from_condition4)
