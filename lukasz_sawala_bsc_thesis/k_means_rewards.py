@@ -4,12 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import h5py
 
-# # ======================================= FILE EXPLANATION ======================================
-# This Python script was used to generate a distribution of desired reward to go (DR) across
-# clusters of similar states in the Ant-V5 dataset. It is not necessary for the implementation of the models
-# used in this project.
-# ================================================================================================
-
 
 if __name__ == "__main__":
     # Load the dataset

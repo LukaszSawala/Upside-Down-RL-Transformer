@@ -20,15 +20,6 @@ MAX_LENGTH = 60
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
-# ========================================= FILE EXPLANATION ======================================
-
-# This script evaluates various models (NeuralNet, DecisionTransformer, BERT_UDRL, BERT_MLP)
-# in the Ant-v5 environment at the same time.
-# It collects average rewards and standard error for each model across multiple episodes
-# for different desired rewards (d_r).
-
-# ================================================================================================
-
 
 def plot_all_models_rewards(
     results: dict,

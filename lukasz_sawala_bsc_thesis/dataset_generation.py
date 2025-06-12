@@ -20,15 +20,6 @@ INITIAL_ANTMAZE_NN_PATH = "antmazeMERGEDinitNN-18_512.pth"
 
 OUTPUT_HDF5_PATH = "antmaze_rollout_current_dataset.hdf5"
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script generates a dataset for AntMaze environment using a pre-trained BERT model.
-# It collects episodes with varying reward-to-go (d_r) and horizon (d_h) values.
-# The dataset is saved in HDF5 format, containing observations, actions, rewards-to-go,
-# time-to-go, and goal vectors.
-# The dataset is used for further training or evaluation of the model in condition 5 (last) of the research.
-
-# ================================================================================================
 
 def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, start_from_condition4: bool):
     # --- Load environment and model ---

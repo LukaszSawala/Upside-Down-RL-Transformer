@@ -12,17 +12,6 @@ STATE_DIM = 105
 ACT_DIM = 8
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script is designed to analyze the attention mechanism of a Decision Transformer model.
-# It samples episodes from a dataset, computes the average attention received by each token,
-# and visualizes the top-k most attended tokens. The attention scores are averaged over multiple
-# batches to provide a clearer picture of the model's focus during training.
-# The script uses a pre-trained Decision Transformer model and processes episodes from an HDF5 file.
-# The visualization helps in understanding which tokens (states, actions, rewards) the model
-# pays the most attention to, which can provide insights into the model's decision-making process.
-
-# ================================================================================================
 
 def sample_episode_window(file_path: str, max_len: int = 60) -> dict:
     data = h5py.File(file_path, 'r')['episodic_data']

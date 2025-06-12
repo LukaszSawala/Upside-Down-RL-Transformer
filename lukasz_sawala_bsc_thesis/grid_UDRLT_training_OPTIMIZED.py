@@ -21,14 +21,6 @@ ACT_DIM = 8
 Test Loss for config (BATCH_SIZE=8, LEARNING_RATE=1e-05, EPOCHS=15): 0.0167 (no action head, small)
 """
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This file contains the training code for the Upside-Down-RL-Transformer model.
-# It is quite complex due to optimization methods applied to speed up the training
-# process. For a better reference on the training algorithm, see
-# grid_UDRLT_MLP_training.py, following a similar logic with some modifications.
-
-# ================================================================================================
 
 def _load_data() -> tuple:
     """

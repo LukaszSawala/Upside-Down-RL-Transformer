@@ -18,14 +18,6 @@ BEST_MODEL_PATH = "new-architecture-berttiny.pth"  # From original script
 STATE_DIM = 105  # Derived from original state_encoder input
 ACT_DIM = 8
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script is designed to train an UDRLt-MLP model based on BERT for Ant-v5.
-# It performs a grid search over hyperparameters such as batch size, learning rate, and epochs.
-# The script loads the data from an HDF5 file, splits it into training, validation, and test sets,
-# and trains a model using the specified hyperparameters.
-
-# ================================================================================================
 
 def set_seed(seed_value: int) -> None:
     """Sets the seed for reproducibility."""

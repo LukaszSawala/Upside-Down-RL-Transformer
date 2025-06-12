@@ -24,14 +24,6 @@ from transfer_eval_main import (
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script evaluates various conditions of AntMaze models, comparing their performance
-# under different configurations. It uses pre-trained models and evaluates them
-# in the AntMaze environment, collecting average rewards and success rates for different
-# desired rewards (d_r). The results are plotted for comparison.
-
-# ================================================================================================
 
 if __name__ == "__main__":
     args = parse_arguments(training=False)
@@ -90,7 +82,7 @@ if __name__ == "__main__":
     save_path = "condition2-2models.png"
     # =============================================================================================================
 
-    # =========================== CONDITION 3: MODELS TRAINED ON ANTMAZE ==========================================
+    # =========================== CONDITION 3/4: MODELS TRAINED ON ANTMAZE ==========================================
     # results = {
     #     "ANTMAZE_NN": {"avg_rewards": [], "sem": [], "success_rates": []},
     #     "ANTMAZE_UDRLt_MLP": {"avg_rewards": [], "sem": [], "success_rates": []},

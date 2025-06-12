@@ -13,16 +13,6 @@ INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 OUTPUT_SIZE = 8
 CONCATENATED_DATA_PATH = "../data/processed/concatenated_data.hdf5"
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script is a test file for the skewed sampling method.
-# It was used to evaluate the performance of the skewed sampling method on the concatenated data.
-# Due to limited improved functionality, a uniform sampler was used instead, yet this method
-# of alternative sampling can be explored further to see whether it would improve training
-# the DT model, used as a baseline.
-
-# ================================================================================================
-
 
 def load_data(data_path: str) -> list:
     """

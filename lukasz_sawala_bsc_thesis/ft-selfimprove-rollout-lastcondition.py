@@ -15,16 +15,6 @@ from dataset_generation import INITIAL_ANTMAZE_BERT_PATH
 NUMBER_OF_ITERATIONS = 1  # Set carefully! Every iteration will take a long time to complete.
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script implements the last condition of the research, where the model is trained
-# using a dataset generated from rollouts in the AntMaze environment. This follows the logic
-# of the Upside-Down RL paper, where the model is trained on a dataset collected from the environment.
-# It also plots the results of the evaluation of the model after each iteration, starting from
-# the model trained on all 4 of the AntMaze datasets (condition 4).
-
-# ================================================================================================
-
 
 if __name__ == "__main__":
     # --- Parameters ---

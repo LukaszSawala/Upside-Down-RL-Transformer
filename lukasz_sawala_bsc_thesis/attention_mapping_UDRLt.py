@@ -14,15 +14,6 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DATA_PATH = "../data/processed/concatenated_data.hdf5"
 MODEL_PATH = "bert_t_augm_enc_froz_action.pth"
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script is designed to analyze the attention distribution in the proposed UDRLt model.
-# It loads a pre-trained UDRLt model and visualizes the attention weights assigned to different tokens
-# (reward, horizon, state) during inference on a test dataset from the Ant-v5.
-# The attention weights are averaged over the test dataset and plotted as a bar chart.
-# The goal is to understand how the model prioritizes different inputs when making decisions.
-
-# ================================================================================================
 
 def _load_data():
     with h5py.File(DATA_PATH, "r") as f:

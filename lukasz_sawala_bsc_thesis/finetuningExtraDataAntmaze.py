@@ -30,15 +30,6 @@ from dataset_generation import (
     INITIAL_ANTMAZE_NN_PATH
 )
 
-# ======================================= FILE EXPLANATION ======================================
-
-# This script is designed to fine-tune AntMaze models using a dataset generated from rollouts.
-# It performs a grid search over hyperparameters such as batch size, learning rate, and epochs.
-# The script trains models based on the AntMazeBERTPretrainedMazeWrapper and AntMazeNNPretrainedMazeWrapper.
-# The script is intended for use in the context of AntMaze environment fine-tuning,
-# specifically for the last condition of the research (condition 5).
-
-# ================================================================================================
 
 def train_one_epoch(model, train_loader: DataLoader, optimizer: optim.Optimizer,
                     loss_fn: nn.Module, epoch_num: int, total_epochs: int) -> float:

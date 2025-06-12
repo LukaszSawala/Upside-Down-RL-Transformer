@@ -24,12 +24,9 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth" # condition 3
 ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" # condition 3
 
-# ======================================= FILE EXPLANATION ======================================
+# ANTMAZE_BERT_PATH = "antmazeMERGEDinit_tiny-18_512"  # condition 4
+# ANTMAZE_NN_PATH = "antmazeMERGEDinit_NN-18_512"  # condition 4
 
-# This script evaluates AntMaze models under various conditions, comparing their performance
-# using pre-trained models. Check transfer_eval-various_conditions.py for more details.
-
-# ================================================================================================
 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:

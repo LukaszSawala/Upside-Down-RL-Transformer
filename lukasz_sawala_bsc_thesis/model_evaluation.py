@@ -29,19 +29,6 @@ MAX_LENGTH = 60
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
 
-"""
-Best loss recorded: CLS, batch 8, lr 5e-5, epoch 1: 0.012
-supaugmented; loss 0.02
-"""
-
-# ========================================= FILE EXPLANATION ======================================
-
-# This script evaluates various models (NeuralNet, DecisionTransformer, BERT_UDRL, BERT_MLP)
-# in the Ant-v5 environment individually. Check model_evaluation_ALL.py for a comparison of all models.
-
-# ================================================================================================
-
-
 
 def load_nn_model_for_eval(input_size: int, hidden_size: int,
                            output_size: int, checkpoint_path: str,
