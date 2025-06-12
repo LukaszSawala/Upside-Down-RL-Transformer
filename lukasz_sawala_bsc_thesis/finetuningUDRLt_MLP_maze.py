@@ -22,6 +22,12 @@ set_seed(42)
 DATA_PATH = "../data/processed/antmaze_diverse_medium_concatenated_data.hdf5"
 BEST_MODEL_PATH = "finetunedbroski-512.pth"
 
+# ======================================= FILE EXPLANATION ======================================
+
+# This script is designed to fine-tune a pre-trained Ant UDRLt-MLP model using an AntMaze dataset from the 
+# Farama Foundation (medium-diverse) (condition 2 of the research).
+
+# ================================================================================================
 
 def train_one_epoch(model_bert: AutoModel, state_encoder: nn.Linear, mlp_head,
                     final_actionhead: BertAntMazeActionHead, train_loader: DataLoader, optimizer: optim.Optimizer,

@@ -22,6 +22,14 @@ UDRLT_MODEL_PATH = "../models/best_bert_udrl_rn.pth"
 MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2
 
+# ======================================= FILE EXPLANATION ======================================
+
+# This script is designed to VISUALLY (!) evaluate different models in a low-reward scenario.
+# It loads pre-trained models and runs them in Ant-v5 with a specified desired reward (d_r)
+# and desired horizon (d_h). The models are expected to perform well even when the reward is low.
+# This script was used to analyze the behavior of the models under simple conditions.
+
+# ================================================================================================
 
 def load_nn_model_for_eval(
     input_size, hidden_size, output_size, checkpoint_path, device="cpu"

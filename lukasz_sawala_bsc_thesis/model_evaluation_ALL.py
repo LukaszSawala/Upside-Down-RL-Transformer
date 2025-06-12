@@ -16,15 +16,18 @@ from model_evaluation import (
 OUTPUT_SIZE = 8
 PLOT_TITLE = "Obtained Reward vs. D_r"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-"""
-Best loss recorded: CLS, batch 8, lr 5e-5, epoch 1: 0.012
-supaugmented; loss 0.02
-"""
-
 MAX_LENGTH = 60
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
 STATE_DIM = INPUT_SIZE - 2  # used for the DT
+
+# ========================================= FILE EXPLANATION ======================================
+
+# This script evaluates various models (NeuralNet, DecisionTransformer, BERT_UDRL, BERT_MLP)
+# in the Ant-v5 environment at the same time.
+# It collects average rewards and standard error for each model across multiple episodes
+# for different desired rewards (d_r).
+
+# ================================================================================================
 
 
 def plot_all_models_rewards(

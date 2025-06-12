@@ -24,10 +24,14 @@ BEST_MODEL_PATH = "../models/best_nn_grid.pth"
 # ============================================
 
 
-# curr_dir = os.path.dirname(os.path.abspath(__file__))
-# parent_dir = os.path.dirname(curr_dir)
-# sys.path.append(parent_dir)
+# ======================================= FILE EXPLANATION ======================================
 
+# This script is designed to train a neural network model on concatenated data from Ant-v5.
+# It performs a grid search over hyperparameters such as batch size and learning rate.
+# The script loads the data from an HDF5 file, splits it into training, validation, and test sets,
+# and trains a neural network model using the specified hyperparameters.
+
+# ================================================================================================
 
 def load_data(data_path: str = CONCATENATED_DATA_PATH) -> tuple:
     """

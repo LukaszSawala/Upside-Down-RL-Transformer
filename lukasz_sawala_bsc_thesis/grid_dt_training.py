@@ -10,8 +10,16 @@ from typing import Dict
 from zeus.monitor import ZeusMonitor
 from utils import set_seed
 
+# ======================================= FILE EXPLANATION ======================================
+
+# This script is designed to perform a grid search over hyperparameters for training a Decision Transformer (DT)
+# model on episodic antv-5 data. It loads a dataset from an HDF5 file, samples context windows,
+# and trains the DT model using different configurations of batch size, learning rate, and max length.
+# The script evaluates the model on a test set and saves the best configuration based on the test loss.
 
 # Best Config: {'batch_size': 8, 'lr': 0.001, 'max_length': 60}, Best Test Loss: 0.0330
+# ================================================================================================
+
 
 
 # --- CONFIGURATION ---
