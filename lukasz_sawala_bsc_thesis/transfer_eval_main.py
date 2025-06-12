@@ -20,8 +20,12 @@ from utils import parse_arguments
 from model_evaluation import plot_average_rewards, print_available_antmaze_envs
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth"
-ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth"
+
+#ANTMAZE_BERT_PATH = "../models/antmaze_tiny-18_512.pth" # condition 3
+#ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" # condition 3
+
+ANTMAZE_BERT_PATH = "antmazeMERGED_tiny-18_512.pth"  # condition 5 (finetuning)
+ANTMAZE_NN_PATH = "antmazeMERGED_NN-18_512.pth"  # condition 5 (finetuning)
 
 
 def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:

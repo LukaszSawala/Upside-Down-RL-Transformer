@@ -6,5 +6,5 @@
 
 source .venv/bin/activate
 cd lukasz_sawala_bsc_thesis/
-python model_evaluation.py --episodes 10 --model_type BERT_MLP --d_r_array_length 55
+python dataset_generation.py
 deactivate

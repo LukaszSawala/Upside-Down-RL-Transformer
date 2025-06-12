@@ -25,19 +25,34 @@ BEST_MODEL_PATH = "finetunedNN-512.pth"
 
 
 # ==== Data Loading ====
-def _load_data(path=DATA_PATH):
+def _load_data(path: str = DATA_PATH, padding: bool = True) -> tuple:
+    """
+    Loads the concatenated dataset from the specified HDF5 file.
+    Args:
+        path (str): Path to the HDF5 file containing the dataset.
+        padding (bool): Whether to pad the observations to a fixed size. Used when transfering
+        between ant and antmaze datasets due to mismatch in observation sizes.
+    Returns:
+        tuple: A tuple containing:
+            - states (np.ndarray): The observations from the dataset.
+            - rewards (np.ndarray): The rewards-to-go from the dataset.
+            - times (np.ndarray): The time-to-go from the dataset.
+            - goal_vector (np.ndarray): The goal vector from the dataset.
+            - actions (np.ndarray): The actions taken in the dataset.
+    """
     with h5py.File(path, "r") as f:
         data = f["concatenated_data"]
         states = data["observations"][:]
-        states_padded = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant')  # avoiding the mismatch between datasets
+        if padding:
+            states = np.pad(states, ((0, 0), (0, 105 - 27)), mode='constant')  # avoiding the mismatch between datasets
         actions = data["actions"][:]
         rewards = data["rewards_to_go"][:].reshape(-1, 1)
         times = data["time_to_go"][:].reshape(-1, 1)
         goal_vector = data["goal_vector"][:]
-    return states_padded, rewards, times, goal_vector, actions
+    return states, rewards, times, goal_vector, actions
 
 
-def create_datasets() -> tuple:
+def create_datasets(data_path: str = DATA_PATH, padding: bool = True) -> tuple:
     """
     Creates train, validation, and test datasets from the concatenated dataset.
     Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train,
@@ -48,7 +63,7 @@ def create_datasets() -> tuple:
             - val_ds (TensorDataset): The validation dataset.
             - test_ds (TensorDataset): The test dataset.
     """
-    X_s_np, X_r_np, X_h_np, X_g_np, y_np = _load_data()
+    X_s_np, X_r_np, X_h_np, X_g_np, y_np = _load_data(path=data_path, padding=padding)
     X_s = torch.tensor(X_s_np, dtype=torch.float32)
     X_r = torch.tensor(X_r_np, dtype=torch.float32)
     X_h = torch.tensor(X_h_np, dtype=torch.float32)
