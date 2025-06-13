@@ -46,8 +46,9 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
     episode_count = 0
     low_reward_episodes = 0
     for d_r in d_r_options:
+        print(f"\nCollecting data for d_r = {d_r} with d_h = {d_h}...")
         for ep in range(num_episodes_per_dr):
-            print(f"Collecting: [d_r={d_r}] Episode {ep + 1}/{num_episodes_per_dr}")
+            #print(f"Collecting: [d_r={d_r}] Episode {ep + 1}/{num_episodes_per_dr}")
             obs, _ = env.reset()
             d_h_copy = d_h
             d_r_copy = d_r
@@ -92,8 +93,6 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
             # 1. Calculate rewards-to-go
             # This is a vectorized and efficient way to compute the cumulative sum of future rewards
             rewards_to_go = np.cumsum(rewards_np[::-1])[::-1]
-            if episode_count % 50 == 0:
-                print(f"last 5 rewards to go: {rewards_to_go[-5:]}, last 5 rewards: {rewards_np[-5:]}")
             
             # 2. Calculate time-to-go
             # This creates an array like [T, T-1, ..., 1] where T is the episode length
@@ -150,7 +149,7 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
         print(f"Time-to-Go: {final_time_to_go.shape}")
         print(f"Goal Vectors: {final_goal_vectors.shape}")
     
-    print("Rewards obtained in each episode:" + str([rewards[0] for rewards in all_rewards_to_go]))
+    #print("Rewards obtained in each episode:" + str([rewards[0] for rewards in all_rewards_to_go]))
     print("stats:", 48 * "=")
     print("AVERAGE REWARD TO GO:", np.mean(final_rewards_to_go))
     print("AVERAGE OBTAINED REWARD PER EPISODE:", np.mean([rewards[0] for rewards in all_rewards_to_go]))

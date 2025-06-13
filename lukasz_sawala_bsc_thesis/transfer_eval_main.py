@@ -156,9 +156,9 @@ def antmaze_evaluate(
         if best_distance < 1:
             print("goal reached!")
         best_distances.append(best_distance)
-        print(f"Episode {episode} finished with total reward: {total_reward}, best distance: {best_distance}")
+        #print(f"Episode {episode} finished with total reward: {total_reward}, best distance: {best_distance}")
 
-    print("minimum return:", min(obtained_returns), "maximum return:", max(obtained_returns))
+    print("minimum return:", min(obtained_returns), "maximum return:", max(obtained_returns), "average return:", np.mean(obtained_returns))
     return obtained_returns, best_distances
 
 

@@ -65,6 +65,8 @@ if __name__ == "__main__":
     # --- Start the iterative process ---
     start_from_condition4 = True  # condition 4 uses the model trained on all antmaze datasets
     for i in range(NUMBER_OF_ITERATIONS):
+        print("=" * 60)
+        print(f"Iteration {i+1}/{NUMBER_OF_ITERATIONS}")
         # --- 1. Generate dataset ---
         generate_dataset(d_h=d_h, d_r_options=d_r_options,
                          num_episodes_per_dr=num_episodes_per_dr,
@@ -100,6 +102,6 @@ if __name__ == "__main__":
     plot_all_models_rewards(results, d_r_options, save_path=save_path)
     
     print("\n" + "=" * 60)
-    print("Final Average Percentage Errors per Model:")
+    print("Final Success Rates per Model:")
     for model_name, data in results.items():
         print(f"{model_name}: {np.mean(data['success_rates'])*100:.2f}%")
