@@ -12,7 +12,7 @@ from transfer_eval_main import load_antmaze_bertmlp_model_for_eval
 from dataset_generation import INITIAL_ANTMAZE_BERT_PATH
 
 
-NUMBER_OF_ITERATIONS = 1  # Set carefully! Every iteration will take a long time to complete.
+NUMBER_OF_ITERATIONS = 5  # Set carefully! Every iteration will take a long time to complete.
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 

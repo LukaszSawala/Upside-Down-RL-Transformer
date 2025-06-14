@@ -73,16 +73,24 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,
     if model_to_use == "ANTMAZE_BERT_MLP":
         if start_from_condition4:
             model_components = load_antmaze_bertmlp_model_for_eval(INITIAL_ANTMAZE_BERT_PATH, DEVICE)
+            model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
         else:
-            model_components = load_antmaze_bertmlp_model_for_eval(NEW_MODEL_PATH, DEVICE)
-        model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+            model_components = load_antmaze_bertmlp_model_for_eval("", DEVICE, 
+                                                                initialize_from_scratch=True)                    
+            model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+            checkpoint = torch.load(NEW_MODEL_PATH, map_location=DEVICE)
+            model.load_state_dict(checkpoint["model"])
     elif model_to_use == "ANTMAZE_NN":
         if start_from_condition4:
             model = load_antmaze_nn_model_for_eval(INITIAL_ANTMAZE_NN_PATH, DEVICE)
+            model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
         else:
-            model = load_antmaze_nn_model_for_eval(NEW_MODEL_PATH, DEVICE)
-        model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
-
+            model = load_antmaze_nn_model_for_eval("", DEVICE,
+                                                   initialize_from_scratch=True)
+            model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
+            checkpoint = torch.load(NEW_MODEL_PATH, map_location=DEVICE)
+            model.load_state_dict(checkpoint["model"])
+    
     optimizer = optim.Adam(list(model.parameters()), lr=learning_rate)
     loss_fn = nn.MSELoss()
 

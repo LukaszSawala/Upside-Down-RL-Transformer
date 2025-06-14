@@ -27,9 +27,14 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
     env = gym.make("AntMaze_MediumDense-v5")
     if start_from_condition4:
         model_components = load_antmaze_bertmlp_model_for_eval(INITIAL_ANTMAZE_BERT_PATH, DEVICE)
+        model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
     else:
-        model_components = load_antmaze_bertmlp_model_for_eval(NEW_MODEL_PATH, DEVICE)
-    model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+        model_components = load_antmaze_bertmlp_model_for_eval("", DEVICE, 
+                                                               initialize_from_scratch=True)                    
+        model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
+        checkpoint = torch.load(NEW_MODEL_PATH, map_location=DEVICE)
+        model.load_state_dict(checkpoint["model"])
+        
     model.eval()
 
     # --- Parameters ---

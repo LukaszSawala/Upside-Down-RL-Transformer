@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "/home4/s5173019/Upside-Down-RL-Transformer/lukasz_sawala_bsc_thesis/ft-selfimprove-rollout-lastcondition.py", line 50, in <module>
+    base_model_components = load_antmaze_bertmlp_model_for_eval(INITIAL_ANTMAZE_BERT_PATH, DEVICE)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_antmaze_bertmlp_model_for_eval() missing 1 required positional argument: 'initialize_from_scratch'
+
+###############################################################################
+Hábrók Cluster
+Job 17922926 for user s5173019
+Finished at: Sat Jun 14 13:36:46 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17922926
+Name                           : jobscript-gpu.sh
+User                           : s5173019
+Partition                      : gpumedium
+Nodes                          : v100v2gpu1
+Number of Nodes                : 1
+Cores                          : 8
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-14T13:36:18
+Start                          : 2025-06-14T13:36:19
+End                            : 2025-06-14T13:36:42
+Reserved walltime              : 16:00:00
+Used walltime                  : 00:00:23
+Used CPU time                  : 00:00:10 (Efficiency:  5.20%)
+% User (Computation)           : 78.50%
+% System (I/O)                 : 21.50%
+Total memory reserved          : 8000M
+Maximum memory used            : 4.00K
+Requested GPUs                 : 1
+Allocated GPUs                 : v100=1
+Max GPU utilization            : 0%
+Max GPU memory used            : 0.00 
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

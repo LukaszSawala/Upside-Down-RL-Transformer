@@ -29,7 +29,7 @@ ANTMAZE_NN_PATH = "../models/antmaze_NN-18_512.pth" # condition 3
 
 
 
-def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralNetResNorm:
+def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str, initialize_from_scratch: bool = False) -> NeuralNetResNorm:
     """
     Loads the AntMaze NN model components for evaluation.
     Args:
@@ -39,7 +39,8 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
         nn_base (NeuralNet): The loaded model.
     """
     nn_base = NeuralNetResNorm(input_size=31, hidden_size=512, output_size=8, num_layers=18).to(device)
-
+    if initialize_from_scratch:
+        return nn_base
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
     nn_base.load_state_dict(checkpoint["nn"])
@@ -50,7 +51,7 @@ def load_antmaze_nn_model_for_eval(checkpoint_path: str, device: str) -> NeuralN
     return nn_base
 
 
-def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str) -> tuple:
+def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str, initialize_from_scratch: bool = False) -> tuple:
     """
     Loads the AntMaze BERT MLP model components for evaluation.
     Returns:
@@ -68,7 +69,10 @@ def load_antmaze_bertmlp_model_for_eval(checkpoint_path: str, device: str) -> tu
 
     # hidden size + 4 for d_r, d_h and x y values of the goal vector
     mlp = NeuralNetResNorm(input_size=config.hidden_size + 4, hidden_size=512, output_size=8, num_layers=18).to(device)
-
+    
+    if initialize_from_scratch:
+        return model_bert, state_encoder, mlp
+    
     # Load weights
     checkpoint = torch.load(checkpoint_path, map_location=device)
     model_bert.load_state_dict(checkpoint["bert"])
