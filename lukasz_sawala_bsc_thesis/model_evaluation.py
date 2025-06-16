@@ -19,12 +19,12 @@ from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNe
 
 
 OUTPUT_SIZE = 8
-# NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
-NN_MODEL_PATH = "../models/finetunedNN-512-12lay.pth"  # for evaluation
+NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
+#NN_MODEL_PATH = "../models/finetunedNN-512-12lay.pth"  # for evaluation
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "../models/bert_tiny.pth"
-# BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
-BERT_MLP_MODEL_PATH = "../models/finetunedUDRLt-MLP-512-12lay.pth"    # for evaluation
+BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
+#BERT_MLP_MODEL_PATH = "../models/finetunedUDRLt-MLP-512-12lay.pth"    # for evaluation
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 MAX_LENGTH = 60
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_t
@@ -45,6 +45,8 @@ def load_nn_model_for_eval(input_size: int, hidden_size: int,
         action_head = BertAntMazeActionHead(hidden_size=512, act_dim=8, num_layers=12).to(device)
         action_head.load_state_dict(checkpoint["action_head"])
         action_head.eval()
+    else:
+        model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()
     return model, action_head
@@ -205,6 +207,7 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
         d_r_copy, d_h_copy = d_r, d_h
         total_reward = 0
         for _ in range(max_episode_length):
+            start = time.time()
             obs_input = (
                 torch.tensor(
                     np.concatenate((obs, [d_r_copy, d_h_copy])), dtype=torch.float32
@@ -212,7 +215,6 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
                 .unsqueeze(0)
                 .to(DEVICE)
             )
-            start = time.time()
             with torch.no_grad():
                 action = model(obs_input).squeeze(0).cpu().numpy()
             end = time.time()
@@ -225,7 +227,7 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
                 break
         episodic_rewards.append(total_reward)
     print(
-        "max-min reward for this dr:", max(episodic_rewards), "-", min(episodic_rewards)
+        "max-min reward for this dr:", max(episodic_rewards), "min:", min(episodic_rewards)
     )
     print("mean inference time:", np.mean(inference_time_arr))
     return np.mean(episodic_rewards), episodic_rewards
@@ -336,11 +338,11 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
         d_r_copy, d_h_copy = d_r, d_h
         total_reward = 0
         for _ in range(max_episode_length):
+            start = time.time()
             obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
             dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
             dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
 
-            start = time.time()
             with torch.no_grad():
                 encoded_r = d_r_encoder(dr_tensor).unsqueeze(1)  # reward to go
                 encoded_h = d_h_encoder(dh_tensor).unsqueeze(1)  # horizon to go
@@ -383,11 +385,11 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
         total_reward = 0
 
         for _ in range(max_episode_length):
+            start = time.time()
             obs_tensor = torch.tensor(obs, dtype=torch.float32).unsqueeze(0).to(device)
             dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
             dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
 
-            start = time.time()
             with torch.no_grad():
                 s_encoded = state_encoder(obs_tensor).unsqueeze(1)
                 bert_out = model_bert(inputs_embeds=s_encoded).last_hidden_state[:, 0]
@@ -484,7 +486,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [i * 100 for i in range(args["d_r_array_length"])]
+    d_r_options = [1000 +i * 100 for i in range(args["d_r_array_length"])]
     num_episodes = args["episodes"]
 
     env = gym.make("Ant-v5")  # render mode 'human' for visualization
