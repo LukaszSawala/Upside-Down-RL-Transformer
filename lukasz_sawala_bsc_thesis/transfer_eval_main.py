@@ -166,8 +166,7 @@ def antmaze_evaluate(
     return obtained_returns, best_distances
 
 
-if __name__ == "__main__":
-    args = parse_arguments(training=False)
+def transfer_eval_main(args):
     gym.register_envs(gymnasium_robotics)
     # print_available_antmaze_envs() # check whether its compatible
     env = gym.make("AntMaze_MediumDense-v5")  # ALTENRATIVE: "AntMaze_Medium_Diverse_GR-v4" # render mode human to see whats up
@@ -189,12 +188,14 @@ if __name__ == "__main__":
             use_goal = False
         state_dim = 105
     elif args["model_type"] == "ANTMAZE_BERT_MLP":
-        model_components = load_antmaze_bertmlp_model_for_eval(ANTMAZE_BERT_PATH, DEVICE)
+        model_path = args["model_path"] if "model_path" in args.keys() else ANTMAZE_BERT_PATH
+        model_components = load_antmaze_bertmlp_model_for_eval(model_path, DEVICE)
         model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
         state_dim = 27  # reduced state space due to dataset mismatch
         use_goal = True
     elif args["model_type"] == "ANTMAZE_NN":
-        model = load_antmaze_nn_model_for_eval(ANTMAZE_NN_PATH, DEVICE)
+        model_path = args["model_path"] if "model_path" in args.keys() else ANTMAZE_NN_PATH
+        model = load_antmaze_nn_model_for_eval(model_path, DEVICE)
         model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
         state_dim = 27  # reduced state space due to dataset mismatch
         use_goal = True
@@ -221,7 +222,15 @@ if __name__ == "__main__":
         success_rates.append(np.mean([d < 1 for d in distances]))
 
     save_path = f"antmaze_{args['model_type']}_d_r_eval_results.png"
+    
+    if "return_without_plotting" in args.keys() and args["return_without_plotting"]:
+        return average_rewards, sem_values, success_rates
+
     plot_average_rewards(average_rewards, sem_values, d_r_options,
                          title="Average Reward vs. d_r", save_path=save_path,
                          max_y=max(d_r_options) * 1.1)
     print("success rates: ", success_rates, "average:", np.mean(success_rates))
+
+if __name__ == "__main__":
+    args = parse_arguments(training=False)
+    transfer_eval_main(args)

@@ -21,7 +21,8 @@ INITIAL_ANTMAZE_NN_PATH = "antmazeMERGEDinitNN-18_512.pth"
 OUTPUT_HDF5_PATH = "antmaze_rollout_current_dataset.hdf5"
 
 
-def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, start_from_condition4: bool):
+def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, start_from_condition4: bool,
+                     retain_best_previous_data: bool = False):
     # --- Load environment and model ---
     gym.register_envs(gymnasium_robotics)
     env = gym.make("AntMaze_MediumDense-v5")
@@ -89,8 +90,8 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
             # --- On-the-fly Processing (after each episode) ---
             if obtained_return < 2.0 and d_r > 0:
                 low_reward_episodes += 1
-                if low_reward_episodes % 2 == 0:
-                    continue  # Skip every second low-reward episode
+                if low_reward_episodes % 10 != 0:
+                    continue  # keep 10% of low reward episodes
         
             # Convert episode lists to NumPy arrays
             rewards_np = np.array(episode_rewards)
@@ -125,6 +126,24 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
 
     #make a 2d histogram of dr and dt to go to see how they are related
 
+    if retain_best_previous_data and not start_from_condition4: 
+        # load previous data if the previous model was already finetuned before (start_from_condition4=False)
+        with h5py.File(OUTPUT_HDF5_PATH, "r") as f:
+            observations = f["concatenated_data"]["observations"][:]
+            actions = f["concatenated_data"]["actions"][:]
+            goal_vectors = f["concatenated_data"]["goal_vector"][:]
+            rewards_to_go = f["concatenated_data"]["rewards_to_go"][:]
+            time_to_go = f["concatenated_data"]["time_to_go"][:]
+
+        # append only the data with d_r > 500
+        for i in range(len(observations)):
+            if rewards_to_go[i] > 500:
+                final_observations = np.append(final_observations, observations[i].reshape(1, -1), axis=0)
+                final_actions = np.append(final_actions, actions[i].reshape(1, -1), axis=0)
+                final_goal_vectors = np.append(final_goal_vectors, goal_vectors[i].reshape(1, -1), axis=0)
+                final_rewards_to_go = np.append(final_rewards_to_go, rewards_to_go[i].reshape(1, -1), axis=0)
+                final_time_to_go = np.append(final_time_to_go, time_to_go[i].reshape(1, -1), axis=0)
+    
     # Create a DataFrame from the two lists
     df = pd.DataFrame({"Reward-to-Go": final_rewards_to_go, "Horizon": final_time_to_go})
     sns.set_theme(style="darkgrid")
