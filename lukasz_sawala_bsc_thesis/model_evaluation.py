@@ -1,4 +1,5 @@
 import torch
+import time
 import gymnasium as gym
 import numpy as np
 import torch.nn as nn
@@ -198,6 +199,7 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
     Evaluate the performance of the Neural Network model.
     """
     episodic_rewards = []
+    inference_time_arr = []
     for _ in range(num_episodes):
         obs, _ = env.reset()
         d_r_copy, d_h_copy = d_r, d_h
@@ -210,8 +212,11 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
                 .unsqueeze(0)
                 .to(DEVICE)
             )
+            start = time.time()
             with torch.no_grad():
                 action = model(obs_input).squeeze(0).cpu().numpy()
+            end = time.time()
+            inference_time_arr.append(end - start)
             obs, reward, terminated, truncated, _ = env.step(action)
             total_reward += reward
             d_r_copy -= reward
@@ -222,6 +227,7 @@ def _evaluate_neural_net(env: gym.Env, model, d_h: float,
     print(
         "max-min reward for this dr:", max(episodic_rewards), "-", min(episodic_rewards)
     )
+    print("mean inference time:", np.mean(inference_time_arr))
     return np.mean(episodic_rewards), episodic_rewards
 
 
@@ -234,7 +240,7 @@ def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
     episodic_rewards = []
     act_dim = model.config.act_dim
     state_dim = model.config.state_dim
-
+    inference_time_arr = []
     for episode in range(num_episodes):
         obs, _ = env.reset()
         total_reward = 0.0
@@ -279,6 +285,7 @@ def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
             mask_tensor = (
                 torch.tensor(mask, dtype=torch.float32).unsqueeze(0).to(device)
             )
+            start = time.time()
             with torch.no_grad():
                 model_outputs = model(
                     states=states_tensor,
@@ -290,6 +297,8 @@ def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
                 )
                 action_preds = model_outputs["action_preds"]
                 action = action_preds[0, -1].cpu().numpy()
+            end = time.time()
+            inference_time_arr.append(end - start)
             obs, reward, terminated, truncated, _ = env.step(action)
             total_reward += reward
 
@@ -309,6 +318,7 @@ def _evaluate_decision_transformer(env: gym.Env, model, d_r: float,
         "-",
         min(episodic_rewards),
     )
+    print("mean inference time (DT):", np.mean(inference_time_arr))
     return np.mean(episodic_rewards), episodic_rewards
 
 
@@ -320,6 +330,7 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
     Evaluate the performance of the BERT UDRL model.
     """
     episodic_rewards = []
+    inference_time_arr = []
     for _ in range(num_episodes):
         obs, _ = env.reset()
         d_r_copy, d_h_copy = d_r, d_h
@@ -329,6 +340,7 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
             dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
             dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
 
+            start = time.time()
             with torch.no_grad():
                 encoded_r = d_r_encoder(dr_tensor).unsqueeze(1)  # reward to go
                 encoded_h = d_h_encoder(dh_tensor).unsqueeze(1)  # horizon to go
@@ -336,6 +348,8 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
                 sequence = torch.cat([encoded_r, encoded_h, encoded_s], dim=1)
                 bert_out = model_bert(inputs_embeds=sequence).last_hidden_state
                 action = head(bert_out[:, -1]).squeeze(0).cpu().numpy()
+            end = time.time()
+            inference_time_arr.append(end - start)
 
             obs, reward, terminated, truncated, _ = env.step(action)
             total_reward += reward
@@ -350,6 +364,7 @@ def _evaluate_bert_udrl(env: gym.Env, model_bert, d_r_encoder,
         "-",
         min(episodic_rewards),
     )
+    print("mean inference time (BERT UDRL):", np.mean(inference_time_arr))
     return np.mean(episodic_rewards), episodic_rewards
 
 
@@ -360,6 +375,7 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
     Evaluate scalar-concat model: uses encoded state + scalar d_r and d_h.
     """
     episodic_rewards = []
+    inference_time_arr = []
 
     for _ in range(num_episodes):
         obs, _ = env.reset()
@@ -371,11 +387,14 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
             dr_tensor = torch.tensor([d_r_copy], dtype=torch.float32).unsqueeze(0).to(device)
             dh_tensor = torch.tensor([d_h_copy], dtype=torch.float32).unsqueeze(0).to(device)
 
+            start = time.time()
             with torch.no_grad():
                 s_encoded = state_encoder(obs_tensor).unsqueeze(1)
                 bert_out = model_bert(inputs_embeds=s_encoded).last_hidden_state[:, 0]
                 mlp_input = torch.cat([bert_out, dr_tensor, dh_tensor], dim=1)
                 action = head(mlp_input).squeeze(0).cpu().numpy()
+            end = time.time()
+            inference_time_arr.append(end - start)
 
             obs, reward, terminated, truncated, _ = env.step(action)
             total_reward += reward
@@ -392,6 +411,7 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
         "-",
         min(episodic_rewards),
     )
+    print("mean inference time (BERT-MLP):", np.mean(inference_time_arr))
     return np.mean(episodic_rewards), episodic_rewards
 
 
@@ -444,7 +464,7 @@ if __name__ == "__main__":
     model = None
     if args["model_type"] == "NeuralNet":
         hidden_size = 256
-        model = load_nn_model_for_eval(
+        model, _ = load_nn_model_for_eval(
             INPUT_SIZE, hidden_size, OUTPUT_SIZE, NN_MODEL_PATH, device
         )
     elif args["model_type"] == "DecisionTransformer":
