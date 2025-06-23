@@ -83,4 +83,3 @@ def print_available_antmaze_envs():
     # Sort them for better readability
     for env_id in sorted(antmaze_envs):
         print(f"- {env_id}")
-    

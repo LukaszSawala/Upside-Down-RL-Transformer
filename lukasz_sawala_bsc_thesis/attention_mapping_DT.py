@@ -14,6 +14,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def sample_episode_window(file_path: str, max_len: int = 60) -> dict:
+    """Sample a random context window of max_len from an episode in the dataset and pad it to max_len if necessary."""
     data = h5py.File(file_path, 'r')['episodic_data']
     episodes = list(data.keys())
     idx = np.random.randint(0, len(episodes))
@@ -49,6 +50,7 @@ def sample_episode_window(file_path: str, max_len: int = 60) -> dict:
 
 
 def make_token_labels(max_len: int) -> list:
+    """Make a list of token labels for the plot."""
     labels = []
     for t in range(max_len):
         labels.extend([f"s_{t}", f"a_{t}", f"r_{t+1}"])
@@ -56,6 +58,7 @@ def make_token_labels(max_len: int) -> list:
 
 
 def visualize_attention_importance_avg(model, num_batches: int = 100, top_k: int = 15):
+    """Visualize the average attention importances for each token in the model."""
     token_importances = None
 
     for _ in range(num_batches):

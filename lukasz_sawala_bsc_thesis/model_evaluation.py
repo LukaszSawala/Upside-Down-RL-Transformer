@@ -19,11 +19,11 @@ from models import NeuralNet, ActionHead, LargeActionHead, ScalarEncoder, HugeNe
 
 
 OUTPUT_SIZE = 8
-#NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
+# NN_MODEL_PATH = "../models/best_nn_grid.pth" # for finetuning
 NN_MODEL_PATH = "../models/finetunedNN-512-12lay.pth"  # for evaluation
 DT_MODEL_PATH = "../models/best_DT_grid.pth"
 BERT_UDRL_MODEL_PATH = "../models/bert_tiny.pth"
-#BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
+# BERT_MLP_MODEL_PATH = "../models/mlpbert_t_hugemlp.pth"  # for finetuning
 BERT_MLP_MODEL_PATH = "../models/finetunedUDRLt-MLP-512-12lay.pth"    # for evaluation
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 MAX_LENGTH = 60
@@ -374,7 +374,21 @@ def _evaluate_bert_mlp(env: gym.Env, model_bert, state_encoder, head,
                        d_r: float, d_h: float, num_episodes: int,
                        max_episode_length: int, device: str) -> tuple:
     """
-    Evaluate scalar-concat model: uses encoded state + scalar d_r and d_h.
+    Evaluate the performance of the BERT-MLP model.
+
+    Args:
+        env (gym.Env): The environment to evaluate on.
+        model_bert: The BERT model.
+        state_encoder: The state encoder.
+        head: The head of the model.
+        d_r (float): The reward to go.
+        d_h (float): The horizon to go.
+        num_episodes (int): The number of episodes to evaluate.
+        max_episode_length (int): The maximum length of an episode.
+        device (str): The device to evaluate on.
+
+    Returns:
+        tuple: A tuple containing the average reward and a list of episodic rewards.
     """
     episodic_rewards = []
     inference_time_arr = []
@@ -486,7 +500,7 @@ if __name__ == "__main__":
         raise ValueError(f"Unsupported model_type: {args['model_type']}")
 
     d_h = 1000.0
-    d_r_options = [1000 +i * 100 for i in range(args["d_r_array_length"])]
+    d_r_options = [i * 100 for i in range(args["d_r_array_length"])]
     num_episodes = args["episodes"]
 
     env = gym.make("Ant-v5")  # render mode 'human' for visualization

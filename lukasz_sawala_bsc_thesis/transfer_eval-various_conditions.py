@@ -16,11 +16,8 @@ from model_evaluation import (
 )
 from utils import parse_arguments
 from model_evaluation_ALL import plot_all_models_rewards
-from transfer_eval_main import (
-    antmaze_evaluate,
-    load_antmaze_bertmlp_model_for_eval, load_antmaze_nn_model_for_eval,
-    ANTMAZE_BERT_PATH, ANTMAZE_NN_PATH
-)
+from transfer_eval_main import antmaze_evaluate
+
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

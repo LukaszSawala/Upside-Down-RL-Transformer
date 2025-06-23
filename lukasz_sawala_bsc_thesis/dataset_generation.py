@@ -5,7 +5,6 @@ import gymnasium_robotics
 import h5py
 import seaborn as sns
 import matplotlib.pyplot as plt
-import os
 import pandas as pd
 from models import AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper
 from transfer_eval_main import extract_goal_direction, load_antmaze_bertmlp_model_for_eval, load_antmaze_nn_model_for_eval
@@ -22,7 +21,22 @@ OUTPUT_HDF5_PATH = "antmaze_rollout_current_dataset.hdf5"
 
 
 def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, start_from_condition4: bool,
-                     retain_best_previous_data: bool = False, model_name = "ANTMAZE_BERT_MLP"):
+                     retain_best_previous_data: bool = False, model_name="ANTMAZE_BERT_MLP"):
+    """
+    Generates a dataset of trajectories for the AntMaze environment using a pretrained model.
+    Args:
+        d_h (float): Initial horizon value used for episode termination.
+        d_r_options (list): List of reward threshold values to test during data collection.
+        num_episodes_per_dr (int): Number of episodes to collect for each reward threshold.
+        start_from_condition4 (bool): Flag to determine if data collection starts from condition 4.
+        retain_best_previous_data (bool, optional): If True, retains the best data from previous collections.
+        model_name (str, optional): Name of the model to use for data generation. Defaults to "ANTMAZE_BERT_MLP".
+
+    This function collects data by running episodes in the AntMaze environment with a specified model.
+    It collects observations, actions, rewards, and goal vectors for each episode, and processes them
+    into a dataset. The resulting dataset is saved to an HDF5 file, and a 2D histogram of reward-to-go
+    versus horizon is generated and saved as a PNG image.
+    """
     # --- Load environment and model ---
     gym.register_envs(gymnasium_robotics)
     env = gym.make("AntMaze_MediumDense-v5")
@@ -30,13 +44,12 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
         if start_from_condition4:
             model_components = load_antmaze_bertmlp_model_for_eval(INITIAL_ANTMAZE_BERT_PATH, DEVICE)
             model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
-        else:                                       
-            model_components = load_antmaze_bertmlp_model_for_eval("", DEVICE, 
-                                                                initialize_from_scratch=True)                    
+        else:
+            model_components = load_antmaze_bertmlp_model_for_eval("", DEVICE, initialize_from_scratch=True)
             model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
             checkpoint = torch.load(NEW_BERT_MODEL_PATH, map_location=DEVICE)
             model.load_state_dict(checkpoint["model"])   # initialize from scratch to be able to load the model properly
-    else: # NN model
+    else:  # NN model
         if start_from_condition4:
             model = load_antmaze_nn_model_for_eval(INITIAL_ANTMAZE_NN_PATH, DEVICE)
             model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
@@ -47,7 +60,6 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
             checkpoint = torch.load(NEW_NN_MODEL_PATH, map_location=DEVICE)
             model.load_state_dict(checkpoint["model"])
 
-        
     model.eval()
 
     # --- Parameters ---
@@ -66,7 +78,7 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
     for d_r in d_r_options:
         print(f"\nCollecting data for d_r = {d_r} with d_h = {d_h}...")
         for ep in range(num_episodes_per_dr):
-            #print(f"Collecting: [d_r={d_r}] Episode {ep + 1}/{num_episodes_per_dr}")
+            # print(f"Collecting: [d_r={d_r}] Episode {ep + 1}/{num_episodes_per_dr}")
             obs, _ = env.reset()
             d_h_copy = d_h
             d_r_copy = d_r
@@ -95,23 +107,23 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
                 episode_actions.append(action)
                 episode_rewards.append(float(reward))
                 episode_goal_vectors.append(goal_vec)
-                
+
                 d_r_copy -= reward
                 d_h_copy -= 1
-            
+
             # --- On-the-fly Processing (after each episode) ---
             if obtained_return < 2.0 and d_r > 0:
                 low_reward_episodes += 1
                 if low_reward_episodes % 7 != 0:
                     continue  # keep ~14% of low reward episodes
-        
+
             # Convert episode lists to NumPy arrays
             rewards_np = np.array(episode_rewards)
-            
+
             # 1. Calculate rewards-to-go
             # This is a vectorized and efficient way to compute the cumulative sum of future rewards
             rewards_to_go = np.cumsum(rewards_np[::-1])[::-1]
-            
+
             # 2. Calculate time-to-go
             # This creates an array like [T, T-1, ..., 1] where T is the episode length
             time_to_go = np.arange(len(rewards_np), 0, -1)
@@ -136,13 +148,12 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
     final_rewards_to_go = np.concatenate(all_rewards_to_go, axis=0).astype(np.float32)
     final_time_to_go = np.concatenate(all_time_to_go, axis=0).astype(np.int32)
 
-    #print("Rewards obtained in each episode:" + str([rewards[0] for rewards in all_rewards_to_go]))
     print("stats before concatenation:", 48 * "=")
     print("AVERAGE REWARD TO GO:", np.mean(final_rewards_to_go))  # the higher this is, the more high reward trajectories we obtained
     print("AVERAGE OBTAINED REWARD PER EPISODE:", np.mean([rewards[0] for rewards in all_rewards_to_go]))
     print(50 * "=")
 
-    if retain_best_previous_data and not start_from_condition4: 
+    if retain_best_previous_data and not start_from_condition4:
         # load previous data if the previous model was already finetuned before (start_from_condition4=False)
         with h5py.File(OUTPUT_HDF5_PATH, "r") as f:
             observations = f["concatenated_data"]["observations"][:]
@@ -166,7 +177,7 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
             final_rewards_to_go = np.concatenate([final_rewards_to_go, filtered_rewards_to_go], axis=0)
             final_time_to_go = np.concatenate([final_time_to_go, filtered_time_to_go], axis=0)
 
-    #make a 2d histogram of dr and dt to go to see how they are related
+    # make a 2d histogram of dr and dt to go to see how they are related
     df = pd.DataFrame({"Reward-to-Go": final_rewards_to_go, "Horizon": final_time_to_go})
     sns.set_theme(style="darkgrid")
     plt.figure(figsize=(10, 6))
@@ -195,6 +206,7 @@ def generate_dataset(d_h: float, d_r_options: list, num_episodes_per_dr: int, st
         print(f"Goal Vectors: {final_goal_vectors.shape}")
 
     print(f"Data processing complete. Final dataset saved to {OUTPUT_HDF5_PATH}")
+
 
 if __name__ == "__main__":
     d_h = 1000.0

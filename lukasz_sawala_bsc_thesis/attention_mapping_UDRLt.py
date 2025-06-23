@@ -16,6 +16,7 @@ MODEL_PATH = "bert_t_augm_enc_froz_action.pth"
 
 
 def _load_data():
+    """Load data from an HDF5 file."""
     with h5py.File(DATA_PATH, "r") as f:
         data = f["concatenated_data"]
         states = data["observations"][:]
@@ -31,6 +32,7 @@ def _load_data():
 
 
 def load_test_loader(batch_size=16):
+    """Create a DataLoader for the test set."""
     X_s, X_r, X_h, y = _load_data()
     dataset = torch.utils.data.TensorDataset(X_s, X_r, X_h, y)
     lengths = [int(len(dataset) * 0.8), int(len(dataset) * 0.1)]
@@ -42,6 +44,7 @@ def load_test_loader(batch_size=16):
 
 
 def load_bert_udrl_model(state_dim, act_dim, checkpoint_path):
+    """Load a pre-trained BERT model for UDRL."""
     config = AutoConfig.from_pretrained("prajjwal1/bert-tiny")
     config.vocab_size = 1
     config.max_position_embeddings = 3
@@ -64,6 +67,7 @@ def load_bert_udrl_model(state_dim, act_dim, checkpoint_path):
 
 
 def visualize_attention(model_bert, d_r_encoder, d_h_encoder, state_encoder, test_loader):
+    """Visualize the attention received by each token."""
     total_attention = torch.zeros(3, device=DEVICE)  # reward, horizon, state
     count = 0
 

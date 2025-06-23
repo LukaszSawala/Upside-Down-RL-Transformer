@@ -4,15 +4,13 @@ from collections import deque
 import gymnasium as gym
 import numpy as np
 import torch
-import torch.nn as nn
-from transformers import (
-    AutoConfig,
-    AutoModel,
-    DecisionTransformerConfig,
-    DecisionTransformerModel,
+
+from model_evaluation import (
+    load_dt_model_for_eval,
+    load_nn_model_for_eval,
+    load_bert_udrl_model_for_eval,
 )
 
-from models import NeuralNet
 
 INPUT_SIZE = 105 + 2  # s_t + d_r and d_h
 OUTPUT_SIZE = 8
@@ -23,58 +21,10 @@ MAX_LENGTH = 60
 STATE_DIM = INPUT_SIZE - 2
 
 
-def load_nn_model_for_eval(
-    input_size, hidden_size, output_size, checkpoint_path, device="cpu"
-):
-    model = NeuralNet(
-        input_size=input_size, hidden_size=hidden_size, output_size=output_size
-    )
-    model.load_state_dict(torch.load(checkpoint_path, map_location=device))
-    model.to(device)
-    model.eval()
-    return model
-
-
-def load_dt_model_for_eval(
-    state_dim, act_dim, max_length, checkpoint_path, device="cpu"
-):
-    config = DecisionTransformerConfig(
-        state_dim=state_dim, act_dim=act_dim, max_length=max_length
-    )
-    model = DecisionTransformerModel(config)
-    model.load_state_dict(torch.load(checkpoint_path, map_location=device))
-    model.to(device)
-    model.eval()
-    return model
-
-
-def load_bert_udrl_model_for_eval(state_dim, act_dim, checkpoint_path, device):
-    config = AutoConfig.from_pretrained("prajjwal1/bert-small")
-    config.vocab_size = 1  # dummy
-    config.max_position_embeddings = 3
-    model_bert = AutoModel.from_config(config).to(device)
-    d_r_encoder = nn.Linear(1, config.hidden_size).to(device)
-    d_h_encoder = nn.Linear(1, config.hidden_size).to(device)
-    state_encoder = nn.Linear(state_dim, config.hidden_size).to(device)
-    head = nn.Linear(config.hidden_size, act_dim).to(device)
-
-    checkpoint = torch.load(checkpoint_path, map_location=device)
-    model_bert.load_state_dict(checkpoint["bert"])
-    d_r_encoder.load_state_dict(checkpoint["d_r"])
-    d_h_encoder.load_state_dict(checkpoint["d_t"])
-    state_encoder.load_state_dict(checkpoint["state"])
-    head.load_state_dict(checkpoint["head"])
-
-    model_bert.eval()
-    d_r_encoder.eval()
-    d_h_encoder.eval()
-    state_encoder.eval()
-    head.eval()
-
-    return model_bert, d_r_encoder, d_h_encoder, state_encoder, head
-
-
 def _run_nn_low_reward_test(env, model, d_r, d_h, device, time_interval):
+    """
+    Evaluate the performance of the Neural Network model in the low reward conditions.
+    """
     obs, _ = env.reset()
     done = False
     total_reward = 0.0
@@ -115,6 +65,9 @@ def _run_nn_low_reward_test(env, model, d_r, d_h, device, time_interval):
 
 
 def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
+    """
+    Evaluate the performance of the Decision Transformer model in the low reward conditions.
+    """
     act_dim = model.config.act_dim
     state_dim = model.config.state_dim
     state_history = deque(
@@ -173,6 +126,9 @@ def _run_dt_low_reward_test(env, model, d_r, d_h, device, time_interval):
 def _run_udrlt_low_reward_test(
     env, model_bert, d_r_enc, d_h_enc, state_enc, head, d_r, d_h, device, time_interval
 ):
+    """
+    Evaluate the performance of the UDRLt model in the low reward conditions.
+    """
     obs, _ = env.reset()
     total_reward = 0.0
     done = False
@@ -208,6 +164,7 @@ def _run_udrlt_low_reward_test(
 
 
 def run_low_reward_test(env, model, d_r, d_h, model_type, device, time_interval=0.05):
+    """Evaluate the performance of the model in the low reward conditions."""
     if model_type == "NeuralNet":
         _run_nn_low_reward_test(env, model, d_r, d_h, device, time_interval)
     elif model_type == "DecisionTransformer":
