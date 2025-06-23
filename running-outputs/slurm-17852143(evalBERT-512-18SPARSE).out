@@ -1,0 +1,564 @@
+/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment AntMaze_Medium_Diverse_GR-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+Evaluating AntMaze with model: ANTMAZE_BERT_MLP
+==================================================
+Trying with d_r: 0
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 11.743659010359835
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.087771575928487
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.637328640055994
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 35.0, best distance: 0.19522513061301236
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 3.631536254035268
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 3.1268903913069632
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 3.9395853458932555
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.724115762622932
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 6.785327315700733
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.774913674573709
+minimum return: 0.0 maximum return: 35.0
+==================================================
+Trying with d_r: 50
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 10.926988083296187
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.151443753475101
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.607357098363014
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.3079564687223755
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.254669559133639
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 10.124346069477447
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 71.0, best distance: 0.08298721527723771
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 49.0, best distance: 0.06446662540281844
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 10.314069501128046
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 91.0, best distance: 0.3597893391277753
+minimum return: 0.0 maximum return: 91.0
+==================================================
+Trying with d_r: 100
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 132.0, best distance: 0.19141901869919228
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.189363405081764
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 13.66898213083328
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 14.308414138680279
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 5.065216758943658
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.9408526236701595
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 14.761402492796133
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 5.885057150185579
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 10.678053283536032
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 132.0, best distance: 0.023450787357422183
+minimum return: 0.0 maximum return: 132.0
+==================================================
+Trying with d_r: 150
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 126.0, best distance: 0.19291563027527292
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.9907518213981
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 17.713210246879065
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 0.0, best distance: 0.8482027850800616
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 168.0, best distance: 0.022737595295717675
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 7.622441625421764
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.997828204392443
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 5.908043214980447
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 4.812901471312517
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.638457859710321
+minimum return: 0.0 maximum return: 168.0
+==================================================
+Trying with d_r: 200
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 6.369297839848492
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.695180395002211
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.38271716741771
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.43776596731246
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.5809561157879
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 165.0, best distance: 0.18663376549509997
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 20.676876172300112
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 163.0, best distance: 0.23326438708627442
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.237594401936153
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 10.900818727288803
+minimum return: 0.0 maximum return: 165.0
+==================================================
+Trying with d_r: 250
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 15.466188605856422
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 17.862345556514185
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 23.59597276244301
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 17.246842528413044
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 11.823627827470588
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 15.305319048672178
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.632129488595353
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.206757045705834
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.679287554997908
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 12.78587055914621
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Trying with d_r: 300
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 15.829888679043147
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 16.95893044412754
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 17.015613266699273
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 12.502879444049988
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 0.0, best distance: 0.5963030606659407
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 19.099143184743937
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 8.047666811698797
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 17.292322787344663
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 5.364538615461249
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 4.3993440795299295
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Trying with d_r: 350
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 15.580011496923259
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.478600028965646
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.74494114356372
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 9.398698049429873
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 20.187358889228758
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 13.474093536501464
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.686669481995168
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 320.0, best distance: 0.1317608478286868
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 353.0, best distance: 0.013961769973348989
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 292.0, best distance: 0.2801405071495242
+minimum return: 0.0 maximum return: 353.0
+==================================================
+Trying with d_r: 400
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 7.188591868495357
+Episode: 1
+goal reached!
+Episode 1 finished with total reward: 420.0, best distance: 0.044628093310654024
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 406.0, best distance: 0.003012781179385011
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.565239734678052
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 6.380994064519344
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.304718075897055
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 14.85273160237495
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.254756186289237
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 12.365729410595026
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 398.0, best distance: 0.010510412375307504
+minimum return: 0.0 maximum return: 420.0
+==================================================
+Trying with d_r: 450
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 403.0, best distance: 0.19926763898388192
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 9.59383031650035
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 443.0, best distance: 0.1523859936182289
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.700665447465806
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 9.500819942812086
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 441.0, best distance: 0.07779329983095086
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 0.0, best distance: 0.8674421809692154
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.035284787512828
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.163986418216064
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.903298828742692
+minimum return: 0.0 maximum return: 443.0
+==================================================
+Trying with d_r: 500
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 17.14092609938106
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.498110055562412
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.572496187327748
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 462.0, best distance: 0.21335139877243126
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 505.0, best distance: 0.05420640630297516
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 15.145255787948669
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 12.160614868888093
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 500.0, best distance: 0.026222510597996934
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 5.910105133649979
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 13.495145139798051
+minimum return: 0.0 maximum return: 505.0
+==================================================
+Trying with d_r: 550
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 7.975873548081655
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.127046499902236
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 5.48198761929302
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 1.1551479493321077
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 559.0, best distance: 0.07431136979409764
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 7.344230953990728
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 4.452168349544347
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.076068951439987
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.897495665862579
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 7.004269732265568
+minimum return: 0.0 maximum return: 559.0
+==================================================
+Trying with d_r: 600
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 5.52961128275919
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 13.950324392307822
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.50670710016229
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.754947021996447
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 22.927965374166522
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 607.0, best distance: 0.2140446538808011
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 3.6988785346822866
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 591.0, best distance: 0.048069972732993016
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 7.335164639136174
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 5.6513320950985255
+minimum return: 0.0 maximum return: 607.0
+==================================================
+Trying with d_r: 650
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 592.0, best distance: 0.16283538552629928
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 13.884354804148987
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 602.0, best distance: 0.2466547154276837
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 14.03642014039314
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 17.0, best distance: 0.2232229319531748
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.990479572701071
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.491274623449051
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 10.578206891913814
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 10.470384640694247
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 11.156288010081013
+minimum return: 0.0 maximum return: 602.0
+==================================================
+Trying with d_r: 700
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 640.0, best distance: 0.34512262971279944
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 21.0087446109269
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 683.0, best distance: 0.086522709252813
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 24.853396960886073
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 7.601070109676992
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 5.756972808621939
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 680.0, best distance: 0.12742177069877772
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 5.273991265218607
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 9.735178825893477
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.365315610498534
+minimum return: 0.0 maximum return: 683.0
+==================================================
+Trying with d_r: 750
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 11.86692544665176
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.637197092332825
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.62839689939052
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 732.0, best distance: 0.030134654412706012
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 10.631721345952075
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 23.06207026856343
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.753660294323318
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.023458213276949
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.85104630123022
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.488949570580656
+minimum return: 0.0 maximum return: 732.0
+==================================================
+Trying with d_r: 800
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 779.0, best distance: 0.28210973448236387
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 14.467752210407678
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 4.731865241866103
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 0.0, best distance: 0.6346026792377372
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 19.52167466612596
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 22.514494188801528
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.719931470329392
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 0.0, best distance: 0.5483254146513324
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 16.859072117411205
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 21.36785131256854
+minimum return: 0.0 maximum return: 779.0
+==================================================
+Trying with d_r: 850
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 11.93366264218387
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 21.08895847529365
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 14.816236479647626
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.571947977028255
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 10.502672110696292
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 24.051647721951976
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 8.670636379816884
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.539963605150965
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.00689410716647
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.648316099407898
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Trying with d_r: 900
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.88987388743936
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.358632036343035
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 16.525291779456616
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 20.99049821747931
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 6.741890844638819
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 23.73925062829894
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.221295347920893
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 24.09132491563871
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 20.260771490963258
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.28361317979196
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Trying with d_r: 950
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.95869135866492
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.610322638604547
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 18.804524318618633
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 16.332158011311
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 9.871045171222173
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 11.113269521609993
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 14.511507903819293
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.955538555814787
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 10.346075130063213
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 20.171056753391067
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Trying with d_r: 1000
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 23.808216292929835
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 24.77670123512101
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 16.15503582752597
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 22.739440105073403
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.233706932199865
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 7.4412409171374
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.927807529494768
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 23.192951473898724
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 8.969503533062795
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 23.012807753911815
+minimum return: 0.0 maximum return: 0.0
+max_y: 1100.0 ticks every: 100.0
+Average rewards plot saved in antmaze_ANTMAZE_BERT_MLP_d_r_eval_results.png
+success rates:  [np.float64(0.1), np.float64(0.3), np.float64(0.2), np.float64(0.3), np.float64(0.2), np.float64(0.0), np.float64(0.1), np.float64(0.3), np.float64(0.3), np.float64(0.4), np.float64(0.3), np.float64(0.1), np.float64(0.2), np.float64(0.3), np.float64(0.3), np.float64(0.1), np.float64(0.3), np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)] average: 0.18095238095238095
+
+###############################################################################
+Hábrók Cluster
+Job 17852143 for user s5173019
+Finished at: Sun Jun  8 21:34:10 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17852143
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-08T21:22:59
+Start                          : 2025-06-08T21:23:00
+End                            : 2025-06-08T21:34:06
+Reserved walltime              : 01:00:00
+Used walltime                  : 00:11:06
+Used CPU time                  : 00:10:54 (Efficiency: 98.26%)
+% User (Computation)           : 99.76%
+% System (I/O)                 :  0.24%
+Total memory reserved          : 2G
+Maximum memory used            : 490.05M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

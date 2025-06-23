@@ -10,7 +10,7 @@ from model_evaluation_ALL import plot_all_models_rewards
 from dataset_generation import INITIAL_ANTMAZE_BERT_PATH
 
 
-NUMBER_OF_ITERATIONS = 5  # Set carefully! Every iteration will take a long time to complete.
+NUMBER_OF_ITERATIONS = 9  # Set carefully! Every iteration will take a long time (~2-3h hours) to complete.
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -18,8 +18,8 @@ if __name__ == "__main__":
     # --- Parameters ---
     d_h = 1000.0
     d_r_options = [i * 50 for i in range(21)]
-    num_episodes_per_dr = 30 
-    # --- This is a standard setting yielding 1000*21*30 = 610k transitions in total.
+    num_episodes_per_dr = 70 
+    # --- This is a standard setting yielding 1000*21*70 = ~1.4m transitions in total.
     # --- Final dataset size will differ - 90% of low reward episodes are removed to increase stability.
 
     # --- Hyperparameters for grid search ---
@@ -89,7 +89,6 @@ if __name__ == "__main__":
             results[name]["avg_rewards"].append(avg)
             results[name]["sem"].append(se)
             results[name]["success_rates"].append(np.mean([d < 1 for d in distances]))
-
         start_from_condition4 = False  # After the first iteration, we do not need to start from condition 4 anymore.
 
     env.close()
@@ -99,6 +98,8 @@ if __name__ == "__main__":
     for model_name, data in results.items():
         print(f"{model_name}: {np.mean(data['success_rates'])*100:.2f}%")
 
+    # plot only each 3rd model
+    results_to_plot = {model_name: data for i, (model_name, data) in enumerate(results.items()) if i % 2 == 0}
     # Final multi-model plot
     save_path = f"condition5-{model_to_use}.png"
-    plot_all_models_rewards(results, d_r_options, save_path=save_path)
+    plot_all_models_rewards(results_to_plot, d_r_options, save_path=save_path)

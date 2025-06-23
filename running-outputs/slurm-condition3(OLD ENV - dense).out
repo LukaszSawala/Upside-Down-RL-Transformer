@@ -1,0 +1,1075 @@
+/home4/s5173019/Upside-Down-RL-Transformer/.venv/lib64/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment AntMaze_Medium_Diverse_GR-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+==================================================
+Evaluating d_r: 0
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 20.4296730515308
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 4.364779439264781
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 16.236232295324882
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 13.941194722646884
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 11.170333688048519
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 2.052977591478052
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 3.7812570924283886
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.186139034973266
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 0.0, best distance: 0.7725520767492132
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 5.673519594983247
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 6.404101040564009
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 7.00625499187107
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 20.0, best distance: 0.19155806630426758
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 7.590987185226189
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 53.0, best distance: 0.23965234350947778
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 7.327323093090702
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 47.0, best distance: 0.2136050971380079
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.1093001483903775
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 20.197101093086673
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 5.697312156019129
+minimum return: 0.0 maximum return: 53.0
+==================================================
+Evaluating d_r: 50
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 3.8206906406427876
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 4.590216171882523
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 50.0, best distance: 0.11093894845926071
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 27.0, best distance: 0.0641031569784047
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 7.391479609759098
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 45.0, best distance: 0.04057398753945844
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 7.452912559166383
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.293319224992903
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 16.784553322105978
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.294070461883269
+minimum return: 0.0 maximum return: 50.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 83.0, best distance: 0.07802436210032378
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 9.659928655673456
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.6982676820022515
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 10.372768379049614
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 10.868659743655462
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 16.52482228288637
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.945261505363165
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 9.470350490253834
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 3.098560053225778
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 21.0, best distance: 0.14361481077183455
+minimum return: 0.0 maximum return: 83.0
+==================================================
+Evaluating d_r: 100
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 4.1221005070507495
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 11.471733126758865
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 92.0, best distance: 0.08948222595896756
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 103.0, best distance: 0.013761568233464885
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 79.0, best distance: 0.27405378364833216
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.209891773490106
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 1.386078732377139
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 23.903866196954088
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.126476075399596
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 16.070677210572768
+minimum return: 0.0 maximum return: 103.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 23.765487288882102
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 14.50002508141759
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.361076022410581
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 122.0, best distance: 0.018100487291464573
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 7.1319394460037975
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 10.244536992763889
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 7.461803189585201
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 3.9734751454708324
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.21165234352321
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 2.7905050587171645
+minimum return: 0.0 maximum return: 122.0
+==================================================
+Evaluating d_r: 150
+Evaluating model: ANTMAZE_NN
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 155.0, best distance: 0.04763385860890988
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 3.8747735047118774
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 147.0, best distance: 0.010999265960105229
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.419819304254657
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 149.0, best distance: 0.053680300495707246
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 134.0, best distance: 0.12160872774392557
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 5.319747604060982
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 16.144090421684755
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 9.074928845046403
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 7.0714096290636945
+minimum return: 0.0 maximum return: 155.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 8.125471309493127
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.605590923792185
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 9.864523186038696
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 150.0, best distance: 0.2119273667569179
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 6.538995204426771
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 15.573273267586298
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.470159532307889
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 24.026646887747212
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 149.0, best distance: 0.02839278620512839
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.521467002318552
+minimum return: 0.0 maximum return: 150.0
+==================================================
+Evaluating d_r: 200
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 6.228095697115128
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 5.800603584658681
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 7.777453171258935
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 188.0, best distance: 0.0058908632239143095
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 24.97290266466008
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 4.517132618239698
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 3.3962841700672293
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.66764030037603
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 5.036964716172887
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.075621887834925
+minimum return: 0.0 maximum return: 188.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 12.009133410493693
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 3.3402811222191766
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 197.0, best distance: 0.0863820097129093
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.639195358661764
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.057111851390472
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 184.0, best distance: 0.05916613077402011
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 16.385446085411573
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 151.0, best distance: 0.13772390823467615
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 203.0, best distance: 0.019245909746440762
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 16.295105879626536
+minimum return: 0.0 maximum return: 203.0
+==================================================
+Evaluating d_r: 250
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 11.684352989919438
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 12.743102435402001
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 14.93271698047511
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 254.0, best distance: 0.03156963114401388
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 7.582899301099381
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 14.60865936181732
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.940791241852983
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.06325067339728
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 9.951502954787209
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 7.581178764131757
+minimum return: 0.0 maximum return: 254.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 5.9839103706378785
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 17.462442608427107
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 7.187630669148488
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 12.562120168032196
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 231.0, best distance: 0.1481237857543219
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 12.303489884722955
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 240.0, best distance: 0.03616287052859848
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 10.48622793808927
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.686973348175632
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 237.0, best distance: 0.028319279253595557
+minimum return: 0.0 maximum return: 240.0
+==================================================
+Evaluating d_r: 300
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.454784393643623
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 8.393889414280475
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.828159921435374
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 5.873365830787445
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 321.0, best distance: 0.1864138345049998
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 5.668625656336672
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 7.334791440096763
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.548163829120519
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 296.0, best distance: 0.09370025646970796
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 7.881225634759212
+minimum return: 0.0 maximum return: 321.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 9.643372621352576
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.700683438776114
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.620101618267357
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 308.0, best distance: 0.019754496041672974
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 289.0, best distance: 0.06077676361164455
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 305.0, best distance: 0.07111230335092379
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 3.863236793092993
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 29.0, best distance: 0.06575583132913951
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.587972172717597
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 12.187810217444357
+minimum return: 0.0 maximum return: 308.0
+==================================================
+Evaluating d_r: 350
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 5.933528786197853
+Episode: 1
+goal reached!
+Episode 1 finished with total reward: 346.0, best distance: 0.06037560327634702
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 3.093426925522038
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 336.0, best distance: 0.048571595988184585
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.954313170223104
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 15.562947648552356
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 6.880637510832517
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 3.935382543106326
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 7.560453292587807
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 352.0, best distance: 0.1432742978488438
+minimum return: 0.0 maximum return: 352.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 4.594674875216012
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.868610046705701
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 364.0, best distance: 0.1651643828765729
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.467939891833316
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 6.678973585060307
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 7.102178722493099
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.888165188792918
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.454000673841874
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.806696779426199
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 308.0, best distance: 0.04615603638800813
+minimum return: 0.0 maximum return: 364.0
+==================================================
+Evaluating d_r: 400
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 2.968449661089967
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.129264072850412
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.16049361824534
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 11.225851151206173
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 14.364325882345613
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 391.0, best distance: 0.21450493405640847
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.198539764363513
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 11.960244976717183
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.005550322050706
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.89308733174933
+minimum return: 0.0 maximum return: 391.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 401.0, best distance: 0.0063381814144234895
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 13.8715986172469
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.579806977371796
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.866901047848318
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 401.0, best distance: 0.02609490162976212
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 13.26461873577186
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 17.476200048934867
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.480413213378535
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.167541732046086
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.243570217508117
+minimum return: 0.0 maximum return: 401.0
+==================================================
+Evaluating d_r: 450
+Evaluating model: ANTMAZE_NN
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 435.0, best distance: 0.3515505847761963
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 7.617454059593011
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 19.001578589331064
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.290811981554656
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 12.038882066125092
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.729798711813636
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.724528848170237
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.385569692184301
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.016706881296876
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 16.88309577889738
+minimum return: 0.0 maximum return: 435.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 6.342321648470653
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.041162072770872
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 9.521926336639604
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 450.0, best distance: 0.012130140741265762
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 3.1140635154254026
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 14.773813288716747
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 475.0, best distance: 0.09221951243170294
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.451002208200643
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 440.0, best distance: 0.14270059711853564
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 17.251941025850932
+minimum return: 0.0 maximum return: 475.0
+==================================================
+Evaluating d_r: 500
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.659381016789013
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 11.954169698112224
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 16.03224908268563
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 14.825758612198484
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 5.738623232324334
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 17.157554289034707
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 16.134558055406064
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 4.1844247285948635
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.4573969730451
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.827867820287585
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 502.0, best distance: 0.053089178029368585
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 7.386115575697952
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 24.092461693895032
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 5.798881516201215
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.294643190926037
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 5.43825900499231
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.10368724432772
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 3.936224367608482
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 6.2378260471243445
+Episode: 9
+goal reached!
+Episode 9 finished with total reward: 508.0, best distance: 0.013980177559703013
+minimum return: 0.0 maximum return: 508.0
+==================================================
+Evaluating d_r: 550
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 24.022596251080124
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.063947976391654
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 6.644027160176358
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.168675045642808
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 16.05033322604718
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 13.643422879309623
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 543.0, best distance: 0.19932154716291123
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 3.2504184977609967
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.330706570809946
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 7.141464817638269
+minimum return: 0.0 maximum return: 543.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+goal reached!
+Episode 0 finished with total reward: 490.0, best distance: 0.32257062975648054
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 6.807152790898162
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 12.59918179148769
+Episode: 3
+goal reached!
+Episode 3 finished with total reward: 507.0, best distance: 0.24986899069923693
+Episode: 4
+goal reached!
+Episode 4 finished with total reward: 555.0, best distance: 0.04201222464171043
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.029547325145907
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 551.0, best distance: 0.24762558143616797
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.492178574678656
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 17.64747144867253
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.515531443630193
+minimum return: 0.0 maximum return: 555.0
+==================================================
+Evaluating d_r: 600
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 13.44015576136239
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 5.698086170260903
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 25.186988332165576
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.895543417414388
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 6.705288018706439
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 5.767427550708268
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 16.14139221163468
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 16.811791825763617
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 25.393445989717772
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 24.500160645739406
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 24.099475390434527
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.548215488942946
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.881231799030429
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.493283543279431
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 20.67502286678421
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 14.374467566603284
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 5.797579628145861
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 23.335532851063167
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.892202607632877
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 11.836425823631401
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 650
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 7.10118477461368
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 11.457784117337152
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 16.533630475884454
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 14.04450718809119
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 5.9571822782604436
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 13.664450814584109
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 7.827371922056474
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 7.525262944208612
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 6.046683749615888
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 23.16421570390932
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 21.562134104465013
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 12.39466912482
+Episode: 2
+goal reached!
+Episode 2 finished with total reward: 570.0, best distance: 0.1276311429340771
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 23.547266540738136
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 14.500843208989222
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 0.0, best distance: 0.4727411690251585
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.272033409993234
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 622.0, best distance: 0.04809860484881419
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 21.635476675140875
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 6.15805630023443
+minimum return: 0.0 maximum return: 622.0
+==================================================
+Evaluating d_r: 700
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 25.289927637698412
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 16.449498519946193
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.524018300103643
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 10.856081339247735
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 15.644833863646932
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 24.384762837231005
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 12.378894506878908
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.788766381708644
+Episode: 8
+goal reached!
+Episode 8 finished with total reward: 691.0, best distance: 0.10220853217135782
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 15.066106517196447
+minimum return: 0.0 maximum return: 691.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 18.389923968836484
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.195637582156577
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 23.044417836387307
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 22.83129079274189
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 3.741092464757409
+Episode: 5
+goal reached!
+Episode 5 finished with total reward: 0.0, best distance: 0.5628320329848051
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.784983736453439
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 6.499246550479417
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 16.943403174035694
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.511800001433866
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 750
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 4.438548802454301
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 17.643673243663198
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 18.99489065872855
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 6.559415329642491
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 14.675904906049475
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 6.049186691781516
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 4.397941634340212
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 20.02243961361399
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 16.178168143298247
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.270157294710794
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 24.876089068998894
+Episode: 1
+goal reached!
+Episode 1 finished with total reward: 736.0, best distance: 0.22040749036970475
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 10.392743136886768
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 14.996896756539396
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 13.40051496855793
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 8.832011382137113
+Episode: 6
+goal reached!
+Episode 6 finished with total reward: 643.0, best distance: 0.24654206766568934
+Episode: 7
+goal reached!
+Episode 7 finished with total reward: 734.0, best distance: 0.22086618713245393
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 7.367748682790651
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 14.797641830763736
+minimum return: 0.0 maximum return: 736.0
+==================================================
+Evaluating d_r: 800
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 1.9216337842683209
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 8.294054425512302
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 14.29193911019672
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 10.497750109146814
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 14.059613965056542
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 21.474954647164044
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 9.822275913357524
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 10.17853262424594
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 21.427402512226422
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 22.269850854670125
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 8.148524862027807
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 11.256847936377104
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.84487276494306
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 5.855170028414158
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 9.512493230755217
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 15.399328903700777
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.46889190794689
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 10.305530575220981
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 12.445185928163834
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 9.517532739955842
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 850
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.794237070237429
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 15.39525973815685
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.431470521903611
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 11.423109875696904
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 11.258066268634266
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 23.361603936144842
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 24.18849524786638
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 13.322882720819324
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 21.71980506070416
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 13.579288278614717
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 10.608061376582597
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 10.292667553861188
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.278757464534847
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 23.086479755154063
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 13.081206770845622
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 21.45915656948131
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 10.148660305428471
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.02417569876067
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 13.574081406281007
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 23.366822257933364
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 900
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 15.41957465620021
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 14.102962861325508
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.716216562552715
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 15.235965402665931
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 10.928131526087602
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 22.716230016680452
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 21.93135087823683
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 14.59716246428189
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 23.077684978815633
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 24.844482024487657
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 13.676993389014992
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 13.672631429674151
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 10.307034310865939
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 7.0918092031512066
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 21.62597386877655
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 14.090049527002643
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 14.862201679467034
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 21.794319240180297
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 10.557447941431226
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 18.873798939132094
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 950
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 24.07605280211731
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 19.891300120004434
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 11.644191073271811
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 16.847084440684945
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 16.98462422121659
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 25.403927480060275
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 15.164207332857936
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 24.43318581155639
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 23.38406650403326
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 13.077141387188709
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 11.319439300644396
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 9.82987464341316
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 15.40687321068893
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 18.563438295672565
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 7.790595690747798
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 9.904326803443569
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 13.882255320133874
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.272287776925731
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 15.028291108251661
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 23.735044978425144
+minimum return: 0.0 maximum return: 0.0
+==================================================
+Evaluating d_r: 1000
+Evaluating model: ANTMAZE_NN
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 22.972278283427237
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 24.621227584674354
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 17.20957279235318
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 23.185570808940895
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 25.308350796176043
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 16.84021203001637
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 22.566013938730556
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 15.588236915900755
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 14.876127145830093
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 24.193809576002497
+minimum return: 0.0 maximum return: 0.0
+Evaluating model: ANTMAZE_UDRLt_MLP
+Episode: 0
+Episode 0 finished with total reward: 0.0, best distance: 14.961980239106516
+Episode: 1
+Episode 1 finished with total reward: 0.0, best distance: 9.986541869225059
+Episode: 2
+Episode 2 finished with total reward: 0.0, best distance: 18.226147901854453
+Episode: 3
+Episode 3 finished with total reward: 0.0, best distance: 22.673812016055276
+Episode: 4
+Episode 4 finished with total reward: 0.0, best distance: 23.199331240896466
+Episode: 5
+Episode 5 finished with total reward: 0.0, best distance: 10.59509807529435
+Episode: 6
+Episode 6 finished with total reward: 0.0, best distance: 25.331625641894398
+Episode: 7
+Episode 7 finished with total reward: 0.0, best distance: 24.806070264925285
+Episode: 8
+Episode 8 finished with total reward: 0.0, best distance: 19.818979582426184
+Episode: 9
+Episode 9 finished with total reward: 0.0, best distance: 8.88654692901736
+minimum return: 0.0 maximum return: 0.0
+environment initial state: ({'observation': array([0.75, 1.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
+       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
+       0.  , 0.  , 0.  , 0.  , 0.  ]), 'achieved_goal': array([-9.35994087,  9.81860298]), 'desired_goal': array([-10.57520253,  -6.51302607])}, {'success': False})
+Saved combined plot to eval-condition3-2models.png
+
+============================================================
+Final Average Percentage Errors per Model:
+ANTMAZE_NN: 10.48%
+ANTMAZE_UDRLt_MLP: 18.57%
+
+###############################################################################
+Hábrók Cluster
+Job 17861464 for user s5173019
+Finished at: Tue Jun 10 17:55:57 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17861464
+Name                           : jobscript-antmaze.sh
+User                           : s5173019
+Partition                      : regularshort
+Nodes                          : node110
+Number of Nodes                : 1
+Cores                          : 1
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-10T17:01:12
+Start                          : 2025-06-10T17:01:13
+End                            : 2025-06-10T17:55:53
+Reserved walltime              : 01:00:00
+Used walltime                  : 00:54:40
+Used CPU time                  : 00:53:55 (Efficiency: 98.63%)
+% User (Computation)           : 99.91%
+% System (I/O)                 :  0.09%
+Total memory reserved          : 2G
+Maximum memory used            : 506.19M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

@@ -1,0 +1,4932 @@
+Evaluating base model: UDRLt_MLP0
+Evaluating AntMaze with model: ANTMAZE_BERT_MLP
+==================================================
+Trying with d_r: 0
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 4.251826468302179e-05 maximum return: 155.7050387682376 average return: 47.31358699616752
+==================================================
+Trying with d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.3582805050595555e-05 maximum return: 122.33481766701217 average return: 24.374824187241607
+==================================================
+Trying with d_r: 100
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 2.0370561539518176e-05 maximum return: 232.10884166363928 average return: 67.82308636160744
+==================================================
+Trying with d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 5.8417752916137605e-05 maximum return: 220.69374167075534 average return: 39.59159569497737
+==================================================
+Trying with d_r: 200
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.006050892418674597 maximum return: 186.15821834172866 average return: 18.801966802523555
+==================================================
+Trying with d_r: 250
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00017218394737122207 maximum return: 260.0027460624771 average return: 44.10299548818507
+==================================================
+Trying with d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.00012847248702871404 maximum return: 328.60013938941717 average return: 152.4024651088766
+==================================================
+Trying with d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.0290383620018885e-06 maximum return: 367.84092968825894 average return: 89.40825957067236
+==================================================
+Trying with d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 7.410368757914528e-05 maximum return: 386.1936318157698 average return: 80.6731873491716
+==================================================
+Trying with d_r: 450
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.00020354106708702767 maximum return: 574.9563411254619 average return: 224.4144003424626
+==================================================
+Trying with d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.002372049755776708 maximum return: 471.6769030030527 average return: 136.78514659379528
+==================================================
+Trying with d_r: 550
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0014919835452802046 maximum return: 564.747779879063 average return: 196.26751668855664
+==================================================
+Trying with d_r: 600
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 1.3376060587946419e-05 maximum return: 630.0012492983925 average return: 245.91417301091838
+==================================================
+Trying with d_r: 650
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.00021280209659072245 maximum return: 615.7202524876506 average return: 122.4612928505517
+==================================================
+Trying with d_r: 700
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00022461620007283866 maximum return: 669.4486621868106 average return: 411.09691739213247
+==================================================
+Trying with d_r: 750
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.005538799532972474 maximum return: 766.5136441565955 average return: 362.82901021084695
+==================================================
+Trying with d_r: 800
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00029165300804167595 maximum return: 815.425764169265 average return: 221.65384644468745
+==================================================
+Trying with d_r: 850
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 2.5050085374548293e-06 maximum return: 853.5654217048926 average return: 473.56962010518725
+==================================================
+Trying with d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.618067669467969e-07 maximum return: 883.5340016257087 average return: 171.62175986573163
+==================================================
+Trying with d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.002601418452286811 maximum return: 749.3085320727658 average return: 78.33381798852272
+==================================================
+Trying with d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.0068610009845376e-07 maximum return: 21.266277979071504 average return: 2.7215645868629177
+============================================================
+Iteration 1/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 785 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 192.07523
+AVERAGE OBTAINED REWARD PER EPISODE: 296.31712438450285
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 296.31712438450285
+Shapes of saved datasets:
+Observations: (785000, 27)
+Actions: (785000, 8)
+Rewards-to-Go: (785000,)
+Time-to-Go: (785000,)
+Goal Vectors: (785000, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0199, Val Loss = 0.0131
+Best model found! Validation Loss: 0.0131
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0147, Val Loss = 0.0126
+Best model found! Validation Loss: 0.0126
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0131, Val Loss = 0.0113
+Best model found! Validation Loss: 0.0113
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0122, Val Loss = 0.0109
+Best model found! Validation Loss: 0.0109
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0115, Val Loss = 0.0102
+Best model found! Validation Loss: 0.0102
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0110, Val Loss = 0.0099
+Best model found! Validation Loss: 0.0099
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0105, Val Loss = 0.0096
+Best model found! Validation Loss: 0.0096
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0101, Val Loss = 0.0098
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0097, Val Loss = 0.0097
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0095, Val Loss = 0.0097
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0092, Val Loss = 0.0096
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0089, Val Loss = 0.0093
+Best model found! Validation Loss: 0.0093
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0087, Val Loss = 0.0091
+Best model found! Validation Loss: 0.0091
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0085, Val Loss = 0.0088
+Best model found! Validation Loss: 0.0088
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0083, Val Loss = 0.0090
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0081, Val Loss = 0.0088
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0079, Val Loss = 0.0091
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0077, Val Loss = 0.0088
+Best model found! Validation Loss: 0.0088
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0076, Val Loss = 0.0088
+Best model found! Validation Loss: 0.0088
+Epoch 20/100 [Train]: Starting...
+Epoch 20/100 [Val  ]: Starting...
+Epoch 20/100: Train Loss = 0.0074, Val Loss = 0.0086
+Best model found! Validation Loss: 0.0086
+Epoch 21/100 [Train]: Starting...
+Epoch 21/100 [Val  ]: Starting...
+Epoch 21/100: Train Loss = 0.0073, Val Loss = 0.0085
+Best model found! Validation Loss: 0.0085
+Epoch 22/100 [Train]: Starting...
+Epoch 22/100 [Val  ]: Starting...
+Epoch 22/100: Train Loss = 0.0072, Val Loss = 0.0086
+Epoch 23/100 [Train]: Starting...
+Epoch 23/100 [Val  ]: Starting...
+Epoch 23/100: Train Loss = 0.0071, Val Loss = 0.0086
+Epoch 24/100 [Train]: Starting...
+Epoch 24/100 [Val  ]: Starting...
+Epoch 24/100: Train Loss = 0.0069, Val Loss = 0.0086
+Epoch 25/100 [Train]: Starting...
+Epoch 25/100 [Val  ]: Starting...
+Epoch 25/100: Train Loss = 0.0068, Val Loss = 0.0089
+Epoch 26/100 [Train]: Starting...
+Epoch 26/100 [Val  ]: Starting...
+Epoch 26/100: Train Loss = 0.0067, Val Loss = 0.0086
+Epoch 27/100 [Train]: Starting...
+Epoch 27/100 [Val  ]: Starting...
+Epoch 27/100: Train Loss = 0.0066, Val Loss = 0.0088
+Epoch 28/100 [Train]: Starting...
+Epoch 28/100 [Val  ]: Starting...
+Epoch 28/100: Train Loss = 0.0065, Val Loss = 0.0084
+Best model found! Validation Loss: 0.0084
+Epoch 29/100 [Train]: Starting...
+Epoch 29/100 [Val  ]: Starting...
+Epoch 29/100: Train Loss = 0.0064, Val Loss = 0.0086
+Epoch 30/100 [Train]: Starting...
+Epoch 30/100 [Val  ]: Starting...
+Epoch 30/100: Train Loss = 0.0063, Val Loss = 0.0085
+Epoch 31/100 [Train]: Starting...
+Epoch 31/100 [Val  ]: Starting...
+Epoch 31/100: Train Loss = 0.0062, Val Loss = 0.0085
+Epoch 32/100 [Train]: Starting...
+Epoch 32/100 [Val  ]: Starting...
+Epoch 32/100: Train Loss = 0.0061, Val Loss = 0.0085
+Epoch 33/100 [Train]: Starting...
+Epoch 33/100 [Val  ]: Starting...
+Epoch 33/100: Train Loss = 0.0060, Val Loss = 0.0088
+Epoch 34/100 [Train]: Starting...
+Epoch 34/100 [Val  ]: Starting...
+Epoch 34/100: Train Loss = 0.0059, Val Loss = 0.0085
+Epoch 35/100 [Train]: Starting...
+Epoch 35/100 [Val  ]: Starting...
+Epoch 35/100: Train Loss = 0.0059, Val Loss = 0.0082
+Best model found! Validation Loss: 0.0082
+Epoch 36/100 [Train]: Starting...
+Epoch 36/100 [Val  ]: Starting...
+Epoch 36/100: Train Loss = 0.0058, Val Loss = 0.0082
+Epoch 37/100 [Train]: Starting...
+Epoch 37/100 [Val  ]: Starting...
+Epoch 37/100: Train Loss = 0.0057, Val Loss = 0.0086
+Epoch 38/100 [Train]: Starting...
+Epoch 38/100 [Val  ]: Starting...
+Epoch 38/100: Train Loss = 0.0056, Val Loss = 0.0083
+Epoch 39/100 [Train]: Starting...
+Epoch 39/100 [Val  ]: Starting...
+Epoch 39/100: Train Loss = 0.0055, Val Loss = 0.0082
+Epoch 40/100 [Train]: Starting...
+Epoch 40/100 [Val  ]: Starting...
+Epoch 40/100: Train Loss = 0.0055, Val Loss = 0.0084
+Epoch 41/100 [Train]: Starting...
+Epoch 41/100 [Val  ]: Starting...
+Epoch 41/100: Train Loss = 0.0054, Val Loss = 0.0083
+Epoch 42/100 [Train]: Starting...
+Epoch 42/100 [Val  ]: Starting...
+Epoch 42/100: Train Loss = 0.0053, Val Loss = 0.0080
+Best model found! Validation Loss: 0.0080
+Epoch 43/100 [Train]: Starting...
+Epoch 43/100 [Val  ]: Starting...
+Epoch 43/100: Train Loss = 0.0053, Val Loss = 0.0083
+Epoch 44/100 [Train]: Starting...
+Epoch 44/100 [Val  ]: Starting...
+Epoch 44/100: Train Loss = 0.0052, Val Loss = 0.0084
+Epoch 45/100 [Train]: Starting...
+Epoch 45/100 [Val  ]: Starting...
+Epoch 45/100: Train Loss = 0.0051, Val Loss = 0.0081
+Epoch 46/100 [Train]: Starting...
+Epoch 46/100 [Val  ]: Starting...
+Epoch 46/100: Train Loss = 0.0051, Val Loss = 0.0083
+Epoch 47/100 [Train]: Starting...
+Epoch 47/100 [Val  ]: Starting...
+Epoch 47/100: Train Loss = 0.0050, Val Loss = 0.0081
+Epoch 48/100 [Train]: Starting...
+Epoch 48/100 [Val  ]: Starting...
+Epoch 48/100: Train Loss = 0.0049, Val Loss = 0.0080
+Epoch 49/100 [Train]: Starting...
+Epoch 49/100 [Val  ]: Starting...
+Epoch 49/100: Train Loss = 0.0049, Val Loss = 0.0081
+Epoch 50/100 [Train]: Starting...
+Epoch 50/100 [Val  ]: Starting...
+Epoch 50/100: Train Loss = 0.0048, Val Loss = 0.0080
+Best model found! Validation Loss: 0.0080
+Epoch 51/100 [Train]: Starting...
+Epoch 51/100 [Val  ]: Starting...
+Epoch 51/100: Train Loss = 0.0048, Val Loss = 0.0083
+Epoch 52/100 [Train]: Starting...
+Epoch 52/100 [Val  ]: Starting...
+Epoch 52/100: Train Loss = 0.0047, Val Loss = 0.0084
+Epoch 53/100 [Train]: Starting...
+Epoch 53/100 [Val  ]: Starting...
+Epoch 53/100: Train Loss = 0.0047, Val Loss = 0.0082
+Epoch 54/100 [Train]: Starting...
+Epoch 54/100 [Val  ]: Starting...
+Epoch 54/100: Train Loss = 0.0046, Val Loss = 0.0082
+Epoch 55/100 [Train]: Starting...
+Epoch 55/100 [Val  ]: Starting...
+Epoch 55/100: Train Loss = 0.0045, Val Loss = 0.0081
+Epoch 56/100 [Train]: Starting...
+Epoch 56/100 [Val  ]: Starting...
+Epoch 56/100: Train Loss = 0.0045, Val Loss = 0.0082
+Epoch 57/100 [Train]: Starting...
+Epoch 57/100 [Val  ]: Starting...
+Epoch 57/100: Train Loss = 0.0044, Val Loss = 0.0080
+Epoch 58/100 [Train]: Starting...
+Epoch 58/100 [Val  ]: Starting...
+Epoch 58/100: Train Loss = 0.0044, Val Loss = 0.0079
+Best model found! Validation Loss: 0.0079
+Epoch 59/100 [Train]: Starting...
+Epoch 59/100 [Val  ]: Starting...
+Epoch 59/100: Train Loss = 0.0043, Val Loss = 0.0082
+Epoch 60/100 [Train]: Starting...
+Epoch 60/100 [Val  ]: Starting...
+Epoch 60/100: Train Loss = 0.0043, Val Loss = 0.0083
+Epoch 61/100 [Train]: Starting...
+Epoch 61/100 [Val  ]: Starting...
+Epoch 61/100: Train Loss = 0.0042, Val Loss = 0.0080
+Epoch 62/100 [Train]: Starting...
+Epoch 62/100 [Val  ]: Starting...
+Epoch 62/100: Train Loss = 0.0042, Val Loss = 0.0081
+Epoch 63/100 [Train]: Starting...
+Epoch 63/100 [Val  ]: Starting...
+Epoch 63/100: Train Loss = 0.0042, Val Loss = 0.0080
+Epoch 64/100 [Train]: Starting...
+Epoch 64/100 [Val  ]: Starting...
+Epoch 64/100: Train Loss = 0.0041, Val Loss = 0.0084
+Epoch 65/100 [Train]: Starting...
+Epoch 65/100 [Val  ]: Starting...
+Epoch 65/100: Train Loss = 0.0041, Val Loss = 0.0080
+Epoch 66/100 [Train]: Starting...
+Epoch 66/100 [Val  ]: Starting...
+Epoch 66/100: Train Loss = 0.0040, Val Loss = 0.0080
+Epoch 67/100 [Train]: Starting...
+Epoch 67/100 [Val  ]: Starting...
+Epoch 67/100: Train Loss = 0.0040, Val Loss = 0.0080
+Epoch 68/100 [Train]: Starting...
+Epoch 68/100 [Val  ]: Starting...
+Epoch 68/100: Train Loss = 0.0039, Val Loss = 0.0082
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP1
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.279408734852271e-06 maximum return: 353.41256462424076 average return: 36.43844280948535
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.0011067802543714984 maximum return: 67.29917702761442 average return: 13.507188993653156
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.2607561610097938e-06 maximum return: 420.4295720453567 average return: 74.62538010517933
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 6.453128147444564e-07 maximum return: 228.54448366174466 average return: 51.159710287080195
+==================================================
+Evaluating d_r: 200
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 6.589757698072368e-06 maximum return: 204.4394942850375 average return: 37.087774161528785
+==================================================
+Evaluating d_r: 250
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.99993904376555e-05 maximum return: 386.07797887214286 average return: 116.33855345500838
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 1.7101939921227454e-06 maximum return: 423.75264448774396 average return: 120.59927067764974
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.007772555969871316 maximum return: 362.48070081999487 average return: 99.39126269027994
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.352228749033666e-07 maximum return: 392.4257105291584 average return: 112.92210021708084
+==================================================
+Evaluating d_r: 450
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.016527602744564766 maximum return: 439.30977592657865 average return: 209.22928866795468
+==================================================
+Evaluating d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 6.492486992073555e-05 maximum return: 515.0632849396455 average return: 253.63371197650764
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.006348682749642813 maximum return: 558.8177833486777 average return: 153.72318997283833
+==================================================
+Evaluating d_r: 600
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0006344002121971286 maximum return: 576.4222076495589 average return: 280.08570110969936
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.776969550133512e-06 maximum return: 682.369980837398 average return: 68.34487898332921
+==================================================
+Evaluating d_r: 700
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 2.0771084026857974e-06 maximum return: 647.182311913736 average return: 133.99243018648468
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0001130614901116384 maximum return: 781.4496856189902 average return: 283.3763521740047
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00011592632487929697 maximum return: 785.2056590682873 average return: 154.34766954765263
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 8.923248991184667e-07 maximum return: 723.068881689849 average return: 141.0400974228056
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.867551663821603e-05 maximum return: 940.8336217941275 average return: 156.16297407276255
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.6323279671972148e-07 maximum return: 675.539886381566 average return: 88.02380244926023
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.4768738728532493e-08 maximum return: 770.5974521111132 average return: 172.62154518195538
+============================================================
+Iteration 2/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 786 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 178.0629
+AVERAGE OBTAINED REWARD PER EPISODE: 276.32364432662166
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 276.32364432662166
+Shapes of saved datasets:
+Observations: (885735, 27)
+Actions: (885735, 8)
+Rewards-to-Go: (885735,)
+Time-to-Go: (885735,)
+Goal Vectors: (885735, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0093, Val Loss = 0.0067
+Best model found! Validation Loss: 0.0067
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0068, Val Loss = 0.0057
+Best model found! Validation Loss: 0.0057
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0062, Val Loss = 0.0056
+Best model found! Validation Loss: 0.0056
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0057, Val Loss = 0.0054
+Best model found! Validation Loss: 0.0054
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0054, Val Loss = 0.0055
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0052, Val Loss = 0.0051
+Best model found! Validation Loss: 0.0051
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0050, Val Loss = 0.0051
+Best model found! Validation Loss: 0.0051
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0048, Val Loss = 0.0050
+Best model found! Validation Loss: 0.0050
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0046, Val Loss = 0.0050
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0045, Val Loss = 0.0049
+Best model found! Validation Loss: 0.0049
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0044, Val Loss = 0.0050
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0043, Val Loss = 0.0050
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0041, Val Loss = 0.0051
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0041, Val Loss = 0.0049
+Best model found! Validation Loss: 0.0049
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0040, Val Loss = 0.0048
+Best model found! Validation Loss: 0.0048
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0039, Val Loss = 0.0048
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0038, Val Loss = 0.0052
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0038, Val Loss = 0.0056
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0037, Val Loss = 0.0048
+Epoch 20/100 [Train]: Starting...
+Epoch 20/100 [Val  ]: Starting...
+Epoch 20/100: Train Loss = 0.0036, Val Loss = 0.0050
+Epoch 21/100 [Train]: Starting...
+Epoch 21/100 [Val  ]: Starting...
+Epoch 21/100: Train Loss = 0.0035, Val Loss = 0.0049
+Epoch 22/100 [Train]: Starting...
+Epoch 22/100 [Val  ]: Starting...
+Epoch 22/100: Train Loss = 0.0035, Val Loss = 0.0049
+Epoch 23/100 [Train]: Starting...
+Epoch 23/100 [Val  ]: Starting...
+Epoch 23/100: Train Loss = 0.0034, Val Loss = 0.0048
+Epoch 24/100 [Train]: Starting...
+Epoch 24/100 [Val  ]: Starting...
+Epoch 24/100: Train Loss = 0.0034, Val Loss = 0.0048
+Epoch 25/100 [Train]: Starting...
+Epoch 25/100 [Val  ]: Starting...
+Epoch 25/100: Train Loss = 0.0033, Val Loss = 0.0049
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP2
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.007400906980131142 maximum return: 336.9870125027856 average return: 103.13383830472927
+==================================================
+Evaluating d_r: 50
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0876504582932134 maximum return: 179.43825538757582 average return: 69.22519170002751
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.163188040837224e-05 maximum return: 345.58767417694935 average return: 89.80075633625384
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.017608227650191377 maximum return: 145.45876169839235 average return: 47.28722048941283
+==================================================
+Evaluating d_r: 200
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.7116596306135875e-05 maximum return: 5.842510952629937 average return: 1.4541108617040202
+==================================================
+Evaluating d_r: 250
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.004695190416203356 maximum return: 265.8517340445593 average return: 87.79453580489711
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 5.601167418114928e-05 maximum return: 315.79868224051376 average return: 110.4741673640627
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 5.201513998958254e-08 maximum return: 320.3534579888612 average return: 151.26604000831207
+==================================================
+Evaluating d_r: 400
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00026853916438880887 maximum return: 468.04895873730385 average return: 243.4659447962788
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 7.642315499054708e-07 maximum return: 442.6070136767449 average return: 89.58408029650094
+==================================================
+Evaluating d_r: 500
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.0005073620820749909 maximum return: 543.4717669423707 average return: 294.5431400445562
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.9291857126942656e-06 maximum return: 546.8046145281236 average return: 206.51594159639475
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00042111018853852316 maximum return: 612.9136596199208 average return: 171.96979192403106
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 5.0253369603743195e-05 maximum return: 627.4551076884237 average return: 231.94232045032518
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 4.481122235202178e-05 maximum return: 743.4323588418254 average return: 335.9809292173179
+==================================================
+Evaluating d_r: 750
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.75055707329986 maximum return: 788.5201451084386 average return: 439.9584313503565
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.8045590549191654e-07 maximum return: 815.4915699127242 average return: 230.24903357660256
+==================================================
+Evaluating d_r: 850
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 1.9710858339791455e-07 maximum return: 922.8031961263512 average return: 416.6855546961989
+==================================================
+Evaluating d_r: 900
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.000681806503340226 maximum return: 871.1331857752173 average return: 139.3587314453733
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.637996617005634e-09 maximum return: 738.0239159533861 average return: 126.22126227958854
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 7.017647120451292e-08 maximum return: 834.4196559534705 average return: 207.10485127153316
+============================================================
+Iteration 3/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 811 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 175.7969
+AVERAGE OBTAINED REWARD PER EPISODE: 279.5111525174807
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 279.5111525174807
+Shapes of saved datasets:
+Observations: (992973, 27)
+Actions: (992973, 8)
+Rewards-to-Go: (992973,)
+Time-to-Go: (992973,)
+Goal Vectors: (992973, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0064, Val Loss = 0.0044
+Best model found! Validation Loss: 0.0044
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0048, Val Loss = 0.0043
+Best model found! Validation Loss: 0.0043
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0044, Val Loss = 0.0039
+Best model found! Validation Loss: 0.0039
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0041, Val Loss = 0.0042
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0039, Val Loss = 0.0039
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0037, Val Loss = 0.0037
+Best model found! Validation Loss: 0.0037
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0036, Val Loss = 0.0037
+Best model found! Validation Loss: 0.0037
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0035, Val Loss = 0.0037
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0034, Val Loss = 0.0036
+Best model found! Validation Loss: 0.0036
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0033, Val Loss = 0.0036
+Best model found! Validation Loss: 0.0036
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0032, Val Loss = 0.0036
+Best model found! Validation Loss: 0.0036
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0031, Val Loss = 0.0037
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0030, Val Loss = 0.0036
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0030, Val Loss = 0.0035
+Best model found! Validation Loss: 0.0035
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0029, Val Loss = 0.0036
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0029, Val Loss = 0.0036
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0028, Val Loss = 0.0036
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0028, Val Loss = 0.0035
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0027, Val Loss = 0.0035
+Epoch 20/100 [Train]: Starting...
+Epoch 20/100 [Val  ]: Starting...
+Epoch 20/100: Train Loss = 0.0027, Val Loss = 0.0035
+Best model found! Validation Loss: 0.0035
+Epoch 21/100 [Train]: Starting...
+Epoch 21/100 [Val  ]: Starting...
+Epoch 21/100: Train Loss = 0.0026, Val Loss = 0.0035
+Epoch 22/100 [Train]: Starting...
+Epoch 22/100 [Val  ]: Starting...
+Epoch 22/100: Train Loss = 0.0026, Val Loss = 0.0035
+Epoch 23/100 [Train]: Starting...
+Epoch 23/100 [Val  ]: Starting...
+Epoch 23/100: Train Loss = 0.0026, Val Loss = 0.0035
+Epoch 24/100 [Train]: Starting...
+Epoch 24/100 [Val  ]: Starting...
+Epoch 24/100: Train Loss = 0.0025, Val Loss = 0.0036
+Epoch 25/100 [Train]: Starting...
+Epoch 25/100 [Val  ]: Starting...
+Epoch 25/100: Train Loss = 0.0025, Val Loss = 0.0035
+Epoch 26/100 [Train]: Starting...
+Epoch 26/100 [Val  ]: Starting...
+Epoch 26/100: Train Loss = 0.0024, Val Loss = 0.0035
+Epoch 27/100 [Train]: Starting...
+Epoch 27/100 [Val  ]: Starting...
+Epoch 27/100: Train Loss = 0.0024, Val Loss = 0.0037
+Epoch 28/100 [Train]: Starting...
+Epoch 28/100 [Val  ]: Starting...
+Epoch 28/100: Train Loss = 0.0024, Val Loss = 0.0037
+Epoch 29/100 [Train]: Starting...
+Epoch 29/100 [Val  ]: Starting...
+Epoch 29/100: Train Loss = 0.0024, Val Loss = 0.0036
+Epoch 30/100 [Train]: Starting...
+Epoch 30/100 [Val  ]: Starting...
+Epoch 30/100: Train Loss = 0.0023, Val Loss = 0.0036
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP3
+==================================================
+Evaluating d_r: 0
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.006635225742928698 maximum return: 389.46253661827865 average return: 105.46279677896942
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 7.48543581612531e-06 maximum return: 512.1640772187853 average return: 60.509638080690294
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.6005881987191686e-05 maximum return: 138.19333718283244 average return: 33.46899702989818
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.02622004303603499 maximum return: 218.48930028839598 average return: 47.88607436164029
+==================================================
+Evaluating d_r: 200
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0020145592955593066 maximum return: 241.42370956067992 average return: 91.77244416769057
+==================================================
+Evaluating d_r: 250
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00530573224440909 maximum return: 237.86909333730355 average return: 69.82089442552778
+==================================================
+Evaluating d_r: 300
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.1819632250980276e-05 maximum return: 324.7312405311385 average return: 104.01455159213188
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00018563590774830978 maximum return: 370.06789442884894 average return: 179.0868833773119
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.007697187141479196 maximum return: 498.74934784563675 average return: 122.59120816849068
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.013729296539426375 maximum return: 514.4929115363414 average return: 214.78430363487155
+==================================================
+Evaluating d_r: 500
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0001501934559702941 maximum return: 515.2116940770682 average return: 136.63461602987397
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 5.567710720110581e-08 maximum return: 540.2578541276799 average return: 94.81817956641576
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.010663665384927485 maximum return: 596.242605423327 average return: 310.5233799315029
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.282805552349303e-06 maximum return: 671.3444217920696 average return: 142.27792302702719
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.005096838713153225 maximum return: 674.8045044032856 average return: 356.0302419068441
+==================================================
+Evaluating d_r: 750
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.47099518941185e-07 maximum return: 789.6256718523189 average return: 217.57529304769167
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00044187423086609087 maximum return: 872.0661172477957 average return: 369.6688703923129
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 6.54064425436446e-05 maximum return: 808.7070553972669 average return: 165.16982262529478
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 2.0117569906741717e-06 maximum return: 803.5202077028797 average return: 141.1963539169406
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 4.221643715379227e-06 maximum return: 906.8797673088425 average return: 173.74292134706857
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.6122293513580003e-05 maximum return: 541.6085618251182 average return: 56.62842438786798
+============================================================
+Iteration 4/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 812 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 176.05898
+AVERAGE OBTAINED REWARD PER EPISODE: 282.4029749011206
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 282.4029749011206
+Shapes of saved datasets:
+Observations: (1076205, 27)
+Actions: (1076205, 8)
+Rewards-to-Go: (1076205,)
+Time-to-Go: (1076205,)
+Goal Vectors: (1076205, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0050, Val Loss = 0.0036
+Best model found! Validation Loss: 0.0036
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0038, Val Loss = 0.0032
+Best model found! Validation Loss: 0.0032
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0035, Val Loss = 0.0031
+Best model found! Validation Loss: 0.0031
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0033, Val Loss = 0.0032
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0031, Val Loss = 0.0032
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0030, Val Loss = 0.0029
+Best model found! Validation Loss: 0.0029
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0029, Val Loss = 0.0034
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0028, Val Loss = 0.0030
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0027, Val Loss = 0.0030
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0026, Val Loss = 0.0031
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0026, Val Loss = 0.0030
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0025, Val Loss = 0.0031
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0025, Val Loss = 0.0030
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0024, Val Loss = 0.0030
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0024, Val Loss = 0.0031
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0023, Val Loss = 0.0029
+Best model found! Validation Loss: 0.0029
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0023, Val Loss = 0.0030
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0023, Val Loss = 0.0030
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0022, Val Loss = 0.0032
+Epoch 20/100 [Train]: Starting...
+Epoch 20/100 [Val  ]: Starting...
+Epoch 20/100: Train Loss = 0.0022, Val Loss = 0.0029
+Epoch 21/100 [Train]: Starting...
+Epoch 21/100 [Val  ]: Starting...
+Epoch 21/100: Train Loss = 0.0022, Val Loss = 0.0029
+Best model found! Validation Loss: 0.0029
+Epoch 22/100 [Train]: Starting...
+Epoch 22/100 [Val  ]: Starting...
+Epoch 22/100: Train Loss = 0.0021, Val Loss = 0.0030
+Epoch 23/100 [Train]: Starting...
+Epoch 23/100 [Val  ]: Starting...
+Epoch 23/100: Train Loss = 0.0021, Val Loss = 0.0029
+Epoch 24/100 [Train]: Starting...
+Epoch 24/100 [Val  ]: Starting...
+Epoch 24/100: Train Loss = 0.0021, Val Loss = 0.0031
+Epoch 25/100 [Train]: Starting...
+Epoch 25/100 [Val  ]: Starting...
+Epoch 25/100: Train Loss = 0.0020, Val Loss = 0.0031
+Epoch 26/100 [Train]: Starting...
+Epoch 26/100 [Val  ]: Starting...
+Epoch 26/100: Train Loss = 0.0020, Val Loss = 0.0031
+Epoch 27/100 [Train]: Starting...
+Epoch 27/100 [Val  ]: Starting...
+Epoch 27/100: Train Loss = 0.0020, Val Loss = 0.0032
+Epoch 28/100 [Train]: Starting...
+Epoch 28/100 [Val  ]: Starting...
+Epoch 28/100: Train Loss = 0.0020, Val Loss = 0.0030
+Epoch 29/100 [Train]: Starting...
+Epoch 29/100 [Val  ]: Starting...
+Epoch 29/100: Train Loss = 0.0020, Val Loss = 0.0030
+Epoch 30/100 [Train]: Starting...
+Epoch 30/100 [Val  ]: Starting...
+Epoch 30/100: Train Loss = 0.0019, Val Loss = 0.0031
+Epoch 31/100 [Train]: Starting...
+Epoch 31/100 [Val  ]: Starting...
+Epoch 31/100: Train Loss = 0.0019, Val Loss = 0.0033
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP4
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.8940126629777507e-08 maximum return: 78.12466745285197 average return: 13.705329304534027
+==================================================
+Evaluating d_r: 50
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 8.09555960758291e-06 maximum return: 325.81944577096493 average return: 67.67898223756043
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.3538666758863298e-07 maximum return: 105.0496630808132 average return: 13.572612144628845
+==================================================
+Evaluating d_r: 150
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 4.831311822257475e-07 maximum return: 257.1704920875591 average return: 112.22641136594898
+==================================================
+Evaluating d_r: 200
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.005080077669958683 maximum return: 580.6023644367518 average return: 113.0509041068647
+==================================================
+Evaluating d_r: 250
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0001696002613054581 maximum return: 233.96453231345342 average return: 76.8819223263413
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.007431618537550345 maximum return: 320.96717596323776 average return: 154.89172875373242
+==================================================
+Evaluating d_r: 350
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.0007342875999372106 maximum return: 540.250339137905 average return: 195.90021593839305
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.015420402054390837 maximum return: 436.4957602673316 average return: 127.98524974804968
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.014106488077207612 maximum return: 596.9552628134918 average return: 297.6266215002703
+==================================================
+Evaluating d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 1.1612736081956157e-06 maximum return: 508.2476268022059 average return: 269.494740345685
+==================================================
+Evaluating d_r: 550
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 2.294060124307639e-06 maximum return: 534.4551086894679 average return: 275.9789323201127
+==================================================
+Evaluating d_r: 600
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.008479589718300398 maximum return: 715.5368854031968 average return: 311.92672571759005
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.3978841563903793e-05 maximum return: 731.1938092009381 average return: 305.6489274451336
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.00014155274342541872 maximum return: 719.9172680357718 average return: 446.1004950332616
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00016021979820384822 maximum return: 755.1997587308449 average return: 284.1115275382273
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0254169307768388 maximum return: 916.9245912708094 average return: 523.8913009054868
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.008594712594716915 maximum return: 844.2078153161877 average return: 461.3079101814627
+==================================================
+Evaluating d_r: 900
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.8074523804780692e-08 maximum return: 802.8418523929325 average return: 303.58082359084
+==================================================
+Evaluating d_r: 950
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 5.03301034630593e-08 maximum return: 905.9142590462383 average return: 143.98105821897727
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.3535057526823093e-07 maximum return: 611.0987777297591 average return: 61.33783318236541
+============================================================
+Iteration 5/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 845 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 172.70604
+AVERAGE OBTAINED REWARD PER EPISODE: 278.53342897823467
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 278.53342897823467
+Shapes of saved datasets:
+Observations: (1187979, 27)
+Actions: (1187979, 8)
+Rewards-to-Go: (1187979,)
+Time-to-Go: (1187979,)
+Goal Vectors: (1187979, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0039, Val Loss = 0.0028
+Best model found! Validation Loss: 0.0028
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0030, Val Loss = 0.0029
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0028, Val Loss = 0.0026
+Best model found! Validation Loss: 0.0026
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0026, Val Loss = 0.0025
+Best model found! Validation Loss: 0.0025
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0025, Val Loss = 0.0025
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0024, Val Loss = 0.0025
+Best model found! Validation Loss: 0.0025
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0023, Val Loss = 0.0027
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0023, Val Loss = 0.0025
+Best model found! Validation Loss: 0.0025
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0022, Val Loss = 0.0030
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0021, Val Loss = 0.0025
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0021, Val Loss = 0.0026
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0020, Val Loss = 0.0024
+Best model found! Validation Loss: 0.0024
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0020, Val Loss = 0.0026
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0020, Val Loss = 0.0024
+Best model found! Validation Loss: 0.0024
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0019, Val Loss = 0.0025
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0019, Val Loss = 0.0025
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0019, Val Loss = 0.0028
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0018, Val Loss = 0.0027
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0018, Val Loss = 0.0024
+Best model found! Validation Loss: 0.0024
+Epoch 20/100 [Train]: Starting...
+Epoch 20/100 [Val  ]: Starting...
+Epoch 20/100: Train Loss = 0.0018, Val Loss = 0.0025
+Epoch 21/100 [Train]: Starting...
+Epoch 21/100 [Val  ]: Starting...
+Epoch 21/100: Train Loss = 0.0018, Val Loss = 0.0025
+Epoch 22/100 [Train]: Starting...
+Epoch 22/100 [Val  ]: Starting...
+Epoch 22/100: Train Loss = 0.0017, Val Loss = 0.0024
+Best model found! Validation Loss: 0.0024
+Epoch 23/100 [Train]: Starting...
+Epoch 23/100 [Val  ]: Starting...
+Epoch 23/100: Train Loss = 0.0017, Val Loss = 0.0026
+Epoch 24/100 [Train]: Starting...
+Epoch 24/100 [Val  ]: Starting...
+Epoch 24/100: Train Loss = 0.0017, Val Loss = 0.0025
+Epoch 25/100 [Train]: Starting...
+Epoch 25/100 [Val  ]: Starting...
+Epoch 25/100: Train Loss = 0.0017, Val Loss = 0.0025
+Epoch 26/100 [Train]: Starting...
+Epoch 26/100 [Val  ]: Starting...
+Epoch 26/100: Train Loss = 0.0017, Val Loss = 0.0024
+Epoch 27/100 [Train]: Starting...
+Epoch 27/100 [Val  ]: Starting...
+Epoch 27/100: Train Loss = 0.0016, Val Loss = 0.0025
+Epoch 28/100 [Train]: Starting...
+Epoch 28/100 [Val  ]: Starting...
+Epoch 28/100: Train Loss = 0.0016, Val Loss = 0.0025
+Epoch 29/100 [Train]: Starting...
+Epoch 29/100 [Val  ]: Starting...
+Epoch 29/100: Train Loss = 0.0016, Val Loss = 0.0026
+Epoch 30/100 [Train]: Starting...
+Epoch 30/100 [Val  ]: Starting...
+Epoch 30/100: Train Loss = 0.0016, Val Loss = 0.0025
+Epoch 31/100 [Train]: Starting...
+Epoch 31/100 [Val  ]: Starting...
+Epoch 31/100: Train Loss = 0.0016, Val Loss = 0.0025
+Epoch 32/100 [Train]: Starting...
+Epoch 32/100 [Val  ]: Starting...
+Epoch 32/100: Train Loss = 0.0016, Val Loss = 0.0026
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP5
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0004433566084861689 maximum return: 89.99240833232481 average return: 14.617445017807054
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.9875613203674668e-07 maximum return: 235.79523779548742 average return: 55.0526533937483
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 9.300732555253408e-05 maximum return: 434.40343385611334 average return: 102.20450422565759
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.773687200250601e-05 maximum return: 189.1690218016959 average return: 26.94621853534946
+==================================================
+Evaluating d_r: 200
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00030978367767514495 maximum return: 233.62566722276804 average return: 38.57096757208477
+==================================================
+Evaluating d_r: 250
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 5.429819461815421e-05 maximum return: 259.1597452793966 average return: 108.55016861080045
+==================================================
+Evaluating d_r: 300
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.5758602750470506 maximum return: 294.8713129005258 average return: 152.56916319053525
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 3.0496163506232117e-05 maximum return: 450.67173137639975 average return: 160.43295068929635
+==================================================
+Evaluating d_r: 400
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0009938804981123605 maximum return: 448.8858336105847 average return: 261.51956928490847
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.006709920237508698 maximum return: 482.4114254315744 average return: 210.73021834579475
+==================================================
+Evaluating d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 4.7341192980062685e-06 maximum return: 653.3276770378143 average return: 257.56181208917326
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0002532466885879801 maximum return: 635.3529191699673 average return: 219.94295054768207
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.267667328532482e-05 maximum return: 747.9514200240022 average return: 231.12367965991675
+==================================================
+Evaluating d_r: 650
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 3.5383963438498546e-05 maximum return: 752.450526003344 average return: 212.058997527974
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 6.343841289432797e-08 maximum return: 637.0521381967067 average return: 190.87172524551173
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.627879178301856e-07 maximum return: 752.6429007826155 average return: 153.14841098368242
+==================================================
+Evaluating d_r: 800
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 2.8784040508484168e-05 maximum return: 681.3811502962064 average return: 260.45369364127805
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 8.045797081343733e-07 maximum return: 811.1130715404817 average return: 157.41916664156332
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 7.625394889374941e-08 maximum return: 794.361686741658 average return: 244.82459443043007
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 1.038964227882532e-05 maximum return: 843.1366348066756 average return: 150.71005048956312
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.679363345151213e-06 maximum return: 656.8759174799359 average return: 130.02595923575566
+============================================================
+Iteration 6/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 858 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 181.96077
+AVERAGE OBTAINED REWARD PER EPISODE: 299.2229680244322
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 299.2229680244322
+Shapes of saved datasets:
+Observations: (1281657, 27)
+Actions: (1281657, 8)
+Rewards-to-Go: (1281657,)
+Time-to-Go: (1281657,)
+Goal Vectors: (1281657, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0033, Val Loss = 0.0024
+Best model found! Validation Loss: 0.0024
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0026, Val Loss = 0.0023
+Best model found! Validation Loss: 0.0023
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0024, Val Loss = 0.0022
+Best model found! Validation Loss: 0.0022
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0022, Val Loss = 0.0021
+Best model found! Validation Loss: 0.0021
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0021, Val Loss = 0.0022
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0021, Val Loss = 0.0025
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0020, Val Loss = 0.0022
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0019, Val Loss = 0.0022
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0019, Val Loss = 0.0021
+Best model found! Validation Loss: 0.0021
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0018, Val Loss = 0.0021
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0018, Val Loss = 0.0023
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0018, Val Loss = 0.0021
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0017, Val Loss = 0.0022
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0017, Val Loss = 0.0023
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0017, Val Loss = 0.0024
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0016, Val Loss = 0.0023
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0016, Val Loss = 0.0041
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0016, Val Loss = 0.0021
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0016, Val Loss = 0.0022
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP6
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.00020689833252293983 maximum return: 240.53386922849822 average return: 48.723431916434016
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.2602065944766114e-05 maximum return: 609.2683994606979 average return: 65.21505971904354
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.738095276557337e-07 maximum return: 42.391025258392794 average return: 9.072284681400749
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.0005209680388322467 maximum return: 344.81059842214154 average return: 35.08133704932835
+==================================================
+Evaluating d_r: 200
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.02423551284031919 maximum return: 399.0699758197021 average return: 79.92508799378079
+==================================================
+Evaluating d_r: 250
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0005189392059726564 maximum return: 320.6279137857557 average return: 130.39809598593
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0009301987677173702 maximum return: 435.3240917783137 average return: 88.154095214769
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.020297408468495228 maximum return: 71.98492009949399 average return: 18.73557597975401
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.013787547699233176 maximum return: 452.88285463654836 average return: 168.7746510053806
+==================================================
+Evaluating d_r: 450
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.2029740730718173e-05 maximum return: 488.5763957518933 average return: 134.81097512417685
+==================================================
+Evaluating d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 7.008192822723937e-05 maximum return: 650.0766381358058 average return: 403.9770663971969
+==================================================
+Evaluating d_r: 550
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00048083713657194653 maximum return: 746.2548117413044 average return: 226.06751022115114
+==================================================
+Evaluating d_r: 600
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.017609800063943387 maximum return: 620.6063521750103 average return: 372.03518343321485
+==================================================
+Evaluating d_r: 650
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 1.8175551468871553e-05 maximum return: 743.8781972092024 average return: 454.98878942480025
+==================================================
+Evaluating d_r: 700
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.00017113361596831066 maximum return: 708.3602960633527 average return: 173.4351613689247
+==================================================
+Evaluating d_r: 750
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 7.312716233422468e-06 maximum return: 686.8652835961913 average return: 369.2578068913688
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 1.0302735200813817e-05 maximum return: 908.6315594275206 average return: 223.87591039095483
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 2.0350391241785683e-05 maximum return: 883.3347834287449 average return: 305.83286805305033
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.0394562558190592e-05 maximum return: 735.0386784346051 average return: 128.75780948090014
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 6.113111852564198e-07 maximum return: 793.6458016699961 average return: 202.5058312439285
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 2.92787665033067e-07 maximum return: 668.1286464715762 average return: 68.30787238553907
+============================================================
+Iteration 7/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 855 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 182.09424
+AVERAGE OBTAINED REWARD PER EPISODE: 297.07262914050165
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 297.07262914050165
+Shapes of saved datasets:
+Observations: (1366641, 27)
+Actions: (1366641, 8)
+Rewards-to-Go: (1366641,)
+Time-to-Go: (1366641,)
+Goal Vectors: (1366641, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0029, Val Loss = 0.0028
+Best model found! Validation Loss: 0.0028
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0023, Val Loss = 0.0021
+Best model found! Validation Loss: 0.0021
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0022, Val Loss = 0.0019
+Best model found! Validation Loss: 0.0019
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0021, Val Loss = 0.0020
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0020, Val Loss = 0.0020
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0019, Val Loss = 0.0020
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0018, Val Loss = 0.0020
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0018, Val Loss = 0.0019
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0017, Val Loss = 0.0019
+Best model found! Validation Loss: 0.0019
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0017, Val Loss = 0.0021
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0017, Val Loss = 0.0019
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0016, Val Loss = 0.0020
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0016, Val Loss = 0.0019
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0016, Val Loss = 0.0021
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0016, Val Loss = 0.0020
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0015, Val Loss = 0.0019
+Epoch 17/100 [Train]: Starting...
+Epoch 17/100 [Val  ]: Starting...
+Epoch 17/100: Train Loss = 0.0015, Val Loss = 0.0020
+Epoch 18/100 [Train]: Starting...
+Epoch 18/100 [Val  ]: Starting...
+Epoch 18/100: Train Loss = 0.0015, Val Loss = 0.0020
+Epoch 19/100 [Train]: Starting...
+Epoch 19/100 [Val  ]: Starting...
+Epoch 19/100: Train Loss = 0.0015, Val Loss = 0.0021
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP7
+==================================================
+Evaluating d_r: 0
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.00029139336673554474 maximum return: 325.612362535041 average return: 70.04923933059567
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.0014534234097562833 maximum return: 35.01095128343649 average return: 11.648342691125695
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.014640628708866935 maximum return: 401.89622756726146 average return: 98.49670574054835
+==================================================
+Evaluating d_r: 150
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.138877492198228e-08 maximum return: 197.90353687958392 average return: 60.717634763998035
+==================================================
+Evaluating d_r: 200
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.7730763609904395e-05 maximum return: 325.07006159022484 average return: 133.76400064095145
+==================================================
+Evaluating d_r: 250
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.010864845828136176 maximum return: 628.015572939371 average return: 122.5662294053938
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00041730607891220126 maximum return: 337.64476375272164 average return: 113.57328453989928
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00011885578787072802 maximum return: 352.20599946539284 average return: 96.33198200265066
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.000572064387741258 maximum return: 472.72336265457193 average return: 167.7813366774544
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0009403929236356758 maximum return: 472.4698569910352 average return: 127.53965649770146
+==================================================
+Evaluating d_r: 500
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.003323673090612093 maximum return: 573.399693207099 average return: 237.3948734005865
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 1.4007681275441654e-07 maximum return: 561.9430164484884 average return: 102.17048520510949
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.0005380695770030612 maximum return: 789.5870942131576 average return: 246.33627416421191
+==================================================
+Evaluating d_r: 650
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.001549541566415572 maximum return: 643.6316911329617 average return: 379.10343823889906
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 4.518773389776908e-06 maximum return: 779.5784833976003 average return: 363.4903137163441
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 8.708524784984393e-08 maximum return: 572.5993529330997 average return: 116.71748193346653
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 3.5274899597710146e-07 maximum return: 855.7548932060768 average return: 274.4328524038279
+==================================================
+Evaluating d_r: 850
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 5.237267971813203e-07 maximum return: 861.3125597627226 average return: 345.2708481409948
+==================================================
+Evaluating d_r: 900
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0001292169633604532 maximum return: 871.9442859767321 average return: 289.69533547136183
+==================================================
+Evaluating d_r: 950
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.035811286336382e-08 maximum return: 889.055184129196 average return: 248.28955004231517
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 9.009334031370616e-07 maximum return: 731.3580628929882 average return: 112.04500329170094
+============================================================
+Iteration 8/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 831 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 176.10089
+AVERAGE OBTAINED REWARD PER EPISODE: 288.21581522750773
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 288.21581522750773
+Shapes of saved datasets:
+Observations: (1426725, 27)
+Actions: (1426725, 8)
+Rewards-to-Go: (1426725,)
+Time-to-Go: (1426725,)
+Goal Vectors: (1426725, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0027, Val Loss = 0.0020
+Best model found! Validation Loss: 0.0020
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0022, Val Loss = 0.0019
+Best model found! Validation Loss: 0.0019
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0021, Val Loss = 0.0019
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0019, Val Loss = 0.0020
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0019, Val Loss = 0.0019
+Best model found! Validation Loss: 0.0019
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0018, Val Loss = 0.0019
+Best model found! Validation Loss: 0.0019
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0017, Val Loss = 0.0019
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0017, Val Loss = 0.0020
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0017, Val Loss = 0.0019
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0016, Val Loss = 0.0019
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0016, Val Loss = 0.0020
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0016, Val Loss = 0.0019
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0015, Val Loss = 0.0019
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0015, Val Loss = 0.0019
+Epoch 15/100 [Train]: Starting...
+Epoch 15/100 [Val  ]: Starting...
+Epoch 15/100: Train Loss = 0.0015, Val Loss = 0.0020
+Epoch 16/100 [Train]: Starting...
+Epoch 16/100 [Val  ]: Starting...
+Epoch 16/100: Train Loss = 0.0015, Val Loss = 0.0019
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP8
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.0007467168765713257 maximum return: 430.79227608375334 average return: 57.188899206705194
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 0.007315913366614408 maximum return: 356.57231808515826 average return: 91.38259667999428
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.0302018134870226e-07 maximum return: 73.92359293280933 average return: 15.044272778431969
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.21916082758695557 maximum return: 525.0432531266841 average return: 98.15306404873533
+==================================================
+Evaluating d_r: 200
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.00011592497634445436 maximum return: 523.6183357256352 average return: 122.66108357973808
+==================================================
+Evaluating d_r: 250
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.27231790210758e-05 maximum return: 602.6305939498739 average return: 88.77520398524646
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.362180122665929e-06 maximum return: 482.97904354810794 average return: 93.72803906842388
+==================================================
+Evaluating d_r: 350
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.21420734780440803 maximum return: 353.3384540101552 average return: 162.5993590125102
+==================================================
+Evaluating d_r: 400
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00016917757428294735 maximum return: 632.1642698004985 average return: 308.4597421313388
+==================================================
+Evaluating d_r: 450
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.022565584060464747 maximum return: 597.0080124125321 average return: 236.39883575755306
+==================================================
+Evaluating d_r: 500
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.00476178686484534 maximum return: 574.4796610618764 average return: 115.26854585149617
+==================================================
+Evaluating d_r: 550
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 6.709643292313908e-05 maximum return: 572.4500194430714 average return: 216.7398903449252
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.06419217174695854 maximum return: 863.4974474743256 average return: 366.4505349229129
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 3.4422437873706137e-06 maximum return: 732.4872429095703 average return: 204.62397408051595
+==================================================
+Evaluating d_r: 700
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 6.142516764836309e-07 maximum return: 777.4854308350612 average return: 343.1457731513986
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 1.8433433144549814e-05 maximum return: 670.567401357238 average return: 222.46568074625128
+==================================================
+Evaluating d_r: 800
+Episode: 0
+goal reached!
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 4.4671882982515483e-07 maximum return: 644.8897981315088 average return: 177.27992009291594
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.007131000128929888 maximum return: 833.2939195840429 average return: 228.98856003995797
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.7303496474468849e-07 maximum return: 686.9672134338865 average return: 134.21075864002756
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 3.3811245818624554e-08 maximum return: 616.8951055194783 average return: 67.30269675307153
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.728664762756946e-05 maximum return: 499.0641705938356 average return: 74.99864178484835
+============================================================
+Iteration 9/9
+
+Collecting data for d_r = 0 with d_h = 1000.0...
+
+Collecting data for d_r = 50 with d_h = 1000.0...
+
+Collecting data for d_r = 100 with d_h = 1000.0...
+
+Collecting data for d_r = 150 with d_h = 1000.0...
+
+Collecting data for d_r = 200 with d_h = 1000.0...
+
+Collecting data for d_r = 250 with d_h = 1000.0...
+
+Collecting data for d_r = 300 with d_h = 1000.0...
+
+Collecting data for d_r = 350 with d_h = 1000.0...
+
+Collecting data for d_r = 400 with d_h = 1000.0...
+
+Collecting data for d_r = 450 with d_h = 1000.0...
+
+Collecting data for d_r = 500 with d_h = 1000.0...
+
+Collecting data for d_r = 550 with d_h = 1000.0...
+
+Collecting data for d_r = 600 with d_h = 1000.0...
+
+Collecting data for d_r = 650 with d_h = 1000.0...
+
+Collecting data for d_r = 700 with d_h = 1000.0...
+
+Collecting data for d_r = 750 with d_h = 1000.0...
+
+Collecting data for d_r = 800 with d_h = 1000.0...
+
+Collecting data for d_r = 850 with d_h = 1000.0...
+
+Collecting data for d_r = 900 with d_h = 1000.0...
+
+Collecting data for d_r = 950 with d_h = 1000.0...
+
+Collecting data for d_r = 1000 with d_h = 1000.0...
+
+Collected 869 episodes. Now concatenating and saving...
+stats before concatenation: ================================================
+AVERAGE REWARD TO GO: 176.67055
+AVERAGE OBTAINED REWARD PER EPISODE: 292.43240482495594
+==================================================
+Post-concatenation AVERAGE OBTAINED REWARD PER EPISODE: 292.43240482495594
+Shapes of saved datasets:
+Observations: (1549515, 27)
+Actions: (1549515, 8)
+Rewards-to-Go: (1549515,)
+Time-to-Go: (1549515,)
+Goal Vectors: (1549515, 2)
+Data processing complete. Final dataset saved to antmaze_rollout_current_dataset.hdf5
+
+Running grid search with BATCH_SIZE=16, LEARNING_RATE=5e-05, EPOCHS=100
+Epoch 1/100 [Train]: Starting...
+Epoch 1/100 [Val  ]: Starting...
+Epoch 1/100: Train Loss = 0.0024, Val Loss = 0.0018
+Best model found! Validation Loss: 0.0018
+Epoch 2/100 [Train]: Starting...
+Epoch 2/100 [Val  ]: Starting...
+Epoch 2/100: Train Loss = 0.0020, Val Loss = 0.0018
+Best model found! Validation Loss: 0.0018
+Epoch 3/100 [Train]: Starting...
+Epoch 3/100 [Val  ]: Starting...
+Epoch 3/100: Train Loss = 0.0019, Val Loss = 0.0017
+Best model found! Validation Loss: 0.0017
+Epoch 4/100 [Train]: Starting...
+Epoch 4/100 [Val  ]: Starting...
+Epoch 4/100: Train Loss = 0.0018, Val Loss = 0.0016
+Best model found! Validation Loss: 0.0016
+Epoch 5/100 [Train]: Starting...
+Epoch 5/100 [Val  ]: Starting...
+Epoch 5/100: Train Loss = 0.0017, Val Loss = 0.0018
+Epoch 6/100 [Train]: Starting...
+Epoch 6/100 [Val  ]: Starting...
+Epoch 6/100: Train Loss = 0.0016, Val Loss = 0.0017
+Epoch 7/100 [Train]: Starting...
+Epoch 7/100 [Val  ]: Starting...
+Epoch 7/100: Train Loss = 0.0016, Val Loss = 0.0017
+Epoch 8/100 [Train]: Starting...
+Epoch 8/100 [Val  ]: Starting...
+Epoch 8/100: Train Loss = 0.0016, Val Loss = 0.0017
+Epoch 9/100 [Train]: Starting...
+Epoch 9/100 [Val  ]: Starting...
+Epoch 9/100: Train Loss = 0.0015, Val Loss = 0.0017
+Epoch 10/100 [Train]: Starting...
+Epoch 10/100 [Val  ]: Starting...
+Epoch 10/100: Train Loss = 0.0015, Val Loss = 0.0017
+Epoch 11/100 [Train]: Starting...
+Epoch 11/100 [Val  ]: Starting...
+Epoch 11/100: Train Loss = 0.0015, Val Loss = 0.0019
+Epoch 12/100 [Train]: Starting...
+Epoch 12/100 [Val  ]: Starting...
+Epoch 12/100: Train Loss = 0.0014, Val Loss = 0.0016
+Epoch 13/100 [Train]: Starting...
+Epoch 13/100 [Val  ]: Starting...
+Epoch 13/100: Train Loss = 0.0014, Val Loss = 0.0017
+Epoch 14/100 [Train]: Starting...
+Epoch 14/100 [Val  ]: Starting...
+Epoch 14/100: Train Loss = 0.0014, Val Loss = 0.0017
+Early stopping.
+Model for this configuration saved to antmazeMERGED_tiny-18-512.pth
+
+Grid Search Complete.
+Evaluating model: UDRLt_MLP9
+==================================================
+Evaluating d_r: 0
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.00019641527351854873 maximum return: 353.7913587246368 average return: 98.51998668709855
+==================================================
+Evaluating d_r: 50
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.204577548221357e-06 maximum return: 606.101232039922 average return: 170.65916740441844
+==================================================
+Evaluating d_r: 100
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 3.811646582368269e-07 maximum return: 555.6179326359387 average return: 101.89793190240282
+==================================================
+Evaluating d_r: 150
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.9944561764692833e-05 maximum return: 276.8459029311998 average return: 31.09065780502412
+==================================================
+Evaluating d_r: 200
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 8.785582608648118e-06 maximum return: 230.16839484664894 average return: 65.92325117508882
+==================================================
+Evaluating d_r: 250
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 2.251588036606396e-06 maximum return: 508.67279069786 average return: 134.17730888238404
+==================================================
+Evaluating d_r: 300
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.01236835594431505 maximum return: 283.13002378257136 average return: 129.8036486003095
+==================================================
+Evaluating d_r: 350
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 0.0055982686747854185 maximum return: 609.5136109085322 average return: 174.49326789097583
+==================================================
+Evaluating d_r: 400
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 4.913755440696216e-06 maximum return: 568.5385455194331 average return: 167.60571061189108
+==================================================
+Evaluating d_r: 450
+Episode: 0
+goal reached!
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0004286340292399161 maximum return: 682.0035537477085 average return: 333.0345161536377
+==================================================
+Evaluating d_r: 500
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+goal reached!
+Episode: 9
+goal reached!
+minimum return: 0.0036938657310759187 maximum return: 450.97804522682196 average return: 109.56035828433502
+==================================================
+Evaluating d_r: 550
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 2.9954345712905364e-06 maximum return: 636.0157864603397 average return: 191.8049244109274
+==================================================
+Evaluating d_r: 600
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.04081606607449e-06 maximum return: 626.5743307075533 average return: 157.53187344294048
+==================================================
+Evaluating d_r: 650
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 0.016703686912658354 maximum return: 835.8453347441099 average return: 377.35295914964934
+==================================================
+Evaluating d_r: 700
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 0.010153859045531148 maximum return: 720.4200955347138 average return: 128.04289718226795
+==================================================
+Evaluating d_r: 750
+Episode: 0
+Episode: 1
+goal reached!
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+goal reached!
+minimum return: 1.5822617234957384e-06 maximum return: 843.7875462230732 average return: 220.84661294818025
+==================================================
+Evaluating d_r: 800
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+goal reached!
+Episode: 9
+minimum return: 1.9515962096576688e-07 maximum return: 838.999514012061 average return: 84.11048630602207
+==================================================
+Evaluating d_r: 850
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+goal reached!
+Episode: 6
+Episode: 7
+goal reached!
+Episode: 8
+Episode: 9
+minimum return: 3.6476112278158056e-06 maximum return: 752.3832668514591 average return: 282.0959106534464
+==================================================
+Evaluating d_r: 900
+Episode: 0
+Episode: 1
+Episode: 2
+goal reached!
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+goal reached!
+Episode: 6
+goal reached!
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.5755160443708547e-08 maximum return: 894.2193153291136 average return: 290.9913361699031
+==================================================
+Evaluating d_r: 950
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+goal reached!
+Episode: 4
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 9.108811254726907e-06 maximum return: 697.9070276331031 average return: 80.95272278742901
+==================================================
+Evaluating d_r: 1000
+Episode: 0
+Episode: 1
+Episode: 2
+Episode: 3
+Episode: 4
+goal reached!
+Episode: 5
+Episode: 6
+Episode: 7
+Episode: 8
+Episode: 9
+minimum return: 1.407673452199227e-07 maximum return: 391.88221524806795 average return: 39.28322754376161
+
+============================================================
+Final Success Rates per Model:
+UDRLt_MLP0: 31.90%
+UDRLt_MLP1: 29.52%
+UDRLt_MLP2: 40.95%
+UDRLt_MLP3: 32.86%
+UDRLt_MLP4: 43.33%
+UDRLt_MLP5: 34.76%
+UDRLt_MLP6: 33.33%
+UDRLt_MLP7: 36.19%
+UDRLt_MLP8: 31.43%
+UDRLt_MLP9: 31.90%
+Saved combined plot to condition5-ANTMAZE_BERT_MLP.png
+
+###############################################################################
+Hábrók Cluster
+Job 17999877 for user s5173019
+Finished at: Sun Jun 22 14:54:17 CEST 2025
+
+Job details:
+============
+
+Job ID                         : 17999877
+Name                           : jobscript-gpu.sh
+User                           : s5173019
+Partition                      : gpulong
+Nodes                          : v100v2gpu3
+Number of Nodes                : 1
+Cores                          : 8
+Number of Tasks                : 1
+State                          : COMPLETED  
+Submit                         : 2025-06-20T13:10:20
+Start                          : 2025-06-20T13:10:59
+End                            : 2025-06-22T14:54:13
+Reserved walltime              : 2-17:00:00
+Used walltime                  : 2-01:43:14
+Used CPU time                  : 2-01:10:30 (Efficiency: 12.36%)
+% User (Computation)           : 99.86%
+% System (I/O)                 :  0.14%
+Total memory reserved          : 8000M
+Maximum memory used            : 2.00G
+Requested GPUs                 : 1
+Allocated GPUs                 : v100=1
+Max GPU utilization            : 30%
+Max GPU memory used            : 564.00M
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Hábrók in your publications:
+
+https://wiki.hpc.rug.nl/habrok/introduction/scientific_output
+
+################################################################################

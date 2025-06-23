@@ -26,8 +26,8 @@ ACT_DIM = 8
 # ==== Paths ====
 ROLLOUT_DATA_PATH = "antmaze_rollout_current_dataset.hdf5"
 from dataset_generation import (
-    INITIAL_ANTMAZE_BERT_PATH, NEW_MODEL_PATH,
-    INITIAL_ANTMAZE_NN_PATH
+    INITIAL_ANTMAZE_BERT_PATH, NEW_BERT_MODEL_PATH,
+    INITIAL_ANTMAZE_NN_PATH, NEW_NN_MODEL_PATH
 )
 
 
@@ -78,7 +78,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,
             model_components = load_antmaze_bertmlp_model_for_eval("", DEVICE, 
                                                                 initialize_from_scratch=True)                    
             model = AntMazeBERTPretrainedMazeWrapper(*model_components).to(DEVICE)
-            checkpoint = torch.load(NEW_MODEL_PATH, map_location=DEVICE)
+            checkpoint = torch.load(NEW_BERT_MODEL_PATH, map_location=DEVICE)
             model.load_state_dict(checkpoint["model"])
     elif model_to_use == "ANTMAZE_NN":
         if start_from_condition4:
@@ -88,7 +88,7 @@ def train_model(learning_rate: float, epochs: int, train_loader: DataLoader,
             model = load_antmaze_nn_model_for_eval("", DEVICE,
                                                    initialize_from_scratch=True)
             model = AntMazeNNPretrainedMazeWrapper(model).to(DEVICE)
-            checkpoint = torch.load(NEW_MODEL_PATH, map_location=DEVICE)
+            checkpoint = torch.load(NEW_NN_MODEL_PATH, map_location=DEVICE)
             model.load_state_dict(checkpoint["model"])
     
     optimizer = optim.Adam(list(model.parameters()), lr=learning_rate)
@@ -160,8 +160,9 @@ def grid_search_experiment_from_rollout(batch_sizes_param: list, learning_rates_
             model_save_dict = {
                 "model": current_best_models["model"].state_dict()
             }
-            torch.save(model_save_dict, NEW_MODEL_PATH)
-            print(f"Model for this configuration saved to {NEW_MODEL_PATH}")
+            save_path = NEW_BERT_MODEL_PATH if model_to_use == "ANTMAZE_BERT_MLP" else NEW_NN_MODEL_PATH
+            torch.save(model_save_dict, save_path)
+            print(f"Model for this configuration saved to {save_path}")
 
     print("\nGrid Search Complete.")
     return current_best_models["model"]
@@ -169,7 +170,6 @@ def grid_search_experiment_from_rollout(batch_sizes_param: list, learning_rates_
 
 if __name__ == "__main__":
     print(f"Using device: {DEVICE}")
-    print(f"Creating a model: {NEW_MODEL_PATH}")
     batch_sizes_param = [16]
     learning_rates_param = [5e-5]
     epochs_list_param = [100]
