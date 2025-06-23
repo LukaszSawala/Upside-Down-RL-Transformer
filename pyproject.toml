@@ -33,6 +33,20 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "tqdm>=4.67.1",
     "typer>=0.15.1",
+    "gymnasium[robotics]>=1.0.0",
+    "minari[all]>=0.5.2",
+    "huggingface-hub>=0.29.1",
+    "d4rl>=1.1",
+    "h5py>=3.13.0",
+    "torch>=2.6.0",
+    "seaborn>=0.13.2",
+    "jupyter>=1.1.1",
+    "ipywidgets>=8.1.5",
+    "zeus>=0.11.0",
+    "captum>=0.7.0",
+    "transformers>=4.50.2",
+    "uv>=0.7.6",
+    "gymnasium-robotics>=1.3.1",
 ]
 
 [tool.black]
