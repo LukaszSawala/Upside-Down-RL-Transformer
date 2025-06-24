@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training &mdash; UDRL transformer 25/06/2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=95f8d375"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UDRL transformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">lukasz_sawala_bsc_thesis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UDRL transformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">random_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">AutoConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeuralNet</span><span class="p">,</span> <span class="n">HugeNeuralNet</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grid_UDRLT_training_OPTIMIZED</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_datasets</span><span class="p">,</span> <span class="n">create_dataloaders</span>
+
+<span class="c1"># ==== Configuration ====</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">PATIENCE</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;../data/processed/concatenated_data.hdf5&quot;</span>
+<span class="n">BEST_MODEL_PATH</span> <span class="o">=</span> <span class="s2">&quot;new-architecture-berttiny.pth&quot;</span>  <span class="c1"># From original script</span>
+<span class="n">STATE_DIM</span> <span class="o">=</span> <span class="mi">105</span>  <span class="c1"># Derived from original state_encoder input</span>
+<span class="n">ACT_DIM</span> <span class="o">=</span> <span class="mi">8</span>
+
+
+<div class="viewcode-block" id="set_seed">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.set_seed">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the seed for reproducibility.&quot;&quot;&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed_value</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="initiate_model_components">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.initiate_model_components">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">initiate_model_components</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">AutoModel</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="n">NeuralNet</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes the model components based on the original script&#39;s architecture.</span>
+<span class="sd">    This includes a BERT model for state embedding, a state encoder, and an MLP.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: model_bert, state_encoder, mlp_head.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;prajjwal1/bert-tiny&quot;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">max_position_embeddings</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">model_bert</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+
+    <span class="n">state_encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">STATE_DIM</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+
+    <span class="n">final_input_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">mlp_head</span> <span class="o">=</span> <span class="n">HugeNeuralNet</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="n">final_input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="n">ACT_DIM</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp_head</span></div>
+
+
+
+<span class="c1"># ==== Training and Evaluation ====</span>
+<div class="viewcode-block" id="train_one_epoch">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_one_epoch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_one_epoch</span><span class="p">(</span><span class="n">model_bert</span><span class="p">:</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="n">mlp_head</span><span class="p">:</span> <span class="n">NeuralNet</span><span class="p">,</span>
+                    <span class="n">train_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">:</span> <span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+                    <span class="n">epoch_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total_epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains the model for one epoch.&quot;&quot;&quot;</span>
+    <span class="n">model_bert</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">state_encoder</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">mlp_head</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">total_train_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_epochs</span><span class="si">}</span><span class="s2"> [Train]: Starting...&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">r</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">(</span><span class="n">set_to_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">s_proj</span> <span class="o">=</span> <span class="n">state_encoder</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [B, 1, hidden]</span>
+        <span class="n">bert_out</span> <span class="o">=</span> <span class="n">model_bert</span><span class="p">(</span><span class="n">inputs_embeds</span><span class="o">=</span><span class="n">s_proj</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># [B, hidden]</span>
+        <span class="n">input_to_mlp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">bert_out</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [B, hidden+2]</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">mlp_head</span><span class="p">(</span><span class="n">input_to_mlp</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="n">total_train_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">total_train_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="validate_one_epoch">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.validate_one_epoch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_one_epoch</span><span class="p">(</span><span class="n">model_bert</span><span class="p">:</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="n">mlp_head</span><span class="p">:</span> <span class="n">NeuralNet</span><span class="p">,</span>
+                       <span class="n">val_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">epoch_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                       <span class="n">total_epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates the model for one epoch.&quot;&quot;&quot;</span>
+    <span class="n">model_bert</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">state_encoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">mlp_head</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">total_val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_epochs</span><span class="si">}</span><span class="s2"> [Val  ]: Starting...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">r</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">s_proj</span> <span class="o">=</span> <span class="n">state_encoder</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">bert_out</span> <span class="o">=</span> <span class="n">model_bert</span><span class="p">(</span><span class="n">inputs_embeds</span><span class="o">=</span><span class="n">s_proj</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">input_to_mlp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">bert_out</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">mlp_head</span><span class="p">(</span><span class="n">input_to_mlp</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+            <span class="n">total_val_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_loader</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="train_model">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_model">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trains the model using the specified hyperparameters.</span>
+<span class="sd">    Implements early stopping based on validation loss.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        learning_rate: The learning rate for the optimizer.</span>
+<span class="sd">        epochs: The number of epochs to train for.</span>
+<span class="sd">        train_loader: DataLoader for the training set.</span>
+<span class="sd">        val_loader: DataLoader for the validation set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A dictionary containing the state_dicts of the best model components,</span>
+<span class="sd">        or None if training did not produce a best model (e.g., 0 epochs).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp_head</span> <span class="o">=</span> <span class="n">initiate_model_components</span><span class="p">()</span>
+
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="n">model_bert</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+        <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">state_encoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+        <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">mlp_head</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span>
+        <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+    <span class="n">best_val_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+    <span class="n">patience_counter</span> <span class="o">=</span> <span class="n">PATIENCE</span>
+    <span class="n">current_best_model_state_dicts</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="n">avg_train_loss</span> <span class="o">=</span> <span class="n">train_one_epoch</span><span class="p">(</span>
+            <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp_head</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span>
+        <span class="p">)</span>
+        <span class="n">avg_val_loss</span> <span class="o">=</span> <span class="n">validate_one_epoch</span><span class="p">(</span>
+            <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp_head</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span>
+        <span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2">: Train Loss = </span><span class="si">{</span><span class="n">avg_train_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Val Loss = </span><span class="si">{</span><span class="n">avg_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">avg_val_loss</span> <span class="o">&lt;</span> <span class="n">best_val_loss</span><span class="p">:</span>
+            <span class="n">best_val_loss</span> <span class="o">=</span> <span class="n">avg_val_loss</span>
+            <span class="n">patience_counter</span> <span class="o">=</span> <span class="n">PATIENCE</span>
+            <span class="n">current_best_model_state_dicts</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;bert&quot;</span><span class="p">:</span> <span class="n">model_bert</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;state_encoder&quot;</span><span class="p">:</span> <span class="n">state_encoder</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                <span class="s2">&quot;mlp_head&quot;</span><span class="p">:</span> <span class="n">mlp_head</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="p">}</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best model found! Validation Loss: </span><span class="si">{</span><span class="n">best_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">patience_counter</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">patience_counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Early stopping.&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">current_best_model_state_dicts</span></div>
+
+
+
+<div class="viewcode-block" id="evaluate_model">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.evaluate_model">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span>
+    <span class="n">model_state_dicts</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">test_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluates the model on the test set using provided state dictionaries.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_state_dicts: Dictionary containing state_dicts of model components.</span>
+<span class="sd">        test_loader: DataLoader for the test set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The average loss over the test set. Returns float(&#39;inf&#39;) if no model state is provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">model_state_dicts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: No model state provided for evaluation.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+
+    <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp_head</span> <span class="o">=</span> <span class="n">initiate_model_components</span><span class="p">()</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+    <span class="n">model_bert</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">model_state_dicts</span><span class="p">[</span><span class="s2">&quot;bert&quot;</span><span class="p">])</span>
+    <span class="n">state_encoder</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">model_state_dicts</span><span class="p">[</span><span class="s2">&quot;state_encoder&quot;</span><span class="p">])</span>
+    <span class="n">mlp_head</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">model_state_dicts</span><span class="p">[</span><span class="s2">&quot;mlp_head&quot;</span><span class="p">])</span>
+
+    <span class="n">model_bert</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">state_encoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">mlp_head</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="n">total_test_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">test_loop</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Evaluating&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">test_loop</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="n">test_loader</span><span class="o">.</span><span class="n">pin_memory</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="n">test_loader</span><span class="o">.</span><span class="n">pin_memory</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="n">test_loader</span><span class="o">.</span><span class="n">pin_memory</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span> <span class="k">if</span> <span class="n">test_loader</span><span class="o">.</span><span class="n">pin_memory</span> <span class="k">else</span> <span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">s_proj</span> <span class="o">=</span> <span class="n">state_encoder</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">bert_out</span> <span class="o">=</span> <span class="n">model_bert</span><span class="p">(</span><span class="n">inputs_embeds</span><span class="o">=</span><span class="n">s_proj</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">input_to_mlp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">bert_out</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">mlp_head</span><span class="p">(</span><span class="n">input_to_mlp</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+            <span class="n">total_test_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">test_loop</span><span class="o">.</span><span class="n">set_postfix</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+    <span class="n">avg_test_loss</span> <span class="o">=</span> <span class="n">total_test_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_test_loss</span></div>
+
+
+
+<span class="c1"># ==== Grid Search ====</span>
+<div class="viewcode-block" id="grid_search_experiment">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.grid_search_experiment">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">grid_search_experiment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs a grid search over specified hyperparameters.</span>
+<span class="sd">    For each combination, it trains a model and saves the best version (based on its</span>
+<span class="sd">    own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.</span>
+<span class="sd">    An evaluation on the test set is performed and printed for each model trained.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">batch_sizes_param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">learning_rates_param</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5e-5</span><span class="p">]</span>
+    <span class="n">epochs_list_param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">]</span>
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">batch_sizes_param</span><span class="p">,</span> <span class="n">learning_rates_param</span><span class="p">,</span> <span class="n">epochs_list_param</span><span class="p">)</span>
+
+    <span class="n">train_ds</span><span class="p">,</span> <span class="n">val_ds</span><span class="p">,</span> <span class="n">test_ds</span> <span class="o">=</span> <span class="n">create_datasets</span><span class="p">()</span>
+
+    <span class="n">overall_best_test_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+    <span class="n">overall_best_config_str</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+
+    <span class="k">for</span> <span class="n">current_batch_size</span><span class="p">,</span> <span class="n">current_lr</span><span class="p">,</span> <span class="n">current_epochs</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="p">:</span>
+        <span class="n">current_config_str</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;BATCH_SIZE=</span><span class="si">{</span><span class="n">current_batch_size</span><span class="si">}</span><span class="s2">, LEARNING_RATE=</span><span class="si">{</span><span class="n">current_lr</span><span class="si">}</span><span class="s2">, EPOCHS=</span><span class="si">{</span><span class="n">current_epochs</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running grid search with </span><span class="si">{</span><span class="n">current_config_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">test_loader</span> <span class="o">=</span> <span class="n">create_dataloaders</span><span class="p">(</span>
+            <span class="n">train_ds</span><span class="p">,</span> <span class="n">val_ds</span><span class="p">,</span> <span class="n">test_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">current_batch_size</span>
+        <span class="p">)</span>
+
+        <span class="n">best_model_state_dicts_for_run</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
+            <span class="n">current_lr</span><span class="p">,</span> <span class="n">current_epochs</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">best_model_state_dicts_for_run</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training complete for </span><span class="si">{</span><span class="n">current_config_str</span><span class="si">}</span><span class="s2">. Evaluating on test set...&quot;</span><span class="p">)</span>
+            <span class="n">current_test_loss</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">best_model_state_dicts_for_run</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test Loss for config (</span><span class="si">{</span><span class="n">current_config_str</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">current_test_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">best_model_state_dicts_for_run</span><span class="p">,</span> <span class="n">BEST_MODEL_PATH</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model for this configuration saved to </span><span class="si">{</span><span class="n">BEST_MODEL_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">current_test_loss</span> <span class="o">&lt;</span> <span class="n">overall_best_test_loss</span><span class="p">:</span>
+                <span class="n">overall_best_test_loss</span> <span class="o">=</span> <span class="n">current_test_loss</span>
+                <span class="n">overall_best_config_str</span> <span class="o">=</span> <span class="n">current_config_str</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training failed or was skipped for config: </span><span class="si">{</span><span class="n">current_config_str</span><span class="si">}</span><span class="s2">. Skipping evaluation and save.&quot;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Grid Search Complete.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">overall_best_test_loss</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The configuration that yielded the best reported test loss was: </span><span class="si">{</span><span class="n">overall_best_config_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best reported Test Loss during search: </span><span class="si">{</span><span class="n">overall_best_test_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No configurations were successfully trained and evaluated.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The model saved at &#39;</span><span class="si">{</span><span class="n">BEST_MODEL_PATH</span><span class="si">}</span><span class="s2">&#39; corresponds to the results of the *last* successfully trained hyperparameter set.&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="n">DEVICE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">grid_search_experiment</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lukasz Sawala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

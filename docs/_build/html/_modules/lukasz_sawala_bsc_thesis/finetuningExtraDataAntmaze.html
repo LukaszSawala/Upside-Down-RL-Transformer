@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze &mdash; UDRL transformer 25/06/2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=95f8d375"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UDRL transformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">lukasz_sawala_bsc_thesis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UDRL transformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">,</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transfer_eval_main</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">load_antmaze_nn_model_for_eval</span><span class="p">,</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">finetuningNN_maze</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_datasets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">grid_UDRLT_training_OPTIMIZED</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span><span class="p">,</span> <span class="n">create_dataloaders</span>
+
+<span class="c1"># ==== Paths ====</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataset_generation</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">INITIAL_ANTMAZE_BERT_PATH</span><span class="p">,</span>
+    <span class="n">NEW_BERT_MODEL_PATH</span><span class="p">,</span>
+    <span class="n">INITIAL_ANTMAZE_NN_PATH</span><span class="p">,</span>
+    <span class="n">NEW_NN_MODEL_PATH</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ROLLOUT_DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;antmaze_rollout_current_dataset.hdf5&quot;</span>
+
+<span class="c1"># ==== Configuration ====</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">PATIENCE</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ACT_DIM</span> <span class="o">=</span> <span class="mi">8</span>
+
+
+<div class="viewcode-block" id="train_one_epoch">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_one_epoch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_one_epoch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">:</span> <span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
+                    <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">epoch_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total_epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trains the model for one epoch.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: The model to train.</span>
+<span class="sd">        train_loader: The data loader for the training set.</span>
+<span class="sd">        optimizer: The optimizer to use.</span>
+<span class="sd">        loss_fn: The loss function to use.</span>
+<span class="sd">        epoch_num: The current epoch number.</span>
+<span class="sd">        total_epochs: The total number of epochs.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The average training loss over the training set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">total_train_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_epochs</span><span class="si">}</span><span class="s2"> [Train]: Starting...&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>  <span class="c1"># state, reward, time, goal, action</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">r</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">(</span><span class="n">set_to_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span> <span class="n">use_goal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="n">total_train_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">total_train_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="validate_one_epoch">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.validate_one_epoch">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_one_epoch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+                       <span class="n">epoch_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">total_epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">test_set</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates the model on the validation set.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: The model to validate.</span>
+<span class="sd">        val_loader: The data loader for the validation set.</span>
+<span class="sd">        loss_fn: The loss function to use.</span>
+<span class="sd">        epoch_num: The current epoch number.</span>
+<span class="sd">        total_epochs: The total number of epochs.</span>
+<span class="sd">        test_set: Whether to use the test set or the validation set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The average validation loss over the validation set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">total_val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">if</span> <span class="n">test_set</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_epochs</span><span class="si">}</span><span class="s2"> [Test ]: Starting...&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_epochs</span><span class="si">}</span><span class="s2"> [Val  ]: Starting...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>  <span class="c1"># state, reward, time, goal, action</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">r</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">),</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span> <span class="n">use_goal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+            <span class="n">total_val_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_loader</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="train_model">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_model">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span>
+                <span class="n">val_loader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">model_to_use</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_from_condition4</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trains the model for the specified number of epochs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        learning_rate: The learning rate to use.</span>
+<span class="sd">        epochs: The number of epochs to train for.</span>
+<span class="sd">        train_loader: The data loader for the training set.</span>
+<span class="sd">        val_loader: The data loader for the validation set.</span>
+<span class="sd">        model_to_use: The model to use.</span>
+<span class="sd">        start_from_condition4: Whether to start from condition 4, used in the first iteration of the loop</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A dictionary containing the best model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">model_to_use</span> <span class="o">==</span> <span class="s2">&quot;ANTMAZE_BERT_MLP&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">start_from_condition4</span><span class="p">:</span>
+            <span class="n">model_components</span> <span class="o">=</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span><span class="p">(</span><span class="n">INITIAL_ANTMAZE_BERT_PATH</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">(</span><span class="o">*</span><span class="n">model_components</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_components</span> <span class="o">=</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span> <span class="n">initialize_from_scratch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">(</span><span class="o">*</span><span class="n">model_components</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">NEW_BERT_MODEL_PATH</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">model_to_use</span> <span class="o">==</span> <span class="s2">&quot;ANTMAZE_NN&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">start_from_condition4</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">load_antmaze_nn_model_for_eval</span><span class="p">(</span><span class="n">INITIAL_ANTMAZE_NN_PATH</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">load_antmaze_nn_model_for_eval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span>
+                                                   <span class="n">initialize_from_scratch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">NEW_NN_MODEL_PATH</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+    <span class="n">best_val_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+    <span class="n">patience_counter</span> <span class="o">=</span> <span class="n">PATIENCE</span>
+    <span class="n">current_best_models</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+        <span class="n">avg_train_loss</span> <span class="o">=</span> <span class="n">train_one_epoch</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span>
+        <span class="p">)</span>
+        <span class="n">avg_val_loss</span> <span class="o">=</span> <span class="n">validate_one_epoch</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span>
+        <span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2">: Train Loss = </span><span class="si">{</span><span class="n">avg_train_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Val Loss = </span><span class="si">{</span><span class="n">avg_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">avg_val_loss</span> <span class="o">&lt;</span> <span class="n">best_val_loss</span><span class="p">:</span>
+            <span class="n">best_val_loss</span> <span class="o">=</span> <span class="n">avg_val_loss</span>
+            <span class="n">patience_counter</span> <span class="o">=</span> <span class="n">PATIENCE</span>
+            <span class="n">current_best_models</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best model found! Validation Loss: </span><span class="si">{</span><span class="n">best_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">patience_counter</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">patience_counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Early stopping.&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">current_best_models</span></div>
+
+
+
+<span class="c1"># ==== Grid Search ====</span>
+<div class="viewcode-block" id="grid_search_experiment_from_rollout">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.grid_search_experiment_from_rollout">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">grid_search_experiment_from_rollout</span><span class="p">(</span><span class="n">batch_sizes_param</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">learning_rates_param</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+                                        <span class="n">epochs_list_param</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">model_to_use</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                                        <span class="n">start_from_condition4</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs a grid search over specified hyperparameters.</span>
+<span class="sd">    For each combination, it trains a model and saves the best version (based on its</span>
+<span class="sd">    own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.</span>
+<span class="sd">    An evaluation on the test set is performed and printed for each model trained.</span>
+<span class="sd">    Returns the best model from the last iteration of the grid search.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">batch_sizes_param</span><span class="p">,</span> <span class="n">learning_rates_param</span><span class="p">,</span> <span class="n">epochs_list_param</span><span class="p">)</span>
+    <span class="n">train_ds</span><span class="p">,</span> <span class="n">val_ds</span><span class="p">,</span> <span class="n">test_ds</span> <span class="o">=</span> <span class="n">create_datasets</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data_path</span><span class="o">=</span><span class="n">ROLLOUT_DATA_PATH</span><span class="p">)</span>  <span class="c1"># do not pad with 0s</span>
+
+    <span class="k">for</span> <span class="n">current_batch_size</span><span class="p">,</span> <span class="n">current_lr</span><span class="p">,</span> <span class="n">current_epochs</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="p">:</span>
+        <span class="n">current_config_str</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;BATCH_SIZE=</span><span class="si">{</span><span class="n">current_batch_size</span><span class="si">}</span><span class="s2">, LEARNING_RATE=</span><span class="si">{</span><span class="n">current_lr</span><span class="si">}</span><span class="s2">, EPOCHS=</span><span class="si">{</span><span class="n">current_epochs</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running grid search with </span><span class="si">{</span><span class="n">current_config_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">create_dataloaders</span><span class="p">(</span>
+            <span class="n">train_ds</span><span class="p">,</span> <span class="n">val_ds</span><span class="p">,</span> <span class="n">test_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">current_batch_size</span>
+        <span class="p">)</span>
+
+        <span class="n">current_best_models</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
+            <span class="n">current_lr</span><span class="p">,</span> <span class="n">current_epochs</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">model_to_use</span><span class="o">=</span><span class="n">model_to_use</span><span class="p">,</span>
+            <span class="n">start_from_condition4</span><span class="o">=</span><span class="n">start_from_condition4</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">current_best_models</span><span class="p">:</span>
+            <span class="n">model_save_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">current_best_models</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="n">save_path</span> <span class="o">=</span> <span class="n">NEW_BERT_MODEL_PATH</span> <span class="k">if</span> <span class="n">model_to_use</span> <span class="o">==</span> <span class="s2">&quot;ANTMAZE_BERT_MLP&quot;</span> <span class="k">else</span> <span class="n">NEW_NN_MODEL_PATH</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_save_dict</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model for this configuration saved to </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Grid Search Complete.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">current_best_models</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="n">DEVICE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">batch_sizes_param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">learning_rates_param</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5e-5</span><span class="p">]</span>
+    <span class="n">epochs_list_param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+    <span class="n">start_from_condition4</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set to True at the beggining of the loop</span>
+
+    <span class="c1"># Choose between &quot;ANTMAZE_BERT_MLP&quot; or &quot;ANTMAZE_NN&quot;</span>
+    <span class="n">model_to_use</span> <span class="o">=</span> <span class="s2">&quot;ANTMAZE_BERT_MLP&quot;</span>
+    <span class="c1"># model_to_use = &quot;ANTMAZE_NN&quot;</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">grid_search_experiment_from_rollout</span><span class="p">(</span><span class="n">batch_sizes_param</span><span class="o">=</span><span class="n">batch_sizes_param</span><span class="p">,</span>
+                                            <span class="n">learning_rates_param</span><span class="o">=</span><span class="n">learning_rates_param</span><span class="p">,</span>
+                                            <span class="n">epochs_list_param</span><span class="o">=</span><span class="n">epochs_list_param</span><span class="p">,</span>
+                                            <span class="n">model_to_use</span><span class="o">=</span><span class="n">model_to_use</span><span class="p">,</span>
+                                            <span class="n">start_from_condition4</span><span class="o">=</span><span class="n">start_from_condition4</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lukasz Sawala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

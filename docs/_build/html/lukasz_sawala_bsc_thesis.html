@@ -46,27 +46,99 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">lukasz_sawala_bsc_thesis</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">lukasz_sawala_bsc_thesis package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-0reward-testing-module">lukasz_sawala_bsc_thesis.0reward_testing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.0rewardtesting">lukasz_sawala_bsc_thesis.0rewardtesting module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.0rewardtesting.run_low_reward_test"><code class="docutils literal notranslate"><span class="pre">run_low_reward_test()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_DT">lukasz_sawala_bsc_thesis.attention_mapping_DT module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.make_token_labels"><code class="docutils literal notranslate"><span class="pre">make_token_labels()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.sample_episode_window"><code class="docutils literal notranslate"><span class="pre">sample_episode_window()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.visualize_attention_importance_avg"><code class="docutils literal notranslate"><span class="pre">visualize_attention_importance_avg()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-dataset-generation-module">lukasz_sawala_bsc_thesis.dataset_generation module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningnn-maze-module">lukasz_sawala_bsc_thesis.finetuningNN_maze module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module">lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module">lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition-NN module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-dt-training-module">lukasz_sawala_bsc_thesis.grid_dt_training module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-nn-training-module">lukasz_sawala_bsc_thesis.grid_nn_training module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_UDRLt">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_bert_udrl_model"><code class="docutils literal notranslate"><span class="pre">load_bert_udrl_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_test_loader"><code class="docutils literal notranslate"><span class="pre">load_test_loader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.visualize_attention"><code class="docutils literal notranslate"><span class="pre">visualize_attention()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.dataset_generation">lukasz_sawala_bsc_thesis.dataset_generation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.dataset_generation.generate_dataset"><code class="docutils literal notranslate"><span class="pre">generate_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.grid_search_experiment_from_rollout"><code class="docutils literal notranslate"><span class="pre">grid_search_experiment_from_rollout()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_one_epoch"><code class="docutils literal notranslate"><span class="pre">train_one_epoch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.validate_one_epoch"><code class="docutils literal notranslate"><span class="pre">validate_one_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.finetuningNN_maze">lukasz_sawala_bsc_thesis.finetuningNN_maze module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.create_datasets"><code class="docutils literal notranslate"><span class="pre">create_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.evaluate_model"><code class="docutils literal notranslate"><span class="pre">evaluate_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.grid_search_experiment"><code class="docutils literal notranslate"><span class="pre">grid_search_experiment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.train_one_epoch"><code class="docutils literal notranslate"><span class="pre">train_one_epoch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.validate_one_epoch"><code class="docutils literal notranslate"><span class="pre">validate_one_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.evaluate_model"><code class="docutils literal notranslate"><span class="pre">evaluate_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.grid_search_experiment"><code class="docutils literal notranslate"><span class="pre">grid_search_experiment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_one_epoch"><code class="docutils literal notranslate"><span class="pre">train_one_epoch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.validate_one_epoch"><code class="docutils literal notranslate"><span class="pre">validate_one_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition">lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN">lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.evaluate_model"><code class="docutils literal notranslate"><span class="pre">evaluate_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.grid_search_experiment"><code class="docutils literal notranslate"><span class="pre">grid_search_experiment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.initiate_model_components"><code class="docutils literal notranslate"><span class="pre">initiate_model_components()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_one_epoch"><code class="docutils literal notranslate"><span class="pre">train_one_epoch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.validate_one_epoch"><code class="docutils literal notranslate"><span class="pre">validate_one_epoch()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.ACT_DIM"><code class="docutils literal notranslate"><span class="pre">ACT_DIM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_dataloaders"><code class="docutils literal notranslate"><span class="pre">create_dataloaders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_datasets"><code class="docutils literal notranslate"><span class="pre">create_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.grid_search"><code class="docutils literal notranslate"><span class="pre">grid_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.initiate_UDRLt_model"><code class="docutils literal notranslate"><span class="pre">initiate_UDRLt_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.grid_dt_training">lukasz_sawala_bsc_thesis.grid_dt_training module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_dt_training.EpisodicHDF5Dataset"><code class="docutils literal notranslate"><span class="pre">EpisodicHDF5Dataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_dt_training.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_dt_training.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.grid_nn_training">lukasz_sawala_bsc_thesis.grid_nn_training module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_nn_training.create_tensor_dataloaders"><code class="docutils literal notranslate"><span class="pre">create_tensor_dataloaders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_nn_training.grid_search_train"><code class="docutils literal notranslate"><span class="pre">grid_search_train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_nn_training.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.grid_nn_training.train_test_val_split"><code class="docutils literal notranslate"><span class="pre">train_test_val_split()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.k_means_rewards">lukasz_sawala_bsc_thesis.k_means_rewards module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-model-evaluation-module">lukasz_sawala_bsc_thesis.model_evaluation module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-model-evaluation-all-module">lukasz_sawala_bsc_thesis.model_evaluation_ALL module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.model_evaluation">lukasz_sawala_bsc_thesis.model_evaluation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.evaluate_get_rewards"><code class="docutils literal notranslate"><span class="pre">evaluate_get_rewards()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_bert_mlp_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_bert_mlp_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_bert_udrl_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_bert_udrl_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_dt_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_dt_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_nn_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_nn_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation.plot_average_rewards"><code class="docutils literal notranslate"><span class="pre">plot_average_rewards()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.model_evaluation_ALL">lukasz_sawala_bsc_thesis.model_evaluation_ALL module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.model_evaluation_ALL.plot_all_models_rewards"><code class="docutils literal notranslate"><span class="pre">plot_all_models_rewards()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.models">lukasz_sawala_bsc_thesis.models module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.ActionHead"><code class="docutils literal notranslate"><span class="pre">ActionHead</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy"><code class="docutils literal notranslate"><span class="pre">AntBERTPretrainedMazePolicy</span></code></a></li>
@@ -88,8 +160,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.plot_beta_distribution"><code class="docutils literal notranslate"><span class="pre">plot_beta_distribution()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module">lukasz_sawala_bsc_thesis.transfer_eval-various_conditions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-transfer-eval-main-module">lukasz_sawala_bsc_thesis.transfer_eval_main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.transfer_eval_various_conditions">lukasz_sawala_bsc_thesis.transfer_eval_various_conditions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.transfer_eval_main">lukasz_sawala_bsc_thesis.transfer_eval_main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.antmaze_evaluate"><code class="docutils literal notranslate"><span class="pre">antmaze_evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.extract_goal_direction"><code class="docutils literal notranslate"><span class="pre">extract_goal_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_bertmlp_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_antmaze_bertmlp_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_nn_model_for_eval"><code class="docutils literal notranslate"><span class="pre">load_antmaze_nn_model_for_eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.transfer_eval_main"><code class="docutils literal notranslate"><span class="pre">transfer_eval_main()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.utils">lukasz_sawala_bsc_thesis.utils module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.utils.parse_arguments"><code class="docutils literal notranslate"><span class="pre">parse_arguments()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.utils.print_available_antmaze_envs"><code class="docutils literal notranslate"><span class="pre">print_available_antmaze_envs()</span></code></a></li>
@@ -133,8 +212,14 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="lukasz-sawala-bsc-thesis-0reward-testing-module">
-<h2>lukasz_sawala_bsc_thesis.0reward_testing module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-0reward-testing-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.0rewardtesting">
+<span id="lukasz-sawala-bsc-thesis-0rewardtesting-module"></span><h2>lukasz_sawala_bsc_thesis.0rewardtesting module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.0rewardtesting" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.0rewardtesting.run_low_reward_test">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.0rewardtesting.</span></span><span class="sig-name descname"><span class="pre">run_low_reward_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/0rewardtesting.html#run_low_reward_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.0rewardtesting.run_low_reward_test" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the performance of the model in the low reward conditions.</p>
+</dd></dl>
+
 </section>
 <section id="module-lukasz_sawala_bsc_thesis.attention_mapping_DT">
 <span id="lukasz-sawala-bsc-thesis-attention-mapping-dt-module"></span><h2>lukasz_sawala_bsc_thesis.attention_mapping_DT module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_DT" title="Link to this heading"></a></h2>
@@ -157,47 +242,804 @@
 </dd></dl>
 
 </section>
-<section id="lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module">
-<h2>lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.attention_mapping_UDRLt">
+<span id="lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module"></span><h2>lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_UDRLt" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_bert_udrl_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.</span></span><span class="sig-name descname"><span class="pre">load_bert_udrl_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_UDRLt.html#load_bert_udrl_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_bert_udrl_model" title="Link to this definition"></a></dt>
+<dd><p>Load a pre-trained BERT model for UDRL.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_test_loader">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.</span></span><span class="sig-name descname"><span class="pre">load_test_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_UDRLt.html#load_test_loader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.load_test_loader" title="Link to this definition"></a></dt>
+<dd><p>Create a DataLoader for the test set.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.visualize_attention">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.</span></span><span class="sig-name descname"><span class="pre">visualize_attention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r_encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_h_encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_UDRLt.html#visualize_attention"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_UDRLt.visualize_attention" title="Link to this definition"></a></dt>
+<dd><p>Visualize the attention received by each token.</p>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-dataset-generation-module">
-<h2>lukasz_sawala_bsc_thesis.dataset_generation module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-dataset-generation-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.dataset_generation">
+<span id="lukasz-sawala-bsc-thesis-dataset-generation-module"></span><h2>lukasz_sawala_bsc_thesis.dataset_generation module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.dataset_generation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.dataset_generation.generate_dataset">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.dataset_generation.</span></span><span class="sig-name descname"><span class="pre">generate_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_episodes_per_dr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_from_condition4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retain_best_previous_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ANTMAZE_BERT_MLP'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/dataset_generation.html#generate_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.dataset_generation.generate_dataset" title="Link to this definition"></a></dt>
+<dd><p>Generates a dataset of trajectories for the AntMaze environment using a pretrained model.
+:param d_h: Initial horizon value used for episode termination.
+:type d_h: float
+:param d_r_options: List of reward threshold values to test during data collection.
+:type d_r_options: list
+:param num_episodes_per_dr: Number of episodes to collect for each reward threshold.
+:type num_episodes_per_dr: int
+:param start_from_condition4: Flag to determine if data collection starts from condition 4.
+:type start_from_condition4: bool
+:param retain_best_previous_data: If True, retains the best data from previous collections.
+:type retain_best_previous_data: bool, optional
+:param model_name: Name of the model to use for data generation. Defaults to “ANTMAZE_BERT_MLP”.
+:type model_name: str, optional</p>
+<p>This function collects data by running episodes in the AntMaze environment with a specified model.
+It collects observations, actions, rewards, and goal vectors for each episode, and processes them
+into a dataset. The resulting dataset is saved to an HDF5 file, and a 2D histogram of reward-to-go
+versus horizon is generated and saved as a PNG image.</p>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module">
-<h2>lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze">
+<span id="lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module"></span><h2>lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.grid_search_experiment_from_rollout">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.</span></span><span class="sig-name descname"><span class="pre">grid_search_experiment_from_rollout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_sizes_param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rates_param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs_list_param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_to_use</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_from_condition4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper" title="lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper"><span class="pre">AntMazeBERTPretrainedMazeWrapper</span></a></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningExtraDataAntmaze.html#grid_search_experiment_from_rollout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.grid_search_experiment_from_rollout" title="Link to this definition"></a></dt>
+<dd><p>Performs a grid search over specified hyperparameters.
+For each combination, it trains a model and saves the best version (based on its
+own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
+An evaluation on the test set is performed and printed for each model trained.
+Returns the best model from the last iteration of the grid search.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_to_use</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_from_condition4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningExtraDataAntmaze.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_model" title="Link to this definition"></a></dt>
+<dd><p>Trains the model for the specified number of epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learning_rate</strong> – The learning rate to use.</p></li>
+<li><p><strong>epochs</strong> – The number of epochs to train for.</p></li>
+<li><p><strong>train_loader</strong> – The data loader for the training set.</p></li>
+<li><p><strong>val_loader</strong> – The data loader for the validation set.</p></li>
+<li><p><strong>model_to_use</strong> – The model to use.</p></li>
+<li><p><strong>start_from_condition4</strong> – Whether to start from condition 4, used in the first iteration of the loop</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the best model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.</span></span><span class="sig-name descname"><span class="pre">train_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningExtraDataAntmaze.html#train_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.train_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Trains the model for one epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The model to train.</p></li>
+<li><p><strong>train_loader</strong> – The data loader for the training set.</p></li>
+<li><p><strong>optimizer</strong> – The optimizer to use.</p></li>
+<li><p><strong>loss_fn</strong> – The loss function to use.</p></li>
+<li><p><strong>epoch_num</strong> – The current epoch number.</p></li>
+<li><p><strong>total_epochs</strong> – The total number of epochs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average training loss over the training set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.validate_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.</span></span><span class="sig-name descname"><span class="pre">validate_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningExtraDataAntmaze.html#validate_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze.validate_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Validates the model on the validation set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The model to validate.</p></li>
+<li><p><strong>val_loader</strong> – The data loader for the validation set.</p></li>
+<li><p><strong>loss_fn</strong> – The loss function to use.</p></li>
+<li><p><strong>epoch_num</strong> – The current epoch number.</p></li>
+<li><p><strong>total_epochs</strong> – The total number of epochs.</p></li>
+<li><p><strong>test_set</strong> – Whether to use the test set or the validation set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average validation loss over the validation set.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-finetuningnn-maze-module">
-<h2>lukasz_sawala_bsc_thesis.finetuningNN_maze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningnn-maze-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.finetuningNN_maze">
+<span id="lukasz-sawala-bsc-thesis-finetuningnn-maze-module"></span><h2>lukasz_sawala_bsc_thesis.finetuningNN_maze module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.finetuningNN_maze" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.create_datasets">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">create_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'../data/processed/antmaze_diverse_medium_concatenated_data.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#create_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.create_datasets" title="Link to this definition"></a></dt>
+<dd><p>Creates train, validation, and test datasets from the concatenated dataset.
+Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train,
+10% validation, and 10% test sets.
+:returns:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>train_ds (TensorDataset): The training dataset.</p></li>
+<li><p>val_ds (TensorDataset): The validation dataset.</p></li>
+<li><p>test_ds (TensorDataset): The test dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.evaluate_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">evaluate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models_to_evaluate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#evaluate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.evaluate_model" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the model on the test set using provided state dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_state_dicts</strong> – Dictionary containing state_dicts of model components.</p></li>
+<li><p><strong>test_loader</strong> – DataLoader for the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average loss over the test set. Returns float(‘inf’) if no model state is provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.grid_search_experiment">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">grid_search_experiment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#grid_search_experiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.grid_search_experiment" title="Link to this definition"></a></dt>
+<dd><p>Performs a grid search over specified hyperparameters.
+For each combination, it trains a model and saves the best version (based on its
+own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
+An evaluation on the test set is performed and printed for each model trained.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.train_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.train_model" title="Link to this definition"></a></dt>
+<dd><p>Trains the model using the specified hyperparameters.
+Implements early stopping based on validation loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learning_rate</strong> – The learning rate for the optimizer.</p></li>
+<li><p><strong>epochs</strong> – The number of epochs to train for.</p></li>
+<li><p><strong>train_loader</strong> – DataLoader for the training set.</p></li>
+<li><p><strong>val_loader</strong> – DataLoader for the validation set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the state_dicts of the best model components,
+or None if training did not produce a best model (e.g., 0 epochs).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.train_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">train_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_nn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_actionhead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeActionHead" title="lukasz_sawala_bsc_thesis.models.AntMazeActionHead"><span class="pre">AntMazeActionHead</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#train_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.train_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Trains the model for one epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_nn</strong> – The neural network model.</p></li>
+<li><p><strong>final_actionhead</strong> – The final action head to predict the action.</p></li>
+<li><p><strong>train_loader</strong> – The data loader for the training set.</p></li>
+<li><p><strong>optimizer</strong> – The optimizer to use.</p></li>
+<li><p><strong>loss_fn</strong> – The loss function to use.</p></li>
+<li><p><strong>epoch_num</strong> – The current epoch number.</p></li>
+<li><p><strong>total_epochs</strong> – The total number of epochs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average training loss over the training set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningNN_maze.validate_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningNN_maze.</span></span><span class="sig-name descname"><span class="pre">validate_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_nn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_actionhead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeActionHead" title="lukasz_sawala_bsc_thesis.models.AntMazeActionHead"><span class="pre">AntMazeActionHead</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningNN_maze.html#validate_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningNN_maze.validate_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Validates the model for one epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_nn</strong> – The neural network model.</p></li>
+<li><p><strong>final_actionhead</strong> – The final action head to predict the action.</p></li>
+<li><p><strong>val_loader</strong> – The data loader for the validation set.</p></li>
+<li><p><strong>loss_fn</strong> – The loss function to use.</p></li>
+<li><p><strong>epoch_num</strong> – The current epoch number.</p></li>
+<li><p><strong>total_epochs</strong> – The total number of epochs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average validation loss over the validation set.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module">
-<h2>lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze">
+<span id="lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module"></span><h2>lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.evaluate_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.</span></span><span class="sig-name descname"><span class="pre">evaluate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models_to_evaluate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningUDRLt_MLP_maze.html#evaluate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.evaluate_model" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the model on the test set using provided state dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_state_dicts</strong> – Dictionary containing state_dicts of model components.</p></li>
+<li><p><strong>test_loader</strong> – DataLoader for the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average loss over the test set. Returns float(‘inf’) if no model state is provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.grid_search_experiment">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.</span></span><span class="sig-name descname"><span class="pre">grid_search_experiment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningUDRLt_MLP_maze.html#grid_search_experiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.grid_search_experiment" title="Link to this definition"></a></dt>
+<dd><p>Performs a grid search over specified hyperparameters.
+For each combination, it trains a model and saves the best version (based on its
+own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
+An evaluation on the test set is performed and printed for each model trained.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningUDRLt_MLP_maze.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_model" title="Link to this definition"></a></dt>
+<dd><p>Trains the model using the specified hyperparameters.
+Implements early stopping based on validation loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learning_rate</strong> – The learning rate for the optimizer.</p></li>
+<li><p><strong>epochs</strong> – The number of epochs to train for.</p></li>
+<li><p><strong>train_loader</strong> – DataLoader for the training set.</p></li>
+<li><p><strong>val_loader</strong> – DataLoader for the validation set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the state_dicts of the best model components,
+or None if training did not produce a best model (e.g., 0 epochs).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.</span></span><span class="sig-name descname"><span class="pre">train_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AutoModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Linear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_actionhead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead" title="lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead"><span class="pre">BertAntMazeActionHead</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningUDRLt_MLP_maze.html#train_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.train_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Trains the model for one epoch.
+:param model_bert: The BERT model.
+:param state_encoder: The linear layer to project state to BERT input size.
+:param mlp_head: The MLP head to predict the base output.
+:param final_actionhead: The final action head to predict the action.
+:param train_loader: The data loader for the training set.
+:param optimizer: The optimizer to use.
+:param loss_fn: The loss function to use.
+:param epoch_num: The current epoch number.
+:param total_epochs: The total number of epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The average training loss over the training set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.validate_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.</span></span><span class="sig-name descname"><span class="pre">validate_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AutoModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Linear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_actionhead</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead" title="lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead"><span class="pre">BertAntMazeActionHead</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/finetuningUDRLt_MLP_maze.html#validate_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze.validate_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Validates the model for one epoch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_bert</strong> – The BERT model.</p></li>
+<li><p><strong>state_encoder</strong> – The linear layer to project state to BERT input size.</p></li>
+<li><p><strong>mlp_head</strong> – The MLP head to predict the base output.</p></li>
+<li><p><strong>final_actionhead</strong> – The final action head to predict the action.</p></li>
+<li><p><strong>val_loader</strong> – The data loader for the validation set.</p></li>
+<li><p><strong>loss_fn</strong> – The loss function to use.</p></li>
+<li><p><strong>epoch_num</strong> – The current epoch number.</p></li>
+<li><p><strong>total_epochs</strong> – The total number of epochs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average validation loss over the validation set.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module">
-<h2>lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition">
+<span id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module"></span><h2>lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition" title="Link to this heading"></a></h2>
 </section>
-<section id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module">
-<h2>lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition-NN module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN">
+<span id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module"></span><h2>lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN" title="Link to this heading"></a></h2>
 </section>
-<section id="lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module">
-<h2>lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training">
+<span id="lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module"></span><h2>lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.evaluate_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">evaluate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_state_dicts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#evaluate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.evaluate_model" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the model on the test set using provided state dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_state_dicts</strong> – Dictionary containing state_dicts of model components.</p></li>
+<li><p><strong>test_loader</strong> – DataLoader for the test set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The average loss over the test set. Returns float(‘inf’) if no model state is provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.grid_search_experiment">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">grid_search_experiment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#grid_search_experiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.grid_search_experiment" title="Link to this definition"></a></dt>
+<dd><p>Performs a grid search over specified hyperparameters.
+For each combination, it trains a model and saves the best version (based on its
+own validation loss during that run) to BEST_MODEL_PATH, overwriting previous saves.
+An evaluation on the test set is performed and printed for each model trained.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.initiate_model_components">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">initiate_model_components</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">AutoModel</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Linear</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#initiate_model_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.initiate_model_components" title="Link to this definition"></a></dt>
+<dd><p>Initializes the model components based on the original script’s architecture.
+This includes a BERT model for state embedding, a state encoder, and an MLP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model_bert, state_encoder, mlp_head.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.set_seed">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.set_seed" title="Link to this definition"></a></dt>
+<dd><p>Sets the seed for reproducibility.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_model" title="Link to this definition"></a></dt>
+<dd><p>Trains the model using the specified hyperparameters.
+Implements early stopping based on validation loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>learning_rate</strong> – The learning rate for the optimizer.</p></li>
+<li><p><strong>epochs</strong> – The number of epochs to train for.</p></li>
+<li><p><strong>train_loader</strong> – DataLoader for the training set.</p></li>
+<li><p><strong>val_loader</strong> – DataLoader for the validation set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the state_dicts of the best model components,
+or None if training did not produce a best model (e.g., 0 epochs).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">train_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AutoModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Linear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp_head</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#train_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.train_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Trains the model for one epoch.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.validate_one_epoch">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.</span></span><span class="sig-name descname"><span class="pre">validate_one_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AutoModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Linear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp_head</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_MLP_training.html#validate_one_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training.validate_one_epoch" title="Link to this definition"></a></dt>
+<dd><p>Validates the model for one epoch.</p>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module">
-<h2>lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED">
+<span id="lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module"></span><h2>lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.ACT_DIM">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">ACT_DIM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.ACT_DIM" title="Link to this definition"></a></dt>
+<dd><p>0.0167 (no action head, small)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Test Loss for config (BATCH_SIZE=8, LEARNING_RATE=1e-05, EPOCHS=15)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_dataloaders">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">create_dataloaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorDataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorDataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorDataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#create_dataloaders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_dataloaders" title="Link to this definition"></a></dt>
+<dd><p>Create DataLoader objects for the train, validation, and test datasets.
+:param train_ds: The training dataset.
+:type train_ds: Dataset
+:param val_ds: The validation dataset.
+:type val_ds: Dataset
+:param test_ds: The test dataset.
+:type test_ds: Dataset
+:param batch_size: Number of samples per batch. Defaults to 16.
+:type batch_size: int, optional
+:param num_workers: How many subprocesses to use for data loading.</p>
+<blockquote>
+<div><p>0 means that the data will be loaded in the main process.
+Defaults to 0.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>train_loader (DataLoader): DataLoader for the training dataset.</p></li>
+<li><p>val_loader (DataLoader): DataLoader for the validation dataset.</p></li>
+<li><p>test_loader (DataLoader): DataLoader for the test dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_datasets">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">create_datasets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#create_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.create_datasets" title="Link to this definition"></a></dt>
+<dd><p>Creates train, validation, and test datasets from the concatenated dataset.
+Data is read from the HDF5 file, converted to PyTorch tensors, and split into 80% train, 10% validation, and 10% test sets.
+:returns:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>train_ds (TensorDataset): The training dataset.</p></li>
+<li><p>val_ds (TensorDataset): The validation dataset.</p></li>
+<li><p>test_ds (TensorDataset): The test dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.evaluate">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the UDRLt model on the test set.
+Uses Automatic Mixed Precision (AMP) for inference if CUDA is available.
+:returns: The average loss over the test set.
+:rtype: float</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.grid_search">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">grid_search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#grid_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.grid_search" title="Link to this definition"></a></dt>
+<dd><p>Performs a grid search over the given hyperparameters and saves the best model found.
+Saves the best model found to BEST_MODEL_PATH and prints out the best config and best test loss.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.initiate_UDRLt_model">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">initiate_UDRLt_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#initiate_UDRLt_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.initiate_UDRLt_model" title="Link to this definition"></a></dt>
+<dd><p>Initializes the Upside-Down Reinforcement Learning Transformer (UDRLt) model components.</p>
+<p>This function configures and initializes a BERT model and several linear layers
+for encoding the reward, horizon, and state, as well as a linear head for action prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>model_bert (AutoModel): The initialized BERT model.</p></li>
+<li><p>d_r_encoder (nn.Linear): Linear layer for encoding reward.</p></li>
+<li><p>d_h_encoder (nn.Linear): Linear layer for encoding horizon.</p></li>
+<li><p>state_encoder (nn.Linear): Linear layer for encoding state.</p></li>
+<li><p>head (nn.Linear): Linear layer for predicting actions.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.train">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_UDRLT_training_OPTIMIZED.html#train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED.train" title="Link to this definition"></a></dt>
+<dd><p>Trains the Upside-Down Reinforcement Learning Transformer (UDRLt) model on the
+given data, using the specified learning rate and number of epochs.
+Uses Automatic Mixed Precision (AMP) if CUDA is available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the state_dicts of the best model components.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-grid-dt-training-module">
-<h2>lukasz_sawala_bsc_thesis.grid_dt_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-dt-training-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.grid_dt_training">
+<span id="lukasz-sawala-bsc-thesis-grid-dt-training-module"></span><h2>lukasz_sawala_bsc_thesis.grid_dt_training module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.grid_dt_training" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_dt_training.EpisodicHDF5Dataset">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_dt_training.</span></span><span class="sig-name descname"><span class="pre">EpisodicHDF5Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_dt_training.html#EpisodicHDF5Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_dt_training.EpisodicHDF5Dataset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>Dataset class for loading episodic data in a form of a
+context window from an HDF5 file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_dt_training.EpisodicHDF5Dataset.sample_window">
+<span class="sig-name descname"><span class="pre">sample_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_dt_training.html#EpisodicHDF5Dataset.sample_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_dt_training.EpisodicHDF5Dataset.sample_window" title="Link to this definition"></a></dt>
+<dd><p>Sample a random context window of max_len from an episode
+in the dataset and pad it to max_len if necessary.
+Note that this is a simplified version of the original sampling method
+taken from the Decision Transformer paper cited in the paper.
+:returns: torch.tensor of shape (max_len, STATE_DIM)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>actions: torch.tensor of shape (max_len, ACT_DIM)</p></li>
+<li><p>rtgs: torch.tensor of shape (max_len, 1)</p></li>
+<li><p>timesteps: torch.tensor of shape (max_len, 1)</p></li>
+<li><p>action_target: torch.tensor of shape (max_len, ACT_DIM)</p></li>
+<li><p>attention_mask: torch.tensor of shape (max_len,) indicating which timesteps are padded</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>states</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_dt_training.evaluate">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_dt_training.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_dt_training.html#evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_dt_training.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluate a model on a given test dataloader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – the model to evaluate</p></li>
+<li><p><strong>test_loader</strong> – the test dataloader</p></li>
+<li><p><strong>device</strong> – the device to run the evaluation on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the average loss on the test set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_dt_training.train">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_dt_training.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_dt_training.html#train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_dt_training.train" title="Link to this definition"></a></dt>
+<dd><p>Train the model on the given train dataloader and validate on the given val dataloader.</p>
+<p>Args:
+- model: the model to train
+- train_dataloader: the dataloader for the training data
+- val_dataloader: the dataloader for the validation data
+- device: the device to train on
+- patience: the patience for early stopping
+- lr: the learning rate</p>
+<p>Returns:
+- best_model_dict: the best model state dict
+- best_val_loss: the best validation loss</p>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-grid-nn-training-module">
-<h2>lukasz_sawala_bsc_thesis.grid_nn_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-nn-training-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.grid_nn_training">
+<span id="lukasz-sawala-bsc-thesis-grid-nn-training-module"></span><h2>lukasz_sawala_bsc_thesis.grid_nn_training module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.grid_nn_training" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_nn_training.create_tensor_dataloaders">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_nn_training.</span></span><span class="sig-name descname"><span class="pre">create_tensor_dataloaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_nn_training.html#create_tensor_dataloaders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_nn_training.create_tensor_dataloaders" title="Link to this definition"></a></dt>
+<dd><p>Create PyTorch DataLoader objects for the train, test, and validation sets.
+:param X_train: The train input features.
+:type X_train: numpy.ndarray
+:param X_test: The test input features.
+:type X_test: numpy.ndarray
+:param X_val: The validation input features.
+:type X_val: numpy.ndarray
+:param y_train: The train target labels.
+:type y_train: numpy.ndarray
+:param y_test: The test target labels.
+:type y_test: numpy.ndarray
+:param y_val: The validation target labels.
+:type y_val: numpy.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing the train, test, and validation DataLoader objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_nn_training.grid_search_train">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_nn_training.</span></span><span class="sig-name descname"><span class="pre">grid_search_train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_nn_training.html#grid_search_train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_nn_training.grid_search_train" title="Link to this definition"></a></dt>
+<dd><p>”
+Initialize training parameters and models”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_nn_training.load_data">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_nn_training.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'../data/processed/concatenated_data.hdf5'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_nn_training.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_nn_training.load_data" title="Link to this definition"></a></dt>
+<dd><p>Load data from an HDF5 file.
+:param data_path: The path to the HDF5 file.
+:type data_path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing the input features and target labels.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.grid_nn_training.train_test_val_split">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.grid_nn_training.</span></span><span class="sig-name descname"><span class="pre">train_test_val_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/grid_nn_training.html#train_test_val_split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.grid_nn_training.train_test_val_split" title="Link to this definition"></a></dt>
+<dd><p>Split the data into train, test, and validation sets.
+:param X: The input features.
+:type X: numpy.ndarray
+:param y: The target labels.
+:type y: numpy.ndarray
+:param test_size: The proportion of the data to include in the test set.
+:type test_size: float
+:param val_size: The proportion of the data to include in the validation set.
+:type val_size: float
+:param shuffle: Whether to shuffle the data before splitting.
+:type shuffle: bool
+:param random_state: The seed used by the random number generator.
+:type random_state: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing the train, test, and validation sets.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-lukasz_sawala_bsc_thesis.k_means_rewards">
 <span id="lukasz-sawala-bsc-thesis-k-means-rewards-module"></span><h2>lukasz_sawala_bsc_thesis.k_means_rewards module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.k_means_rewards" title="Link to this heading"></a></h2>
 </section>
-<section id="lukasz-sawala-bsc-thesis-model-evaluation-module">
-<h2>lukasz_sawala_bsc_thesis.model_evaluation module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-model-evaluation-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.model_evaluation">
+<span id="lukasz-sawala-bsc-thesis-model-evaluation-module"></span><h2>lukasz_sawala_bsc_thesis.model_evaluation module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.model_evaluation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.evaluate_get_rewards">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate_get_rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_h</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_episodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_episode_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'NeuralNet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#evaluate_get_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.evaluate_get_rewards" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the performance of the model on the given environment.
+:param env: The environment to evaluate on.
+:type env: gym.Env
+:param model: The model to evaluate.
+:param d_h: The horizon to go.
+:type d_h: float
+:param d_r: The reward to go.
+:type d_r: float
+:param num_episodes: The number of episodes to evaluate.
+:type num_episodes: int
+:param max_episode_length: The maximum length of an episode.
+:type max_episode_length: int
+:param model_type: The type of model to evaluate.
+:type model_type: str
+:param device: The device to evaluate on.
+:type device: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing the average reward and a list of episodic rewards.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.load_bert_mlp_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">load_bert_mlp_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freeze</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antmaze_pretrained</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#load_bert_mlp_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_bert_mlp_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads the bert-based MLP model components for evaluation.
+:param checkpoint_path: The path to the checkpoint file.
+:type checkpoint_path: str
+:param device: The device to load the model on.
+:type device: str
+:param freeze: Whether to freeze the BERT model.
+:type freeze: bool
+:param antmaze_pretrained: Whether to return the fine-tuned AntMaze action head.
+:type antmaze_pretrained: bool</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.load_bert_udrl_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">load_bert_udrl_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#load_bert_udrl_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_bert_udrl_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads the bert-based UDRLt model components for evaluation.
+:param state_dim: The dimension of the state.
+:type state_dim: int
+:param act_dim: The dimension of the action.
+:type act_dim: int
+:param checkpoint_path: The path to the checkpoint file.
+:type checkpoint_path: str
+:param device: The device to load the model on.
+:type device: str</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.load_dt_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">load_dt_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DecisionTransformerModel</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#load_dt_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_dt_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads a Decision Transformer model for evaluation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.load_nn_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">load_nn_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet"><span class="pre">NeuralNet</span></a></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#load_nn_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.load_nn_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads a Neural Network model for evaluation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation.plot_average_rewards">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation.</span></span><span class="sig-name descname"><span class="pre">plot_average_rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">average_rewards</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sem_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Average</span> <span class="pre">Reward</span> <span class="pre">vs.</span> <span class="pre">d_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'average_rewards_plot.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation.html#plot_average_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation.plot_average_rewards" title="Link to this definition"></a></dt>
+<dd><p>Plots the average rewards for different values of d_r with standard error bars.</p>
+</dd></dl>
+
 </section>
-<section id="lukasz-sawala-bsc-thesis-model-evaluation-all-module">
-<h2>lukasz_sawala_bsc_thesis.model_evaluation_ALL module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-model-evaluation-all-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.model_evaluation_ALL">
+<span id="lukasz-sawala-bsc-thesis-model-evaluation-all-module"></span><h2>lukasz_sawala_bsc_thesis.model_evaluation_ALL module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.model_evaluation_ALL" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.model_evaluation_ALL.plot_all_models_rewards">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.model_evaluation_ALL.</span></span><span class="sig-name descname"><span class="pre">plot_all_models_rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'!!average_rewards_all_models.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/model_evaluation_ALL.html#plot_all_models_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.model_evaluation_ALL.plot_all_models_rewards" title="Link to this definition"></a></dt>
+<dd><p>Plots average rewards for all models with standard error bands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> – dict of model_name -&gt; {‘avg_rewards’: list, ‘sem’: list}</p></li>
+<li><p><strong>d_r_values</strong> – list of d_r values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-lukasz_sawala_bsc_thesis.models">
 <span id="lukasz-sawala-bsc-thesis-models-module"></span><h2>lukasz_sawala_bsc_thesis.models module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.models" title="Link to this heading"></a></h2>
@@ -534,11 +1376,100 @@ registered hooks while the latter silently ignores them.</p>
 </dd></dl>
 
 </section>
-<section id="lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module">
-<h2>lukasz_sawala_bsc_thesis.transfer_eval-various_conditions module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.transfer_eval_various_conditions">
+<span id="lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module"></span><h2>lukasz_sawala_bsc_thesis.transfer_eval_various_conditions module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.transfer_eval_various_conditions" title="Link to this heading"></a></h2>
 </section>
-<section id="lukasz-sawala-bsc-thesis-transfer-eval-main-module">
-<h2>lukasz_sawala_bsc_thesis.transfer_eval_main module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-transfer-eval-main-module" title="Link to this heading"></a></h2>
+<section id="module-lukasz_sawala_bsc_thesis.transfer_eval_main">
+<span id="lukasz-sawala-bsc-thesis-transfer-eval-main-module"></span><h2>lukasz_sawala_bsc_thesis.transfer_eval_main module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.transfer_eval_main" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.transfer_eval_main.antmaze_evaluate">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.transfer_eval_main.</span></span><span class="sig-name descname"><span class="pre">antmaze_evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">105</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_goal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/transfer_eval_main.html#antmaze_evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.antmaze_evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluate a single given model in the AntMaze environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<em>gym.Env</em>) – The AntMaze environment.</p></li>
+<li><p><strong>model</strong> – The model to evaluate (wrapped to accept multiple input variables).</p></li>
+<li><p><strong>episodes</strong> (<em>int</em>) – The number of episodes to run for each condition.</p></li>
+<li><p><strong>time_interval</strong> (<em>float</em>) – Time to sleep between steps when rendering the environment.</p></li>
+<li><p><strong>d_r</strong> (<em>float</em>) – The desired reward.</p></li>
+<li><p><strong>d_h</strong> (<em>float</em>) – The desired horizon.</p></li>
+<li><p><strong>state_dim</strong> (<em>int</em>) – The number of dimensions in the state vector.</p></li>
+<li><p><strong>use_goal</strong> (<em>bool</em>) – Whether to use the goal direction in the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of the total rewards obtained in each episode.
+best_distances (list): A list of the minimum distances to the goal achieved in each episode.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>obtained_returns (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.transfer_eval_main.extract_goal_direction">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.transfer_eval_main.</span></span><span class="sig-name descname"><span class="pre">extract_goal_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/transfer_eval_main.html#extract_goal_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.extract_goal_direction" title="Link to this definition"></a></dt>
+<dd><p>Calculate the direction vector from the current position to the goal position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obs</strong> (<em>dict</em>) – A dictionary containing ‘desired_goal’ and ‘achieved_goal’ keys,
+where each key maps to a tuple of (x, y) coordinates.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A 2D numpy array representing the direction vector (dx, dy),</dt><dd><p>where dx and dy are the differences in the x and y coordinates
+between the goal and the current position respectively.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_bertmlp_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.transfer_eval_main.</span></span><span class="sig-name descname"><span class="pre">load_antmaze_bertmlp_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize_from_scratch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/transfer_eval_main.html#load_antmaze_bertmlp_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_bertmlp_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads the AntMaze BERT MLP model components for evaluation.
+:returns: The loaded BERT model.</p>
+<blockquote>
+<div><p>state_encoder (nn.Linear): The loaded state encoder.
+mlp (NeuralNet): The loaded MLP model.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model_bert (AutoModel)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_nn_model_for_eval">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.transfer_eval_main.</span></span><span class="sig-name descname"><span class="pre">load_antmaze_nn_model_for_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initialize_from_scratch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNetResNorm" title="lukasz_sawala_bsc_thesis.models.NeuralNetResNorm"><span class="pre">NeuralNetResNorm</span></a></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/transfer_eval_main.html#load_antmaze_nn_model_for_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.load_antmaze_nn_model_for_eval" title="Link to this definition"></a></dt>
+<dd><p>Loads the AntMaze NN model components for evaluation.
+:param checkpoint_path: The path to the checkpoint file.
+:type checkpoint_path: str
+:param device: The device to load the model on.
+:type device: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The loaded model.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>nn_base (<a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="lukasz_sawala_bsc_thesis.models.NeuralNet">NeuralNet</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.transfer_eval_main.transfer_eval_main">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.transfer_eval_main.</span></span><span class="sig-name descname"><span class="pre">transfer_eval_main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/transfer_eval_main.html#transfer_eval_main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.transfer_eval_main.transfer_eval_main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-lukasz_sawala_bsc_thesis.utils">
 <span id="lukasz-sawala-bsc-thesis-utils-module"></span><h2>lukasz_sawala_bsc_thesis.utils module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.utils" title="Link to this heading"></a></h2>

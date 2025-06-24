@@ -11,6 +11,7 @@ from models import (
     AntMazeBERTPretrainedMazeWrapper, AntMazeNNPretrainedMazeWrapper,
     HugeNeuralNet, NeuralNetResNorm
 )
+
 from model_evaluation import (
     load_nn_model_for_eval, load_bert_mlp_model_for_eval,
     NN_MODEL_PATH, BERT_MLP_MODEL_PATH,

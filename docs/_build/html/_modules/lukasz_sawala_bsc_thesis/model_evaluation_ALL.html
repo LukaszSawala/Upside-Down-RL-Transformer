@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lukasz_sawala_bsc_thesis.model_evaluation_ALL &mdash; UDRL transformer 25/06/2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=95f8d375"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UDRL transformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">lukasz_sawala_bsc_thesis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UDRL transformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lukasz_sawala_bsc_thesis.model_evaluation_ALL</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lukasz_sawala_bsc_thesis.model_evaluation_ALL</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sem</span>
+<span class="c1"># from zeus.monitor import ZeusMonitor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_arguments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">model_evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">evaluate_get_rewards</span><span class="p">,</span> <span class="n">load_bert_mlp_model_for_eval</span><span class="p">,</span>
+    <span class="n">load_bert_udrl_model_for_eval</span><span class="p">,</span> <span class="n">load_nn_model_for_eval</span><span class="p">,</span> <span class="n">load_dt_model_for_eval</span><span class="p">,</span>
+    <span class="n">NN_MODEL_PATH</span><span class="p">,</span> <span class="n">DT_MODEL_PATH</span><span class="p">,</span> <span class="n">BERT_UDRL_MODEL_PATH</span><span class="p">,</span> <span class="n">BERT_MLP_MODEL_PATH</span>
+<span class="p">)</span>
+
+
+<span class="n">OUTPUT_SIZE</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">PLOT_TITLE</span> <span class="o">=</span> <span class="s2">&quot;Obtained Reward vs. D_r&quot;</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">INPUT_SIZE</span> <span class="o">=</span> <span class="mi">105</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># s_t + d_r and d_t</span>
+<span class="n">STATE_DIM</span> <span class="o">=</span> <span class="n">INPUT_SIZE</span> <span class="o">-</span> <span class="mi">2</span>  <span class="c1"># used for the DT</span>
+
+
+<div class="viewcode-block" id="plot_all_models_rewards">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.model_evaluation_ALL.plot_all_models_rewards">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_all_models_rewards</span><span class="p">(</span>
+    <span class="n">results</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">d_r_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;!!average_rewards_all_models.png&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots average rewards for all models with standard error bands.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        results: dict of model_name -&gt; {&#39;avg_rewards&#39;: list, &#39;sem&#39;: list}</span>
+<span class="sd">        d_r_values: list of d_r values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+    <span class="n">custom_palette</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;#F5C242&quot;</span><span class="p">,</span>  <span class="c1"># warm yellow</span>
+        <span class="s2">&quot;#F26464&quot;</span><span class="p">,</span>  <span class="c1"># coral red</span>
+        <span class="s2">&quot;#76C893&quot;</span><span class="p">,</span>  <span class="c1"># minty green</span>
+        <span class="s2">&quot;#8E7CC3&quot;</span><span class="p">,</span>   <span class="c1"># rich lavender</span>
+        <span class="s2">&quot;#465CB2&quot;</span><span class="p">,</span>  <span class="c1"># midnight blue</span>
+        <span class="s2">&quot;#FF811A&quot;</span><span class="p">,</span>  <span class="c1"># soft orange</span>
+    <span class="p">]</span>
+    <span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="n">custom_palette</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">avg_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">])</span>
+        <span class="n">sem_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;sem&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">model_name</span> <span class="o">==</span> <span class="s2">&quot;BERT_UDRL&quot;</span><span class="p">:</span>
+            <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;UDRLt&quot;</span>
+        <span class="k">if</span> <span class="n">model_name</span> <span class="o">==</span> <span class="s2">&quot;BERT_MLP&quot;</span><span class="p">:</span>
+            <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;UDRLt_MLP&quot;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_r_values</span><span class="p">,</span> <span class="n">avg_rewards</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">d_r_values</span><span class="p">,</span>
+            <span class="n">avg_rewards</span> <span class="o">-</span> <span class="n">sem_vals</span><span class="p">,</span>
+            <span class="n">avg_rewards</span> <span class="o">+</span> <span class="n">sem_vals</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_r_values</span><span class="p">,</span> <span class="n">d_r_values</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ideal (y=x)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Desired Reward (d_r)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average Episodic Reward&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">PLOT_TITLE</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">d_r_values</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved combined plot to </span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_arguments</span><span class="p">(</span><span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;starting evaluation for args:&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s2">&quot;device:&quot;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+
+    <span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">256</span>
+    <span class="n">nn_model</span> <span class="o">=</span> <span class="n">load_nn_model_for_eval</span><span class="p">(</span><span class="n">INPUT_SIZE</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">OUTPUT_SIZE</span><span class="p">,</span> <span class="n">NN_MODEL_PATH</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">dt_model</span> <span class="o">=</span> <span class="n">load_dt_model_for_eval</span><span class="p">(</span><span class="n">STATE_DIM</span><span class="p">,</span> <span class="n">OUTPUT_SIZE</span><span class="p">,</span> <span class="n">MAX_LENGTH</span><span class="p">,</span> <span class="n">DT_MODEL_PATH</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">bert_model</span> <span class="o">=</span> <span class="n">load_bert_udrl_model_for_eval</span><span class="p">(</span><span class="mi">105</span><span class="p">,</span> <span class="n">OUTPUT_SIZE</span><span class="p">,</span> <span class="n">BERT_UDRL_MODEL_PATH</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp</span> <span class="o">=</span> <span class="n">load_bert_mlp_model_for_eval</span><span class="p">(</span><span class="n">BERT_MLP_MODEL_PATH</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">bert_mlp_model</span> <span class="o">=</span> <span class="p">(</span><span class="n">model_bert</span><span class="p">,</span> <span class="n">state_encoder</span><span class="p">,</span> <span class="n">mlp</span><span class="p">)</span>
+
+    <span class="n">d_h</span> <span class="o">=</span> <span class="mf">1000.0</span>
+    <span class="n">d_r_options</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;d_r_array_length&quot;</span><span class="p">])]</span>
+    <span class="n">num_episodes</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;episodes&quot;</span><span class="p">]</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;Ant-v5&quot;</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;NeuralNet&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;percent_errors&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+        <span class="s2">&quot;DecisionTransformer&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;percent_errors&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+        <span class="s2">&quot;BERT_UDRL&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;percent_errors&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+        <span class="s2">&quot;BERT_MLP&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;percent_errors&quot;</span><span class="p">:</span> <span class="p">[]},</span>
+    <span class="p">}</span>
+
+    <span class="n">models_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;NeuralNet&quot;</span><span class="p">:</span> <span class="n">nn_model</span><span class="p">,</span>
+        <span class="s2">&quot;DecisionTransformer&quot;</span><span class="p">:</span> <span class="n">dt_model</span><span class="p">,</span>
+        <span class="s2">&quot;BERT_UDRL&quot;</span><span class="p">:</span> <span class="n">bert_model</span><span class="p">,</span>
+        <span class="s2">&quot;BERT_MLP&quot;</span><span class="p">:</span> <span class="n">bert_mlp_model</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">d_r</span> <span class="ow">in</span> <span class="n">d_r_options</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluating d_r: </span><span class="si">{</span><span class="n">d_r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluating model: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">_</span><span class="p">,</span> <span class="n">episodic_rewards</span> <span class="o">=</span> <span class="n">evaluate_get_rewards</span><span class="p">(</span>
+                <span class="n">env</span><span class="p">,</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">d_h</span><span class="p">,</span>
+                <span class="n">d_r</span><span class="p">,</span>
+                <span class="n">num_episodes</span><span class="o">=</span><span class="n">num_episodes</span><span class="p">,</span>
+                <span class="n">model_type</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">episodic_rewards</span><span class="p">)</span>
+            <span class="n">sem_val</span> <span class="o">=</span> <span class="n">sem</span><span class="p">(</span><span class="n">episodic_rewards</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">d_r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">percent_error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">avg</span> <span class="o">-</span> <span class="n">d_r</span><span class="p">)</span> <span class="o">/</span> <span class="n">d_r</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">percent_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">results</span><span class="p">[</span><span class="n">model_name</span><span class="p">][</span><span class="s2">&quot;avg_rewards&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">model_name</span><span class="p">][</span><span class="s2">&quot;sem&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sem_val</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">model_name</span><span class="p">][</span><span class="s2">&quot;percent_errors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">percent_error</span><span class="p">)</span>
+
+    <span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final Average Percentage Errors per Model:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">mean_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;percent_errors&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mean_error</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+    <span class="n">plot_all_models_rewards</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">d_r_options</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lukasz Sawala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

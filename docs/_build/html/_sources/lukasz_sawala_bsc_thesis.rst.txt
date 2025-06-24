@@ -4,10 +4,10 @@ lukasz\_sawala\_bsc\_thesis package
 Submodules
 ----------
 
-lukasz\_sawala\_bsc\_thesis.0reward\_testing module
+lukasz\_sawala\_bsc\_thesis.0rewardtesting module
 ---------------------------------------------------
 
-.. automodule:: lukasz_sawala_bsc_thesis.0reward_testing
+.. automodule:: lukasz_sawala_bsc_thesis.0rewardtesting
    :members:
    :show-inheritance:
    :undoc-members:
@@ -60,18 +60,18 @@ lukasz\_sawala\_bsc\_thesis.finetuningUDRLt\_MLP\_maze module
    :show-inheritance:
    :undoc-members:
 
-lukasz\_sawala\_bsc\_thesis.ft\-selfimprove\-rollout\-lastcondition module
+lukasz\_sawala\_bsc\_thesis.ft\_selfimprove\_rollout\_lastcondition module
 --------------------------------------------------------------------------
 
-.. automodule:: lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition
+.. automodule:: lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition
    :members:
    :show-inheritance:
    :undoc-members:
 
-lukasz\_sawala\_bsc\_thesis.ft\-selfimprove\-rollout\-lastcondition\-NN module
+lukasz\_sawala\_bsc\_thesis.ft\_selfimprove\_rollout\_lastcondition\_NN module
 ------------------------------------------------------------------------------
 
-.. automodule:: lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition-NN
+.. automodule:: lukasz_sawala_bsc_thesis.ft_selfimprove_rollout_lastcondition_NN
    :members:
    :show-inheritance:
    :undoc-members:
@@ -148,10 +148,10 @@ lukasz\_sawala\_bsc\_thesis.skewed\_sampling\_test module
    :show-inheritance:
    :undoc-members:
 
-lukasz\_sawala\_bsc\_thesis.transfer\_eval\-various\_conditions module
+lukasz\_sawala\_bsc\_thesis.transfer\_eval\_various\_conditions module
 ----------------------------------------------------------------------
 
-.. automodule:: lukasz_sawala_bsc_thesis.transfer_eval-various_conditions
+.. automodule:: lukasz_sawala_bsc_thesis.transfer_eval_various_conditions
    :members:
    :show-inheritance:
    :undoc-members:

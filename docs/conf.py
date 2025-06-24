@@ -8,7 +8,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('../lukasz_sawala_bsc_thesis'))
 
 project = 'UDRL transformer'
 copyright = '2025, Lukasz Sawala'

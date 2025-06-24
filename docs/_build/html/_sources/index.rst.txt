@@ -17,7 +17,7 @@ documentation for details.
 
    modules
 
-* :ref: `genindex`
-* :ref: `modindex`
-* :ref: `search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 

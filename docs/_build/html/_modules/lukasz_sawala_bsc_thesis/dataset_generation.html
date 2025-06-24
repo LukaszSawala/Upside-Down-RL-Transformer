@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lukasz_sawala_bsc_thesis.dataset_generation &mdash; UDRL transformer 25/06/2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=95f8d375"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UDRL transformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">lukasz_sawala_bsc_thesis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UDRL transformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">lukasz_sawala_bsc_thesis.dataset_generation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for lukasz_sawala_bsc_thesis.dataset_generation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium_robotics</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">,</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transfer_eval_main</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_goal_direction</span><span class="p">,</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span><span class="p">,</span> <span class="n">load_antmaze_nn_model_for_eval</span>
+
+<span class="c1"># --- Setup ---</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+<span class="n">INITIAL_ANTMAZE_BERT_PATH</span> <span class="o">=</span> <span class="s2">&quot;../models/cond4_berttiny-18_512.pth&quot;</span>
+<span class="n">NEW_BERT_MODEL_PATH</span> <span class="o">=</span> <span class="s2">&quot;cond5-berttiny-18-512.pth&quot;</span>
+<span class="n">INITIAL_ANTMAZE_NN_PATH</span> <span class="o">=</span> <span class="s2">&quot;../models/cond4_NN-18_512.pth&quot;</span>
+<span class="n">NEW_NN_MODEL_PATH</span> <span class="o">=</span> <span class="s2">&quot;cond5-NN-18-512.pth&quot;</span>
+
+<span class="n">OUTPUT_HDF5_PATH</span> <span class="o">=</span> <span class="s2">&quot;antmaze_rollout_current_dataset.hdf5&quot;</span>
+
+
+<div class="viewcode-block" id="generate_dataset">
+<a class="viewcode-back" href="../../lukasz_sawala_bsc_thesis.html#lukasz_sawala_bsc_thesis.dataset_generation.generate_dataset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_dataset</span><span class="p">(</span><span class="n">d_h</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d_r_options</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">num_episodes_per_dr</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">start_from_condition4</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+                     <span class="n">retain_best_previous_data</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;ANTMAZE_BERT_MLP&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a dataset of trajectories for the AntMaze environment using a pretrained model.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        d_h (float): Initial horizon value used for episode termination.</span>
+<span class="sd">        d_r_options (list): List of reward threshold values to test during data collection.</span>
+<span class="sd">        num_episodes_per_dr (int): Number of episodes to collect for each reward threshold.</span>
+<span class="sd">        start_from_condition4 (bool): Flag to determine if data collection starts from condition 4.</span>
+<span class="sd">        retain_best_previous_data (bool, optional): If True, retains the best data from previous collections.</span>
+<span class="sd">        model_name (str, optional): Name of the model to use for data generation. Defaults to &quot;ANTMAZE_BERT_MLP&quot;.</span>
+
+<span class="sd">    This function collects data by running episodes in the AntMaze environment with a specified model.</span>
+<span class="sd">    It collects observations, actions, rewards, and goal vectors for each episode, and processes them</span>
+<span class="sd">    into a dataset. The resulting dataset is saved to an HDF5 file, and a 2D histogram of reward-to-go</span>
+<span class="sd">    versus horizon is generated and saved as a PNG image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># --- Load environment and model ---</span>
+    <span class="n">gym</span><span class="o">.</span><span class="n">register_envs</span><span class="p">(</span><span class="n">gymnasium_robotics</span><span class="p">)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;AntMaze_MediumDense-v5&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model_name</span> <span class="o">==</span> <span class="s2">&quot;ANTMAZE_BERT_MLP&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">start_from_condition4</span><span class="p">:</span>
+            <span class="n">model_components</span> <span class="o">=</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span><span class="p">(</span><span class="n">INITIAL_ANTMAZE_BERT_PATH</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">(</span><span class="o">*</span><span class="n">model_components</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_components</span> <span class="o">=</span> <span class="n">load_antmaze_bertmlp_model_for_eval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span> <span class="n">initialize_from_scratch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeBERTPretrainedMazeWrapper</span><span class="p">(</span><span class="o">*</span><span class="n">model_components</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">NEW_BERT_MODEL_PATH</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>   <span class="c1"># initialize from scratch to be able to load the model properly</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># NN model</span>
+        <span class="k">if</span> <span class="n">start_from_condition4</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">load_antmaze_nn_model_for_eval</span><span class="p">(</span><span class="n">INITIAL_ANTMAZE_NN_PATH</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">load_antmaze_nn_model_for_eval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span>
+                                                   <span class="n">initialize_from_scratch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">AntMazeNNPretrainedMazeWrapper</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">NEW_NN_MODEL_PATH</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">DEVICE</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="c1"># --- Parameters ---</span>
+    <span class="n">state_dim</span> <span class="o">=</span> <span class="mi">27</span>  <span class="c1"># AntMaze uses reduced state space</span>
+
+    <span class="c1"># --- Data storage for all episodes ---</span>
+    <span class="n">all_actions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_observations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_rewards_to_go</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_time_to_go</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_goal_vectors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># --- Main Data Collection Loop ---</span>
+    <span class="n">episode_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">low_reward_episodes</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d_r</span> <span class="ow">in</span> <span class="n">d_r_options</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Collecting data for d_r = </span><span class="si">{</span><span class="n">d_r</span><span class="si">}</span><span class="s2"> with d_h = </span><span class="si">{</span><span class="n">d_h</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_episodes_per_dr</span><span class="p">):</span>
+            <span class="c1"># print(f&quot;Collecting: [d_r={d_r}] Episode {ep + 1}/{num_episodes_per_dr}&quot;)</span>
+            <span class="n">obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="n">d_h_copy</span> <span class="o">=</span> <span class="n">d_h</span>
+            <span class="n">d_r_copy</span> <span class="o">=</span> <span class="n">d_r</span>
+            <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Store data for the current episode temporarily</span>
+            <span class="n">episode_observations</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">episode_actions</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">episode_rewards</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">episode_goal_vectors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">obtained_return</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span> <span class="ow">and</span> <span class="n">d_h_copy</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">goal_vec</span> <span class="o">=</span> <span class="n">extract_goal_direction</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;observation&quot;</span><span class="p">][:</span><span class="n">state_dim</span><span class="p">]</span>
+
+                <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                    <span class="n">action_tensor</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">d_r_copy</span><span class="p">,</span> <span class="n">d_h_copy</span><span class="p">,</span> <span class="n">goal_vec</span><span class="p">,</span> <span class="n">DEVICE</span><span class="p">,</span> <span class="n">use_goal</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">action</span> <span class="o">=</span> <span class="n">action_tensor</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+                <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+                <span class="n">done</span> <span class="o">=</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span>
+                <span class="n">obtained_return</span> <span class="o">+=</span> <span class="n">reward</span>
+
+                <span class="c1"># Append step data to temporary lists</span>
+                <span class="n">episode_observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                <span class="n">episode_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+                <span class="n">episode_rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">reward</span><span class="p">))</span>
+                <span class="n">episode_goal_vectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">goal_vec</span><span class="p">)</span>
+
+                <span class="n">d_r_copy</span> <span class="o">-=</span> <span class="n">reward</span>
+                <span class="n">d_h_copy</span> <span class="o">-=</span> <span class="mi">1</span>
+
+            <span class="c1"># --- On-the-fly Processing (after each episode) ---</span>
+            <span class="k">if</span> <span class="n">obtained_return</span> <span class="o">&lt;</span> <span class="mf">2.0</span> <span class="ow">and</span> <span class="n">d_r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">low_reward_episodes</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">low_reward_episodes</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">continue</span>  <span class="c1"># keep ~14% of low reward episodes</span>
+
+            <span class="c1"># Convert episode lists to NumPy arrays</span>
+            <span class="n">rewards_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">episode_rewards</span><span class="p">)</span>
+
+            <span class="c1"># 1. Calculate rewards-to-go</span>
+            <span class="c1"># This is a vectorized and efficient way to compute the cumulative sum of future rewards</span>
+            <span class="n">rewards_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">rewards_np</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># 2. Calculate time-to-go</span>
+            <span class="c1"># This creates an array like [T, T-1, ..., 1] where T is the episode length</span>
+            <span class="n">time_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rewards_np</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Append processed data to the master lists</span>
+            <span class="n">all_observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">episode_observations</span><span class="p">))</span>
+            <span class="n">all_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">episode_actions</span><span class="p">))</span>
+            <span class="n">all_goal_vectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">episode_goal_vectors</span><span class="p">))</span>
+            <span class="n">all_rewards_to_go</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rewards_to_go</span><span class="p">)</span>
+            <span class="n">all_time_to_go</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_to_go</span><span class="p">)</span>
+
+            <span class="n">episode_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Collected </span><span class="si">{</span><span class="n">episode_count</span><span class="si">}</span><span class="s2"> episodes. Now concatenating and saving...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Final Concatenation and Saving ---</span>
+
+    <span class="c1"># Concatenate all episodes into single large NumPy arrays</span>
+    <span class="n">final_observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_observations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">final_actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_actions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">final_goal_vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_goal_vectors</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">final_rewards_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_rewards_to_go</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">final_time_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_time_to_go</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stats before concatenation:&quot;</span><span class="p">,</span> <span class="mi">48</span> <span class="o">*</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AVERAGE REWARD TO GO:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">final_rewards_to_go</span><span class="p">))</span>  <span class="c1"># the higher this is, the more high reward trajectories we obtained</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AVERAGE OBTAINED REWARD PER EPISODE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">rewards</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">rewards</span> <span class="ow">in</span> <span class="n">all_rewards_to_go</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">retain_best_previous_data</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">start_from_condition4</span><span class="p">:</span>
+        <span class="c1"># load previous data if the previous model was already finetuned before (start_from_condition4=False)</span>
+        <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">OUTPUT_HDF5_PATH</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">observations</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">][</span><span class="s2">&quot;observations&quot;</span><span class="p">][:]</span>
+            <span class="n">actions</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">][</span><span class="s2">&quot;actions&quot;</span><span class="p">][:]</span>
+            <span class="n">goal_vectors</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">][</span><span class="s2">&quot;goal_vector&quot;</span><span class="p">][:]</span>
+            <span class="n">rewards_to_go</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">][</span><span class="s2">&quot;rewards_to_go&quot;</span><span class="p">][:]</span>
+            <span class="n">time_to_go</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">][</span><span class="s2">&quot;time_to_go&quot;</span><span class="p">][:]</span>
+
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">rewards_to_go</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">500</span>
+            <span class="c1"># Stack the filtered data</span>
+            <span class="n">filtered_observations</span> <span class="o">=</span> <span class="n">observations</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">filtered_actions</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">filtered_goal_vectors</span> <span class="o">=</span> <span class="n">goal_vectors</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">filtered_rewards_to_go</span> <span class="o">=</span> <span class="n">rewards_to_go</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+            <span class="n">filtered_time_to_go</span> <span class="o">=</span> <span class="n">time_to_go</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+            <span class="c1"># Concatenate them to the newly collected data</span>
+            <span class="n">final_observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">final_observations</span><span class="p">,</span> <span class="n">filtered_observations</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">final_actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">final_actions</span><span class="p">,</span> <span class="n">filtered_actions</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">final_goal_vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">final_goal_vectors</span><span class="p">,</span> <span class="n">filtered_goal_vectors</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">final_rewards_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">final_rewards_to_go</span><span class="p">,</span> <span class="n">filtered_rewards_to_go</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">final_time_to_go</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">final_time_to_go</span><span class="p">,</span> <span class="n">filtered_time_to_go</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># make a 2d histogram of dr and dt to go to see how they are related</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Reward-to-Go&quot;</span><span class="p">:</span> <span class="n">final_rewards_to_go</span><span class="p">,</span> <span class="s2">&quot;Horizon&quot;</span><span class="p">:</span> <span class="n">final_time_to_go</span><span class="p">})</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Reward-to-Go&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Horizon&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;2D Histogram: Reward-to-Go vs Horizon&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Reward-to-Go&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Horizon&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;reward_to_go_vs_horizon_newdata.png&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Save the concatenated data to a single HDF5 file</span>
+    <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">OUTPUT_HDF5_PATH</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="c1"># Using a group is good practice for organizing data within the HDF5 file</span>
+        <span class="n">data_group</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s2">&quot;concatenated_data&quot;</span><span class="p">)</span>
+        <span class="n">data_group</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;observations&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final_observations</span><span class="p">)</span>
+        <span class="n">data_group</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;actions&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final_actions</span><span class="p">)</span>
+        <span class="n">data_group</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;rewards_to_go&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final_rewards_to_go</span><span class="p">)</span>
+        <span class="n">data_group</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;time_to_go&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final_time_to_go</span><span class="p">)</span>
+        <span class="n">data_group</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;goal_vector&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final_goal_vectors</span><span class="p">)</span>
+        <span class="c1"># check shapes</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shapes of saved datasets:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observations: </span><span class="si">{</span><span class="n">final_observations</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Actions: </span><span class="si">{</span><span class="n">final_actions</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rewards-to-Go: </span><span class="si">{</span><span class="n">final_rewards_to_go</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time-to-Go: </span><span class="si">{</span><span class="n">final_time_to_go</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Goal Vectors: </span><span class="si">{</span><span class="n">final_goal_vectors</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data processing complete. Final dataset saved to </span><span class="si">{</span><span class="n">OUTPUT_HDF5_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">d_h</span> <span class="o">=</span> <span class="mf">1000.0</span>
+    <span class="n">d_r_options</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">50</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">)]</span>
+    <span class="n">num_episodes_per_dr</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">start_from_condition4</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set to True at the beggining of the loop</span>
+    <span class="n">generate_dataset</span><span class="p">(</span><span class="n">d_h</span><span class="o">=</span><span class="n">d_h</span><span class="p">,</span> <span class="n">d_r_options</span><span class="o">=</span><span class="n">d_r_options</span><span class="p">,</span>
+                     <span class="n">num_episodes_per_dr</span><span class="o">=</span><span class="n">num_episodes_per_dr</span><span class="p">,</span> <span class="n">start_from_condition4</span><span class="o">=</span><span class="n">start_from_condition4</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lukasz Sawala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
