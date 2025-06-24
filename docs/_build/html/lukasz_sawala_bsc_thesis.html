@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lukasz_sawala_bsc_thesis package &mdash; UDRL transformer 25/06/2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=95f8d375"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="lukasz_sawala_bsc_thesis" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UDRL transformer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">lukasz_sawala_bsc_thesis</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">lukasz_sawala_bsc_thesis package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-0reward-testing-module">lukasz_sawala_bsc_thesis.0reward_testing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_DT">lukasz_sawala_bsc_thesis.attention_mapping_DT module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.make_token_labels"><code class="docutils literal notranslate"><span class="pre">make_token_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.sample_episode_window"><code class="docutils literal notranslate"><span class="pre">sample_episode_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.visualize_attention_importance_avg"><code class="docutils literal notranslate"><span class="pre">visualize_attention_importance_avg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module">lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-dataset-generation-module">lukasz_sawala_bsc_thesis.dataset_generation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module">lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningnn-maze-module">lukasz_sawala_bsc_thesis.finetuningNN_maze module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module">lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module">lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module">lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition-NN module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module">lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module">lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-dt-training-module">lukasz_sawala_bsc_thesis.grid_dt_training module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-grid-nn-training-module">lukasz_sawala_bsc_thesis.grid_nn_training module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.k_means_rewards">lukasz_sawala_bsc_thesis.k_means_rewards module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-model-evaluation-module">lukasz_sawala_bsc_thesis.model_evaluation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-model-evaluation-all-module">lukasz_sawala_bsc_thesis.model_evaluation_ALL module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.models">lukasz_sawala_bsc_thesis.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.ActionHead"><code class="docutils literal notranslate"><span class="pre">ActionHead</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy"><code class="docutils literal notranslate"><span class="pre">AntBERTPretrainedMazePolicy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeActionHead"><code class="docutils literal notranslate"><span class="pre">AntMazeActionHead</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper"><code class="docutils literal notranslate"><span class="pre">AntMazeBERTPretrainedMazeWrapper</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntMazeNNPretrainedMazeWrapper"><code class="docutils literal notranslate"><span class="pre">AntMazeNNPretrainedMazeWrapper</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.AntNNPretrainedMazePolicy"><code class="docutils literal notranslate"><span class="pre">AntNNPretrainedMazePolicy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead"><code class="docutils literal notranslate"><span class="pre">BertAntMazeActionHead</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.HugeNeuralNet"><code class="docutils literal notranslate"><span class="pre">HugeNeuralNet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.LargeActionHead"><code class="docutils literal notranslate"><span class="pre">LargeActionHead</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNet"><code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.NeuralNetResNorm"><code class="docutils literal notranslate"><span class="pre">NeuralNetResNorm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.models.ScalarEncoder"><code class="docutils literal notranslate"><span class="pre">ScalarEncoder</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.skewed_sampling_test">lukasz_sawala_bsc_thesis.skewed_sampling_test module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.TrajectoryDataset"><code class="docutils literal notranslate"><span class="pre">TrajectoryDataset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.plot_beta_distribution"><code class="docutils literal notranslate"><span class="pre">plot_beta_distribution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module">lukasz_sawala_bsc_thesis.transfer_eval-various_conditions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lukasz-sawala-bsc-thesis-transfer-eval-main-module">lukasz_sawala_bsc_thesis.transfer_eval_main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis.utils">lukasz_sawala_bsc_thesis.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.utils.parse_arguments"><code class="docutils literal notranslate"><span class="pre">parse_arguments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.utils.print_available_antmaze_envs"><code class="docutils literal notranslate"><span class="pre">print_available_antmaze_envs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lukasz_sawala_bsc_thesis.utils.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lukasz_sawala_bsc_thesis">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UDRL transformer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lukasz_sawala_bsc_thesis</a></li>
+      <li class="breadcrumb-item active">lukasz_sawala_bsc_thesis package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/lukasz_sawala_bsc_thesis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lukasz-sawala-bsc-thesis-package">
+<h1>lukasz_sawala_bsc_thesis package<a class="headerlink" href="#lukasz-sawala-bsc-thesis-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-0reward-testing-module">
+<h2>lukasz_sawala_bsc_thesis.0reward_testing module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-0reward-testing-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-lukasz_sawala_bsc_thesis.attention_mapping_DT">
+<span id="lukasz-sawala-bsc-thesis-attention-mapping-dt-module"></span><h2>lukasz_sawala_bsc_thesis.attention_mapping_DT module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.attention_mapping_DT" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_DT.make_token_labels">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_DT.</span></span><span class="sig-name descname"><span class="pre">make_token_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_DT.html#make_token_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.make_token_labels" title="Link to this definition"></a></dt>
+<dd><p>Make a list of token labels for the plot.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_DT.sample_episode_window">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_DT.</span></span><span class="sig-name descname"><span class="pre">sample_episode_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_DT.html#sample_episode_window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.sample_episode_window" title="Link to this definition"></a></dt>
+<dd><p>Sample a random context window of max_len from an episode in the dataset and pad it to max_len if necessary.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.attention_mapping_DT.visualize_attention_importance_avg">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.attention_mapping_DT.</span></span><span class="sig-name descname"><span class="pre">visualize_attention_importance_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_batches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/attention_mapping_DT.html#visualize_attention_importance_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.attention_mapping_DT.visualize_attention_importance_avg" title="Link to this definition"></a></dt>
+<dd><p>Visualize the average attention importances for each token in the model.</p>
+</dd></dl>
+
+</section>
+<section id="lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module">
+<h2>lukasz_sawala_bsc_thesis.attention_mapping_UDRLt module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-attention-mapping-udrlt-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-dataset-generation-module">
+<h2>lukasz_sawala_bsc_thesis.dataset_generation module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-dataset-generation-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module">
+<h2>lukasz_sawala_bsc_thesis.finetuningExtraDataAntmaze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningextradataantmaze-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-finetuningnn-maze-module">
+<h2>lukasz_sawala_bsc_thesis.finetuningNN_maze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningnn-maze-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module">
+<h2>lukasz_sawala_bsc_thesis.finetuningUDRLt_MLP_maze module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-finetuningudrlt-mlp-maze-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module">
+<h2>lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module">
+<h2>lukasz_sawala_bsc_thesis.ft-selfimprove-rollout-lastcondition-NN module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-ft-selfimprove-rollout-lastcondition-nn-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module">
+<h2>lukasz_sawala_bsc_thesis.grid_UDRLT_MLP_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-udrlt-mlp-training-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module">
+<h2>lukasz_sawala_bsc_thesis.grid_UDRLT_training_OPTIMIZED module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-udrlt-training-optimized-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-grid-dt-training-module">
+<h2>lukasz_sawala_bsc_thesis.grid_dt_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-dt-training-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-grid-nn-training-module">
+<h2>lukasz_sawala_bsc_thesis.grid_nn_training module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-grid-nn-training-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-lukasz_sawala_bsc_thesis.k_means_rewards">
+<span id="lukasz-sawala-bsc-thesis-k-means-rewards-module"></span><h2>lukasz_sawala_bsc_thesis.k_means_rewards module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.k_means_rewards" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-model-evaluation-module">
+<h2>lukasz_sawala_bsc_thesis.model_evaluation module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-model-evaluation-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-model-evaluation-all-module">
+<h2>lukasz_sawala_bsc_thesis.model_evaluation_ALL module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-model-evaluation-all-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-lukasz_sawala_bsc_thesis.models">
+<span id="lukasz-sawala-bsc-thesis-models-module"></span><h2>lukasz_sawala_bsc_thesis.models module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.ActionHead">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">ActionHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#ActionHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.ActionHead" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class defines the action head used in the Ant environment, specifically by the UDRLt architectures.
+It takes the hidden state from the model combined with d_r and d_h to produce the final action.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.ActionHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#ActionHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.ActionHead.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">AntBERTPretrainedMazePolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjusted_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntBERTPretrainedMazePolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class is a wrapper used to navigate the AntMaze environment using the UDRLt-MLP in two ways:
+-  with the goal location (pretrained on Ant, finetuned on AntMaze)
+-  without the goal location (only pretrained on Ant).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DEVICE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_goal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntBERTPretrainedMazePolicy.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntBERTPretrainedMazePolicy.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeActionHead">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">AntMazeActionHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeActionHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeActionHead" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class defines the action head used in the AntMaze environment, put on top of the pretrained models.
+It takes the goal location as an input, which is concatenated with the output of the pretrained model to
+produce the final action.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeActionHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeActionHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeActionHead.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">AntMazeBERTPretrainedMazeWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_bert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_encoder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeBERTPretrainedMazeWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class is a wrapper for the UDRLt-MLP model fully trained on AntMaze.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DEVICE</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeBERTPretrainedMazeWrapper.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeBERTPretrainedMazeWrapper.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeNNPretrainedMazeWrapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">AntMazeNNPretrainedMazeWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mlp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeNNPretrainedMazeWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeNNPretrainedMazeWrapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class is a wrapper for the NeuralNet model fully trained on AntMaze.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntMazeNNPretrainedMazeWrapper.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DEVICE</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntMazeNNPretrainedMazeWrapper.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntMazeNNPretrainedMazeWrapper.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntNNPretrainedMazePolicy">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">AntNNPretrainedMazePolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjusted_head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntNNPretrainedMazePolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntNNPretrainedMazePolicy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class is a wrapper used to navigate the AntMaze environment using the NeuralNet in two ways:
+-  with the goal location (pretrained on Ant, finetuned on AntMaze)
+-  without the goal location (only pretrained on Ant).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.AntNNPretrainedMazePolicy.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DEVICE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_goal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#AntNNPretrainedMazePolicy.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.AntNNPretrainedMazePolicy.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">BertAntMazeActionHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#BertAntMazeActionHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class defines the action head used in the AntMaze environment, put on top of the pretrained BERT model.
+It is a more complex version of the AntMazeActionHead class, with layer normalization and residual connections.
+It takes the goal location as an input, which is concatenated with the output of the pretrained model to
+produce the final action.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#BertAntMazeActionHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.BertAntMazeActionHead.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.HugeNeuralNet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">HugeNeuralNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#HugeNeuralNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.HugeNeuralNet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Class defining the Neural Network (larger) used on top of the BERT. It is an extension of the
+NeuralNet class with more layers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.HugeNeuralNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#HugeNeuralNet.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.HugeNeuralNet.forward" title="Link to this definition"></a></dt>
+<dd><p>Defines the forward call of the network.
+:returns: The output of the network squeezed with</p>
+<blockquote>
+<div><p>tanh - enforcing the action range between (-1, 1)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.LargeActionHead">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">LargeActionHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#LargeActionHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.LargeActionHead" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class defines a larger action head used in the Ant environment, specifically by the UDRLt architectures.
+It takes the hidden state from the model combined with d_r and d_h to produce the final action.
+It is a more complex version of the ActionHead class, with more layers and ReLU activations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.LargeActionHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#LargeActionHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.LargeActionHead.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.NeuralNet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">NeuralNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#NeuralNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.NeuralNet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Class defining the Neural Network used in the research as a baseline and as part of
+(multiple) policies. It is a simple feedforward neural network with
+multiple fully connected layers and ReLU activation functions.
+The output is squeezed with tanh to enforce the action range between (-1, 1).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.NeuralNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#NeuralNet.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.NeuralNet.forward" title="Link to this definition"></a></dt>
+<dd><p>Defines the forward call of the network.
+:returns: The output of the network squeezed with</p>
+<blockquote>
+<div><p>tanh - enforcing the action range between (-1, 1)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.NeuralNetResNorm">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">NeuralNetResNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#NeuralNetResNorm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.NeuralNetResNorm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Class defining the Neural Network with residual connections and layer normalization.
+It is a more complex version of the NeuralNet class, with multiple layers and residual connections.
+The output is squeezed with tanh to enforce the action range between (-1, 1).
+This class is used in the AntMaze environment and is a part of the policies.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.NeuralNetResNorm.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#NeuralNetResNorm.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.NeuralNetResNorm.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.ScalarEncoder">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.models.</span></span><span class="sig-name descname"><span class="pre">ScalarEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#ScalarEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.ScalarEncoder" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>This class defines a simple scalar encoder that takes a single scalar input
+and encodes it into a higher-dimensional space.
+It is used to encode the reward and horizon vectors (d_r, d_h) in the AntMaze environment.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.models.ScalarEncoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/models.html#ScalarEncoder.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.models.ScalarEncoder.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-lukasz_sawala_bsc_thesis.skewed_sampling_test">
+<span id="lukasz-sawala-bsc-thesis-skewed-sampling-test-module"></span><h2>lukasz_sawala_bsc_thesis.skewed_sampling_test module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.skewed_sampling_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.skewed_sampling_test.TrajectoryDataset">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.skewed_sampling_test.</span></span><span class="sig-name descname"><span class="pre">TrajectoryDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">episodic_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skew_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/skewed_sampling_test.html#TrajectoryDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.TrajectoryDataset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.skewed_sampling_test.TrajectoryDataset.sample_window_size">
+<span class="sig-name descname"><span class="pre">sample_window_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/skewed_sampling_test.html#TrajectoryDataset.sample_window_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.TrajectoryDataset.sample_window_size" title="Link to this definition"></a></dt>
+<dd><p>Sample a sequence length using a right-skewed Beta distribution.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.skewed_sampling_test.load_data">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.skewed_sampling_test.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/skewed_sampling_test.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.load_data" title="Link to this definition"></a></dt>
+<dd><p>Load episodic data from an HDF5 file.
+:param data_path: The path to the HDF5 file.
+:type data_path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A list where each element is a tuple of:</dt><dd><ul class="simple">
+<li><p>observations (np.ndarray of shape (T, obs_dim))</p></li>
+<li><p>actions (np.ndarray of shape (T, action_dim))</p></li>
+<li><p>rewards_to_go (np.ndarray of shape (T, 1))</p></li>
+<li><p>time_to_go (np.ndarray of shape (T, 1))</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.skewed_sampling_test.plot_beta_distribution">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.skewed_sampling_test.</span></span><span class="sig-name descname"><span class="pre">plot_beta_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Beta</span> <span class="pre">Distribution'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'beta_distribution_plot.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/skewed_sampling_test.html#plot_beta_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.skewed_sampling_test.plot_beta_distribution" title="Link to this definition"></a></dt>
+<dd><p>Plots the Beta distribution for given parameters a and b with a style similar to the <cite>plot_average_rewards</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>float</em>) – Alpha parameter of the Beta distribution.</p></li>
+<li><p><strong>b</strong> (<em>float</em>) – Beta parameter of the Beta distribution.</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – Number of samples to plot.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of the plot.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em>) – Path to save the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module">
+<h2>lukasz_sawala_bsc_thesis.transfer_eval-various_conditions module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-transfer-eval-various-conditions-module" title="Link to this heading"></a></h2>
+</section>
+<section id="lukasz-sawala-bsc-thesis-transfer-eval-main-module">
+<h2>lukasz_sawala_bsc_thesis.transfer_eval_main module<a class="headerlink" href="#lukasz-sawala-bsc-thesis-transfer-eval-main-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-lukasz_sawala_bsc_thesis.utils">
+<span id="lukasz-sawala-bsc-thesis-utils-module"></span><h2>lukasz_sawala_bsc_thesis.utils module<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.utils.parse_arguments">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.utils.</span></span><span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/utils.html#parse_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.utils.parse_arguments" title="Link to this definition"></a></dt>
+<dd><p>Function defining and returning command line arguments depending on the desired mode (training/evaluation).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.utils.print_available_antmaze_envs">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.utils.</span></span><span class="sig-name descname"><span class="pre">print_available_antmaze_envs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/utils.html#print_available_antmaze_envs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.utils.print_available_antmaze_envs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lukasz_sawala_bsc_thesis.utils.set_seed">
+<span class="sig-prename descclassname"><span class="pre">lukasz_sawala_bsc_thesis.utils.</span></span><span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/lukasz_sawala_bsc_thesis/utils.html#set_seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#lukasz_sawala_bsc_thesis.utils.set_seed" title="Link to this definition"></a></dt>
+<dd><p>Sets seeds for numpy, random, torch and torch.cuda modules.</p>
+<p>Parameters:
+seed (int): The seed value. Defaults to 0.</p>
+</dd></dl>
+
+</section>
+<section id="module-lukasz_sawala_bsc_thesis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lukasz_sawala_bsc_thesis" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="lukasz_sawala_bsc_thesis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lukasz Sawala.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
