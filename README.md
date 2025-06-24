@@ -1,6 +1,5 @@
 # Lukasz_Sawala_Bsc_Thesis 
 
-# NOT UP-TO-DATE
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
@@ -11,36 +10,15 @@ Bachelor Thesis on the topic of Decision Making Transformers via Upside-Down RL
 ## Project Organization
 
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   └── sample         <- Small sample of the dataset. The whole dataset available in the paper and under the link: https://huggingface.co/datasets/farama-minari/mujoco
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         lukasz_sawala_bsc_thesis and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── lukasz_sawala_bsc_thesis   <- Source code for use in this project.
-    │
-    └── plots.py                <- Code to create visualizations
+├── LICENSE                    <- Open-source license
+├── docs                       <- File documentation 
+├── models                     <- Trained and serialized models
+├── notebooks                  <- Jupyter notebooks used in the research, mostly for data processing and initial testing
+├── pyproject.toml             <- Project configuration file with package metadata
+├── reports                    <- The thesis related to the project
+├── uv.lock                    <- The requirements of the project, run via UV package manager 
+├── setup.cfg                  <- Configuration file for flake8
+└── lukasz_sawala_bsc_thesis   <- Source code for use in this project
 ```
 
 --------
