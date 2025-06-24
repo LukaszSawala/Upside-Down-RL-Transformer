@@ -14,8 +14,10 @@ Bachelor Thesis on the topic of Decision Making Transformers via Upside-Down RL
 ├── docs                       <- File documentation 
 ├── models                     <- Trained and serialized models
 ├── notebooks                  <- Jupyter notebooks used in the research, mostly for data processing and initial testing
-├── pyproject.toml             <- Project configuration file with package metadata
+├── plots                      <- Plots generated and used in the project
 ├── reports                    <- The thesis related to the project
+├── running-outputs            <- Outputs obtained when running some of the more important parts of the code, named accordingly
+├── pyproject.toml             <- Project configuration file with package metadata
 ├── uv.lock                    <- The requirements of the project, run via UV package manager 
 ├── setup.cfg                  <- Configuration file for flake8
 └── lukasz_sawala_bsc_thesis   <- Source code for use in this project
