@@ -4,11 +4,11 @@
 
 ## Bachelor Thesis on the topic of Low-Latency Language-Action Foundation Models via Upside-Down RL. 
 
-## Project Organization
+## 🌲 Project Organization
 
 ```
 ├── docs                       <- File documentation in HTML using Sphinx
-├── jobscripts                 <- Shell files used to run jobstricts on a HPC
+├── jobscripts                 <- Shell files used to run jobscripts on an HPC
 └── lukasz_sawala_bsc_thesis   <- Source code for use in this project
 │   └── .FILE_EXPLANATIONS     <- Brief comments about every file made for clarity
 ├── models                     <- Trained and serialized models
@@ -44,6 +44,33 @@ Start by cloning the repository to your local machine.
    uv sync
    ```
 
+---
+### **⚙️ Parser Arguments**
+
+| Argument               | Type    | Default      | Description                                                                                          |
+|------------------------|---------|---------------|------------------------------------------------------------------------------------------------------|
+| `--seed`               | `int`   | `0`           | Seed for random number generation to ensure reproducibility.                                         |
+| `--model_type`         | `str`   | `"NeuralNet"` | Model architecture to use. Choices: `NeuralNet`, `DecisionTransformer`, `BERT_UDRL`, `BERT_MLP`, `ANTMAZE_BERT_MLP`, `ANTMAZE_NN`. |
+| `--episodes`           | `int`   | `15`          | Number of evaluation episodes to run.                                                                |
+| `--d_r_array_length`   | `int`   | `36`          | *(Evaluation only)* Length of the desired return array passed to the model.                          |
+| `--epochs`             | `int`   | `15`          | *(Training only)* Number of epochs to train the model.                                               |
+| `--hidden_size`        | `int`   | `256`         | *(Training only)* Hidden layer size in the model.                                                    |
+| `--batch_size`         | `int`   | `32`          | *(Training only)* Batch size used during training.                                                   |
+| `--learning_rate`      | `float` | `3e-4`        | *(Training only)* Learning rate for the optimizer.                                                   |
+| `--patience`           | `int`   | `2`           | *(Training only)* Early stopping patience threshold.                                                 |
+
+> Note: Arguments marked *(Training only)* or *(Evaluation only)* are conditionally included depending on the execution mode.
+
+---
+
+### ✅ Example usage
+
+```bash
+# Activate virtual environment and run evaluation
+source .venv/bin/activate
+cd lukasz_sawala_bsc_thesis/
+python transfer_eval_various_conditions.py --episodes 10 --model_type ANTMAZE_BERT_MLP --d_r_array_length 21
+```
 ---
 
 ## Acknowledgements
