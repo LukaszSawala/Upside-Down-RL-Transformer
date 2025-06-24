@@ -9,6 +9,8 @@
 ```
 ├── docs                       <- File documentation in HTML using Sphinx
 ├── jobscripts                 <- Shell files used to run jobstricts on a HPC
+└── lukasz_sawala_bsc_thesis   <- Source code for use in this project
+│   └── .FILE_EXPLANATIONS     <- Brief comments about every file made for clarity
 ├── models                     <- Trained and serialized models
 ├── notebooks                  <- Jupyter notebooks used in the research, mostly for data processing and initial testing
 ├── plots                      <- Plots generated and used in the project
@@ -18,7 +20,6 @@
 ├── pyproject.toml             <- Project configuration file with package metadata
 ├── uv.lock                    <- The requirements of the project, run via UV package manager 
 ├── setup.cfg                  <- Configuration file for flake8
-└── lukasz_sawala_bsc_thesis   <- Source code for use in this project
 ```
 ---
 
