@@ -8,7 +8,7 @@
 source .venv/bin/activate
 
 cd lukasz_sawala_bsc_thesis/
-python ft-selfimprove-rollout-lastcondition.py
+python ft_selfimprove_rollout_lastcondition.py
 
 
 deactivate
