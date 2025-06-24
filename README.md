@@ -2,7 +2,7 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-Bachelor Thesis on the topic of Latency Language-Action Foundation Models via Upside-Down RL. 
+##Bachelor Thesis on the topic of Latency Language-Action Foundation Models via Upside-Down RL. 
 
 ## Project Organization
 
